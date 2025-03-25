@@ -1,0 +1,130 @@
+{% extends "layouts/header.html" %}
+
+{% block beforeContent %}
+
+<!-- Quick reference and task outstanding tag -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-padding-top-5">
+
+      {% set tasksOutstanding = {
+        value: 'Task outstanding',
+        classes: "govuk-tag--red"
+        
+      } %}
+
+        {{ dwpQuickReference({
+            ariaLabel: "Case information",
+            primaryReference: {
+                text: 'Name:',
+                value: 'John Doe'
+            },
+            secondaryReference: {
+                text: 'National Insurance number:',
+                value: 'QQ 12 34 56 X'
+            },
+            status: (none if awarded == true else tasksOutstanding)
+        })}}
+    </div>
+
+    <!-- horizontal nav -->
+    {% from "horizontal-navigation/macro.njk" import dwpHorizontalNavigation %}
+
+    <div class="govuk-grid-column-full">
+
+      {{dwpHorizontalNavigation({
+        selectedItem: "/claim/claim-details.html",
+        items: [
+          {
+            text: "Tasks",
+            href: "/claim/tasks.html",
+            id: "l-item-1"
+          },
+          {
+            text: "Personal details",
+            href: "/claim/personal-details.html",
+            id: "l-item-2"
+          },
+          {
+            text: "Claim details",
+            href: "/claim/claim-details.html",
+            id: "l-item-3"
+          },
+          {
+            text: "Documents",
+            href: "/claim/documents.html",
+            id: "l-item-4"
+          },
+          {
+            text: "Timeline",
+            href: "/claim/timeline.html",
+            id: "l-item-5"
+          },
+          {
+            text: "Award",
+            href: "/claim/award-summary.html",
+            id: "l-item-6"
+          }
+        ]
+      })}}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {% set tabOneHtml %}
+        <p>Enter content</p>
+      {% endset -%}
+
+      {% set tabTwoHtml %}
+        <p>Enter content</p>
+      {% endset -%}
+
+      {% set tabThreeHtml %}
+        <p>Enter content</p>
+      {% endset -%}
+
+      {% set tabFourHtml %}
+        <p>Enter content</p>
+      {% endset -%}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Tab one",
+            id: "tab-one",
+            panel: {
+              html: tabOneHtml
+            }
+          },
+          {
+            label: "Tab two",
+            id: "tab-two",
+            panel: {
+              html: tabTwoHtml
+            }
+          },
+          {
+            label: "Tab three",
+            id: "tab-three",
+            panel: {
+              html: tabThreeHtml
+            }
+          },
+          {
+            label: "Tab four",
+            id: "tab-four",
+            panel: {
+              html: tabFourHtml
+            }
+          }
+        ]
+      }) }}
+      
+    </div>
+  </div>
+{% endblock %}

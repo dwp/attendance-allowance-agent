@@ -1,0 +1,89 @@
+{% extends "layouts/header.html" %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-padding-top-5">
+        {{ dwpQuickReference({
+            ariaLabel: "Case information",
+            primaryReference: {
+                text: 'Name:',
+                value: 'John Doe'
+            },
+            secondaryReference: {
+                text: 'National Insurance number:',
+                value: 'QQ 12 34 56 X'
+            }
+        })}}
+
+        {{ govukBackLink({
+          text: "Back",
+          href: "/claim/tasks.html"
+        }) }}
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-m">Award</span>
+      <h1 class="govuk-heading-l">Review award information</h1>
+
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Rate</td>
+            <td class="govuk-table__cell">Higher rate</td>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Length of award</td>
+            <td class="govuk-table__cell">3 years</td>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Dates</td>
+            <td class="govuk-table__cell">12 November 2024 - 11 November 2027</td>
+            <td class="govuk-table__cell"><a href="#">Change</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Payability</td>
+            <td class="govuk-table__cell">
+              <table class="govuk-table">
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Hospital</td>
+                    <td class="govuk-table__cell">No dates</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Hospice</td>
+                    <td class="govuk-table__cell">No dates</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Care home</td>
+                    <td class="govuk-table__cell">No dates</td>
+                  </tr>
+                </tbody>
+              </table>
+              <td class="govuk-table__cell"></td>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Overlapping benefit</td>
+            <td class="govuk-table__cell">None</td>
+            <td class="govuk-table__cell"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="/awarded" method="POST">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Confirm award
+        </button>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

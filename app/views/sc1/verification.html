@@ -1,0 +1,107 @@
+{% extends "layouts/header.html" %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-padding-top-5">
+        {{ dwpQuickReference({
+            ariaLabel: "Case information",
+            primaryReference: {
+                text: 'Name:',
+                value: 'John Doe'
+            },
+            secondaryReference: {
+                text: 'National Insurance number:',
+                value: 'QQ 12 34 56 X'
+            }
+        })}}
+
+        {{ govukBackLink({
+          text: "Back",
+          href: "/claim/tasks.html"
+        }) }}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-m">Verification</span>
+      <h1 class="govuk-heading-l">Check the claimant's details</h1>
+
+      {% set matchStatus = {
+        tag: {
+          text: "Match",
+          classes: "govuk-tag--green"
+        }
+      } %}
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col">Claim data</th>
+            <th class="govuk-table__header" scope="col">DWP system</th>
+            <th class="govuk-table__header" scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">National Insurance Number</td>
+            <td class="govuk-table__cell">JJ12345C</td>
+            <td class="govuk-table__cell">JJ12345C</td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Match",
+                classes: "govuk-tag--green"
+              })}}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Full name</td>
+            <td class="govuk-table__cell">John Doe</td>
+            <td class="govuk-table__cell">John Doe</td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Match",
+                classes: "govuk-tag--green"
+              })}}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Date of Birth</td>
+            <td class="govuk-table__cell">30 July 1960</td>
+            <td class="govuk-table__cell">30 July 1960</td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Match",
+                classes: "govuk-tag--green"
+              })}}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Address</td>
+            <td class="govuk-table__cell">Flat 12, 187 Brixton Street, Waterloo, London, SE1 5TU</td>
+            <td class="govuk-table__cell">Flat 12, 187 Brixton Street, Waterloo, London, SE1 5TU</td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Match",
+                classes: "govuk-tag--green"
+              })}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="/verify" method="POST">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

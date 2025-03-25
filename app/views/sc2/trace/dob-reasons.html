@@ -1,0 +1,53 @@
+{% extends "layouts/header.html" %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-padding-top-5">
+        {{ dwpQuickReference({
+            ariaLabel: "Case information",
+            primaryReference: {
+                text: 'Name:',
+                value: 'John Doe'
+            },
+            secondaryReference: {
+                text: 'National Insurance number:',
+                value: 'QQ 12 34 56 X'
+            }
+        })}}
+
+        {{ govukBackLink({
+          text: "Back",
+          href: "/sc2/trace/enter-dob.html"
+        }) }}
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+      
+      {{ govukCharacterCount({
+        name: "reasonsDob",
+        id: "dob-reasons",
+        maxlength:2000,
+        label: {
+          text: "Add reasons for changing the claimant's date of birth",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Enter more information about this event."
+        }
+      }) }}
+
+      <form action="/dobreasons" method="POST">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layouts/header.html" %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-padding-top-5">
+        {{ dwpQuickReference({
+            ariaLabel: "Case information",
+            primaryReference: {
+                text: 'Name:',
+                value: 'John Doe'
+            },
+            secondaryReference: {
+                text: 'National Insurance number:',
+                value: 'QQ 12 34 56 X'
+            }
+        })}}
+
+        {{ govukBackLink({
+          text: "Back",
+          href: "/sc2/trace/trace-dob.html"
+        }) }}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-m">Verification</span>
+      <h1 class="govuk-heading-l">Enter the claimant's correct date of birth</h1>
+      {{ govukDateInput({
+        id: "enter-dob",
+        namePrefix: "enter-dob"
+      }) }}
+
+      <form action="/dobenter" method="POST">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

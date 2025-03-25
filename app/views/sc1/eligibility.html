@@ -1,0 +1,106 @@
+{% extends "layouts/header.html" %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-padding-top-5">
+        {{ dwpQuickReference({
+            ariaLabel: "Case information",
+            primaryReference: {
+                text: 'Name:',
+                value: 'John Doe'
+            },
+            secondaryReference: {
+                text: 'National Insurance number:',
+                value: 'QQ 12 34 56 X'
+            }
+        })}}
+
+        {{ govukBackLink({
+          text: "Back",
+          href: "/claim/tasks.html"
+        }) }}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-m">Eligibiligy</span>
+      <h1 class="govuk-heading-l">Check eligibility details</h1>
+
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Nationality</td>
+            <td class="govuk-table__cell">British</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Residence</td>
+            <td class="govuk-table__cell">United Kingdom</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Over State Pensionable Age</td>
+            <td class="govuk-table__cell">Yes (Age 72 years 4 months)</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Moved from Scotland to England since 21 October 2024</td>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Pension or benefits from an EEA state or Switzerland</td>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Working in or paying insurance to an EEA state or Switzerland</td>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__header">Other benefits</td>
+            <td class="govuk-table__cell">None of these benefits</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="govuk-heading-m">Use Searchlight to cross-check this information</h2>
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Searchlight</a>
+      </p>
+
+      {{ govukRadios({
+        name: "whereDoYouLive",
+        fieldset: {
+            legend: {
+            text: "Is this claimant eligible?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+            }
+        },
+        items: [
+            {
+            value: "yes",
+            text: "Yes"
+            },
+            {
+            value: "no",
+            text: "No"
+            },
+            {
+            value: "save-for-later",
+            text: "I need to come back to this later"
+            }
+        ]
+        }) }}
+
+        <form action="/eligible" method="POST">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+
+    </div>
+  </div>
+{% endblock %}
