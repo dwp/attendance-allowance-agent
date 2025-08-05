@@ -1,0 +1,39 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Search a claimant" %}
+
+{% block content %}
+  <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+  
+  <span class="govuk-caption-xl">Pedro Pascal</span>
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">
+        If you don't know the claimant's claim reference number, you can search 
+        using the 
+        <a href="search-nino" class="govuk-link">National Insurance number</a>
+         or 
+        <a href="advanced-search" class="govuk-link">the advanced search</a>.
+      </p>
+
+
+      <form class="form" method="post" action="search-results-v2">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-claim">
+            Claim reference
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="search-claim" name="search-claim" type="text">
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Search
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

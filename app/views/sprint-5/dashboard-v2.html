@@ -1,0 +1,146 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Dashboard" %}
+
+{% block content %}
+<a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+<span class="govuk-caption-xl">Pedro Pascal</span>
+<h1 class="govuk-heading-xl">
+  {{ pageName }}
+</h1>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="#">Register a claim</a>
+          </h2>
+          <p class="govuk-body">
+            Register a paper-based claim.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="search-nino">Search a claimant</a>
+          </h2>
+          <p class="govuk-body">
+            Search for all claims using NINO or claim details.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="#">View statistic</a>
+          </h2>
+          <p class="govuk-body">
+            View all statistics for processing claims.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-column-full">
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+          <caption class="govuk-table__caption govuk-table__caption--m">Recently viewed claims</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">NINO</th>
+              <th scope="col" class="govuk-table__header">Name</th>
+              <th scope="col" class="govuk-table__header">Date of birth</th>
+              <th scope="col" class="govuk-table__header">Claim ref</th>
+              <th scope="col" class="govuk-table__header">Address</th>
+              <th scope="col" class="govuk-table__header">Postcode</th>
+              <th scope="col" class="govuk-table__header">Contact</th>
+              <th scope="col" class="govuk-table__header">
+                <span class="govuk-visually-hidden">Action</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">AB123456C</td>
+              <td class="govuk-table__cell">Atten Dence</td>
+              <td class="govuk-table__cell">13/04/1958</td>
+              <td class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">11 Elm Street</td>
+              <td class="govuk-table__cell">FR13 1EL</td>
+              <td class="govuk-table__cell">0700001066</td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">AB123456C</td>
+              <td class="govuk-table__cell">Atten Dence</td>
+              <td class="govuk-table__cell">13/04/1958</td>
+              <td class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">11 Elm Street</td>
+              <td class="govuk-table__cell">FR13 1EL</td>
+              <td class="govuk-table__cell">0700001066</td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">AB123456C</td>
+              <td class="govuk-table__cell">Atten Dence</td>
+              <td class="govuk-table__cell">13/04/1958</td>
+              <td class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">11 Elm Street</td>
+              <td class="govuk-table__cell">FR13 1EL</td>
+              <td class="govuk-table__cell">0700001066</td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">AB123456C</td>
+              <td class="govuk-table__cell">Atten Dence</td>
+              <td class="govuk-table__cell">13/04/1958</td>
+              <td class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">11 Elm Street</td>
+              <td class="govuk-table__cell">FR13 1EL</td>
+              <td class="govuk-table__cell">0700001066</td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">AB123456C</td>
+              <td class="govuk-table__cell">Atten Dence</td>
+              <td class="govuk-table__cell">13/04/1958</td>
+              <td class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">11 Elm Street</td>
+              <td class="govuk-table__cell">FR13 1EL</td>
+              <td class="govuk-table__cell">0700001066</td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">AB123456C</td>
+              <td class="govuk-table__cell">Atten Dence</td>
+              <td class="govuk-table__cell">13/04/1958</td>
+              <td class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">11 Elm Street</td>
+              <td class="govuk-table__cell">FR13 1EL</td>
+              <td class="govuk-table__cell">0700001066</td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+{% endblock %}

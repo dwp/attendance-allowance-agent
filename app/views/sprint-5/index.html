@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% set pageName="Sprint 5" %}
 
 {% block content %}
 
@@ -8,8 +8,113 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl">
-      Dashboard
+      {{ pageName }}
     </h1>
+
+    <p class="govuk-body">Both journeys are for the dashboard and search section of the service. These are work in progress designs to be later user tested.</p>
+
+    <div class="AA-results-buttons">
+      <a href="dashboard" class="govuk-button" style="margin-right: 10px;">
+        Version 1
+      </a>
+      <a href="dashboard-v2" class="govuk-button">
+        Version 2
+      </a>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Version
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Description
+        </dt>
+        <dd class="govuk-summary-list__value">
+          This version contains dashboard that only contains cards to link off to the different areas of the service. <br/>
+          The search contains all search fields on one page which then shows the results.<br/>
+          The claimant details page contains the details of the claimant as well as the list of claims linked to that claimant
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Pages
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link" href="dashboard">Dashboard</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="search-claim">Search claimant</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="search-results">Search results</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="claimant-details">Claimant details</a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Version
+        </dt>
+        <dd class="govuk-summary-list__value">
+          2
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Description
+        </dt>
+        <dd class="govuk-summary-list__value">
+          This version contains dashboard that contains cards to link off to the different areas of the service as well as recently viewed claims. <br/>
+          The search is split into a single page for NINO or claim reference number with the rest of the search fields on the advanced search page.<br/>
+          The claimant details page contains the details of the claimant as well as the list of claims linked to that claimant but the list is seperated into tabs based on status.
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Pages
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link" href="dashboard-v2">Dashboard</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="search-nino">Search NINO</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="search-claim">Search claim reference</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="advanced-search">Advanced search</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="search-results-v2">Search results</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="claimant-details-v2">Claimant details</a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
 
   </div>
 </div>
