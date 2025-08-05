@@ -1,0 +1,111 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Search a claimant" %}
+
+{% block content %}
+  <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+  
+  <span class="govuk-caption-xl">Pedro Pascal</span>
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">All search fields are optional</p>
+
+      <form class="form" method="post" action="search-results">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-nino">
+            National Insurance number
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="search-nino" name="search-nino" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-surname">
+            Surname
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="search-surname" name="search-surname" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-firstname">
+            Firstname
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="search-firstname" name="search-firstname" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend">
+              Date of birth
+            </legend>
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example, 27 3 2007
+            </div>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="search-dob-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="search-dob-day" name="search-dob-day" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="search-dob-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="search-dob-month" name="search-dob-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="search-dob--year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="search-dob-year" name="search-dob-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-claim-reference">
+            Claim reference number
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="search-claim-reference" name="search-claim-reference" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-address">
+            First line of address
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="search-address" name="search-address" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-postcode">
+            Postcode
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="search-postcode" name="search-postcode" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-contact">
+            Contact number
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="search-contact" name="search-contact" type="text">
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

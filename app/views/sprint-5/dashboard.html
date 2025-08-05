@@ -1,0 +1,53 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Dashboard" %}
+
+{% block content %}
+<a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+<span class="govuk-caption-xl">Pedro Pascal</span>
+<h1 class="govuk-heading-xl">
+  {{ pageName }}
+</h1>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="#">Register a claim</a>
+          </h2>
+          <p class="govuk-body">
+            Register a paper-based claim.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="search">Search a claimant</a>
+          </h2>
+          <p class="govuk-body">
+            Search for all claims using NINO or claim details.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="#">View statistic</a>
+          </h2>
+          <p class="govuk-body">
+            View all statistics for processing claims.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+{% endblock %}

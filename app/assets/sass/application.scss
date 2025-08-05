@@ -4,3 +4,40 @@
 // 
 
 // Add extra styles here
+
+
+// remove GOVUK logo from the header as it's not to be used internally
+@media (min-width: 48.0625em) {
+    .govuk-header__content-noLogo {
+        width: 100%;
+        padding-left: 0;
+    }
+}
+
+.AA-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    flex-wrap: nowrap;
+    min-height: 160px;
+    padding: 15px;
+    border-bottom: 1px solid transparent;
+    background-color: #f3f2f1;
+    h2 {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .AA-card__content {
+        padding: 15px 20px;
+    }
+}
+
+.AA-results-filter {
+    display: flex;
+    justify-content: baseline;
+    .AA-results-buttons {
+        margin: 30px 0 0 15px;
+    }
+}
