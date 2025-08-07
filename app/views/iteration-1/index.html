@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Sprint 5" %}
+{% set pageName="Iteration 1" %}
 
 {% block content %}
 
@@ -14,10 +14,10 @@
     <p class="govuk-body">Both journeys are for the dashboard and search section of the service. These are work in progress designs to be later user tested.</p>
 
     <div class="AA-results-buttons">
-      <a href="sprint-5/dashboard" class="govuk-button" style="margin-right: 10px;">
+      <a href="iteration-1/dashboard" class="govuk-button" style="margin-right: 10px;">
         Version 1
       </a>
-      <a href="sprint-5/dashboard-v2" class="govuk-button">
+      <a href="iteration-1/dashboard-v2" class="govuk-button">
         Version 2
       </a>
     </div>
@@ -30,51 +30,7 @@
           Version
         </dt>
         <dd class="govuk-summary-list__value">
-          1
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Description
-        </dt>
-        <dd class="govuk-summary-list__value">
-          This version contains dashboard that only contains cards to link off to the different areas of the service. <br/>
-          The search contains all search fields on one page which then shows the results.<br/>
-          The claimant details page contains the details of the claimant as well as the list of claims linked to that claimant
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Pages
-        </dt>
-        <dd class="govuk-summary-list__value">
-          <ul class="govuk-list">
-            <li>
-              <a class="govuk-link" href="sprint-5/dashboard">Dashboard</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="sprint-5/search-claim">Search claimant</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="sprint-5/search-results">Search results</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="sprint-5/claimant-details">Claimant details</a>
-            </li>
-          </ul>
-        </dd>
-      </div>
-    </dl>
-
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-    <dl class="govuk-summary-list govuk-summary-list--no-border">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Version
-        </dt>
-        <dd class="govuk-summary-list__value">
-          2
+          1 - current iteration
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -94,22 +50,69 @@
         <dd class="govuk-summary-list__value">
           <ul class="govuk-list">
             <li>
-              <a class="govuk-link" href="sprint-5/dashboard-v2">Dashboard</a>
+              <a class="govuk-link" href="iteration-1/dashboard">Dashboard</a>
             </li>
             <li>
-              <a class="govuk-link" href="sprint-5/search-nino">Search NINO</a>
+              <a class="govuk-link" href="iteration-1/search-nino">Search NINO</a>
             </li>
             <li>
-              <a class="govuk-link" href="sprint-5/search-claim">Search claim reference</a>
+              <a class="govuk-link" href="iteration-1/search-claim">Search claim reference</a>
             </li>
             <li>
-              <a class="govuk-link" href="sprint-5/advanced-search">Advanced search</a>
+              <a class="govuk-link" href="iteration-1/advanced-search">Advanced search</a>
             </li>
             <li>
-              <a class="govuk-link" href="sprint-5/search-results-v2">Search results</a>
+              <a class="govuk-link" href="iteration-1/search-results">Search results</a>
             </li>
             <li>
-              <a class="govuk-link" href="sprint-5/claimant-details-v2">Claimant details</a>
+              <a class="govuk-link" href="iteration-1/claimant-details">Claimant details</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/claim-details">Claim details</a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Version
+        </dt>
+        <dd class="govuk-summary-list__value">
+          2 - different designs
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Description
+        </dt>
+        <dd class="govuk-summary-list__value">
+          This version contains different design ideas for dashboard that only contains cards to link off to the different areas of the service. <br/>
+          The search also contains all search fields on one page which then shows the results.<br/>
+          The claimant details page contains the details of the claimant as well as the list of claims linked to that claimant
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Pages
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link" href="iteration-1/dashboard-v1">Dashboard</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/search-claim">Search claimant</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/search-results-v1">Search results</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/claimant-details-v1">Claimant details</a>
             </li>
           </ul>
         </dd>

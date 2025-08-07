@@ -1,0 +1,135 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Claim details" %}
+
+{% block content %}
+  <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+
+  <section class="dwp-quick-reference" aria-label="Case information">
+    <dl class="dwp-quick-reference__block">
+      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+      <dd class="dwp-quick-reference__primary">Atten Dence</dd>
+      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+      <dd class="dwp-quick-reference__secondary">AB 12 34 56 C</dd>
+      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Claim status:</dt>
+      <dd class="dwp-quick-reference__secondary">
+        <strong class="govuk-tag govuk-tag--red">
+          Missing SR1
+        </strong>
+      </dd>
+    </dl>
+  </section>
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-tabs" data-module="govuk-tabs">
+        <ul class="govuk-tabs__list">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+            <a class="govuk-tabs__tab" href="#claim-task">
+              Tasks
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#claim-details">
+              Claim details
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#claim-history">
+              History
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#claim-documents">
+              Documents
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#claim-awards">
+              Awards
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-tabs__panel" id="claim-task">
+          <ul class="govuk-task-list">
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-1-status">
+                  Verify
+                </a>
+              </div>
+              <div class="govuk-task-list__status" id="company-details-1-status">
+                Completed
+              </div>
+            </li>
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-2-status">
+                  Check eligibility 
+                </a>
+              </div>
+              <div class="govuk-task-list__status" id="company-details-2-status">
+                <strong class="govuk-tag govuk-tag--blue">
+                  Incomplete
+                </strong>
+              </div>
+            </li>
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-3-hint company-details-3-status">
+                  Decision
+                </a>
+              </div>
+              <div class="govuk-task-list__status" id="company-details-3-status">
+                <strong class="govuk-tag govuk-tag--blue">
+                  Incomplete
+                </strong>
+              </div>
+            </li>
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-4-status">
+                  Payments
+                </a>
+              </div>
+              <div class="govuk-task-list__status" id="company-details-4-status">
+                <strong class="govuk-tag govuk-tag--blue">
+                  Incomplete
+                </strong>
+              </div>
+            </li>
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-5-status">
+                  Awards
+                </a>
+              </div>
+              <div class="govuk-task-list__status" id="company-details-5-status">
+                <strong class="govuk-tag govuk-tag--blue">
+                  Incomplete
+                </strong>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="claim-details">
+          <p class="govuk-body">Example</p>
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="claim-history">
+          <p class="govuk-body">Example</p>
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="claim-documents">
+          <p class="govuk-body">Example</p>
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="claim-awards">
+          <p class="govuk-body">Example</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

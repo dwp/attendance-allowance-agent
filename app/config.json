@@ -1,5 +1,5 @@
 {
-  "serviceName": "Agent's Attendance Allowance",
+  "serviceName": "Attendance Allowance",
   "plugins": {
     "govuk-frontend": {
       "rebrand": true

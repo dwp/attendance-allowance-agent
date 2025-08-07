@@ -65,7 +65,9 @@
             Sort by
           </label>
           <select class="govuk-select" id="results-sort" name="results-sort">
-            <option value="createdNO" selected>Date created: newest to oldest</option>
+            <option value="claimAZ" selected>Claim reference: A to Z</option>
+            <option value="claimZA">Claim reference: Z to A</option>
+            <option value="createdNO">Date created: newest to oldest</option>
             <option value="createdON">Date created: oldest to newest</option>
             <option value="DueNO">Due date: newest to oldest</option>
             <option value="DueON">Due date: oldest to newest</option>
@@ -84,6 +86,7 @@
           <caption class="govuk-table__caption govuk-table__caption--m">Claims</caption>
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Claim reference</th>
               <th scope="col" class="govuk-table__header">Date created</th>
               <th scope="col" class="govuk-table__header">Due date</th>
               <th scope="col" class="govuk-table__header">Status</th>
@@ -94,7 +97,8 @@
           </thead>
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">03/08/2025</td>
+              <td scope="row" class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">03/08/2025</td>
               <td class="govuk-table__cell">17/08/2025</td>
               <td class="govuk-table__cell">
                 <strong class="govuk-tag govuk-tag--red">
@@ -102,11 +106,12 @@
                 </strong>
               </td>
               <td class="govuk-table__cell">
-                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
               </td>
             </tr>
             <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">03/08/2025</td>
+              <td scope="row" class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">03/08/2025</td>
               <td class="govuk-table__cell">17/08/2025</td>
               <td class="govuk-table__cell">
                 <strong class="govuk-tag govuk-tag--red">
@@ -114,11 +119,12 @@
                 </strong>
               </td>
               <td class="govuk-table__cell">
-                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
               </td>
             </tr>
             <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">03/08/2025</td>
+              <td scope="row" class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">03/08/2025</td>
               <td class="govuk-table__cell">17/08/2025</td>
               <td class="govuk-table__cell">
                 <strong class="govuk-tag govuk-tag--blue">
@@ -126,11 +132,12 @@
                 </strong>
               </td>
               <td class="govuk-table__cell">
-                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
               </td>
             </tr>
             <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">03/08/2025</td>
+              <td scope="row" class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">03/08/2025</td>
               <td class="govuk-table__cell">17/08/2025</td>
               <td class="govuk-table__cell">
                 <strong class="govuk-tag govuk-tag--yellow">
@@ -138,11 +145,12 @@
                 </strong>
               </td>
               <td class="govuk-table__cell">
-                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
               </td>
             </tr>
             <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">03/08/2025</td>
+              <td scope="row" class="govuk-table__cell">12345678</td>
+              <td class="govuk-table__cell">03/08/2025</td>
               <td class="govuk-table__cell">17/08/2025</td>
               <td class="govuk-table__cell">
                 <strong class="govuk-tag govuk-tag--green">
@@ -150,7 +158,7 @@
                 </strong>
               </td>
               <td class="govuk-table__cell">
-                <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
               </td>
             </tr>
           </tbody>
