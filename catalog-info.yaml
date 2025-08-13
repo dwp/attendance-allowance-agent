@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: prototype.interface.attendance-allowance-agent-prototype
-  title: attendance-allowance-agent-prototype
+  title: Attendance-Allowance-Agent-Prototype
   description: |
     TODO: add description for attendance-allowance-agent-prototype.
 

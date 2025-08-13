@@ -2,7 +2,7 @@
   "serviceName": "Attendance Allowance",
   "plugins": {
     "govuk-frontend": {
-      "rebrand": true
+      "rebrand": false
     }
   }
 }

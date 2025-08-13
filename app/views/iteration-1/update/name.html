@@ -1,0 +1,84 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Update claimant name" %}
+
+{% block content %}
+  <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+  
+  <section class="dwp-quick-reference" aria-label="Case information">
+    <dl class="dwp-quick-reference__block">
+      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+      <dd class="dwp-quick-reference__primary">Atten Dence</dd>
+      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+      <dd class="dwp-quick-reference__secondary">AB 12 34 56 C</dd>
+      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Claim status:</dt>
+      <dd class="dwp-quick-reference__secondary">
+        <strong class="govuk-tag govuk-tag--red">
+          Missing SR1
+        </strong>
+      </dd>
+    </dl>
+  </section>
+
+  <h1 class="govuk-heading-l">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Update claimant name</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Details</th>
+            <th scope="col" class="govuk-table__header">Claim data</th>
+            <th scope="col" class="govuk-table__header">DWP records data</th>
+            <th scope="col" class="govuk-table__header">Matching status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Name</th>
+            <td class="govuk-table__cell">
+              {% if (data['claimantName']) %}
+                data['claimantName']
+              {% else %}
+                Atten Dence
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">Atten Dence</td>
+            <td class="govuk-table__cell">
+              {% if (data['claimantNameStatus'] == 'changed') %}
+                <strong class="govuk-tag govuk-tag--yellow">
+                  Updated
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
+                </strong>
+              {% endif %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form method="post" action="../verify-claimant-details">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Enter a new claimant name
+            </legend>
+            <input class="govuk-input govuk-input--width-20" id="claimant-name" name="claimantName" type="text">
+          </fieldset>
+        </div>
+        <input class="govuk-input govuk-visually-hidden" id="claimant-name-status" name="claimantNameStatus" type="text" value="changed">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "What claimant details would you like to change?" %}
+
+{% block content %}
+  <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+  
+  <section class="dwp-quick-reference" aria-label="Case information">
+    <dl class="dwp-quick-reference__block">
+      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+      <dd class="dwp-quick-reference__primary">Atten Dence</dd>
+      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+      <dd class="dwp-quick-reference__secondary">AB 12 34 56 C</dd>
+      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Claim status:</dt>
+      <dd class="dwp-quick-reference__secondary">
+        <strong class="govuk-tag govuk-tag--red">
+          Missing SR1
+        </strong>
+      </dd>
+    </dl>
+  </section>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form method="post" action="change-details-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changeClaimDetails" name="changeClaimDetails" type="radio" value="name">
+                <label class="govuk-label govuk-radios__label" for="changeClaimDetails">
+                  Name
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changeClaimDetails-2" name="changeClaimDetails" type="radio" value="address">
+                <label class="govuk-label govuk-radios__label" for="changeClaimDetails-2">
+                  Address
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changeClaimDetails-3" name="changeClaimDetails" type="radio" value="postcode">
+                <label class="govuk-label govuk-radios__label" for="changeClaimDetails-3">
+                  Postcode
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changeClaimDetails-4" name="changeClaimDetails" type="radio" value="contact">
+                <label class="govuk-label govuk-radios__label" for="changeClaimDetails-4">
+                  Contact
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
