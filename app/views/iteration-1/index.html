@@ -1,5 +1,5 @@
 {% extends "layouts/main.html" %}
-
+{% set hideRef = "true" %}
 {% set pageName="Iteration 1" %}
 
 {% block content %}
@@ -15,10 +15,7 @@
 
     <div class="AA-results-buttons">
       <a href="iteration-1/dashboard" class="govuk-button" style="margin-right: 10px;">
-        Version 1
-      </a>
-      <a href="iteration-1/dashboard-v2" class="govuk-button">
-        Version 2
+        Start
       </a>
     </div>
 
@@ -38,9 +35,7 @@
           Description
         </dt>
         <dd class="govuk-summary-list__value">
-          This version contains dashboard that contains cards to link off to the different areas of the service as well as recently viewed claims. <br/>
-          The search is split into a single page for NINO or claim reference number with the rest of the search fields on the advanced search page.<br/>
-          The claimant details page contains the details of the claimant as well as the list of claims linked to that claimant but the list is seperated into tabs based on status.
+          This version contains the happy path journey for the search and verify sections.
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -52,6 +47,8 @@
             <li>
               <a class="govuk-link" href="iteration-1/dashboard">Dashboard</a>
             </li>
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+            <h2 class="govuk-heading-s">Search</h2>
             <li>
               <a class="govuk-link" href="iteration-1/search-nino">Search NINO</a>
             </li>
@@ -67,8 +64,30 @@
             <li>
               <a class="govuk-link" href="iteration-1/claimant-details">Claimant details</a>
             </li>
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+            <h2 class="govuk-heading-s">Claim</h2>
             <li>
               <a class="govuk-link" href="iteration-1/claim-details">Claim details</a>
+            </li>
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+            <h2 class="govuk-heading-s">Verify claimant details</h2>
+            <li>
+              <a class="govuk-link" href="iteration-1/verify-claimant-details">Verify claimant details</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/change-claimant-details">Change claimant details</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/update/name">Update claimant name</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/update/address">Update claimant address</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/update/postcode">Update claimant postcode</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="iteration-1/update/contact">Update claimant contact</a>
             </li>
           </ul>
         </dd>
@@ -83,7 +102,7 @@
           Version
         </dt>
         <dd class="govuk-summary-list__value">
-          2 - different designs
+          2 - different designs ideas
         </dd>
       </div>
       <div class="govuk-summary-list__row">

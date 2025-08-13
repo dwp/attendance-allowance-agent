@@ -1,0 +1,106 @@
+{
+    "claimFormData" : {
+        "claimDates" : {
+            "submittedOn" : {
+                "question" : "Submitted on",
+                "answer" : "13/08/2025"
+            }
+        },
+        "claimOverview" : {
+            "nationalInsurance" : "AB123456A",
+            "dateOfBirth" : {
+                "dd" : "10",
+                "mm" : "10",
+                "yyyy" : "1930"
+            },
+            "ageAtSubmission" : "94",
+            "fullName" : "Jon Smith",
+            "address" : {
+                "address1" : "123 test street",
+                "address2" : "",
+                "address3" : "test town",
+                "address4" : "",
+                "postcode" : "NE11AB"
+            },
+            "mainContactNumber" : "07811111111",
+            "whoIsApplying" : "I am applying for myself",
+            "nationality" : "British",
+            "otherBenefits" : [ 
+                "None"
+            ],
+            "specialRules" : "Yes",
+            "alternativeFormats" : "None"
+        },
+        "aboutYou" : {
+            "whoIsApplying" : "I am applying for myself",
+            "dateOfBirth" : {
+                "dd" : "10",
+                "mm" : "10",
+                "yyyy" : "1930"
+            },
+            "otherBenefits" : [ 
+                "None of these benefits"
+            ],
+            "nationalInsurance" : "AB123456A",
+            "firstName" : "Jon",
+            "lastName" : "Smith",
+            "address" : {
+                "address1" : "123 test street",
+                "address2" : "",
+                "address3" : "test town",
+                "address4" : "",
+                "postcode" : "NE11AB"
+            }
+        },
+        "claimInfo" : {
+            "nationality" : "British",
+            "whereDoYouLive" : "England",
+            "haveYouMovedFromScotland" : "No",
+            "outsideUKDuration" : "No",
+            "countryOutsideUKBenefits" : "No",
+            "countryOutsideUKWorking" : "No",
+            "careHomeOrHospital" : "Hospital",
+            "hospitalAddressName" : "sample hospital",
+            "hospitalAddressTownOrCity" : "sample town",
+            "hospitalAdmissionDate" : {
+                "dd" : "10",
+                "mm" : "06",
+                "yyyy" : "2025"
+            },
+            "hospitalFunding" : "Yes"
+        },
+        "specialRules" : {
+            "declaration" : "Yes",
+            "completed" : "No"
+        },
+        "healthInfo" : {
+            "list" : [ 
+                "C70 - Bone cancer"
+            ],
+            "listDates" : {
+                "condition1" : "03/21"
+            },
+            "specialRules" : "Yes",
+            "treatment" : "Yes",
+            "treatmentInfo" : "operation to replace my hip on 17 December 2022"
+        },
+        "consent" : {
+            "treatmentConsent" : "Yes, information about my health can be shared",
+            "gpCentreName" : "test surgery",
+            "gpName" : "mr GP",
+            "gpTelephone" : "01912222222",
+            "healthcareProfessionalOptions" : "Consultant",
+            "specialistName" : "mr consultant",
+            "specialistTelephone" : "01914444444"
+        },
+        "contactDetails" : {
+            "mainContactNumber" : "07811111111",
+            "addContactDetails" : "No",
+            "alternativeFormats" : "None, these do not apply to me",
+            "emailWanted" : "No"
+        },
+        "declaration" : {
+            "statement" : "Accepted and submitted on 13/08/2025"
+        }
+    }
+}

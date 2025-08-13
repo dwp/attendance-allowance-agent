@@ -3,22 +3,6 @@
 {% set pageName = "Verify claimant details" %}
 
 {% block content %}
-  <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
-  
-  <section class="dwp-quick-reference" aria-label="Case information">
-    <dl class="dwp-quick-reference__block">
-      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-      <dd class="dwp-quick-reference__primary">Atten Dence</dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
-      <dd class="dwp-quick-reference__secondary">AB 12 34 56 C</dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Claim status:</dt>
-      <dd class="dwp-quick-reference__secondary">
-        <strong class="govuk-tag govuk-tag--red">
-          Missing SR1
-        </strong>
-      </dd>
-    </dl>
-  </section>
   
   <h1 class="govuk-heading-l">
     {{ pageName }}
@@ -32,36 +16,41 @@
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Details</span></th>
             <th scope="col" class="govuk-table__header">Claim records</th>
-            <th scope="col" class="govuk-table__header">DWP records data</th>
+            <th scope="col" class="govuk-table__header">DWP records</th>
             <th scope="col" class="govuk-table__header">Matching status</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">NINO</th>
-            <td class="govuk-table__cell">AB123456C</td>
-            <td class="govuk-table__cell">AB123456C</td>
+            <td class="govuk-table__cell">
+              {% if data['claim']['claimFormData']['claimOverview']['nationalInsurance'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['nationalInsurance'] }}
+              {% else %}
+                QQ123456C
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">AB123456A</td>
             <td class="govuk-table__cell">
               <strong class="govuk-tag govuk-tag--green">
                 Match
               </strong>
             </td>
-            <!-- <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a href="update/nino" class="govuk-link">Update</a>
-            </td> -->
           </tr>
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Name</th>
             <td class="govuk-table__cell">
-              {% if (data['claimantName']) %}
-                {{ data['claimantName'] | capitalize }}
+              {% if data['claimantName'] %}
+                {{data['claimantName']}}
+              {% elif data['claim']['claimFormData']['claimOverview']['fullName'] %}
+                {{data['claim']['claimFormData']['claimOverview']['fullName']}}
               {% else %}
-                Atten Dence
+                James Smith
               {% endif %}
             </td>
-            <td class="govuk-table__cell">Atten Dence</td>
+            <td class="govuk-table__cell">Jon Bonjovi</td>
             <td class="govuk-table__cell">
-              {% if (data['claimantNameStatus'] == 'changed') %}
+              {% if data['claimantName'] %}
                 <strong class="govuk-tag govuk-tag--yellow">
                   Updated
                 </strong>
@@ -74,18 +63,29 @@
           </tr>
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Date of birth</th>
-            <td class="govuk-table__cell">13/04/1958</td>
-            <td class="govuk-table__cell">13/04/1958</td>
             <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--green">
-                Match
-              </strong>
+              {% if data['claim']['claimFormData']['claimOverview']['dateOfBirth'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['dateOfBirth']['dd'] }}
+                {{ data['claim']['claimFormData']['claimOverview']['dateOfBirth']['mm'] | monthName }}
+                {{ data['claim']['claimFormData']['claimOverview']['dateOfBirth']['yyyy'] }}
+              {% else %}
+                13 April 1958
+              {% endif %}
             </td>
-            <!-- <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a href="update/date-of-birth" class="govuk-link">Update</a>
-            </td> -->
+            <td class="govuk-table__cell">13 April 1958</td>
+            <td class="govuk-table__cell">
+              {% if not (data['claimantDateOfBirth'] == '13 April 1958') %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
+                </strong>
+              {% endif %}
+            </td>
           </tr>
-          <tr class="govuk-table__row">
+          <!-- <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Claim reference</th>
             <td class="govuk-table__cell">12345678</td>
             <td class="govuk-table__cell">12345678</td>
@@ -94,50 +94,95 @@
                 Match
               </strong>
             </td>
-            <!-- <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a href="update/claim-reference" class="govuk-link">Update</a>
-            </td> -->
-          </tr>
+          </tr> -->
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Address</th>
-            <td class="govuk-table__cell">11 Elm street</td>
+            <td class="govuk-table__cell">
+              {% if data['claimantAddress'] %}
+                {{data['claimantAddress']}}
+              {% elif data['claim']['claimFormData']['claimOverview']['address']['address1'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['address']['address1'] }}
+              {% else %}
+                11 street
+              {% endif %}
+            </td>
             <td class="govuk-table__cell">11 Elm street</td>
             <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--green">
-                Match
-              </strong>
+              {% if data['claimantAddress'] %}
+                <strong class="govuk-tag govuk-tag--yellow">
+                  Updated
+                </strong>
+              {% elif not (data['claimantAddress'] == '11 Elm street') %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
+                </strong>
+              {% endif %}
             </td>
-            <!-- <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a href="update/address" class="govuk-link">Update</a>
-            </td> -->
           </tr>
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Postcode</th>
-            <td class="govuk-table__cell">FR13 1EL</td>
+            <td class="govuk-table__cell">
+              {% if data['claimantPostcode'] %}
+                {{ data['claimantPostcode'] }}
+              {% elif data['claim']['claimFormData']['claimOverview']['address']['postcode'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['address']['postcode'] }}
+              {% else %}
+                DL11C3
+              {% endif %}
+            </td>
             <td class="govuk-table__cell">FR13 1EL</td>
             <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--green">
-                Match
-              </strong>
+              {% if data['claimantPostcode'] %}
+                <strong class="govuk-tag govuk-tag--yellow">
+                  Updated
+                </strong>
+              {% elif not (data['claimantPostcode'] == 'FR13 1EL') %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
+                </strong>
+              {% endif %}
             </td>
-            <!-- <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a href="update/postcode" class="govuk-link">Update</a>
-            </td> -->
           </tr>
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Contact number</th>
-            <td class="govuk-table__cell">0700001066</td>
+            <td class="govuk-table__cell">
+                {% if data['claimantContact'] %}
+                  {{data['claimantContact']}}
+                {% elif data['claim']['claimFormData']['claimOverview']['mainContactNumber'] %}
+                  {{ data['claim']['claimFormData']['claimOverview']['mainContactNumber'] }}
+                {% else %}
+                  0800001066
+                {% endif %}
+            </td>
             <td class="govuk-table__cell">0700001066</td>
             <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--green">
-                Match
-              </strong>
+              {% if data['claimantContact'] %}
+                <strong class="govuk-tag govuk-tag--yellow">
+                  Updated
+                </strong>
+              {% elseif not (data['claimantContact'] == '0700001066') %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
+                </strong>
+              {% endif %}
             </td>
           </tr>
         </tbody>
       </table>
 
-      <form method="post" action="change-claimant-details">
+      <form method="post" action="verify-claimant-details-answer">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -145,25 +190,26 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="verifyAction" name="verifyAction" type="radio" value="yes">
+                <input class="govuk-radios__input" id="verifyAction" name="verifyAction" type="radio" value="verify">
                 <label class="govuk-label govuk-radios__label" for="verifyAction">
                   Verify that the claimant's details are correct
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="verifyAction-2" name="verifyAction" type="radio" value="no">
+                <input class="govuk-radios__input" id="verifyAction-2" name="verifyAction" type="radio" value="close">
                 <label class="govuk-label govuk-radios__label" for="verifyAction-2">
                   Close the claim
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="verifyAction-2" name="verifyAction" type="radio" value="no">
+                <input class="govuk-radios__input" id="verifyAction-2" name="verifyAction" type="radio" value="change">
                 <label class="govuk-label govuk-radios__label" for="verifyAction-3">
                   Change the claimant details
                 </label>
               </div>
             </div>
           </fieldset>
+          <input class="govuk-input govuk-visually-hidden" id="tast-verify-status" name="taskVerifyStatus" type="text" value="inprogress">
         </div>
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Continue

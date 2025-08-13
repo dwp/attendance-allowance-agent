@@ -1,0 +1,40 @@
+{
+  "citizen_id": "11111111",
+  "citizen_guid": "5182b4581f98bd49a5f1c939d26c1b8892d1e82309a298f082cda2d610b0237c",
+  "nino": "RT000001A",
+  "first_name": "Jon",
+  "middle_name": "Michael",
+  "last_name": "Smith",
+  "date_of_birth": "2025-08-13",
+  "date_of_death": "2025-08-13",
+  "citizen_meta": {
+    "death_indicated": true,
+    "death_confirmed": true,
+    "special_rules_indicated": true,
+    "special_rules_confirmed": true,
+    "special_customer_record": true,
+    "identity_at_risk": true,
+    "communication_preferences": {
+      "welsh_speak": true,
+      "welsh_write": true,
+      "large_print": true,
+      "audio": true,
+      "braille": true,
+      "text_phone": true,
+      "relay_uk": true
+    }
+  },
+  "residency": [
+    {
+      "address_type": "residential",
+      "address_line1": "Test Line 1",
+      "address_line2": "Test Line 2",
+      "address_line3": "Test Line 3",
+      "address_line4": "Test Line 4",
+      "postcode": "NE1 1EN",
+      "country": "England",
+      "effective_from_date": "2025-08-13",
+      "effective_to_date": "2025-08-13"
+    }
+  ]
+}

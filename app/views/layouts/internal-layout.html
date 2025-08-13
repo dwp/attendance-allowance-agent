@@ -18,18 +18,51 @@
 
 {% block header %}
   <header class="govuk-header" data-module="govuk-header">
-  <div class="govuk-header__container govuk-width-container">
-    <div class="govuk-header__content govuk-header__content-noLogo">
-      <a href="/" class="govuk-header__link govuk-header__service-name">
-        {{ serviceName }}
-      </a>
+    <div class="govuk-header__container govuk-width-container">
+      <div class="govuk-header__content govuk-header__content-noLogo">
+        <a href="/" class="govuk-header__link govuk-header__service-name">
+          {{ serviceName }}
+        </a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 {% endblock %}
 
-{% block content %}
+{% block beforeContent %}
   <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+  <script>console.log({{ data | dump | safe }})</script>
+  {% if not (hideRef) %}
+    <div class="govuk-!-margin-top-5">
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+          <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-quick-reference__primary">
+            {% if data['claim']['claimFormData']['claimOverview']['fullName'] %}
+              {{data['claim']['claimFormData']['claimOverview']['fullName']}}
+            {% else %}
+              James Smith
+            {% endif %}
+          </dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">National Insurance number:</dt>
+          <dd class="dwp-quick-reference__secondary">
+            {% if data['claim']['claimFormData']['claimOverview']['nationalInsurance'] %}
+              {{ data['claim']['claimFormData']['claimOverview']['nationalInsurance'] }}
+            {% else %}
+              QQ123456C
+            {% endif %}
+          </dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Claim reference:</dt>
+          <dd class="dwp-quick-reference__secondary">12345678</dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Claim status:</dt>
+          <dd class="dwp-quick-reference__secondary">
+            <strong class="govuk-tag govuk-tag--green">
+              Open
+            </strong>
+          </dd>
+        </dl>
+      </section>
+    </div>
+  {% endif %}
 {% endblock %}
 
 {% if (GOVUKPrototypeKit.isDevelopment) %}

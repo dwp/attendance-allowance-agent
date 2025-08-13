@@ -3,22 +3,6 @@
 {% set pageName = "Update claimant postcode" %}
 
 {% block content %}
-  <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
-  
-  <section class="dwp-quick-reference" aria-label="Case information">
-    <dl class="dwp-quick-reference__block">
-      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-      <dd class="dwp-quick-reference__primary">Atten Dence</dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
-      <dd class="dwp-quick-reference__secondary">AB 12 34 56 C</dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Claim status:</dt>
-      <dd class="dwp-quick-reference__secondary">
-        <strong class="govuk-tag govuk-tag--red">
-          Missing SR1
-        </strong>
-      </dd>
-    </dl>
-  </section>
 
   <h1 class="govuk-heading-l">
     {{ pageName }}
@@ -33,19 +17,33 @@
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Details</th>
             <th scope="col" class="govuk-table__header">Claim data</th>
-            <th scope="col" class="govuk-table__header">DWP records data</th>
+            <th scope="col" class="govuk-table__header">DWP records</th>
             <th scope="col" class="govuk-table__header">Matching status</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Postcode</th>
-            <td class="govuk-table__cell">FR13 1EL</td>
+            <td class="govuk-table__cell">
+              {% if data['claimantPostcode'] %}
+                {{ data['claimantPostcode'] }}
+              {% elif data['claim']['claimFormData']['claimOverview']['address']['postcode'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['address']['postcode'] }}
+              {% else %}
+                DL11C3
+              {% endif %}
+            </td>
             <td class="govuk-table__cell">FR13 1EL</td>
             <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--green">
-                Match
-              </strong>
+              {% if data['claimantPostcode'] %}
+                <strong class="govuk-tag govuk-tag--yellow">
+                  Updated
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
+                </strong>
+              {% endif %}
             </td>
           </tr>
         </tbody>
@@ -59,7 +57,6 @@
             </legend>
             <input class="govuk-input govuk-input--width-20" id="claimant-postcode" name="claimantPostcode" type="text">
           </fieldset>
-          <input class="govuk-input govuk-visually-hidden" id="claimant-postcode-status" name="claimantPostcodeStatus" type="text" value="changed">
         </div>
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Continue

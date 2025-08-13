@@ -1,5 +1,5 @@
 {
-  "serviceName": "Attendance Allowance",
+  "serviceName": "AAIMS",
   "plugins": {
     "govuk-frontend": {
       "rebrand": false
