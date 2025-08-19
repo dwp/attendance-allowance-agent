@@ -36,15 +36,39 @@
                 James Smith
               {% endif %}
             </td>
-            <td class="govuk-table__cell">Jon Bonjovi</td>
             <td class="govuk-table__cell">
-              {% if data['claimantName'] %}
+              {% if data['dwpData']['fullName'] %}
+                {{data['dwpData']['fullName']}}
+              {% else %}
+                James Smith
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% 
+                if not 
+                  (data['claimantName'] == data['dwpData']['fullName']) 
+                and not 
+                  (data['claim']['claimFormData']['claimOverview']['fullName'] == data['dwpData']['fullName']) 
+              %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
+                </strong>
+              {% 
+                elif 
+                  (data['claimantName'] == data['dwpData']['fullName']) 
+                or 
+                  (data['claim']['claimFormData']['claimOverview']['fullName'] == data['dwpData']['fullName']) 
+              %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
+                </strong>
+              {% elif data['claimantName'] %}
                 <strong class="govuk-tag govuk-tag--yellow">
                   Updated
                 </strong>
               {% else %}
-                <strong class="govuk-tag govuk-tag--green">
-                  Match
+                <strong class="govuk-tag govuk-tag--red">
+                  Error
                 </strong>
               {% endif %}
             </td>

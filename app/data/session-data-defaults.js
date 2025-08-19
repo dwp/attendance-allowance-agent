@@ -101,6 +101,20 @@ module.exports = {
       "statement" : "Accepted and submitted on 13/08/2025"
     }
   },
+  "dwpData": {
+    "nino": "AB123456A",
+    "fullName" : "Jon Smith",
+    "dateofbirth" : {
+      "dd" : "10",
+      "mm" : "10",
+      "yyyy" : "1930"
+    },
+    "address" : {
+      "address1" : "123 test street",
+      "postcode" : "NE11AB",
+    },
+    "contactnumber" : "07811111111"
+  },
     "claimant" : {
     "citizen_id": "11111111",
     "citizen_guid": "5182b4581f98bd49a5f1c939d26c1b8892d1e82309a298f082cda2d610b0237c",

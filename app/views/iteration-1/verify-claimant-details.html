@@ -48,15 +48,39 @@
                 James Smith
               {% endif %}
             </td>
-            <td class="govuk-table__cell">Jon Bonjovi</td>
             <td class="govuk-table__cell">
-              {% if data['claimantName'] %}
+              {% if data['dwpData']['fullName'] %}
+                {{data['dwpData']['fullName']}}
+              {% else %}
+                James Smith
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% 
+                if not 
+                  (data['claimantName'] == data['dwpData']['fullName']) 
+                and not 
+                  (data['claim']['claimFormData']['claimOverview']['fullName'] == data['dwpData']['fullName']) 
+              %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
+                </strong>
+              {% 
+                elif 
+                  (data['claimantName'] == data['dwpData']['fullName']) 
+                or 
+                  (data['claim']['claimFormData']['claimOverview']['fullName'] == data['dwpData']['fullName']) 
+              %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
+                </strong>
+              {% elif data['claimantName'] %}
                 <strong class="govuk-tag govuk-tag--yellow">
                   Updated
                 </strong>
               {% else %}
-                <strong class="govuk-tag govuk-tag--green">
-                  Match
+                <strong class="govuk-tag govuk-tag--red">
+                  Error
                 </strong>
               {% endif %}
             </td>
@@ -106,19 +130,39 @@
                 11 street
               {% endif %}
             </td>
-            <td class="govuk-table__cell">11 Elm street</td>
             <td class="govuk-table__cell">
-              {% if data['claimantAddress'] %}
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Updated
-                </strong>
-              {% elif not (data['claimantAddress'] == '11 Elm street') %}
+              {% if data['dwpData']['address']['address1'] %}
+                {{data['dwpData']['address']['address1']}}
+              {% else %}
+                11 street
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% 
+                if not 
+                  (data['claimantAddress'] == data['dwpData']['address']['address1']) 
+                and not 
+                  (data['claim']['claimFormData']['claimOverview']['address']['address1'] == data['dwpData']['address']['address1']) 
+              %}
                 <strong class="govuk-tag govuk-tag--red">
                   Unmatched
                 </strong>
-              {% else %}
+              {% 
+                elif 
+                  (data['claimantAddress'] == data['dwpData']['address']['address1']) 
+                or 
+                  (data['claim']['claimFormData']['claimOverview']['address']['address1'] == data['dwpData']['address']['address1']) 
+              %}
                 <strong class="govuk-tag govuk-tag--green">
                   Match
+                </strong>
+              {% elif data['claimantAddress'] %}
+                <strong class="govuk-tag govuk-tag--yellow">
+                  Updated
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Error
                 </strong>
               {% endif %}
             </td>
@@ -134,7 +178,13 @@
                 DL11C3
               {% endif %}
             </td>
-            <td class="govuk-table__cell">FR13 1EL</td>
+            <td class="govuk-table__cell">
+              {% if data['dwpData']['address']['address1'] %}
+                {{data['dwpData']['address']['address1']}}
+              {% else %}
+                DL11C3
+              {% endif %}
+            </td>
             <td class="govuk-table__cell">
               {% if data['claimantPostcode'] %}
                 <strong class="govuk-tag govuk-tag--yellow">
