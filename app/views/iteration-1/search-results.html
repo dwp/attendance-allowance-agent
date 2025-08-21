@@ -30,9 +30,11 @@
           <button type="submit" class="govuk-button" data-module="govuk-button" style="margin-right: 10px;">
             Apply
           </button>
-          <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-            Search again
-          </button>
+          <div class="govuk-!-margin-top-5">
+            <a class="govuk-link" href="advanced-search" data-module="govuk-button">
+              Search again
+            </a>
+          </div>
         </div>
       </form>
     </div>
@@ -44,7 +46,6 @@
             <th scope="col" class="govuk-table__header">NINO</th>
             <th scope="col" class="govuk-table__header">Name</th>
             <th scope="col" class="govuk-table__header">Date of birth</th>
-            <th scope="col" class="govuk-table__header">Claim ref</th>
             <th scope="col" class="govuk-table__header">Address</th>
             <th scope="col" class="govuk-table__header">Postcode</th>
             <th scope="col" class="govuk-table__header">
@@ -54,10 +55,9 @@
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">AB 12 34 56 C</td>
+            <td scope="row" class="govuk-table__cell">AB123456C</td>
             <td class="govuk-table__cell">Jon Bonjovi</td>
             <td class="govuk-table__cell">13 April 1958</td>
-            <td class="govuk-table__cell">12345678</td>
             <td class="govuk-table__cell">11 Elm Street</td>
             <td class="govuk-table__cell">FR13 1EL</td>
             <td class="govuk-table__cell">
@@ -65,55 +65,51 @@
             </td>
           </tr>
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">AB 12 34 56 C</td>
-            <td class="govuk-table__cell">Jon Bonjovi</td>
-            <td class="govuk-table__cell">13 April 1958</td>
-            <td class="govuk-table__cell">12345678</td>
-            <td class="govuk-table__cell">11 Elm Street</td>
+            <td scope="row" class="govuk-table__cell">AB654321C</td>
+            <td class="govuk-table__cell">freddie Mercury</td>
+            <td class="govuk-table__cell">13 December 1944</td>
+            <td class="govuk-table__cell">3 West Lane</td>
+            <td class="govuk-table__cell">QU13 1EN</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">QQ123456C</td>
+            <td class="govuk-table__cell">Harry Hill</td>
+            <td class="govuk-table__cell">28 Feburary 1950</td>
+            
+            <td class="govuk-table__cell">67 York Road</td>
+            <td class="govuk-table__cell">EL13 1DR</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">QQ654321C</td>
+            <td class="govuk-table__cell">Rowland Finn</td>
+            <td class="govuk-table__cell">18 July 1955</td>
+            <td class="govuk-table__cell">15 Green Lane</td>
             <td class="govuk-table__cell">FR13 1EL</td>
             <td class="govuk-table__cell">
               <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
             </td>
           </tr>
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">AB 12 34 56 C</td>
-            <td class="govuk-table__cell">Jon Bonjovi</td>
-            <td class="govuk-table__cell">13 April 1958</td>
-            <td class="govuk-table__cell">12345678</td>
-            <td class="govuk-table__cell">11 Elm Street</td>
-            <td class="govuk-table__cell">FR13 1EL</td>
+            <td scope="row" class="govuk-table__cell">AA123987B</td>
+            <td class="govuk-table__cell">Clive Jones</td>
+            <td class="govuk-table__cell">23 November 1948</td>
+            <td class="govuk-table__cell">1 Miracle Street</td>
+            <td class="govuk-table__cell">MR13 1EL</td>
             <td class="govuk-table__cell">
               <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
             </td>
           </tr>
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">AB 12 34 56 C</td>
-            <td class="govuk-table__cell">Jon Bonjovi</td>
-            <td class="govuk-table__cell">13 April 1958</td>
-            <td class="govuk-table__cell">12345678</td>
-            <td class="govuk-table__cell">11 Elm Street</td>
-            <td class="govuk-table__cell">FR13 1EL</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">AB 12 34 56 C</td>
-            <td class="govuk-table__cell">Jon Bonjovi</td>
-            <td class="govuk-table__cell">13 April 1958</td>
-            <td class="govuk-table__cell">12345678</td>
-            <td class="govuk-table__cell">11 Elm Street</td>
-            <td class="govuk-table__cell">FR13 1EL</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">AB 12 34 56 C</td>
-            <td class="govuk-table__cell">Jon Bonjovi</td>
-            <td class="govuk-table__cell">13 April 1958</td>
-            <td class="govuk-table__cell">12345678</td>
-            <td class="govuk-table__cell">11 Elm Street</td>
+            <td scope="row" class="govuk-table__cell">BB123987B</td>
+            <td class="govuk-table__cell">Billy Bob</td>
+            <td class="govuk-table__cell">3 May 1952</td>
+            <td class="govuk-table__cell">13 Grove Street</td>
             <td class="govuk-table__cell">FR13 1EL</td>
             <td class="govuk-table__cell">
               <a class="govuk-link" href="claimant-details">View <span class="govuk-visually-hidden">claimant details</span></a>

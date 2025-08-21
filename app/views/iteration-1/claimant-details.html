@@ -18,7 +18,7 @@
             National Insurance number
           </dt>
           <dd class="govuk-summary-list__value">
-            AB 12 34 56 C
+            AB123456C
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -34,7 +34,7 @@
             Date of birth
           </dt>
           <dd class="govuk-summary-list__value">
-            13 April 1958
+            13 April 1951
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -42,15 +42,17 @@
             Address
           </dt>
           <dd class="govuk-summary-list__value">
-            11 Elm Street<br/>FR13 1EL
+            11 Elm Street<br/>
+            Hollywood<br/>
+            FR13 1EL
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Contact details
+            Phone number
           </dt>
           <dd class="govuk-summary-list__value">
-            07000 01066
+            0700001066
           </dd>
         </div>
       </dl>
@@ -74,7 +76,7 @@
           </select>
         </div>
 
-        <div class="AA-results-buttons">
+        <div class="AA-results-buttons topMargin">
           <button type="submit" class="govuk-button" data-module="govuk-button">
             Apply
           </button>
@@ -86,10 +88,10 @@
           <caption class="govuk-table__caption govuk-table__caption--m">Claims</caption>
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Claim reference</th>
               <th scope="col" class="govuk-table__header">Date created</th>
               <th scope="col" class="govuk-table__header">Due date</th>
-              <th scope="col" class="govuk-table__header">Status</th>
+              <th scope="col" class="govuk-table__header">Case type</th>
+              <th scope="col" class="govuk-table__header">Case status</th>
               <th scope="col" class="govuk-table__header">
                 <span class="govuk-visually-hidden">Action</span>
               </th>
@@ -97,64 +99,38 @@
           </thead>
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">12345678</td>
-              <td class="govuk-table__cell">03/08/2025</td>
-              <td class="govuk-table__cell">17/08/2025</td>
-              <td class="govuk-table__cell">
-                <strong class="govuk-tag govuk-tag--red">
-                  Urgent
-                </strong>
-              </td>
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
-              </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">12345678</td>
-              <td class="govuk-table__cell">03/08/2025</td>
-              <td class="govuk-table__cell">17/08/2025</td>
-              <td class="govuk-table__cell">
-                <strong class="govuk-tag govuk-tag--red">
-                  Urgent
-                </strong>
-              </td>
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
-              </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">12345678</td>
-              <td class="govuk-table__cell">03/08/2025</td>
-              <td class="govuk-table__cell">17/08/2025</td>
-              <td class="govuk-table__cell">
-                <strong class="govuk-tag govuk-tag--blue">
-                  New
-                </strong>
-              </td>
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
-              </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">12345678</td>
-              <td class="govuk-table__cell">03/08/2025</td>
-              <td class="govuk-table__cell">17/08/2025</td>
-              <td class="govuk-table__cell">
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Waiting on
-                </strong>
-              </td>
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
-              </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">12345678</td>
-              <td class="govuk-table__cell">03/08/2025</td>
-              <td class="govuk-table__cell">17/08/2025</td>
+              <td scope="row" class="govuk-table__cell">17 August 2025</td>
+              <td class="govuk-table__cell">26 August 2025</td>
+              <td class="govuk-table__cell">SR1</td>
               <td class="govuk-table__cell">
                 <strong class="govuk-tag govuk-tag--green">
-                  Finished
+                  Open
+                </strong>
+              </td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">11 July 2025</td>
+              <td class="govuk-table__cell">20 July 2025</td>
+              <td class="govuk-table__cell">SR1</td>
+              <td class="govuk-table__cell">
+                <strong class="govuk-tag govuk-tag--red">
+                  Closed
+                </strong>
+              </td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="claim-details">View <span class="govuk-visually-hidden">claimant details</span></a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">7 July 2022</td>
+              <td class="govuk-table__cell">16 July 2022</td>
+              <td class="govuk-table__cell">SR1</td>
+              <td class="govuk-table__cell">
+                <strong class="govuk-tag govuk-tag--red">
+                  Closed
                 </strong>
               </td>
               <td class="govuk-table__cell">
