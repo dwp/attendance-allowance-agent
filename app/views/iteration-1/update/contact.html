@@ -1,13 +1,13 @@
 {% extends "layouts/internal-layout.html" %}
 
-{% set pageName = "Update claimant contact number" %}
+{% set pageName = "Change claimant phone number" %}
 
 {% block content %}
   
   
   
 
-  <h1 class="govuk-heading-l">
+  <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
 
@@ -15,7 +15,7 @@
     <div class="govuk-grid-column-full">
 
       <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Update claimant contact number</caption>
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">change claimant phone number</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Details</th>
@@ -26,7 +26,7 @@
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Contact number</th>
+            <th scope="row" class="govuk-table__header">Phone number</th>
             <td class="govuk-table__cell">
               {% if data['claimantContact'] %}
                 {{data['claimantContact']}}
@@ -56,7 +56,7 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Enter a new claimant contact number
+              Enter a new phone number
             </legend>
             <input class="govuk-input govuk-input--width-20" id="claimant-contact" name="claimantContact" type="text">
           </fieldset>

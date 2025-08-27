@@ -1,0 +1,52 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Search an address" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+            Postcode
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimantPostcode'] %}
+              {{data['claimantPostcode']}}
+            {% else %}
+              NE1 5DQ
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="address">Change<span class="govuk-visually-hidden"> postcode</span></a>
+          </dd>
+        </div>
+      </dl>
+
+      <form method="post" action="../verify-claimant-details">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sort">
+            Select an address
+          </label>
+          <select class="govuk-select" id="claimant-address" name="claimantAddress">
+            <option value="11 street, Heaton, Newcastle upon Tyne, England" selected>11 street, Heaton, Newcastle upon Tyne, England</option>
+            <option value="12 street, Heaton, Newcastle upon Tyne, England" >12 street, Heaton, Newcastle upon Tyne, England</option>
+          </select>
+        </div>
+
+        <p><a href="address-int" class="govuk-link">I cannot find an address</a></p>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

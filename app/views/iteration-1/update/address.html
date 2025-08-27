@@ -4,7 +4,7 @@
 
 {% block content %}
 
-  <h1 class="govuk-heading-l">
+  <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
 
@@ -73,18 +73,23 @@
         </tbody>
       </table>
 
-      <form method="post" action="../verify-claimant-details">
+      <h2 class="govuk-heading-m">Search address</h2>
+
+      <form method="post" action="search-an-address">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Enter a new claimant address
+              Postcode
             </legend>
-            <input class="govuk-input govuk-input--width-20" id="claimant-address" name="claimantAddress" type="text">
+            <input class="govuk-input govuk-input--width-10" id="claimant-postcode" name="claimantPostcode" type="text">
           </fieldset>
         </div>
-        <button type="submit" class="govuk-button" data-module="govuk-button">
-          Continue
-        </button>
+        <div style="display: flex; align-items: baseline;">
+          <button type="submit" class="govuk-button govuk-!-margin-right-5" data-module="govuk-button">
+            Find address
+          </button>
+          <a href="address-uk" class="govuk-link">Enter an address in manually</a>
+        </div>
       </form>
     </div>
   </div>

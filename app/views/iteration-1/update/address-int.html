@@ -1,0 +1,67 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Enter an address" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form method="post" action="../verify-claimant-details.html">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Address line 1
+            </legend>
+            <input class="govuk-input govuk-!-width-two-thirds" id="claimant-address-1" name="claimantAddress1" type="text">
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Address line 2 (optional)
+            </legend>
+            <input class="govuk-input govuk-!-width-two-thirds" id="claimant-address-2" name="claimantAddress2" type="text">
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Address line 3
+            </legend>
+            <input class="govuk-input govuk-!-width-two-thirds" id="claimant-address-3" name="claimantAddress3" type="text">
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Address line 4 (optional)
+            </legend>
+            <input class="govuk-input govuk-!-width-two-thirds" id="claimant-address-4" name="claimantAddress4" type="text">
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Country
+            </legend>
+            <input class="govuk-input govuk-input--width-20" id="claimant-postcode" name="claimantPostcode" type="text">
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

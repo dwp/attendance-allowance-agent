@@ -7,7 +7,7 @@
   
   
 
-  <h1 class="govuk-heading-l">
+  <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
 
@@ -18,7 +18,7 @@
         <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Update claimant name</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Details</th>
+            <th scope="col" class="govuk-table__header"> <span class="govuk-visually-hidden">Details</span></th>
             <th scope="col" class="govuk-table__header">Claim data</th>
             <th scope="col" class="govuk-table__header">DWP records</th>
             <th scope="col" class="govuk-table__header">Matching status</th>
@@ -28,8 +28,8 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Name</th>
             <td class="govuk-table__cell">
-              {% if data['claimantName'] %}
-                {{data['claimantName']}}
+              {% if data['claimantfirstname'] or data['claimantLastname'] %}
+                {{data['claimantFirstname']}} {{data['claimantLastname']}}
               {% elif data['claim']['claimFormData']['claimOverview']['fullName'] %}
                 {{data['claim']['claimFormData']['claimOverview']['fullName']}}
               {% else %}
@@ -80,9 +80,17 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Enter a new claimant name
+              Enter a new first name
             </legend>
-            <input class="govuk-input govuk-input--width-20" id="claimant-name" name="claimantName" type="text">
+            <input class="govuk-input govuk-input--width-20" id="claimant-firstname" name="claimantFirstname" type="text">
+          </fieldset>
+        </div>
+        <div class="govuk-form-group">   
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Enter a new last name
+            </legend>
+            <input class="govuk-input govuk-input--width-20" id="claimant-lastname" name="claimantLastname" type="text">
           </fieldset>
         </div>
         <button type="submit" class="govuk-button" data-module="govuk-button">

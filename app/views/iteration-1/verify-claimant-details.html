@@ -4,7 +4,7 @@
 
 {% block content %}
   
-  <h1 class="govuk-heading-l">
+  <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
 
@@ -40,8 +40,8 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Name</th>
             <td class="govuk-table__cell">
-              {% if data['claimantName'] %}
-                {{data['claimantName']}}
+              {% if data['claimantfirstname'] or data['claimantLastname'] %}
+                {{data['claimantFirstname']}} {{data['claimantLastname']}}
               {% elif data['claim']['claimFormData']['claimOverview']['fullName'] %}
                 {{data['claim']['claimFormData']['claimOverview']['fullName']}}
               {% else %}
@@ -122,19 +122,75 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Address</th>
             <td class="govuk-table__cell">
-              {% if data['claimantAddress'] %}
-                {{data['claimantAddress']}}
+              {% if data['claimantAddress1'] %}
+                {{data['claimantAddress1']}}
               {% elif data['claim']['claimFormData']['claimOverview']['address']['address1'] %}
                 {{ data['claim']['claimFormData']['claimOverview']['address']['address1'] }}
               {% else %}
-                11 street
+                11 street,<br/>
+              {% endif %}
+
+              {% if data['claimantAddress2'] %}
+                {{data['claimantAddress2']}}
+              {% elif data['claim']['claimFormData']['claimOverview']['address']['address2'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['address']['address2'] }}
+              {% else %}
+                Heaton,<br/>
+              {% endif %}
+
+              {% if data['claimantAddress3'] %}
+                {{data['claimantAddress3']}}
+              {% elif data['claim']['claimFormData']['claimOverview']['address']['address3'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['address']['address3'] }}
+              {% else %}
+                Newcastle upon tyne,<br/>
+              {% endif %}
+
+              {% if data['claimantAddress4'] %}
+                {{data['claimantAddress4']}}
+              {% elif data['claim']['claimFormData']['claimOverview']['address']['address1'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['address']['address1'] }}
+              {% else %}
+                England,<br/>
+              {% endif %}
+
+              {% if data['claimantPostcode'] %}
+                {{ data['claimantPostcode'] }}
+              {% elif data['claim']['claimFormData']['claimOverview']['address']['postcode'] %}
+                {{ data['claim']['claimFormData']['claimOverview']['address']['postcode'] }}
+              {% else %}
+                DL11C3
               {% endif %}
             </td>
             <td class="govuk-table__cell">
               {% if data['dwpData']['address']['address1'] %}
-                {{data['dwpData']['address']['address1']}}
+                {{data['dwpData']['address']['address1']}},<br/>
               {% else %}
-                11 street
+                11 street,<br/>
+              {% endif %}
+
+              {% if data['dwpData']['address']['address2'] %}
+                {{data['dwpData']['address']['address2']}},<br/>
+              {% else %}
+                Heaton,<br/>
+              {% endif %}
+
+              {% if data['dwpData']['address']['address3'] %}
+                {{data['dwpData']['address']['address3']}},<br/>
+              {% else %}
+                Newcastle upon tyne,<br/>
+              {% endif %}
+
+              {% if data['dwpData']['address']['address4'] %}
+                {{data['dwpData']['address']['address4']}},<br/>
+              {% else %}
+                England,<br/>
+              {% endif %}
+
+              {% if data['dwpData']['address']['postcode'] %}
+                {{data['dwpData']['address']['postcode']}}
+              {% else %}
+                NE1 5DQ
               {% endif %}
             </td>
             <td class="govuk-table__cell">
@@ -168,41 +224,7 @@
             </td>
           </tr>
           <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Postcode</th>
-            <td class="govuk-table__cell">
-              {% if data['claimantPostcode'] %}
-                {{ data['claimantPostcode'] }}
-              {% elif data['claim']['claimFormData']['claimOverview']['address']['postcode'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['address']['postcode'] }}
-              {% else %}
-                DL11C3
-              {% endif %}
-            </td>
-            <td class="govuk-table__cell">
-              {% if data['dwpData']['address']['address1'] %}
-                {{data['dwpData']['address']['address1']}}
-              {% else %}
-                DL11C3
-              {% endif %}
-            </td>
-            <td class="govuk-table__cell">
-              {% if data['claimantPostcode'] %}
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Updated
-                </strong>
-              {% elif not (data['claimantPostcode'] == 'FR13 1EL') %}
-                <strong class="govuk-tag govuk-tag--red">
-                  Unmatched
-                </strong>
-              {% else %}
-                <strong class="govuk-tag govuk-tag--green">
-                  Match
-                </strong>
-              {% endif %}
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Contact number</th>
+            <th scope="row" class="govuk-table__header">Phone number</th>
             <td class="govuk-table__cell">
                 {% if data['claimantContact'] %}
                   {{data['claimantContact']}}
@@ -254,7 +276,7 @@
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="verifyAction-2" name="verifyAction" type="radio" value="change">
                 <label class="govuk-label govuk-radios__label" for="verifyAction-3">
-                  Change the claimant details
+                  Change the claimant's details
                 </label>
               </div>
             </div>
