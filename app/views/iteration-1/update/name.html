@@ -18,7 +18,7 @@
         <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Update claimant name</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header"> <span class="govuk-visually-hidden">Details</span></th>
+            <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Details</span></th>
             <th scope="col" class="govuk-table__header">Claim data</th>
             <th scope="col" class="govuk-table__header">DWP records</th>
             <th scope="col" class="govuk-table__header">Matching status</th>
@@ -28,43 +28,37 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Name</th>
             <td class="govuk-table__cell">
-              {% if data['claimantfirstname'] or data['claimantLastname'] %}
-                {{data['claimantFirstname']}} {{data['claimantLastname']}}
-              {% elif data['claim']['claimFormData']['claimOverview']['fullName'] %}
-                {{data['claim']['claimFormData']['claimOverview']['fullName']}}
+              {% if data['claimFirstName'] or data['claimLastName'] %}
+                {{data['claimFirstName']}} {{data['claimLastName']}}
               {% else %}
                 James Smith
               {% endif %}
             </td>
             <td class="govuk-table__cell">
-              {% if data['dwpData']['fullName'] %}
-                {{data['dwpData']['fullName']}}
+              {% if data['dwpData']['firstName'] and data['dwpData']['lastName'] %}
+                {{data['dwpData']['firstName']}} {{data['dwpData']['lastName']}}
               {% else %}
-                James Smith
+                Jame Smith
               {% endif %}
             </td>
             <td class="govuk-table__cell">
               {% 
-                if not 
-                  (data['claimantName'] == data['dwpData']['fullName']) 
-                and not 
-                  (data['claim']['claimFormData']['claimOverview']['fullName'] == data['dwpData']['fullName']) 
-              %}
-                <strong class="govuk-tag govuk-tag--red">
-                  Unmatched
-                </strong>
-              {% 
-                elif 
-                  (data['claimantName'] == data['dwpData']['fullName']) 
-                or 
-                  (data['claim']['claimFormData']['claimOverview']['fullName'] == data['dwpData']['fullName']) 
+                if 
+                  (data['claimFirstName'] == data['dwpData']['firstName']) 
+                and 
+                  (data['claimLastName'] == data['dwpData']['lastName']) 
               %}
                 <strong class="govuk-tag govuk-tag--green">
                   Match
                 </strong>
-              {% elif data['claimantName'] %}
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Updated
+              {% 
+                elif not 
+                  (data['claimFirstName']  == data['dwpData']['firstName']) 
+                or not 
+                  (data['claimLastName'] == data['dwpData']['lastName']) 
+              %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
                 </strong>
               {% else %}
                 <strong class="govuk-tag govuk-tag--red">
@@ -77,22 +71,20 @@
       </table>
 
       <form method="post" action="../verify-claimant-details">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimFirstName">
               Enter a new first name
-            </legend>
-            <input class="govuk-input govuk-input--width-20" id="claimant-firstname" name="claimantFirstname" type="text">
-          </fieldset>
-        </div>
-        <div class="govuk-form-group">   
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="claimant-firstname" name="claimFirstName" type="text">
+          </div>
+          <div class="govuk-form-group">   
+            <label class="govuk-label" for="claimLastname">
               Enter a new last name
-            </legend>
-            <input class="govuk-input govuk-input--width-20" id="claimant-lastname" name="claimantLastname" type="text">
-          </fieldset>
-        </div>
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="claimant-lastname" name="claimLastname" type="text">
+          </div>
+        </fieldset>
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Continue
         </button>

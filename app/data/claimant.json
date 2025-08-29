@@ -2,9 +2,9 @@
   "citizen_id": "11111111",
   "citizen_guid": "5182b4581f98bd49a5f1c939d26c1b8892d1e82309a298f082cda2d610b0237c",
   "nino": "RT000001A",
-  "first_name": "Jon",
+  "firstName": "Jon",
   "middle_name": "Michael",
-  "last_name": "Smith",
+  "lastName": "Smith",
   "date_of_birth": "2025-08-13",
   "date_of_death": "2025-08-13",
   "citizen_meta": {

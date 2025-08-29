@@ -18,7 +18,7 @@
         <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">change claimant phone number</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Details</th>
+            <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Details</span></th>
             <th scope="col" class="govuk-table__header">Claim data</th>
             <th scope="col" class="govuk-table__header">DWP records</th>
             <th scope="col" class="govuk-table__header">Matching status</th>
@@ -28,23 +28,31 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Phone number</th>
             <td class="govuk-table__cell">
-              {% if data['claimantContact'] %}
-                {{data['claimantContact']}}
-              {% elif data['claim']['claimFormData']['claimOverview']['mainContactNumber'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['mainContactNumber'] }}
-              {% else %}
-                0800001066
-              {% endif %}
+              {% if data['claimMainContactNumber'] %}
+                  {{data['claimMainContactNumber']}}
+                {% else %}
+                  0800001066
+                {% endif %}
             </td>
-            <td class="govuk-table__cell">0700001066</td>
             <td class="govuk-table__cell">
-              {% if data['claimantContact'] %}
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Updated
-                </strong>
-              {% else %}
+              {% if data['dwpData']['mainContactNumber'] %}
+                  {{data['dwpData']['mainContactNumber']}}
+                {% else %}
+                  0800001066
+                {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% if (data['claimMainContactNumber'] == data['dwpData']['mainContactNumber']) %}
                 <strong class="govuk-tag govuk-tag--green">
                   Match
+                </strong>
+              {% elif not (data['claimMainContactNumber'] == data['dwpData']['mainContactNumber']) %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Error
                 </strong>
               {% endif %}
             </td>
@@ -55,10 +63,10 @@
       <form method="post" action="../verify-claimant-details">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <label class="govuk-label" for="claimMainContactNumber">
               Enter a new phone number
-            </legend>
-            <input class="govuk-input govuk-input--width-20" id="claimant-contact" name="claimantContact" type="text">
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="claimant-contact" name="claimMainContactNumber" type="text">
           </fieldset>
         </div>
         <button type="submit" class="govuk-button" data-module="govuk-button">

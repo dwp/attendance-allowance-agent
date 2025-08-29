@@ -15,7 +15,7 @@
         <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Update claimant name</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Details</th>
+            <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Details</span></th>
             <th scope="col" class="govuk-table__header">Claim data</th>
             <th scope="col" class="govuk-table__header">DWP records</th>
             <th scope="col" class="govuk-table__header">Matching status</th>
@@ -25,43 +25,97 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Address</th>
             <td class="govuk-table__cell">
-              {% if data['claimantAddress'] %}
-                {{data['claimantAddress']}}
-              {% elif data['claim']['claimFormData']['claimOverview']['address']['address1'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['address']['address1'] }}
+              {% if data['claimAddress1'] %}
+                {{data['claimAddress1']}},<br/>
               {% else %}
-                11 street
+                11 street,<br/>
+              {% endif %}
+
+              {% if data['claimAddress2'] %}
+                {{data['claimAddress2']}},<br/>
+              {% else %}
+                Heaton,<br/>
+              {% endif %}
+
+              {% if data['claimAddress3'] %}
+                {{data['claimAddress3']}},<br/>
+              {% else %}
+                Newcastle upon tyne,<br/>
+              {% endif %}
+
+              {% if data['claimAddress4'] %}
+                {{data['claimAddress4']}},<br/>
+              {% else %}
+                England,<br/>
+              {% endif %}
+
+              {% if data['claimPostcode'] %}
+                {{ data['claimPostcode'] }}
+              {% else %}
+                DL11C3
               {% endif %}
             </td>
             <td class="govuk-table__cell">
               {% if data['dwpData']['address']['address1'] %}
-                {{data['dwpData']['address']['address1']}}
+                {{data['dwpData']['address']['address1']}},<br/>
               {% else %}
-                11 street
+                11 street,<br/>
+              {% endif %}
+
+              {% if data['dwpData']['address']['address2'] %}
+                {{data['dwpData']['address']['address2']}},<br/>
+              {% else %}
+                Heaton,<br/>
+              {% endif %}
+
+              {% if data['dwpData']['address']['address3'] %}
+                {{data['dwpData']['address']['address3']}},<br/>
+              {% else %}
+                Newcastle upon tyne,<br/>
+              {% endif %}
+
+              {% if data['dwpData']['address']['address4'] %}
+                {{data['dwpData']['address']['address4']}},<br/>
+              {% else %}
+                England,<br/>
+              {% endif %}
+
+              {% if data['dwpData']['address']['postcode'] %}
+                {{data['dwpData']['address']['postcode']}}
+              {% else %}
+                NE1 5DQ
               {% endif %}
             </td>
             <td class="govuk-table__cell">
               {% 
-                if not 
-                  (data['claimantAddress'] == data['dwpData']['address']['address1']) 
-                and not 
-                  (data['claim']['claimFormData']['claimOverview']['address']['address1'] == data['dwpData']['address']['address1']) 
-              %}
-                <strong class="govuk-tag govuk-tag--red">
-                  Unmatched
-                </strong>
-              {% 
-                elif 
-                  (data['claimantAddress'] == data['dwpData']['address']['address1']) 
-                or 
-                  (data['claim']['claimFormData']['claimOverview']['address']['address1'] == data['dwpData']['address']['address1']) 
+                if 
+                  (data['claimAddress1'] == data['dwpData']['address']['address1']) 
+                and 
+                  (data['claimAddress2'] == data['dwpData']['address']['address2']) 
+                and 
+                  (data['claimAddress3'] == data['dwpData']['address']['address3']) 
+                and 
+                  (data['claimAddress4'] == data['dwpData']['address']['address4']) 
+                and 
+                  (data['claimPostcode'] == data['dwpData']['address']['postcode']) 
               %}
                 <strong class="govuk-tag govuk-tag--green">
                   Match
                 </strong>
-              {% elif data['claimantAddress'] %}
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Updated
+              {% 
+                elif not 
+                  (data['claimAddress1'] == data['dwpData']['address']['address1']) 
+                or not 
+                  (data['claimAddress2'] == data['dwpData']['address']['address2']) 
+                or not 
+                  (data['claimAddress3'] == data['dwpData']['address']['address3']) 
+                or not 
+                  (data['claimAddress4'] == data['dwpData']['address']['address4']) 
+                or not 
+                  (data['claimPostcode'] == data['dwpData']['address']['postcode']) 
+              %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
                 </strong>
               {% else %}
                 <strong class="govuk-tag govuk-tag--red">
@@ -78,17 +132,17 @@
       <form method="post" action="search-an-address">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <label class="govuk-label" for="searchPostcode">
               Postcode
-            </legend>
-            <input class="govuk-input govuk-input--width-10" id="claimant-postcode" name="claimantPostcode" type="text">
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="claimant-postcode" name="searchPostcode" type="text">
           </fieldset>
         </div>
         <div style="display: flex; align-items: baseline;">
           <button type="submit" class="govuk-button govuk-!-margin-right-5" data-module="govuk-button">
             Find address
           </button>
-          <a href="address-uk" class="govuk-link">Enter an address in manually</a>
+          <a href="address-int" class="govuk-link">Enter an address outside of the UK</a>
         </div>
       </form>
     </div>

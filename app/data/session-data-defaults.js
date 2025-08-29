@@ -1,109 +1,66 @@
 module.exports = {
 
-  "claim" : {
-    "claimDates" : {
-      "submittedOn" : "13/08/2025"
-    },
-    "claimOverview" : {
-      "nationalInsurance" : "AB123456A",
-      "dateOfBirth" : {
-        "dd" : "10",
-        "mm" : "10",
-        "yyyy" : "1930"
-      },
-      "ageAtSubmission" : "94",
-      "fullName" : "Jon Smith",
-      "address" : {
-        "address1" : "123 test street",
-        "address2" : "",
-        "address3" : "test town",
-        "address4" : "",
-        "postcode" : "NE11AB"
-      },
-      "mainContactNumber" : "07811111111",
-      "whoIsApplying" : "I am applying for myself",
-      "nationality" : "British",
-      "otherBenefits" : [ 
-        "None"
-      ],
-      "specialRules" : "Yes",
-      "alternativeFormats" : "None"
-    },
-    "aboutYou" : {
-      "whoIsApplying" : "I am applying for myself",
-      "dateOfBirth" : {
-        "dd" : "10",
-        "mm" : "10",
-        "yyyy" : "1930"
-      },
-      "otherBenefits" : [ 
-        "None of these benefits"
-      ],
-      "nationalInsurance" : "AB123456A",
-      "firstName" : "Jon",
-      "lastName" : "Smith",
-      "address" : {
-        "address1" : "123 test street",
-        "address2" : "",
-        "address3" : "test town",
-        "address4" : "",
-        "postcode" : "NE11AB"
-      }
-    },
-    "claimInfo" : {
-      "nationality" : "British",
-      "whereDoYouLive" : "England",
-      "haveYouMovedFromScotland" : "No",
-      "outsideUKDuration" : "No",
-      "countryOutsideUKBenefits" : "No",
-      "countryOutsideUKWorking" : "No",
-      "careHomeOrHospital" : "Hospital",
-      "hospitalAddressName" : "sample hospital",
-      "hospitalAddressTownOrCity" : "sample town",
-      "hospitalAdmissionDate" : {
-        "dd" : "10",
-        "mm" : "06",
-        "yyyy" : "2025"
-      },
-      "hospitalFunding" : "Yes"
-    },
-    "specialRules" : {
-      "declaration" : "Yes",
-      "completed" : "No"
-    },
-    "healthInfo" : {
-      "list" : [ 
-        "C70 - Bone cancer"
-      ],
-      "listDates" : {
-        "condition1" : "03/21"
-      },
-      "specialRules" : "Yes",
-      "treatment" : "Yes",
-      "treatmentInfo" : "operation to replace my hip on 17 December 2022"
-    },
-    "consent" : {
-      "treatmentConsent" : "Yes, information about my health can be shared",
-      "gpCentreName" : "test surgery",
-      "gpName" : "mr GP",
-      "gpTelephone" : "01912222222",
-      "healthcareProfessionalOptions" : "Consultant",
-      "specialistName" : "mr consultant",
-      "specialistTelephone" : "01914444444"
-    },
-    "contactDetails" : {
-      "mainContactNumber" : "07811111111",
-      "addContactDetails" : "No",
-      "alternativeFormats" : "None, these do not apply to me",
-      "emailWanted" : "No"
-    },
-    "declaration" : {
-      "statement" : "Accepted and submitted on 13/08/2025"
-    }
+  "claimDates" :  "13/08/2025",
+  "claimNationalInsurance" : "AB123456A",
+  "claimDateOfBirthDD" : "10",
+  "claimDateOfBirthMM" : "10",
+  "claimDateOfBirthYYYY" : "1930",
+  "claimAgeAtSubmission" : "94",
+  "claimAddress1" : "123 test street",
+  "claimAddress2" : "",
+  "claimAddress3" : "test town",
+  "claimAddress4" : "",
+  "claimPostcode" : "NE11AB",
+  "claimMainContactNumber" : "07811111111",
+  "claimWhoIsApplying" : "I am applying for myself",
+  "claimNationality" : "British",
+  "claimOtherBenefits" : [ 
+    "None"
+  ],
+  "claimSpecialRules" : "Yes",
+  "claimAlternativeFormats" : "None",
+  "claimFirstName" : "Jon",
+  "claimLastName" : "Smith",
+  "claimWhereDoYouLive" : "England",
+  "claimHaveYouMovedFromScotland" : "No",
+  "claimOutsideUKDuration" : "No",
+  "claimCountryOutsideUKBenefits" : "No",
+  "claimCountryOutsideUKWorking" : "No",
+  "claimCareHomeOrHospital" : "Hospital",
+  "claimHospitalAddressName" : "sample hospital",
+  "claimHospitalAddressTownOrCity" : "sample town",
+  "claimHospitalAdmissionDateDD" : "10",
+  "claimHospitalAdmissionDateDD" : "06",
+  "claimHospitalAdmissionDateDD" : "2025",
+  "claimHospitalFunding" : "Yes",
+  "claimSpecialRulesDeclaration" : "Yes",
+  "claimSpecialRulesCompleted" : "No",
+  "claimHealthInfoList" : [ 
+    "C70 - Bone cancer"
+  ],
+  "claimHealthInfoListDates" : {
+    "condition1" : "03/21"
   },
+  "claimHealthInfoSpecialRules" : "Yes",
+  "claimHealthInfoTreatment" : "Yes",
+  "claimHealthInfoTreatmentInfo" : "operation to replace my hip on 17 December 2022",
+  "claimConsentTreatmentConsent" : "Yes, information about my health can be shared",
+  "claimConsentGPCentreName" : "test surgery",
+  "claimConsentGPName" : "mr GP",
+  "claimConsentGPTelephone" : "01912222222",
+  "claimConsentHealthcareProfessionalOptions" : "Consultant",
+  "claimConsentSpecialistName" : "mr consultant",
+  "claimConsentSpecialistTelephone" : "01914444444",
+  "claimContactDetailsMainContactNumber" : "07811111111",
+  "claimContactDetailsAddContactDetails" : "No",
+  "claimContactDetailsAlternativeFormats" : "None, these do not apply to me",
+  "claimContactDetailsEmailWanted" : "No",
+  "claimDeclaration" : "Accepted and submitted on 13/08/2025",
   "dwpData": {
     "nino": "AB123456A",
-    "fullName" : "Jon Smith",
+    "firstName" : "Jon",
+    "lastName" : "Smith",
+    "mainContactNumber" : "07811111111",
     "dateofbirth" : {
       "dd" : "10",
       "mm" : "10",
@@ -111,6 +68,9 @@ module.exports = {
     },
     "address" : {
       "address1" : "123 test street",
+      "address2" : "",
+      "address3" : "test town",
+      "address4" : "",
       "postcode" : "NE11AB",
     },
     "contactnumber" : "07811111111"

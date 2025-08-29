@@ -9,53 +9,45 @@
   </h1>
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
 
       <form method="post" action="../verify-claimant-details.html">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimantAddress1">
               Address line 1
-            </legend>
-            <input class="govuk-input govuk-!-width-two-thirds" id="claimant-address-1" name="claimantAddress1" type="text">
-          </fieldset>
-        </div>
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimant-address-1" name="claimAddress1" type="text">
+          </div>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimAddress2">
               Address line 2 (optional)
-            </legend>
-            <input class="govuk-input govuk-!-width-two-thirds" id="claimant-address-2" name="claimantAddress2" type="text">
-          </fieldset>
-        </div>
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimant-address-2" name="claimAddress2" type="text">
+          </div>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimAddress3">
               Address line 3
-            </legend>
-            <input class="govuk-input govuk-!-width-two-thirds" id="claimant-address-3" name="claimantAddress3" type="text">
-          </fieldset>
-        </div>
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimant-address-3" name="claimAddress3" type="text">
+          </div>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimAddress4">
               Address line 4 (optional)
-            </legend>
-            <input class="govuk-input govuk-!-width-two-thirds" id="claimant-address-4" name="claimantAddress4" type="text">
-          </fieldset>
-        </div>
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimant-address-4" name="claimAddress4" type="text">
+          </div>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimPostcode">
               Country
-            </legend>
-            <input class="govuk-input govuk-input--width-20" id="claimant-postcode" name="claimantPostcode" type="text">
-          </fieldset>
-        </div>
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="claimant-postcode" name="claimPostcode" type="text">
+          </div>
+        </fieldset>
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Continue
         </button>

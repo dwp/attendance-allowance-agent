@@ -30,7 +30,7 @@
                 QQ123456C
               {% endif %}
             </td>
-            <td class="govuk-table__cell">AB123456A</td>
+            <td class="govuk-table__cell">QQ123456C</td>
             <td class="govuk-table__cell">
               <strong class="govuk-tag govuk-tag--green">
                 Match
@@ -40,43 +40,37 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Name</th>
             <td class="govuk-table__cell">
-              {% if data['claimantfirstname'] or data['claimantLastname'] %}
-                {{data['claimantFirstname']}} {{data['claimantLastname']}}
-              {% elif data['claim']['claimFormData']['claimOverview']['fullName'] %}
-                {{data['claim']['claimFormData']['claimOverview']['fullName']}}
+              {% if data['claimFirstName'] or data['claimLastName'] %}
+                {{data['claimFirstName']}} {{data['claimLastName']}}
               {% else %}
                 James Smith
               {% endif %}
             </td>
             <td class="govuk-table__cell">
-              {% if data['dwpData']['fullName'] %}
-                {{data['dwpData']['fullName']}}
+              {% if data['dwpData']['firstName'] and data['dwpData']['lastName'] %}
+                {{data['dwpData']['firstName']}} {{data['dwpData']['lastName']}}
               {% else %}
-                James Smith
+                Jame Smith
               {% endif %}
             </td>
             <td class="govuk-table__cell">
               {% 
-                if not 
-                  (data['claimantName'] == data['dwpData']['fullName']) 
-                and not 
-                  (data['claim']['claimFormData']['claimOverview']['fullName'] == data['dwpData']['fullName']) 
-              %}
-                <strong class="govuk-tag govuk-tag--red">
-                  Unmatched
-                </strong>
-              {% 
-                elif 
-                  (data['claimantName'] == data['dwpData']['fullName']) 
-                or 
-                  (data['claim']['claimFormData']['claimOverview']['fullName'] == data['dwpData']['fullName']) 
+                if 
+                  (data['claimFirstName'] == data['dwpData']['firstName']) 
+                and 
+                  (data['claimLastName'] == data['dwpData']['lastName']) 
               %}
                 <strong class="govuk-tag govuk-tag--green">
                   Match
                 </strong>
-              {% elif data['claimantName'] %}
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Updated
+              {% 
+                elif not 
+                  (data['claimFirstName']  == data['dwpData']['firstName']) 
+                or not 
+                  (data['claimLastName'] == data['dwpData']['lastName']) 
+              %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
                 </strong>
               {% else %}
                 <strong class="govuk-tag govuk-tag--red">
@@ -88,76 +82,67 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Date of birth</th>
             <td class="govuk-table__cell">
-              {% if data['claim']['claimFormData']['claimOverview']['dateOfBirth'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['dateOfBirth']['dd'] }}
-                {{ data['claim']['claimFormData']['claimOverview']['dateOfBirth']['mm'] | monthName }}
-                {{ data['claim']['claimFormData']['claimOverview']['dateOfBirth']['yyyy'] }}
+              {% 
+                if (
+                data['dateOfBirthDD'] and
+                data['dateOfBirthMM'] and
+                data['dateOfBirthYYYY'] 
+                ) 
+              %}
+                {{ data['claimDateOfBirthDD'] }}
+                {{ data['claimDateOfBirthMM'] | monthName }}
+                {{ data['claimDateOfBirthYYYY'] }}
               {% else %}
                 13 April 1958
               {% endif %}
             </td>
             <td class="govuk-table__cell">13 April 1958</td>
             <td class="govuk-table__cell">
-              {% if not (data['claimantDateOfBirth'] == '13 April 1958') %}
-                <strong class="govuk-tag govuk-tag--red">
-                  Unmatched
-                </strong>
-              {% else %}
+              {% if 
+                (data['claimDateOfBirthDD'] == '10') and
+                (data['claimDateOfBirthMM'] == '10') and
+                (data['claimDateOfBirthYYYY'] == '1930')
+                
+              %}
                 <strong class="govuk-tag govuk-tag--green">
                   Match
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
                 </strong>
               {% endif %}
             </td>
           </tr>
-          <!-- <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Claim reference</th>
-            <td class="govuk-table__cell">12345678</td>
-            <td class="govuk-table__cell">12345678</td>
-            <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--green">
-                Match
-              </strong>
-            </td>
-          </tr> -->
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Address</th>
             <td class="govuk-table__cell">
-              {% if data['claimantAddress1'] %}
-                {{data['claimantAddress1']}}
-              {% elif data['claim']['claimFormData']['claimOverview']['address']['address1'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['address']['address1'] }}
+              {% if data['claimAddress1'] %}
+                {{data['claimAddress1']}},<br/>
               {% else %}
                 11 street,<br/>
               {% endif %}
 
-              {% if data['claimantAddress2'] %}
-                {{data['claimantAddress2']}}
-              {% elif data['claim']['claimFormData']['claimOverview']['address']['address2'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['address']['address2'] }}
+              {% if data['claimAddress2'] %}
+                {{data['claimAddress2']}},<br/>
               {% else %}
                 Heaton,<br/>
               {% endif %}
 
-              {% if data['claimantAddress3'] %}
-                {{data['claimantAddress3']}}
-              {% elif data['claim']['claimFormData']['claimOverview']['address']['address3'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['address']['address3'] }}
+              {% if data['claimAddress3'] %}
+                {{data['claimAddress3']}},<br/>
               {% else %}
                 Newcastle upon tyne,<br/>
               {% endif %}
 
-              {% if data['claimantAddress4'] %}
-                {{data['claimantAddress4']}}
-              {% elif data['claim']['claimFormData']['claimOverview']['address']['address1'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['address']['address1'] }}
+              {% if data['claimAddress4'] %}
+                {{data['claimAddress4']}},<br/>
               {% else %}
                 England,<br/>
               {% endif %}
 
-              {% if data['claimantPostcode'] %}
-                {{ data['claimantPostcode'] }}
-              {% elif data['claim']['claimFormData']['claimOverview']['address']['postcode'] %}
-                {{ data['claim']['claimFormData']['claimOverview']['address']['postcode'] }}
+              {% if data['claimPostcode'] %}
+                {{ data['claimPostcode'] }}
               {% else %}
                 DL11C3
               {% endif %}
@@ -195,26 +180,34 @@
             </td>
             <td class="govuk-table__cell">
               {% 
-                if not 
-                  (data['claimantAddress'] == data['dwpData']['address']['address1']) 
-                and not 
-                  (data['claim']['claimFormData']['claimOverview']['address']['address1'] == data['dwpData']['address']['address1']) 
-              %}
-                <strong class="govuk-tag govuk-tag--red">
-                  Unmatched
-                </strong>
-              {% 
-                elif 
-                  (data['claimantAddress'] == data['dwpData']['address']['address1']) 
-                or 
-                  (data['claim']['claimFormData']['claimOverview']['address']['address1'] == data['dwpData']['address']['address1']) 
+                if 
+                  (data['claimAddress1'] == data['dwpData']['address']['address1']) 
+                and 
+                  (data['claimAddress2'] == data['dwpData']['address']['address2']) 
+                and 
+                  (data['claimAddress3'] == data['dwpData']['address']['address3']) 
+                and 
+                  (data['claimAddress4'] == data['dwpData']['address']['address4']) 
+                and 
+                  (data['claimPostcode'] == data['dwpData']['address']['postcode']) 
               %}
                 <strong class="govuk-tag govuk-tag--green">
                   Match
                 </strong>
-              {% elif data['claimantAddress'] %}
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Updated
+              {% 
+                elif not 
+                  (data['claimAddress1'] == data['dwpData']['address']['address1']) 
+                or not 
+                  (data['claimAddress2'] == data['dwpData']['address']['address2']) 
+                or not 
+                  (data['claimAddress3'] == data['dwpData']['address']['address3']) 
+                or not 
+                  (data['claimAddress4'] == data['dwpData']['address']['address4']) 
+                or not 
+                  (data['claimPostcode'] == data['dwpData']['address']['postcode']) 
+              %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Unmatched
                 </strong>
               {% else %}
                 <strong class="govuk-tag govuk-tag--red">
@@ -226,27 +219,25 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Phone number</th>
             <td class="govuk-table__cell">
-                {% if data['claimantContact'] %}
-                  {{data['claimantContact']}}
-                {% elif data['claim']['claimFormData']['claimOverview']['mainContactNumber'] %}
-                  {{ data['claim']['claimFormData']['claimOverview']['mainContactNumber'] }}
+                {% if data['claimMainContactNumber'] %}
+                  {{data['claimMainContactNumber']}}
                 {% else %}
                   0800001066
                 {% endif %}
             </td>
             <td class="govuk-table__cell">0700001066</td>
             <td class="govuk-table__cell">
-              {% if data['claimantContact'] %}
-                <strong class="govuk-tag govuk-tag--yellow">
-                  Updated
+              {% if (data['claimMainContactNumber'] == data['dwpData']['mainContactNumber']) %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Match
                 </strong>
-              {% elseif not (data['claimantContact'] == '0700001066') %}
+              {% elif not (data['claimMainContactNumber'] == data['dwpData']['mainContactNumber']) %}
                 <strong class="govuk-tag govuk-tag--red">
                   Unmatched
                 </strong>
               {% else %}
-                <strong class="govuk-tag govuk-tag--green">
-                  Match
+                <strong class="govuk-tag govuk-tag--red">
+                  Error
                 </strong>
               {% endif %}
             </td>
