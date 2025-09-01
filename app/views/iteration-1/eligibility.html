@@ -1,0 +1,185 @@
+{% extends "layouts/internal-layout.html" %}
+
+{% set pageName = "Check eligibility" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            First name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['ClaimfirstName'] %}
+              {{data['ClaimfirstName']}}
+            {% else %}
+              James
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Last name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimLastName'] %}
+              {{data['claimLastName']}}
+            {% else %}
+              Smith
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+            if (
+            data['dateOfBirthDD'] and
+            data['dateOfBirthMM'] and
+            data['dateOfBirthYYYY'] 
+            ) 
+          %}
+            {{ data['claimDateOfBirthDD'] }}
+            {{ data['claimDateOfBirthMM'] | monthName }}
+            {{ data['claimDateOfBirthYYYY'] }}
+          {% else %}
+            13 April 1958
+          {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Home address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimAddress1'] %}
+              {{data['claimAddress1']}},<br/>
+            {% else %}
+              11 street,<br/>
+            {% endif %}
+
+            {% if data['claimAddress2'] %}
+              {{data['claimAddress2']}},<br/>
+            {% else %}
+              Heaton,<br/>
+            {% endif %}
+
+            {% if data['claimAddress3'] %}
+              {{data['claimAddress3']}},<br/>
+            {% else %}
+              Newcastle upon tyne,<br/>
+            {% endif %}
+
+            {% if data['claimAddress4'] %}
+              {{data['claimAddress4']}},<br/>
+            {% else %}
+              England,<br/>
+            {% endif %}
+
+            {% if data['claimPostcode'] %}
+              {{ data['claimPostcode'] }}
+            {% else %}
+              DL11C3
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimMainContactNumber'] %}
+              {{data['claimMainContactNumber']}}
+            {% else %}
+              0800001066
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other benefits
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% for benefit in data['claimOtherBenefits'] %}
+              {{ benefit }}
+            {% else %}
+              None
+            {% endfor %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Nationality
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimNationality'] %}
+              {{data['claimNationality']}}
+            {% else %}
+              British
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Country
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimWhereDoYouLive'] %}
+              {{data['claimWhereDoYouLive']}}
+            {% else %}
+              England
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">Use Searchlight to check this information</h2>
+      <a class="govuk-link" href="#" target="_blank">Open Searchlight (opens in a new tab)</a>
+
+      <form method="post" action="claim" class="govuk-!-margin-top-8">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Is this claim eligible for an award?
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="eligibility-action-1" name="eligibilityAction" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="eligibilityAction">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="eligibility-action-2" name="eligibilityAction" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="eligibilityAction-2">
+                  No
+                </label>
+              </div>
+              <!-- <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="verifyAction-2" name="verifyAction" type="radio" value="change">
+                <label class="govuk-label govuk-radios__label" for="verifyAction-3">
+                  Change the claimant's details
+                </label>
+              </div> -->
+            </div>
+          </fieldset>
+          <input class="govuk-input govuk-visually-hidden" id="tast-eligibility-status" name="taskEligibilityStatus" type="text" value="yes">
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -70,24 +70,24 @@
             </li>
             <li class="govuk-task-list__item govuk-task-list__item--with-link">
               <div class="govuk-task-list__name-and-hint">
-                <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="claim-tasks-2-status">
+                <a class="govuk-link govuk-task-list__link" href="eligibility" aria-describedby="claim-tasks-2-status">
                   Check eligibility 
                 </a>
               </div>
               <div class="govuk-task-list__status" id="claim-tasks-2-status">
-                <strong class="govuk-tag govuk-tag--blue">
-                  {% if (data['taskEligibilityStatus'] == 'complete') %}
+                {% if (data['taskEligibilityStatus'] == 'yes') %}
+                  <strong class="govuk-tag govuk-tag--blue">
                     Completed
-                  {% elseif (data['taskEligibilityStatus'] == 'inprogress') %}
-                    <strong class="govuk-tag govuk-tag--green">
-                      Inprogress
-                    </strong>
-                  {% else %}
-                    <strong class="govuk-tag govuk-tag--blue">
-                      Incomplete
-                    </strong>
-                  {% endif %}
-                </strong>
+                  </strong>
+                {% elseif (data['taskEligibilityStatus'] == 'inprogress') %}
+                  <strong class="govuk-tag govuk-tag--green">
+                    Inprogress
+                  </strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--red">
+                    Fail
+                  </strong>
+                {% endif %}
               </div>
             </li>
             <li class="govuk-task-list__item govuk-task-list__item--with-link">
@@ -159,7 +159,7 @@
           </ul>
         </div>
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="form-details">
-          <h3 class="govuk-heading-m">Special rules for end of life</h3>
+          <h3 class="govuk-heading-l">Special rules for end of life</h3>
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -186,7 +186,7 @@
               </dd>
             </div>
           </dl>
-          <h3 class="govuk-heading-m">Care home, hospital or similar place</h3>
+          <h3 class="govuk-heading-l">Care home, hospital or similar place</h3>
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -205,9 +205,9 @@
               </dd>
             </div>
           </dl>
-          <h3 class="govuk-heading-m">Health information</h3>
+          <h3 class="govuk-heading-l">Health information</h3>
           <dl class="govuk-summary-list">
-            <h4 class="govuk-heading-s">Health conditions and disabilities</h4>
+            <h4 class="govuk-heading-m">Health conditions and disabilities</h4>
             <h5 class="govuk-heading-s">Bladder cancer</h5>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -217,7 +217,7 @@
                 2020 
               </dd>
             </div>
-            <h4 class="govuk-heading-s govuk-!-margin-top-5">Other health information</h4>
+            <h4 class="govuk-heading-m govuk-!-margin-top-5">Other health information</h4>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Other treatment or waiting for surgery?
@@ -234,7 +234,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </dd>
             </div>
-            <h4 class="govuk-heading-s govuk-!-margin-top-5">Healthcare professionals</h4>
+            <h4 class="govuk-heading-m govuk-!-margin-top-5">Healthcare professionals</h4>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Consent given for information sharing
@@ -265,6 +265,55 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 01613456689
+              </dd>
+            </div>
+            <h3 class="govuk-heading-l govuk-!-margin-top-5">Eligibility</h3>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Moved from Scotland since 21 October 2024
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimHaveYouMovedFromScotland'] %}
+                  {{data['claimHaveYouMovedFromScotland']}}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Been outside UK for more than 12 months in last 2 years
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimOutsideUKDuration'] %}
+                  {{data['claimOutsideUKDuration']}}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Pension or benefits from EEA state
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimCountryOutsideUKBenefits'] %}
+                  {{data['claimCountryOutsideUKBenefits']}}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Working or paying insurance in EEA state
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimCountryOutsideUKWorking'] %}
+                  {{data['claimCountryOutsideUKWorking']}}
+                {% else %}
+                  No
+                {% endif %}
               </dd>
             </div>
           </dl>
@@ -396,54 +445,6 @@
                   {{data['claimWhereDoYouLive']}}
                 {% else %}
                   England
-                {% endif %}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Moved from Scotland since 21 October 2024
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['claimHaveYouMovedFromScotland'] %}
-                  {{data['claimHaveYouMovedFromScotland']}}
-                {% else %}
-                  No
-                {% endif %}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Been outside UK for more than 12 months in last 2 years
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['claimOutsideUKDuration'] %}
-                  {{data['claimOutsideUKDuration']}}
-                {% else %}
-                  No
-                {% endif %}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Pension or benefits from EEA state
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['claimCountryOutsideUKBenefits'] %}
-                  {{data['claimCountryOutsideUKBenefits']}}
-                {% else %}
-                  No
-                {% endif %}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Working or paying insurance in EEA state
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['claimCountryOutsideUKWorking'] %}
-                  {{data['claimCountryOutsideUKWorking']}}
-                {% else %}
-                  No
                 {% endif %}
               </dd>
             </div>
