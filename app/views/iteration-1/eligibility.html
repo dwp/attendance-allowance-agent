@@ -140,6 +140,54 @@
             {% endif %}
           </dd>
         </div>
+        <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Moved from Scotland since 21 October 2024
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimHaveYouMovedFromScotland'] %}
+                  {{data['claimHaveYouMovedFromScotland']}}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Been outside UK for more than 12 months in last 2 years
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimOutsideUKDuration'] %}
+                  {{data['claimOutsideUKDuration']}}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Pension or benefits from EEA state
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimCountryOutsideUKBenefits'] %}
+                  {{data['claimCountryOutsideUKBenefits']}}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Working or paying insurance in EEA state
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimCountryOutsideUKWorking'] %}
+                  {{data['claimCountryOutsideUKWorking']}}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+            </div>
       </dl>
 
       <h2 class="govuk-heading-m govuk-!-margin-top-5">Use Searchlight to check this information</h2>

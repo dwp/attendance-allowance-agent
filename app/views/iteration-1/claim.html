@@ -161,7 +161,6 @@
           </ul>
         </div>
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="form-details">
-          <span class="govuk-caption-m" style="text-align: right;">Last updated by Jo Dean 2 days ago</span>
           <h3 class="govuk-heading-l">Special rules for end of life</h3>
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
@@ -374,27 +373,27 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['claimAddress1'] %}
-                  {{data['claimAddress1']}},<br/>
+                  {{data['claimAddress1']}}<br/>
                 {% else %}
-                  11 street,<br/>
+                  11 street<br/>
                 {% endif %}
 
                 {% if data['claimAddress2'] %}
-                  {{data['claimAddress2']}},<br/>
+                  {{data['claimAddress2']}}<br/>
                 {% else %}
-                  Heaton,<br/>
+                  Heaton<br/>
                 {% endif %}
 
                 {% if data['claimAddress3'] %}
-                  {{data['claimAddress3']}},<br/>
+                  {{data['claimAddress3']}}<br/>
                 {% else %}
-                  Newcastle upon tyne,<br/>
+                  Newcastle upon tyne<br/>
                 {% endif %}
 
                 {% if data['claimAddress4'] %}
-                  {{data['claimAddress4']}},<br/>
+                  {{data['claimAddress4']}}<br/>
                 {% else %}
-                  England,<br/>
+                  England<br/>
                 {% endif %}
 
                 {% if data['claimPostcode'] %}
