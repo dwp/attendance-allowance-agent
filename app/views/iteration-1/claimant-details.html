@@ -1,4 +1,4 @@
-{% extends "layouts/internal-layout.html" %}
+{% extends "iteration-1/layouts/internal-layout.html" %}
 {% set hideRef = "true" %}
 {% set pageName = "Claimant details" %}
 
@@ -18,7 +18,11 @@
             National Insurance number
           </dt>
           <dd class="govuk-summary-list__value">
-            AB123456C
+            {% if data['claimNationalInsurance'] %}
+              {{ data['claimNationalInsurance']}}
+            {% else %}
+              AB123456C
+            {% endif %}
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -26,7 +30,11 @@
             Name
           </dt>
           <dd class="govuk-summary-list__value">
-            Jane Joe
+            {% if data['claimFirstName'] or data['claimLastName'] %}
+              {{data['claimFirstName']}} {{data['claimLastName']}}
+            {% else %}
+              James Smith
+            {% endif %}
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -34,7 +42,19 @@
             Date of birth
           </dt>
           <dd class="govuk-summary-list__value">
-            13 April 1951
+            {% 
+              if (
+              data['dateOfBirthDD'] and
+              data['dateOfBirthMM'] and
+              data['dateOfBirthYYYY'] 
+              ) 
+            %}
+              {{ data['claimDateOfBirthDD'] }}
+              {{ data['claimDateOfBirthMM'] | monthName }}
+              {{ data['claimDateOfBirthYYYY'] }}
+            {% else %}
+              13 April 1958
+            {% endif %}
           </dd>
         </div>
         <!-- <div class="govuk-summary-list__row">
@@ -74,18 +94,30 @@
             </tr>
           </thead>
           <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">17 August 2025</td>
-              <td class="govuk-table__cell">SR1</td>
-              <td class="govuk-table__cell">
-                <strong class="govuk-tag govuk-tag--green">
-                  Open
-                </strong>
-              </td>
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="claim">View <span class="govuk-visually-hidden">claimant details</span></a>
-              </td>
-            </tr>
+            {% for claim in data['claimantClaims'] %}
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">
+                  {{ data['claim.dateCreated'] }}
+                </td>
+                <td class="govuk-table__cell">
+                  {{ data['claim.claimType'] }}
+                </td>
+                <td class="govuk-table__cell">
+                  {% if data['claim.dateCreated'] == "Open" %}
+                    <strong class="govuk-tag govuk-tag--green">
+                      Open
+                    </strong>
+                  {% else %}
+                    <strong class="govuk-tag govuk-tag--red">
+                      Closed
+                    </strong>
+                  {% endif %}
+                </td>
+                <td class="govuk-table__cell">
+                  <a class="govuk-link" href="claim">View <span class="govuk-visually-hidden">claimant details</span></a>
+                </td>
+                {% endfor %}
+              </tr>
             <tr class="govuk-table__row">
               <td scope="row" class="govuk-table__cell">11 July 2025</td>
               <td class="govuk-table__cell">SR1</td>

@@ -1,5 +1,11 @@
 module.exports = {
-
+  "claimantClaims" : [ 
+    {
+      "dateCreated" : "13/08/2025",
+      "claimType" : "SR1",
+      "claimStatus" : "Open"
+    }
+  ],
   "claimDates" :  "13/08/2025",
   "claimNationalInsurance" : "AB123456A",
   "claimDateOfBirthDD" : "10",

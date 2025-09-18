@@ -17,13 +17,57 @@
 
 
 {% block header %}
-  <header class="govuk-header" data-module="govuk-header">
-    <div class="govuk-header__container govuk-width-container">
-      <div class="govuk-header__content govuk-header__content-noLogo">
-        <a href="/" class="govuk-header__link govuk-header__service-name">
-          {{ serviceName }}
-        </a>
+  <header data-module="govuk-header" class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/" class="dwp-header__link">{{ serviceName }}</a>
       </div>
+      {% if (showNav) %}
+      <nav class="dwp-header-navigation"
+        aria-label="Primary">
+        <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden>
+          Menu
+        </button>
+        <ul id="navigation" class="dwp-header-navigation__list">
+          <li class="dwp-header-navigation__item">
+            <a
+              href="./claim">
+              Claim
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="./verify-claimant-details">
+              Verify
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="./eligibility">
+              Eligibility
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="#">
+              Decision
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="#">
+              Payments
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="#">
+              Award
+            </a>
+          </li>
+        </ul>
+      </nav>
+      {% endif %}
     </div>
   </header>
 {% endblock %}
@@ -37,18 +81,18 @@
         <dl class="dwp-quick-reference__block">
           <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
           <dd class="dwp-quick-reference__primary">
-            {% if data['claim']['claimFormData']['claimOverview']['fullName'] %}
-              {{data['claim']['claimFormData']['claimOverview']['fullName']}}
+            {% if data['claimFirstName'] or data['claimLastName'] %}
+              {{data['claimFirstName']}} {{data['claimLastName']}}
             {% else %}
               James Smith
             {% endif %}
           </dd>
           <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
           <dd class="dwp-quick-reference__secondary">
-            {% if data['claim']['claimFormData']['claimOverview']['nationalInsurance'] %}
-              {{ data['claim']['claimFormData']['claimOverview']['nationalInsurance'] }}
+            {% if data['claimNationalInsurance'] %}
+              {{ data['claimNationalInsurance']}}
             {% else %}
-              QQ123456C
+              AB123456C
             {% endif %}
           </dd>
           <!-- <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Claim status:</dt>
