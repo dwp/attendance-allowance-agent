@@ -1,6 +1,6 @@
 {% extends "iteration-1/layouts/internal-layout.html" %}
 {% set hideRef = "true" %}
-{% set pageName = "Advanced search" %}
+{% set pageName = "Search a claimant" %}
 
 {% block content %}
   
@@ -12,22 +12,28 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <p class="govuk-body">All search fields must be exact to match the results.</p>
+      <p class="govuk-body">All search fields are optional</p>
 
       <form class="form" method="post" action="search-results">
-
-        <!-- <div class="govuk-form-group">
-          <label class="govuk-label" for="search-firstname">
-            First name
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-nino">
+            National Insurance number
           </label>
-          <input class="govuk-input govuk-input--width-20" id="search-firstname" name="search-firstname" type="text">
-        </div> -->
+          <input class="govuk-input govuk-input--width-10" id="search-nino" name="search-nino" type="text">
+        </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="search-surname">
-            Last name
+            Surname
           </label>
           <input class="govuk-input govuk-input--width-20" id="search-surname" name="search-surname" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-firstname">
+            Firstname
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="search-firstname" name="search-firstname" type="text">
         </div>
 
         <div class="govuk-form-group">
@@ -67,12 +73,19 @@
           </fieldset>
         </div>
 
-        <!-- <div class="govuk-form-group">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-claim-reference">
+            Claim reference number
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="search-claim-reference" name="search-claim-reference" type="text">
+        </div>
+
+        <div class="govuk-form-group">
           <label class="govuk-label" for="search-address">
-            Address line 1
+            First line of address
           </label>
           <input class="govuk-input govuk-input--width-20" id="search-address" name="search-address" type="text">
-        </div> -->
+        </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="search-postcode">

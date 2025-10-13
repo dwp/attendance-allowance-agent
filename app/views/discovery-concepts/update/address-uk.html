@@ -1,5 +1,5 @@
 {% extends "iteration-1/layouts/internal-layout.html" %}
-{% set showNav = "true" %}
+
 {% set pageName = "Enter an address" %}
 
 {% block content %}
@@ -11,10 +11,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form method="post" action="../verify-claimant-details.html">
+      <form method="post" action="../verify-claimant-details">
         <fieldset class="govuk-fieldset">
           <div class="govuk-form-group">
-            <label class="govuk-label" for="claimantAddress1">
+            <label class="govuk-label" for="claimAddress1">
               Address line 1
             </label>
             <input class="govuk-input govuk-!-width-full" id="claimant-address-1" name="claimAddress1" type="text">
@@ -29,23 +29,23 @@
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="claimAddress3">
-              Address line 3
+              Town or city
             </label>
-            <input class="govuk-input govuk-!-width-full" id="claimant-address-3" name="claimAddress3" type="text">
+            <input class="govuk-input govuk-input--width-20" id="claimant-address-3" name="claimAddress3" type="text">
           </div>
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="claimAddress4">
-              Address line 4 (optional)
+              County (optional)
             </label>
-            <input class="govuk-input govuk-!-width-full" id="claimant-address-4" name="claimAddress4" type="text">
+            <input class="govuk-input govuk-input--width-20" id="claimant-address-4" name="claimAddress4" type="text">
           </div>
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="claimPostcode">
-              Country
+              Postcode
             </label>
-            <input class="govuk-input govuk-input--width-20" id="claimant-postcode" name="claimPostcode" type="text">
+            <input class="govuk-input govuk-input--width-10" id="claimant-postcode" name="claimPostcode" type="text">
           </div>
         </fieldset>
         <button type="submit" class="govuk-button" data-module="govuk-button">

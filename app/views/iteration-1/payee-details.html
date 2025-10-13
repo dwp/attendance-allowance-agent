@@ -1,0 +1,65 @@
+{% extends "iteration-1/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set pageName = "Payee details" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post" action="check-your-answers">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="payeeName">
+            Payee name
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="payeeName" name="payeeName" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="payeeAccountHolder">
+            Account holder
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="payeeAccountHolder" name="payeeAccountHolder" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend">
+              Payee type?
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType" name="payeeType" type="radio" value="Claimant">
+                <label class="govuk-label govuk-radios__label" for="payeeType">
+                  Claimant
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType-2" name="payeeType" type="radio" value="DAP">
+                <label class="govuk-label govuk-radios__label" for="payeeType-2">
+                  DAP
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType-3" name="payeeType" type="radio" value="CDAP">
+                <label class="govuk-label govuk-radios__label" for="payeeType-3">
+                  CDAP
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

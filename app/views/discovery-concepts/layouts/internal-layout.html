@@ -1,4 +1,5 @@
 {%- set assetPath = assetPath | default('/plugin-assets/govuk-frontend' + govukFrontend.assetPath) -%}
+{% set showBack = "true" %}
 
 {% extends "govuk/template.njk" %}
 
@@ -21,7 +22,7 @@
       <div class="dwp-header__service-name">
         <a href="/" class="dwp-header__link">{{ serviceName }}</a>
       </div>
-      {% if not showNav %}
+      {% if (showNav) %}
       <nav class="dwp-header-navigation"
         aria-label="Primary">
         <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden>
@@ -30,20 +31,38 @@
         <ul id="navigation" class="dwp-header-navigation__list">
           <li class="dwp-header-navigation__item">
             <a
-              href="./search-nino">
-              Search a claimant
+              href="./claim">
+              Claim
             </a>
           </li>
           <li class="dwp-header-navigation__item">
             <a
-              href="./register-claim">
-              Register a claim
+              href="./verify-claimant-details">
+              Verify
             </a>
           </li>
           <li class="dwp-header-navigation__item">
             <a
-              href="./statistics">
-              View statistics
+              href="./eligibility">
+              Eligibility
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="#">
+              Decision
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="#">
+              Payments
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="#">
+              Award
             </a>
           </li>
         </ul>
@@ -54,9 +73,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {% if not hideBack %}
-    <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
-  {% endif %}
+  <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
   <script>console.log({{ data | dump | safe }})</script>
   {% if not (hideRef) %}
     <div class="govuk-!-margin-top-5">
@@ -72,8 +89,8 @@
           </dd>
           <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
           <dd class="dwp-quick-reference__secondary">
-            {% if data['searchNino'] %}
-              {{ data['searchNino']}}
+            {% if data['claimNationalInsurance'] %}
+              {{ data['claimNationalInsurance']}}
             {% else %}
               AB123456C
             {% endif %}

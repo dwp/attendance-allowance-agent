@@ -1,0 +1,137 @@
+{% extends "iteration-1/layouts/internal-layout.html" %}
+
+{% set pageName = "Award" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Award status
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['awardStatus'] == 'Disallowed' %}
+              <strong class="govuk-tag govuk-tag--red">
+                Disallowed
+              </strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--green">
+                Allowed
+              </strong>
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Primary health condition or disability
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['primaryHealth'] %}
+              {{ primaryHealth }}
+            {% else %}
+              Special rules
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Secondary health condition or disability
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['secondaryDisability'] %}
+              {{ secondaryDisability }}
+            {% else %}
+              Lung cancer
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="health-condition-disablity">Change<span class="govuk-visually-hidden"> health condition or disability</span></a>
+          </dd>
+        </div>
+      </dl>
+
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+        <caption class="govuk-table__caption govuk-table__caption--m">Entitlement periods</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Start date</th>
+            <th scope="col" class="govuk-table__header">End date</th>
+            <th scope="col" class="govuk-table__header">Rate</th>
+            <th scope="col" class="govuk-table__header">Reason</th>
+            <th scope="col" class="govuk-table__header">
+              <span class="govuk-visually-hidden">Action</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">20 August 2025</td>
+            <td class="govuk-table__cell">20 August 2028</td>
+            <td class="govuk-table__cell">Higher</td>
+            <td class="govuk-table__cell">Reasoning</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/add-entitlement"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change row 1</span></a></li>
+                <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/delete-entitlement"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove row 1</span></a></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form method="post" action="award/add-entitlement">
+        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Add entitlement
+        </button>
+      </form>
+
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+        <caption class="govuk-table__caption govuk-table__caption--m">Exclusion periods</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Start date</th>
+            <th scope="col" class="govuk-table__header">End date</th>
+            <th scope="col" class="govuk-table__header">Reason</th>
+            <th scope="col" class="govuk-table__header">
+              <span class="govuk-visually-hidden">Action</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">20 July 2025</td>
+            <td class="govuk-table__cell">19 August 2025</td>
+            <td class="govuk-table__cell">Reasoning</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/add-exclusion"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change row 1</span></a></li>
+                <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/delete-exclusion"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove row 1</span></a></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form method="post" action="award/add-exclusion">
+        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Add exclusion
+        </button>
+      </form>
+
+      <form method="post" action="./reason-for-decision">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

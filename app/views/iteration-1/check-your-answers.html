@@ -1,0 +1,431 @@
+{% extends "iteration-1/layouts/internal-layout.html" %}
+
+{% set pageName = "Check your answers" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">Decision</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reciept date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['reciept-day'] %}
+              {{ data['reciept-day'] }}
+            {% else %}
+              20 
+            {% endif %}
+            {% if data['reciept-month'] %}
+              {{ data['reciept-month'] | monthName }} 
+            {% else %}
+              July 
+            {% endif %}
+            {% if data['reciept-year'] %}
+              {{ data['reciept-year'] }}
+            {% else %}
+              2025
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="decision/reciept-date">Change<span class="govuk-visually-hidden"> date</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Effective date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['effective-day'] %}
+              {{ data['effective-day'] }}
+            {% else %}
+              20 
+            {% endif %}
+            {% if data['effective-month'] %}
+              {{ data['effective-month'] | monthName }} 
+            {% else %}
+              July 
+            {% endif %}
+            {% if data['effective-year'] %}
+              {{ data['effective-year'] }}
+            {% else %}
+              2025
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="decision/effective-date">Change<span class="govuk-visually-hidden"> date</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision status
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['decisionAction'] == 'Disallowed' %}
+              <strong class="govuk-tag govuk-tag--red">
+                Disallowed
+              </strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--green">
+                Allowed
+              </strong>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="decision">Change<span class="govuk-visually-hidden"> decision status</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ "today" | govukDate }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision by
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Sam Smith
+          </dd>
+        </div>
+
+        {% if data['decisionAction'] == 'Disallowed' %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Exclusion reason 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['exclusion-reason'] %}
+                {{ data['exclusion-reason'] }}
+              {% else %}
+                Reason
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="exclusion-reason">Change<span class="govuk-visually-hidden"> exclusion reason</span></a>
+            </dd>
+          </div>
+        </dl>
+
+      {% else %}
+        </dl>
+        <h2 class="govuk-heading-m">Award</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Award status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['awardStatus'] == 'Disallowed' %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Disallowed
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Allowed
+                </strong>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Awarded by
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['awardBy'] %}
+                {{ data['awardBy'] }}
+              {% else %}
+                Sam Smith
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Primary health condition or disability
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['primaryHealth'] %}
+                {{ data['primaryHealth'] }}
+              {% else %}
+                Special rules
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Secondary health condition or disability
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['secondaryDisability'] %}
+                {{ data['secondaryDisability'] }}
+              {% else %}
+                Lung cancer
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="health-condition-disablity">Change<span class="govuk-visually-hidden"> health condition or disability</span></a>
+            </dd>
+          </div>
+        </dl>
+        
+        <table class="govuk-table govuk-table--small-text-until-tablet">
+        <caption class="govuk-table__caption govuk-table__caption--m">Entitlement periods</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Start date</th>
+            <th scope="col" class="govuk-table__header">End date</th>
+            <th scope="col" class="govuk-table__header">Rate</th>
+            <th scope="col" class="govuk-table__header">Reason</th>
+            <th scope="col" class="govuk-table__header">
+              <span class="govuk-visually-hidden">Action</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">20 August 2025</td>
+            <td class="govuk-table__cell">20 August 2028</td>
+            <td class="govuk-table__cell">Higher</td>
+            <td class="govuk-table__cell">Reasoning</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/add-entitlement"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change row 1</span></a></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+        <caption class="govuk-table__caption govuk-table__caption--m">Exclusion periods</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Start date</th>
+            <th scope="col" class="govuk-table__header">End date</th>
+            <th scope="col" class="govuk-table__header">Reason</th>
+            <th scope="col" class="govuk-table__header">
+              <span class="govuk-visually-hidden">Action</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">20 July 2025</td>
+            <td class="govuk-table__cell">19 August 2025</td>
+            <td class="govuk-table__cell">Reasoning</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/add-exclusion"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change row 1</span></a></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Reason for decision</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reason for decision
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['rfd'] %}
+              {{ data['rfd'] }}
+            {% else %}
+              Reasoning for making a decision will be shown here.
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="reason-for-decision">Change<span class="govuk-visually-hidden"> reason for decision</span></a>
+          </dd>
+        </div>
+      </dl>
+
+      {% if not (data['decisionAction'] == 'Disallowed') %}
+
+        <h2 class="govuk-heading-m">Payment</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              First payment amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentAmount'] %}
+                £{{ data['paymentAmount'] }}
+              {% else %}
+                £220.80
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment day
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentDay'] %}
+                {{ data['paymentDay'] }}
+              {% else %}
+                Monday
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Frequency
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentFrequency'] %}
+                {{ data['paymentFrequency'] }}
+              {% else %}
+                Weekly
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              First payment date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentFirstDate'] %}
+                {{ data['paymentFirstDate'] }}
+              {% else %}
+                28 August 2025
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Weekly payment amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentWeeklyAmount'] %}
+                £{{ data['paymentWeeklyAmount'] }}
+              {% else %}
+                £110.40
+              {% endif %}
+            </dd>
+          </div>
+        </dl>
+
+        <h2 class="govuk-heading-m">Payee</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payee name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['payeeName'] %}
+                {{ data['payeeName'] }}
+              {% else %}
+                Bill Test
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="payee-details">Change<span class="govuk-visually-hidden"> payee details</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account holder
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['payeeAccountHolder'] %}
+                {{ data['payeeAccountHolder'] }}
+              {% else %}
+                Bill Test
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payee type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['payeeType'] %}
+                {{ data['payeeType'] }}
+              {% else %}
+                Claimant
+              {% endif %}
+            </dd>
+          </div>
+        </dl>
+
+        <h2 class="govuk-heading-m">Bank or building society</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sort code
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['bank-sort-code'] %}
+                {{ data['bank-sort-code'] }}
+              {% else %}
+                00-11-00
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="search-bank">Change<span class="govuk-visually-hidden"> bank or building society details</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['bank-account-number'] %}
+                {{ data['bank-account-number'] }}
+              {% else %}
+                1122334455
+              {% endif %}
+            </dd>
+          </div>
+          {% if data['bank-roll-number'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Roll number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['bank-roll-number'] }}
+              </dd>
+            </div>
+          {% endif %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Bank or building society details
+            </dt>
+            <dd class="govuk-summary-list__value">
+              HSBC<br/>
+              Local<br/>
+              110 Grey St<br/>
+              Newcastle upon Tyne<br/>
+              NE1 6JG
+            </dd>
+          </div>
+        </dl>
+    
+      {% endif %}
+
+      <form method="post" action="confirmation">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

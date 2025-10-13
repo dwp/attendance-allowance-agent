@@ -1,0 +1,112 @@
+{% extends "iteration-1/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set pageName = "Exclusion period" %}
+
+{% block content %}
+  
+  
+  <!-- <span class="govuk-caption-xl">Pedro Pascal</span> -->
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post" action="../award">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="exclusion-start-hint">
+            <legend class="govuk-fieldset__legend">
+              Start date
+            </legend>
+            <div id="exclusion-start-hint" class="govuk-hint">
+              For example, 27 3 2007
+            </div>
+            <div class="govuk-date-input" id="exclusion-start-hint">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="exclusion-start-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="exclusion-start-day" name="exclusion-start-day" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="exclusion-start-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="exclusion-start-month" name="exclusion-start-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="exclusion-start-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="exclusion-start-year" name="exclusion-start-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="exclusion-end-hint">
+            <legend class="govuk-fieldset__legend">
+              Start date
+            </legend>
+            <div id="exclusion-end-hint" class="govuk-hint">
+              For example, 27 3 2007
+            </div>
+            <div class="govuk-date-input" id="exclusion-end-hint">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="exclusion-end-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="exclusion-end-day" name="exclusion-end-day" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="exclusion-end-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="exclusion-end-month" name="exclusion-end-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="exclusion-end-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="exclusion-end-year" name="exclusion-end-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="exclusion-reason">
+            exclusion reason
+          </label>
+          <select class="govuk-select" id="sort" name="exclusion-reason">
+            <option value="" selected>Select an option</option>
+            <option value="Missing SR1">Missing SR1</option>
+            <option value="Claimant has died">Claimant has died</option>
+            <option value="Does not meet eligiblity">Does not meet eligiblity</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

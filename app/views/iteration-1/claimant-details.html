@@ -1,39 +1,64 @@
 {% extends "iteration-1/layouts/internal-layout.html" %}
 {% set hideRef = "true" %}
 {% set pageName = "Claimant details" %}
-
 {% block content %}
   
+
   
-  <!-- <span class="govuk-caption-xl">Pedro Pascal</span> -->
+  
   <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
+      <h3 class="govuk-heading-m">Personal details</h3>
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            National Insurance number
+            First name
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['claimNationalInsurance'] %}
-              {{ data['claimNationalInsurance']}}
+            {% if data['ClaimfirstName'] %}
+              {{data['ClaimfirstName']}}
             {% else %}
-              AB123456C
+              James
             {% endif %}
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Name
+            Middle name
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['claimFirstName'] or data['claimLastName'] %}
-              {{data['claimFirstName']}} {{data['claimLastName']}}
+            {% if data['ClaimMiddleName'] %}
+              {{data['ClaimMiddleName']}}
             {% else %}
-              James Smith
+              Jo
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Last name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimLastName'] %}
+              {{data['claimLastName']}}
+            {% else %}
+              Smith
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['searchNino'] %}
+              {{data['searchNino']}}
+            {% else %}
+              AB123456C
             {% endif %}
           </dd>
         </div>
@@ -43,28 +68,62 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% 
-              if (
-              data['dateOfBirthDD'] and
-              data['dateOfBirthMM'] and
-              data['dateOfBirthYYYY'] 
-              ) 
-            %}
-              {{ data['claimDateOfBirthDD'] }}
-              {{ data['claimDateOfBirthMM'] | monthName }}
-              {{ data['claimDateOfBirthYYYY'] }}
+            if (
+            data['dateOfBirthDD'] and
+            data['dateOfBirthMM'] and
+            data['dateOfBirthYYYY'] 
+            ) 
+          %}
+            {{ data['claimDateOfBirthDD'] }}
+            {{ data['claimDateOfBirthMM'] | monthName }}
+            {{ data['claimDateOfBirthYYYY'] }}
+          {% else %}
+            13 April 1958
+          {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Age
+          </dt>
+          <dd class="govuk-summary-list__value">
+            80 years and 1 month
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Nationality
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimNationality'] %}
+              {{data['claimNationality']}}
             {% else %}
-              13 April 1958
+              British
             {% endif %}
           </dd>
         </div>
-        <!-- <div class="govuk-summary-list__row">
+        <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Address
+            Welsh language spoken
           </dt>
           <dd class="govuk-summary-list__value">
-            11 Elm Street<br/>
-            Hollywood<br/>
-            FR13 1EL
+            {% if data['claimWelshSpoken'] %}
+              {{data['claimWelshSpoken']}}
+            {% else %}
+              No
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Welsh language written
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimWelshWritten'] %}
+              {{data['claimWelshWritten']}}
+            {% else %}
+              No
+            {% endif %}
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -72,107 +131,128 @@
             Phone number
           </dt>
           <dd class="govuk-summary-list__value">
-            0700001066
+            {% if data['claimMainContactNumber'] %}
+              {{data['claimMainContactNumber']}}
+            {% else %}
+              0800001066
+            {% endif %}
           </dd>
-        </div> -->
-      </dl>
-    </div>
-  </div>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimAddress1'] %}
+              {{data['claimAddress1']}}<br/>
+            {% else %}
+              11 street<br/>
+            {% endif %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-        <table class="govuk-table govuk-table--small-text-until-tablet">
-          <caption class="govuk-table__caption govuk-table__caption--m">Claims</caption>
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Date created</th>
-              <th scope="col" class="govuk-table__header">Case type</th>
-              <th scope="col" class="govuk-table__header">Case status</th>
-              <th scope="col" class="govuk-table__header">
-                <span class="govuk-visually-hidden">Action</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            {% for claim in data['claimantClaims'] %}
-              <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__cell">
-                  {{ data['claim.dateCreated'] }}
-                </td>
-                <td class="govuk-table__cell">
-                  {{ data['claim.claimType'] }}
-                </td>
-                <td class="govuk-table__cell">
-                  {% if data['claim.dateCreated'] == "Open" %}
-                    <strong class="govuk-tag govuk-tag--green">
-                      Open
-                    </strong>
-                  {% else %}
-                    <strong class="govuk-tag govuk-tag--red">
-                      Closed
-                    </strong>
-                  {% endif %}
-                </td>
-                <td class="govuk-table__cell">
-                  <a class="govuk-link" href="claim">View <span class="govuk-visually-hidden">claimant details</span></a>
-                </td>
-                {% endfor %}
-              </tr>
-            <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">11 July 2025</td>
-              <td class="govuk-table__cell">SR1</td>
-              <td class="govuk-table__cell">
-                <strong class="govuk-tag govuk-tag--red">
-                  Closed
-                </strong>
-              </td>
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="claim">View <span class="govuk-visually-hidden">claimant details</span></a>
-              </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">7 July 2022</td>
-              <td class="govuk-table__cell">SR1</td>
-              <td class="govuk-table__cell">
-                <strong class="govuk-tag govuk-tag--red">
-                  Closed
-                </strong>
-              </td>
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="claim">View <span class="govuk-visually-hidden">claimant details</span></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <nav class="govuk-pagination" aria-label="Pagination">
-          <ul class="govuk-pagination__list">
-            <li class="govuk-pagination__item govuk-pagination__item--current">
-              <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1" aria-current="page">
-                1
-              </a>
-            </li>
-            <li class="govuk-pagination__item">
-              <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2">
-                2
-              </a>
-            </li>
-            <li class="govuk-pagination__item">
-              <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
-                3
-              </a>
-            </li>
-          </ul>
-          <div class="govuk-pagination__next">
-            <a class="govuk-link govuk-pagination__link" href="#" rel="next">
-              <span class="govuk-pagination__link-title">
-                Next<span class="govuk-visually-hidden"> page</span>
-              </span>
-              <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
-                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-              </svg>
-            </a>
-          </div>
-        </nav>
+            {% if data['claimAddress2'] %}
+              {{data['claimAddress2']}}<br/>
+            {% else %}
+              Heaton<br/>
+            {% endif %}
+
+            {% if data['claimAddress3'] %}
+              {{data['claimAddress3']}}<br/>
+            {% else %}
+              Newcastle upon tyne<br/>
+            {% endif %}
+
+            {% if data['claimAddress4'] %}
+              {{data['claimAddress4']}}<br/>
+            {% else %}
+              England<br/>
+            {% endif %}
+
+            {% if data['claimPostcode'] %}
+              {{ data['claimPostcode'] }}
+            {% else %}
+              DL11C3
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <h3 class="govuk-heading-m">Alternative contact</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bill Smith
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0798762889
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            First point of contact
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+        </div>
+      </dl>
+
+      <h3 class="govuk-heading-m">Flags</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Identify at risk
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Special customer record
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Identity Fraud Unit
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Special rules
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Alternative formats
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Large print
+          </dd>
+        </div>
+      </dl>
+
+    <form method="post" action="decision">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
     </div>
   </div>
 
