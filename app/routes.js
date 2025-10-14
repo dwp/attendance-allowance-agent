@@ -41,7 +41,7 @@ router.post('/iteration-1/rfd-answer', function (req, res) {
     if (decision == "Disallowed"){
         res.redirect('/iteration-1/check-your-answers')
     } else {
-        res.redirect('/iteration-1/search-bank')
+        res.redirect('/iteration-1/payment')
     }
 
 })

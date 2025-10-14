@@ -17,14 +17,14 @@
           <label class="govuk-label" for="payeeName">
             Payee name
           </label>
-          <input class="govuk-input govuk-input--width-20" id="payeeName" name="payeeName" type="text">
+          <input class="govuk-input govuk-input--width-20" id="payeeName" name="payeeName" type="text" value="{{data['payeeName']}}">
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="payeeAccountHolder">
             Account holder
           </label>
-          <input class="govuk-input govuk-input--width-20" id="payeeAccountHolder" name="payeeAccountHolder" type="text">
+          <input class="govuk-input govuk-input--width-20" id="payeeAccountHolder" name="payeeAccountHolder" type="text" value="{{data['payeeAccountHolder']}}">
         </div>
 
         <div class="govuk-form-group">
@@ -34,19 +34,19 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="payeeType" name="payeeType" type="radio" value="Claimant">
+                <input class="govuk-radios__input" id="payeeType" name="payeeType" type="radio" value="Claimant" {{ checked('payeeType','Claimant') }}>
                 <label class="govuk-label govuk-radios__label" for="payeeType">
                   Claimant
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="payeeType-2" name="payeeType" type="radio" value="DAP">
+                <input class="govuk-radios__input" id="payeeType-2" name="payeeType" type="radio" value="DAP" {{ checked('payeeType','DAP') }}>
                 <label class="govuk-label govuk-radios__label" for="payeeType-2">
                   DAP
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="payeeType-3" name="payeeType" type="radio" value="CDAP">
+                <input class="govuk-radios__input" id="payeeType-3" name="payeeType" type="radio" value="CDAP" {{ checked('payeeType','CDAP') }}>
                 <label class="govuk-label govuk-radios__label" for="payeeType-3">
                   CDAP
                 </label>

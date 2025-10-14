@@ -48,27 +48,27 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Reciept date
+            Receipt date
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['reciept-day'] %}
-              {{ data['reciept-day'] }}
+            {% if data['receipt-day'] %}
+              {{ data['receipt-day'] }}
             {% else %}
               20 
             {% endif %}
-            {% if data['reciept-month'] %}
-              {{ data['reciept-month'] | monthName }} 
+            {% if data['receipt-month'] %}
+              {{ data['receipt-month'] | monthName }} 
             {% else %}
               July 
             {% endif %}
-            {% if data['reciept-year'] %}
-              {{ data['reciept-year'] }}
+            {% if data['receipt-year'] %}
+              {{ data['receipt-year'] }}
             {% else %}
               2025
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="decision/reciept-date">Change<span class="govuk-visually-hidden"> date</span></a>
+            <a class="govuk-link" href="decision/receipt-date">Change<span class="govuk-visually-hidden"> date</span></a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">

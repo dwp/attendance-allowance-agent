@@ -15,27 +15,27 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Reciept date
+            Receipt date
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['reciept-day'] %}
-              {{ data['reciept-day'] }}
+            {% if data['receipt-day'] %}
+              {{ data['receipt-day'] }}
             {% else %}
               20 
             {% endif %}
-            {% if data['reciept-month'] %}
-              {{ data['reciept-month'] | monthName }} 
+            {% if data['receipt-month'] %}
+              {{ data['receipt-month'] | monthName }} 
             {% else %}
               July 
             {% endif %}
-            {% if data['reciept-year'] %}
-              {{ data['reciept-year'] }}
+            {% if data['receipt-year'] %}
+              {{ data['receipt-year'] }}
             {% else %}
               2025
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="decision/reciept-date">Change<span class="govuk-visually-hidden"> date</span></a>
+            <a class="govuk-link" href="decision/receipt-date">Change<span class="govuk-visually-hidden"> date</span></a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -193,14 +193,59 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">20 August 2025</td>
-            <td class="govuk-table__cell">20 August 2028</td>
-            <td class="govuk-table__cell">Higher</td>
-            <td class="govuk-table__cell">Reasoning</td>
+           <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {% if data['entitlement-start-day'] %}
+                {{ data['entitlement-start-day'] }}
+              {% else %}
+                20 
+              {% endif %}
+              {% if data['entitlement-start-month'] %}
+                {{ data['entitlement-start-month'] | monthName }} 
+              {% else %}
+                August 
+              {% endif %}
+              {% if data['entitlement-start-year'] %}
+                {{ data['entitlement-start-year'] }}
+              {% else %}
+                2025
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% if data['entitlement-end-day'] %}
+                {{ data['entitlement-end-day'] }}
+              {% else %}
+                20 
+              {% endif %}
+              {% if data['entitlement-end-month'] %}
+                {{ data['entitlement-end-month'] | monthName }} 
+              {% else %}
+                August 
+              {% endif %}
+              {% if data['entitlement-end-year'] %}
+                {{ data['entitlement-end-year'] }}
+              {% else %}
+                2028
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% if data['entitledRate'] %}
+                {{ data['entitledRate'] }}
+              {% else %}
+                Reasoning
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% if data['entitlementReason'] %}
+                {{ data['entitlementReason'] }}
+              {% else %}
+                Reasoning
+              {% endif %}
+            </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
               <ul class="govuk-summary-list__actions-list">
                 <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/add-entitlement"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change row 1</span></a></li>
+                <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/delete-entitlement"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove row 1</span></a></li>
               </ul>
             </td>
           </tr>
@@ -221,12 +266,51 @@
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">20 July 2025</td>
-            <td class="govuk-table__cell">19 August 2025</td>
-            <td class="govuk-table__cell">Reasoning</td>
+            <td scope="row" class="govuk-table__cell">
+              {% if data['exclusion-start-day'] %}
+                {{ data['exclusion-start-day'] }}
+              {% else %}
+                20 
+              {% endif %}
+              {% if data['exclusion-start-month'] %}
+                {{ data['exclusion-start-month'] | monthName }} 
+              {% else %}
+                July 
+              {% endif %}
+              {% if data['exclusion-start-year'] %}
+                {{ data['exclusion-start-year'] }}
+              {% else %}
+                2025
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% if data['exclusion-end-day'] %}
+                {{ data['exclusion-end-day'] }}
+              {% else %}
+                19 
+              {% endif %}
+              {% if data['exclusion-end-month'] %}
+                {{ data['exclusion-end-month'] | monthName }} 
+              {% else %}
+                August 
+              {% endif %}
+              {% if data['exclusion-end-year'] %}
+                {{ data['exclusion-end-year'] }}
+              {% else %}
+                2025
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% if data['exclusion-reason'] %}
+                {{ data['exclusion-reason'] }}
+              {% else %}
+                Reason
+              {% endif %}
+            </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
               <ul class="govuk-summary-list__actions-list">
                 <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/add-exclusion"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change row 1</span></a></li>
+                <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="award/delete-exclusion"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove row 1</span></a></li>
               </ul>
             </td>
           </tr>
