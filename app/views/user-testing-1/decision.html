@@ -1,0 +1,333 @@
+{% extends "user-testing-1/layouts/internal-layout.html" %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <nav class="dwp-horizontal-navigation govuk-!-margin-bottom-5" aria-label="Horizontal">
+        <ul class="dwp-horizontal-navigation__list">
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-1" href="claim" class="dwp-horizontal-navigation__link">Tasks</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-2" href="personal" class="dwp-horizontal-navigation__link">Personal</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-3" href="contact" class="dwp-horizontal-navigation__link">Contact</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-4" href="relationship" class="dwp-horizontal-navigation__link">Relationship</a>
+          </li>
+          {% if (data['claimFinalised'] == 'Yes') %}
+            <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
+              <a id="s-item-5" href="decision" class="dwp-horizontal-navigation__link" aria-current="true">Decision</a>
+            </li>
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-6" href="payment" class="dwp-horizontal-navigation__link">Payment</a>
+            </li>
+          {% endif %}
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-7" href="history" class="dwp-horizontal-navigation__link">History</a>
+          </li>
+        </ul>
+      </nav>
+
+      <h1 class="govuk-heading-m">Decision</h1>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Receipt date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['receipt-day'] %}
+              {{ data['receipt-day'] }}
+            {% else %}
+              20 
+            {% endif %}
+            {% if data['receipt-month'] %}
+              {{ data['receipt-month'] | monthName }} 
+            {% else %}
+              July 
+            {% endif %}
+            {% if data['receipt-year'] %}
+              {{ data['receipt-year'] }}
+            {% else %}
+              2025
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Effective date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['effective-day'] %}
+              {{ data['effective-day'] }}
+            {% else %}
+              20 
+            {% endif %}
+            {% if data['effective-month'] %}
+              {{ data['effective-month'] | monthName }} 
+            {% else %}
+              July 
+            {% endif %}
+            {% if data['effective-year'] %}
+              {{ data['effective-year'] }}
+            {% else %}
+              2025
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision status
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['decisionAction'] == 'Disallowed' %}
+              <strong class="govuk-tag govuk-tag--red">
+                Disallowed
+              </strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--green">
+                Allowed
+              </strong>
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ "today" | govukDate }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision by
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Sam Smith
+          </dd>
+        </div>
+
+        {% if data['decisionAction'] == 'Disallowed' %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Exclusion reason 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['exclusion-reason'] %}
+                {{ data['exclusion-reason'] }}
+              {% else %}
+                Reason
+              {% endif %}
+            </dd>
+          </div>
+        </dl>
+
+      {% else %}
+        </dl>
+        <h2 class="govuk-heading-m">Award</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Award status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['awardStatus'] == 'Disallowed' %}
+                <strong class="govuk-tag govuk-tag--red">
+                  Disallowed
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Allowed
+                </strong>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Awarded by
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['awardBy'] %}
+                {{ data['awardBy'] }}
+              {% else %}
+                Sam Smith
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Primary health condition or disability
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['primaryHealth'] %}
+                {{ data['primaryHealth'] }}
+              {% else %}
+                Special rules
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Secondary health condition or disability
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['secondaryDisability'] %}
+                {{ data['secondaryDisability'] }}
+              {% else %}
+                Lung cancer
+              {% endif %}
+            </dd>
+          </div>
+        </dl>
+        
+        <h2 class="govuk-heading-m">Entitlement periods</h2>
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              {% if data['entitlement-start-day'] %}
+                {{ data['entitlement-start-day'] }}
+              {% else %}
+                20 
+              {% endif %}
+              {% if data['entitlement-start-month'] %}
+                {{ data['entitlement-start-month'] | monthName }} 
+              {% else %}
+                August 
+              {% endif %}
+              {% if data['entitlement-start-year'] %}
+                {{ data['entitlement-start-year'] }}
+              {% else %}
+                2025 
+              {% endif %}
+              to 
+              {% if data['entitlement-end-day'] %}
+                {{ data['entitlement-end-day'] }}
+              {% else %}
+                20 
+              {% endif %}
+              {% if data['entitlement-end-month'] %}
+                {{ data['entitlement-end-month'] | monthName }} 
+              {% else %}
+                August 
+              {% endif %}
+              {% if data['entitlement-end-year'] %}
+                {{ data['entitlement-end-year'] }}
+              {% else %}
+                2028
+              {% endif %}
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Rate
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data['entitledRate'] %}
+                    {{ data['entitledRate'] }}
+                  {% else %}
+                    Higher
+                  {% endif %}
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reason
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data['entitlementReason'] %}
+                    {{ data['entitlementReason'] }}
+                  {% else %}
+                    Reasoning
+                  {% endif %}
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-m">Exclusion periods</h2>
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              {% if data['exclusion-start-day'] %}
+                {{ data['exclusion-start-day'] }}
+              {% else %}
+                20 
+              {% endif %}
+              {% if data['exclusion-start-month'] %}
+                {{ data['exclusion-start-month'] | monthName }} 
+              {% else %}
+                July 
+              {% endif %}
+              {% if data['exclusion-start-year'] %}
+                {{ data['exclusion-start-year'] }}
+              {% else %}
+                2025
+              {% endif %}
+              to 
+              {% if data['exclusion-end-day'] %}
+                {{ data['exclusion-end-day'] }}
+              {% else %}
+                19 
+              {% endif %}
+              {% if data['exclusion-end-month'] %}
+                {{ data['exclusion-end-month'] | monthName }} 
+              {% else %}
+                August 
+              {% endif %}
+              {% if data['exclusion-end-year'] %}
+                {{ data['exclusion-end-year'] }}
+              {% else %}
+                2025
+              {% endif %}
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reason
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data['exclusion-reason'] %}
+                    {{ data['exclusion-reason'] }}
+                  {% else %}
+                    Reason
+                  {% endif %}
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Reason for decision</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reason
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['rfd'] %}
+              {{ data['rfd'] }}
+            {% else %}
+              Reasoning for making a decision will be shown here.
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
