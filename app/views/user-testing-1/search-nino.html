@@ -1,0 +1,36 @@
+{% extends "user-testing-1/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set pageName = "Search a claimant" %}
+
+{% block content %}
+  
+  
+  <!--<span class="govuk-caption-xl">Pedro Pascal</span> -->
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">
+        Search for claims using NINO or 
+        <a href="advanced-search" class="govuk-link">use advanced search</a>.
+      </p>
+
+
+      <form class="form" method="post" action="search-nino-answer">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search-nino">
+            National Insurance number
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="search-nino" name="searchNino" type="text">
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Search
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

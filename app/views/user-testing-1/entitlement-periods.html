@@ -1,0 +1,119 @@
+{% extends "user-testing-1/layouts/internal-layout.html" %}
+
+{% set pageName = "Entitlement periods" %}
+
+{% block content %}
+  
+  <span class="govuk-caption-l">Decision</span>
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            {% if data['entitlement-start-day'] %}
+              {{ data['entitlement-start-day'] }}
+            {% else %}
+              20 
+            {% endif %}
+            {% if data['entitlement-start-month'] %}
+              {{ data['entitlement-start-month'] | monthName }} 
+            {% else %}
+              August 
+            {% endif %}
+            {% if data['entitlement-start-year'] %}
+              {{ data['entitlement-start-year'] }}
+            {% else %}
+              2025 
+            {% endif %}
+            to 
+            {% if data['entitlement-end-day'] %}
+              {{ data['entitlement-end-day'] }}
+            {% else %}
+              20 
+            {% endif %}
+            {% if data['entitlement-end-month'] %}
+              {{ data['entitlement-end-month'] | monthName }} 
+            {% else %}
+              August 
+            {% endif %}
+            {% if data['entitlement-end-year'] %}
+              {{ data['entitlement-end-year'] }}
+            {% else %}
+              2028
+            {% endif %}
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="award/add-entitlement">Change<span class="govuk-visually-hidden"> entitlement 1</span></a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="award/delete-entitlement">Delete<span class="govuk-visually-hidden"> entitlement 2</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Rate
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['entitledRate'] %}
+                  {{ data['entitledRate'] }}
+                {% else %}
+                  Higher
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Reason
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['entitlementReason'] %}
+                  {{ data['entitlementReason'] }}
+                {% else %}
+                  Reasoning
+                {% endif %}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <form method="post" action="entitlement-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Do you want to add another entitlement period?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="entitlement-1" name="entitlementAction" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="entitlement-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="entitlement-2" name="entitlementAction" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="entitlement-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

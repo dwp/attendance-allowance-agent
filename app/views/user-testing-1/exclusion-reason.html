@@ -1,0 +1,35 @@
+{% extends "user-testing-1/layouts/internal-layout.html" %}
+
+{% set showBack = "false" %}
+{% set pageName = "What is the exclusion reason?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="reason-for-decision" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="exclusion-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">Decision</span>
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <select class="govuk-select" id="sort" name="exclusion-reason">
+              <option value="" selected>Select an option</option>
+              <option value="Missing SR1">Missing SR1</option>
+              <option value="Claimant has died">Claimant has died</option>
+              <option value="Does not meet eligiblity">Does not meet eligiblity</option>
+              <option value="Other">Other</option>
+            </select>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

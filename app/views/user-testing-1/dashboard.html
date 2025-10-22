@@ -1,0 +1,73 @@
+{% extends "user-testing-1/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set hideBack = "true" %}
+{% set showNav = "false" %}
+{% set pageName = "Dashboard" %}
+
+{% block content %}
+
+<!-- <span class="govuk-caption-xl">Pedro Pascal</span> -->
+<h1 class="govuk-heading-l">
+  {{ pageName }}
+</h1>
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="search-nino">Search a claimant</a>
+          </h2>
+          <p class="govuk-body">
+            Search for a claimant using NINO or further details.
+          </p>
+          <p class="govuk-body">
+            You can process a claim if the claimant has an open claim.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="#">Register a claim</a>
+          </h2>
+          <p class="govuk-body">
+            Register a paper-based claim.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="#">Process a claim</a>
+          </h2>
+          <p class="govuk-body">
+            Access your work queue to a process a claim 
+          </p>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-summary-card">
+        <div class="AA-card__content">
+          <h2 class="govuk-summary-card__title">
+            <a class="govuk-link" href="#">View statistics</a>
+          </h2>
+          <p class="govuk-body">
+            View all statistics for processing claims.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+{% endblock %}

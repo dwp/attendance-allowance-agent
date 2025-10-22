@@ -1,0 +1,152 @@
+{% extends "user-testing-1/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set pageName = "Claimant results" %}
+
+{% block content %}
+  
+  <!-- <span class="govuk-caption-xl">Pedro Pascal</span> -->
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form AA-results-filter" method="post" action="search-results">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="results-sort">
+            Sort by
+          </label>
+          <select class="govuk-select" id="results-sort" name="results-sort">
+            <option value="ninoAZ" selected>NINO: A to Z</option>
+            <option value="ninoZA">NINO: Z to A</option>
+            <option value="surnameAZ">Surname: A to Z</option>
+            <option value="surnameZA">Surname: Z to A</option>
+            <option value="firstnameAZ">Firstname: A to Z</option>
+            <option value="firstnameZA">Firstname: Z to A</option>
+          </select>
+        </div>
+
+        <div class="AA-results-buttons">
+          <button type="submit" class="govuk-button" data-module="govuk-button" style="margin-right: 10px;">
+            Apply
+          </button>
+          <div class="govuk-!-margin-top-5">
+            <a class="govuk-link" href="advanced-search" data-module="govuk-button">
+              Search again
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="govuk-grid-column-full">
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Claimants</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">NINO</th>
+            <th scope="col" class="govuk-table__header">Name</th>
+            <th scope="col" class="govuk-table__header">Date of birth</th>
+            <th scope="col" class="govuk-table__header">Address</th>
+            <th scope="col" class="govuk-table__header">Postcode</th>
+            <th scope="col" class="govuk-table__header">
+              <span class="govuk-visually-hidden">Action</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">AB123456C</td>
+            <td class="govuk-table__cell">Jon Bonjovi</td>
+            <td class="govuk-table__cell">13 April 1958</td>
+            <td class="govuk-table__cell">11 Elm Street</td>
+            <td class="govuk-table__cell">FR13 1EL</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="claimant-result">View <span class="govuk-visually-hidden">claimant details</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">AB654321C</td>
+            <td class="govuk-table__cell">freddie Mercury</td>
+            <td class="govuk-table__cell">13 December 1944</td>
+            <td class="govuk-table__cell">3 West Lane</td>
+            <td class="govuk-table__cell">QU13 1EN</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="claimant-result">View <span class="govuk-visually-hidden">claimant details</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">QQ123456C</td>
+            <td class="govuk-table__cell">Harry Hill</td>
+            <td class="govuk-table__cell">28 Feburary 1950</td>
+            
+            <td class="govuk-table__cell">67 York Road</td>
+            <td class="govuk-table__cell">EL13 1DR</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="claimant-result">View <span class="govuk-visually-hidden">claimant details</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">QQ654321C</td>
+            <td class="govuk-table__cell">Rowland Finn</td>
+            <td class="govuk-table__cell">18 July 1955</td>
+            <td class="govuk-table__cell">15 Green Lane</td>
+            <td class="govuk-table__cell">FR13 1EL</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="claimant-result">View <span class="govuk-visually-hidden">claimant details</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">AA123987B</td>
+            <td class="govuk-table__cell">Clive Jones</td>
+            <td class="govuk-table__cell">23 November 1948</td>
+            <td class="govuk-table__cell">1 Miracle Street</td>
+            <td class="govuk-table__cell">MR13 1EL</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="claimant-result">View <span class="govuk-visually-hidden">claimant details</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">BB123987B</td>
+            <td class="govuk-table__cell">Billy Bob</td>
+            <td class="govuk-table__cell">3 May 1952</td>
+            <td class="govuk-table__cell">13 Grove Street</td>
+            <td class="govuk-table__cell">FR13 1EL</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="claimant-result">View <span class="govuk-visually-hidden">claimant details</span></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <nav class="govuk-pagination" aria-label="Pagination">
+        <ul class="govuk-pagination__list">
+          <li class="govuk-pagination__item govuk-pagination__item--current">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1" aria-current="page">
+              1
+            </a>
+          </li>
+          <li class="govuk-pagination__item">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2">
+              2
+            </a>
+          </li>
+          <li class="govuk-pagination__item">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+              3
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-pagination__next">
+          <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+            <span class="govuk-pagination__link-title">
+              Next<span class="govuk-visually-hidden"> page</span>
+            </span>
+            <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+{% endblock %}

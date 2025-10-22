@@ -1,0 +1,46 @@
+{% extends "user-testing-1/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set pageName = "Search for bank or building society account" %}
+
+{% block content %}
+  
+  
+  <!-- <span class="govuk-caption-xl">Pedro Pascal</span> -->
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post" action="bank-results">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="bank-sort-code">
+            Sort code
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="bank-sort-code" name="bank-sort-code" type="text" value="{{data['bank-sort-code']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="bank-account-number">
+            Account number
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="bank-account-number" name="bank-account-number" type="text" value="{{data['bank-account-number']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="bank-roll-number">
+            Roll number (optional)
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="bank-roll-number" name="bank-roll-number" type="text" value="{{data['bank-roll-number']}}">
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Find account
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

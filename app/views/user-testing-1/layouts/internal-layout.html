@@ -1,0 +1,126 @@
+{%- set assetPath = assetPath | default('/plugin-assets/govuk-frontend' + govukFrontend.assetPath) -%}
+
+{% extends "govuk/template.njk" %}
+
+{% block head %}
+  {% block meta %}{% endblock %}
+  {% block stylesheets %}
+    {% include "govuk-prototype-kit/includes/stylesheets.njk" %}
+  {% endblock %}
+{% endblock %}
+
+{% block pageTitle %}
+  {% if pageName %}{{ pageName }} - {% endif %}{{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+
+{% block header %}
+  <header data-module="govuk-header" class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/" class="dwp-header__link">{{ serviceName }}</a>
+      </div>
+      {% if not showNav %}
+      <nav class="dwp-header-navigation"
+        aria-label="Primary">
+        <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden>
+          Menu
+        </button>
+        <ul id="navigation" class="dwp-header-navigation__list">
+          <li class="dwp-header-navigation__item">
+            <a
+              href="./search-nino">
+              Search a claimant
+            </a>
+          </li>
+          {# <li class="dwp-header-navigation__item">
+            <a
+              href="./register-claim">
+              Register a claim
+            </a>
+          </li>
+          <li class="dwp-header-navigation__item">
+            <a
+              href="./statistics">
+              View statistics
+            </a>
+          </li> #}
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+  </header>
+{% endblock %}
+
+{% block beforeContent %}
+  {% if not hideBack %}
+    <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+  {% endif %}
+  <script>console.log({{ data | dump | safe }})</script>
+  {% if not (hideRef) %}
+    <div class="govuk-!-margin-top-5">
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+          <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-quick-reference__primary">
+            {% if data['claimFirstName'] or data['claimLastName'] %}
+              {{data['claimFirstName']}} {{data['claimLastName']}}
+            {% else %}
+              James Smith
+            {% endif %}
+          </dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+          <dd class="dwp-quick-reference__secondary">
+            {% if data['searchNino'] %}
+              {{ data['searchNino']}}
+            {% else %}
+              AB123456C
+            {% endif %}
+          </dd>
+          <!-- <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Claim status:</dt>
+          <dd class="dwp-quick-reference__secondary">
+            <strong class="govuk-tag govuk-tag--green">
+              Open
+            </strong>
+          </dd> -->
+        </dl>
+      </section>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% if (GOVUKPrototypeKit.isDevelopment) %}
+  {% set footerItems = [
+    {
+      href: "/manage-prototype",
+      text: "Manage your prototype"
+    }, {
+      href: "/manage-prototype/clear-data",
+      text: "Clear data"
+    }
+  ] %}
+{% else %}
+  {% set footerItems = [
+    {
+      href: "/manage-prototype/clear-data",
+      text: "Clear data"
+    }
+  ] %}
+{% endif %}
+
+{% block footer %}
+  {{ govukFooter({
+    meta: {
+      items: footerItems,
+      visuallyHiddenTitle: "Footer links"
+    }
+  }) }}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "govuk-prototype-kit/includes/scripts.njk" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

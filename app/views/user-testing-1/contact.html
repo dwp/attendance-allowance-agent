@@ -1,0 +1,161 @@
+{% extends "user-testing-1/layouts/internal-layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <nav class="dwp-horizontal-navigation govuk-!-margin-bottom-5" aria-label="Horizontal">
+          <ul class="dwp-horizontal-navigation__list">
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-1" href="claim" class="dwp-horizontal-navigation__link" aria-current="true">Tasks</a>
+            </li>
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-2" href="personal" class="dwp-horizontal-navigation__link">Personal</a>
+            </li>
+            <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
+              <a id="s-item-3" href="contact" class="dwp-horizontal-navigation__link" aria-current="true">Contact</a>
+            </li>
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-4" href="relationship" class="dwp-horizontal-navigation__link">Relationship</a>
+            </li>
+            {% if (data['claimFinalised'] == 'Yes') %}
+              <li class="dwp-horizontal-navigation__item">
+                <a id="s-item-5" href="decision" class="dwp-horizontal-navigation__link">Decision</a>
+              </li>
+              <li class="dwp-horizontal-navigation__item">
+                <a id="s-item-6" href="payment" class="dwp-horizontal-navigation__link">Payment</a>
+              </li>
+            {% endif %}
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-7" href="history" class="dwp-horizontal-navigation__link">History</a>
+            </li>
+          </ul>
+        </nav>
+
+      <h1 class="govuk-heading-m">Contact details</h1>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimMainContactNumber'] %}
+              {{data['claimMainContactNumber']}}
+            {% else %}
+              0800001066
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimAddress1'] %}
+              {{data['claimAddress1']}}<br/>
+            {% else %}
+              11 street<br/>
+            {% endif %}
+
+            {% if data['claimAddress2'] %}
+              {{data['claimAddress2']}}<br/>
+            {% else %}
+              Heaton<br/>
+            {% endif %}
+
+            {% if data['claimAddress3'] %}
+              {{data['claimAddress3']}}<br/>
+            {% else %}
+              Newcastle upon tyne<br/>
+            {% endif %}
+
+            {% if data['claimAddress4'] %}
+              {{data['claimAddress4']}}<br/>
+            {% else %}
+              England<br/>
+            {% endif %}
+
+            {% if data['claimPostcode'] %}
+              {{ data['claimPostcode'] }}
+            {% else %}
+              DL11C3
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Welsh language spoken
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimWelshSpoken'] %}
+              {{data['claimWelshSpoken']}}
+            {% else %}
+              No
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Welsh language written
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimWelshWritten'] %}
+              {{data['claimWelshWritten']}}
+            {% else %}
+              No
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <h3 class="govuk-heading-m">Alternative contact</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bill Smith
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0798762889
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            First point of contact
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+        </div>
+      </dl>
+
+      <h3 class="govuk-heading-m">Flags</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Identify at risk
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Alternative formats
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Large print
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+{% endblock %}

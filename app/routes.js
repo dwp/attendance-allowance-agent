@@ -8,6 +8,92 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here
 
+// User testing 1
+
+router.post('/user-testing-1/search-nino-answer', function (req, res) {
+
+    var nino = req.session.data['searchNino']
+
+    if (nino == "QQ123456C"){
+        res.redirect('/user-testing-1/claimant-result')
+    } else {
+        res.redirect('/user-testing-1/claim')
+    }
+
+})
+
+router.post('/user-testing-1/decision-answer', function (req, res) {
+
+    var decision = req.session.data['decisionAction']
+
+    if (decision == "Disallowed"){
+        res.redirect('/user-testing-1/exclusion-reason')
+    } else {
+        res.redirect('/user-testing-1/health-condition-disablity')
+    }
+
+})
+
+router.post('/user-testing-1/bank-answer', function (req, res) {
+
+    var bank = req.session.data['bankAction']
+
+    if (bank == "No"){
+        res.redirect('/user-testing-1/search-bank')
+    } else {
+        res.redirect('/user-testing-1/payee-name')
+    }
+
+})
+
+router.post('/user-testing-1/finalise-answer', function (req, res) {
+
+    var finalise = req.session.data['claimFinalised']
+
+    if (finalise == "Yes"){
+        res.redirect('/user-testing-1/confirmation')
+    } else {
+        res.redirect('/user-testing-1/claim')
+    }
+
+})
+
+router.post('/user-testing-1/entitlement-answer', function (req, res) {
+
+    var entitlement = req.session.data['entitlementAction']
+
+    if (entitlement == "Yes"){
+        res.redirect('/user-testing-1/award/add-entitlement')
+    } else {
+        res.redirect('/user-testing-1/exclusion-periods')
+    }
+
+})
+
+router.post('/user-testing-1/exclusion-answer', function (req, res) {
+
+    var exclusion = req.session.data['exclusionAction']
+
+    if (exclusion == "Yes"){
+        res.redirect('/user-testing-1/award/add-exclusion')
+    } else {
+        res.redirect('/user-testing-1/reason-for-decision')
+    }
+
+})
+
+router.post('/user-testing-1/accountholder-answer', function (req, res) {
+
+    var account = req.session.data['accountholderCheck']
+
+    if (account == "Yes"){
+        res.redirect('/user-testing-1/payee-type')
+    } else {
+        res.redirect('/user-testing-1/accountholder-name')
+    }
+
+})
+
 // iteration 1
 
 router.post('/iteration-1/search-nino-answer', function (req, res) {
