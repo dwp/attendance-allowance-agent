@@ -41,7 +41,7 @@ router.post('/user-testing-1/bank-answer', function (req, res) {
     if (bank == "No"){
         res.redirect('/user-testing-1/search-bank')
     } else {
-        res.redirect('/user-testing-1/payee-name')
+        res.redirect('/user-testing-1/payment-summary')
     }
 
 })
@@ -63,7 +63,7 @@ router.post('/user-testing-1/entitlement-answer', function (req, res) {
     var entitlement = req.session.data['entitlementAction']
 
     if (entitlement == "Yes"){
-        res.redirect('/user-testing-1/award/add-entitlement')
+        res.redirect('/user-testing-1/award/entitlement-start-date')
     } else {
         res.redirect('/user-testing-1/exclusion-periods')
     }
@@ -75,7 +75,7 @@ router.post('/user-testing-1/exclusion-answer', function (req, res) {
     var exclusion = req.session.data['exclusionAction']
 
     if (exclusion == "Yes"){
-        res.redirect('/user-testing-1/award/add-exclusion')
+        res.redirect('/user-testing-1/award/exclusion-start-date')
     } else {
         res.redirect('/user-testing-1/reason-for-decision')
     }

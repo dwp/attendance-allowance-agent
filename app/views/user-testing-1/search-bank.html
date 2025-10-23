@@ -1,11 +1,11 @@
 {% extends "user-testing-1/layouts/internal-layout.html" %}
 {% set hideRef = "true" %}
-{% set pageName = "Search for bank or building society account" %}
+{% set pageName = "Search for a bank or building society account" %}
 
 {% block content %}
   
   
-  <!-- <span class="govuk-caption-xl">Pedro Pascal</span> -->
+  
   <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
@@ -16,16 +16,29 @@
       <form class="form" method="post" action="bank-results">
 
         <div class="govuk-form-group">
+          <label class="govuk-label" for="payeeAccountHolder">
+            Name on the account
+          </label>
+          <input class="govuk-input" id="payeeAccountHolder" name="payeeAccountHolder" type="text" spellcheck="false" autocomplete="name" value="{{data['payeeAccountHolder']}}">
+        </div>
+
+        <div class="govuk-form-group">
           <label class="govuk-label" for="bank-sort-code">
             Sort code
           </label>
-          <input class="govuk-input govuk-input--width-10" id="bank-sort-code" name="bank-sort-code" type="text" value="{{data['bank-sort-code']}}">
+          <div id="sort-code-hint" class="govuk-hint">
+            Must be 6 digits long
+          </div>
+          <input class="govuk-input govuk-input--width-5" id="bank-sort-code" name="bank-sort-code" type="text" value="{{data['bank-sort-code']}}">
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="bank-account-number">
             Account number
           </label>
+          <div id="account-number-hint" class="govuk-hint">
+            Must be between 6 and 8 digits long
+          </div>
           <input class="govuk-input govuk-input--width-10" id="bank-account-number" name="bank-account-number" type="text" value="{{data['bank-account-number']}}">
         </div>
 

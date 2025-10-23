@@ -1,10 +1,10 @@
 {% extends "user-testing-1/layouts/internal-layout.html" %}
 
-{% set pageName = "Decision summary" %}
+{% set pageName = "Make a decision" %}
 
 {% block content %}
   
-  <span class="govuk-caption-l">Decision</span>
+  
   <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
@@ -55,12 +55,12 @@
             {% if data['receipt-day'] %}
               {{ data['receipt-day'] }}
             {% else %}
-              20 
+              28
             {% endif %}
             {% if data['receipt-month'] %}
               {{ data['receipt-month'] | monthName }} 
             {% else %}
-              July 
+              October 
             {% endif %}
             {% if data['receipt-year'] %}
               {{ data['receipt-year'] }}
@@ -80,12 +80,12 @@
             {% if data['effective-day'] %}
               {{ data['effective-day'] }}
             {% else %}
-              20 
+              28 
             {% endif %}
             {% if data['effective-month'] %}
               {{ data['effective-month'] | monthName }} 
             {% else %}
-              July 
+              October 
             {% endif %}
             {% if data['effective-year'] %}
               {{ data['effective-year'] }}

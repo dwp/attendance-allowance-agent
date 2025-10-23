@@ -1,5 +1,5 @@
 {% extends "user-testing-1/layouts/internal-layout.html" %}
-{% set pageName = "Check your answers" %}
+{% set pageName = "Check claimant details" %}
 {% block content %}
   
 
@@ -24,6 +24,11 @@
               James
             {% endif %}
           </dd>
+          {% if data['claimFinalised'] %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> first name</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -36,6 +41,11 @@
               Jo
             {% endif %}
           </dd>
+          {% if data['claimFinalised'] %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> middle name</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -48,6 +58,11 @@
               Smith
             {% endif %}
           </dd>
+          {% if data['claimFinalised'] %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> last name</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -160,6 +175,11 @@
               0800001066
             {% endif %}
           </dd>
+          {% if data['claimFinalised'] %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> phone number</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -196,6 +216,11 @@
               DL11C3
             {% endif %}
           </dd>
+          {% if data['claimFinalised'] %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -251,7 +276,30 @@
         </div>
       </dl>
 
-      <form method="post" action="claim">
+        <form method="post" action="claim">
+          {% if not (data['claimFinalised'] == 'Yes') %}
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Are the claimant's details correct?
+                </legend>
+                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="taskRegisterStatus" name="taskRegisterStatus" type="radio" value="Complete">
+                    <label class="govuk-label govuk-radios__label" for="taskRegisterStatus-1">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="taskRegisterStatus" name="taskRegisterStatus" type="radio" value="Close">
+                    <label class="govuk-label govuk-radios__label" for="taskRegisterStatus-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Confirm
         </button>

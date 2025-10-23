@@ -1,10 +1,14 @@
 {% extends "user-testing-1/layouts/internal-layout.html" %}
 
-{% set pageName = "Check your answers" %}
+{% if not data['claimFinalised'] %}
+  {% set pageName = "Check your answers" %}
+{% else %}
+  {% set pageName = "Check decision details" %}
+{% endif %}
 
 {% block content %}
   
-  <span class="govuk-caption-l">Decision</span>
+  
   <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
@@ -12,7 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h2 class="govuk-heading-m">Decision summary</h2>
+      <h2 class="govuk-heading-m">Make a decision</h2>
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -35,9 +39,11 @@
               2025
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="decision/receipt-date">Change<span class="govuk-visually-hidden"> date</span></a>
-          </dd>
+          {% if not (data['claimFinalised'] == 'Yes') %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="decision/receipt-date">Change<span class="govuk-visually-hidden"> date</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -60,9 +66,11 @@
               2025
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="decision/effective-date">Change<span class="govuk-visually-hidden"> date</span></a>
-          </dd>
+          {% if not (data['claimFinalised'] == 'Yes') %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="decision/effective-date">Change<span class="govuk-visually-hidden"> date</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -79,9 +87,11 @@
               </strong>
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="decision">Change<span class="govuk-visually-hidden"> decision status</span></a>
-          </dd>
+          {% if not (data['claimFinalised'] == 'Yes') %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="decision">Change<span class="govuk-visually-hidden"> decision status</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -91,14 +101,16 @@
             {{ "today" | govukDate }}
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Decision by
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Sam Smith
-          </dd>
-        </div>
+        {% if (data['claimFinalised'] == 'Yes') %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Decision by
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Sam Smith
+            </dd>
+          </div>
+        {% endif %}
 
         {% if data['decisionAction'] == 'Disallowed' %}
 
@@ -113,15 +125,17 @@
                 Reason
               {% endif %}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="exclusion-reason">Change<span class="govuk-visually-hidden"> exclusion reason</span></a>
-            </dd>
+            {% if not (data['claimFinalised'] == 'Yes') %}
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="exclusion-reason">Change<span class="govuk-visually-hidden"> exclusion reason</span></a>
+              </dd>
+            {% endif %}
           </div>
         </dl>
 
       {% else %}
         </dl>
-        <h2 class="govuk-heading-m">Award</h2>
+        <h2 class="govuk-heading-m">Award summary</h2>
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -139,18 +153,16 @@
               {% endif %}
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Awarded by
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['awardBy'] %}
-                {{ data['awardBy'] }}
-              {% else %}
-                Sam Smith
-              {% endif %}
-            </dd>
-          </div>
+          {% if (data['claimFinalised'] == 'Yes') %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Awarded by
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Test user
+              </dd>
+            </div>
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Primary health condition or disability
@@ -174,9 +186,11 @@
                 Lung cancer
               {% endif %}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="health-condition-disablity">Change<span class="govuk-visually-hidden"> health condition or disability</span></a>
-            </dd>
+            {% if not (data['claimFinalised'] == 'Yes') %}
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="health-condition-disablity">Change<span class="govuk-visually-hidden"> health condition or disability</span></a>
+              </dd>
+            {% endif %}
           </div>
         </dl>
         
@@ -187,12 +201,12 @@
               {% if data['entitlement-start-day'] %}
                 {{ data['entitlement-start-day'] }}
               {% else %}
-                20 
+                28 
               {% endif %}
               {% if data['entitlement-start-month'] %}
                 {{ data['entitlement-start-month'] | monthName }} 
               {% else %}
-                August 
+                October 
               {% endif %}
               {% if data['entitlement-start-year'] %}
                 {{ data['entitlement-start-year'] }}
@@ -203,12 +217,12 @@
               {% if data['entitlement-end-day'] %}
                 {{ data['entitlement-end-day'] }}
               {% else %}
-                20 
+                28 
               {% endif %}
               {% if data['entitlement-end-month'] %}
                 {{ data['entitlement-end-month'] | monthName }} 
               {% else %}
-                August 
+                October 
               {% endif %}
               {% if data['entitlement-end-year'] %}
                 {{ data['entitlement-end-year'] }}
@@ -216,14 +230,16 @@
                 2028
               {% endif %}
             </h2>
-            <ul class="govuk-summary-card__actions">
-              <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="award/add-entitlement">Change<span class="govuk-visually-hidden"> entitlement 1</span></a>
-              </li>
-              <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="award/delete-entitlement">Delete<span class="govuk-visually-hidden"> entitlement 2</span></a>
-              </li>
-            </ul>
+            {% if not (data['claimFinalised'] == 'Yes') %}
+              <ul class="govuk-summary-card__actions">
+                <li class="govuk-summary-card__action">
+                  <a class="govuk-link" href="award/add-entitlement">Change<span class="govuk-visually-hidden"> entitlement 1</span></a>
+                </li>
+                <li class="govuk-summary-card__action">
+                  <a class="govuk-link" href="award/delete-entitlement">Delete<span class="govuk-visually-hidden"> entitlement 2</span></a>
+                </li>
+              </ul>
+            {% endif %}
           </div>
           <div class="govuk-summary-card__content">
             <dl class="govuk-summary-list">
@@ -247,7 +263,7 @@
                   {% if data['entitlementReason'] %}
                     {{ data['entitlementReason'] }}
                   {% else %}
-                    Reasoning
+                    Awarded under SREL
                   {% endif %}
                 </dd>
               </div>
@@ -256,7 +272,22 @@
         </div>
 
         <h2 class="govuk-heading-m">Exclusion periods</h2>
-        <div class="govuk-summary-card">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Exclusion period
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            {% if not (data['claimFinalised'] == 'Yes') %}
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="exclusion-periods">Change<span class="govuk-visually-hidden"> exclusion period</span></a>
+              </dd>
+            {% endif %}
+          </div>
+        </dl>
+        {# <div class="govuk-summary-card">
           <div class="govuk-summary-card__title-wrapper">
             <h2 class="govuk-summary-card__title">
               {% if data['exclusion-start-day'] %}
@@ -316,7 +347,7 @@
               </div>
             </dl>
           </div>
-        </div>
+        </div> #}
 
       {% endif %}
 
@@ -333,9 +364,11 @@
               Reasoning for making a decision will be shown here.
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="reason-for-decision">Change<span class="govuk-visually-hidden"> reason for decision</span></a>
-          </dd>
+          {% if not (data['claimFinalised'] == 'Yes') %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="reason-for-decision">Change<span class="govuk-visually-hidden"> reason for decision</span></a>
+            </dd>
+          {% endif %}
         </div>
       </dl>
 

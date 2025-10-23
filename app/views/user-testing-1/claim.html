@@ -10,23 +10,23 @@
           <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
             <a id="s-item-1" href="claim" class="dwp-horizontal-navigation__link" aria-current="true">Tasks</a>
           </li>
-          <li class="dwp-horizontal-navigation__item">
+          {# <li class="dwp-horizontal-navigation__item">
             <a id="s-item-2" href="personal" class="dwp-horizontal-navigation__link">Personal</a>
           </li>
           <li class="dwp-horizontal-navigation__item">
             <a id="s-item-3" href="contact" class="dwp-horizontal-navigation__link">Contact</a>
-          </li>
-          <li class="dwp-horizontal-navigation__item">
+          </li> #}
+          {# <li class="dwp-horizontal-navigation__item">
             <a id="s-item-4" href="relationship" class="dwp-horizontal-navigation__link">Relationship</a>
-          </li>
-          {% if (data['claimFinalised'] == 'Yes') %}
+          </li> #}
+          {# {% if (data['claimFinalised'] == 'Yes') %}
             <li class="dwp-horizontal-navigation__item">
               <a id="s-item-5" href="decision" class="dwp-horizontal-navigation__link">Decision</a>
             </li>
             <li class="dwp-horizontal-navigation__item">
               <a id="s-item-6" href="payment" class="dwp-horizontal-navigation__link">Payment</a>
             </li>
-          {% endif %}
+          {% endif %} #}
           <li class="dwp-horizontal-navigation__item">
             <a id="s-item-7" href="history" class="dwp-horizontal-navigation__link">History</a>
           </li>
@@ -34,16 +34,29 @@
       </nav>
 
         <h1 class="govuk-heading-m">Tasks</h1>
-        <h2 class="govuk-heading-s">Process a claim</h2>
+        <h2 class="govuk-heading-s">
+          {% if (data['claimFinalised'] == 'Yes') %}
+            Processed claim
+          {% else %}
+            Process a claim
+          {% endif %}
+        </h2>
         <ul class="govuk-task-list">
           <li class="govuk-task-list__item govuk-task-list__item--with-link">
             <div class="govuk-task-list__name-and-hint">
+              {% if (data['claimFinalised'] == 'Yes') and not (data['decisionAction'] == 'Disallowed') %}
               <a class="govuk-link govuk-task-list__link" href="register-check" aria-describedby="claim-tasks-1-hint claim-tasks-1-status">
-                Register
+                Claimant details
               </a>
+              {% else %}
+              <a class="govuk-link govuk-task-list__link" href="register-check" aria-describedby="claim-tasks-1-hint claim-tasks-1-status">
+                Check claimant details
+              </a>
+              {% endif %}
             </div>
             <div class="govuk-task-list__status" id="claim-tasks-1-status">
-              {# {% if (data['taskRegisterStatus'] == 'Complete') %}
+              {% if (data['claimFinalised'] == 'Yes') %}
+              {% elif (data['taskRegisterStatus'] == 'Complete') %}
                 Completed
               {% elif (data['taskRegisterStatus'] == 'Inprogress') %}
                 <strong class="govuk-tag govuk-tag--green">
@@ -53,24 +66,25 @@
                 <strong class="govuk-tag govuk-tag--blue">
                   Not yet started
                 </strong>
-              {% endif %} #}
-              Completed
+              {% endif %}
             </div>
           </li>
           <li class="govuk-task-list__item govuk-task-list__item--with-link">
             <div class="govuk-task-list__name-and-hint">
-              {# {% if (data['taskDecisionStatus'] == 'Complete') or (data['taskDecisionStatus'] == 'Inprogress') or (data['taskRegisterStatus'] == 'Complete') %}
-                <a class="govuk-link govuk-task-list__link" href="decision" aria-describedby="claim-tasks-3-hint claim-tasks-3-status">
-                  Decision
+              {% if (data['claimFinalised'] == 'Yes') and not (data['decisionAction'] == 'Disallowed') %}
+                <a class="govuk-link govuk-task-list__link" href="decision-check" aria-describedby="claim-tasks-3-hint claim-tasks-3-status">
+                  Decision details
+                </a>
+              {% elif (data['taskDecisionStatus'] == 'Complete') or (data['taskDecisionStatus'] == 'Inprogress') or (data['taskRegisterStatus'] == 'Complete') %}
+                <a class="govuk-link govuk-task-list__link" href="decision-summary" aria-describedby="claim-tasks-3-hint claim-tasks-3-status">
+                  Make a decision
                 </a>
               {% else %}
-                Decision
-              {% endif %} #}
-              <a class="govuk-link govuk-task-list__link" href="decision-summary" aria-describedby="claim-tasks-2-hint claim-tasks-2-status">
-                Decision
-              </a>
+                Make a decision
+              {% endif %}
             </div>
-                {% if (data['taskDecisionStatus'] == 'Complete') %}
+                {% if (data['claimFinalised'] == 'Yes') %}
+                {% elif (data['taskDecisionStatus'] == 'Complete') %}
                   <div class="govuk-task-list__status" id="decision-1-status">
                     Completed
                   </div>
@@ -80,29 +94,39 @@
                       Inprogress
                     </strong>
                   </div>
-                {% else %}
+                {% elif (data['taskRegisterStatus'] == 'Complete') %}
                   <div class="govuk-task-list__status" id="decision-3-status">
                     <strong class="govuk-tag govuk-tag--blue">
                       Not yet started
                     </strong>
                   </div>
+                {% else %}
+                  <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="payment-4-status">
+                    Cannot start yet
+                  </div>
                 {% endif %}
           </li>
           <li class="govuk-task-list__item govuk-task-list__item--with-link">
             <div class="govuk-task-list__name-and-hint">
-              {% if (data['taskPaymentsStatus'] == 'Complete') or (data['taskPaymentsStatus'] == 'Inprogress') or (data['taskDecisionStatus'] == 'Complete') or (data['claimFinalised'] == 'Yes') %}
+              {% if (data['claimFinalised'] == 'Yes') and not (data['decisionAction'] == 'Disallowed') %}
+                <a class="govuk-link govuk-task-list__link" href="payment-check" aria-describedby="claim-tasks-3-status">
+                  Payment details
+                </a>
+              {% elif (data['taskPaymentsStatus'] == 'Complete') or (data['taskPaymentsStatus'] == 'Inprogress') or (data['taskDecisionStatus'] == 'Complete') or (data['claimFinalised'] == 'Yes') %}
                 {% if (data['decisionAction'] == 'Disallowed') %}
-                    Payments
+                    Confirm payment details
                 {% else %}
-                  <a class="govuk-link govuk-task-list__link" href="payment-summary" aria-describedby="claim-tasks-3-status">
-                    Payments
+                  <a class="govuk-link govuk-task-list__link" href="payee-name" aria-describedby="claim-tasks-3-status">
+                    Confirm payment details
                   </a>
                 {% endif %}
               {% else %}
-                Payments
+                Confirm payment details
               {% endif %}
             </div>
-            {% if (data['taskPaymentsStatus'] == 'Complete') %}
+            {% if (data['claimFinalised'] == 'Yes') %}
+
+            {% elif (data['taskPaymentsStatus'] == 'Complete') %}
               <div class="govuk-task-list__status" id="payment-1-status">
                 Completed
               </div>
@@ -128,63 +152,65 @@
               </div>
             {% endif %}
           </li>
-          <li class="govuk-task-list__item govuk-task-list__item--with-link">
-            <div class="govuk-task-list__name-and-hint">
-              {% if (data['taskDecisionStatus'] == 'Complete') and (data['taskPaymentsStatus'] == 'Complete') or (data['claimFinalised'] == 'Yes') %}
-                <a class="govuk-link govuk-task-list__link" href="finalise-check" aria-describedby="claim-tasks-4-status">
-                  Finalise the claim
-                </a>
+          {% if not (data['claimFinalised'] == 'Yes') %}
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                {% if (data['taskDecisionStatus'] == 'Complete') and (data['taskPaymentsStatus'] == 'Complete') or (data['claimFinalised'] == 'Yes') %}
+                  <a class="govuk-link govuk-task-list__link" href="finalise-check" aria-describedby="claim-tasks-4-status">
+                    Finalise a claim
+                  </a>
+                {% else %}
+                  Finalise a claim
+                {% endif %}
+              </div>
+              {% if (data['claimFinalised'] == 'Yes') and (data['decisionAction'] == 'Disallowed') %}
+                <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="finalise-4-status">
+                  Cannot complete
+                </div>
+              {% elif (data['claimFinalised'] == 'Yes') %}
+                <div class="govuk-task-list__status" id="finalise-2-status">
+                  Completed
+                </div>
+              {% elif  (data['taskDecisionStatus'] == 'Complete') and (data['taskPaymentsStatus'] == 'Complete') %}
+                <div class="govuk-task-list__status" id="finalise-3-status">
+                  <strong class="govuk-tag govuk-tag--blue">
+                    Not yet started
+                  </strong>
+                </div>
+              {% elif (data['taskFinaliseStatus'] == 'Inprogress') %}
+                <div class="govuk-task-list__status" id="finalise-4-status">
+                  <strong class="govuk-tag govuk-tag--light-blue">
+                    Inprogress
+                  </strong>
+                </div>
               {% else %}
-                Finalise the claim
+                <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="finalise-5-status">
+                  Cannot start yet
+                </div>
               {% endif %}
-            </div>
-            {% if (data['claimFinalised'] == 'Yes') and (data['decisionAction'] == 'Disallowed') %}
-              <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="finalise-4-status">
-                Cannot complete
-              </div>
-            {% elif (data['claimFinalised'] == 'Yes') %}
-              <div class="govuk-task-list__status" id="finalise-2-status">
-                Completed
-              </div>
-            {% elif  (data['taskDecisionStatus'] == 'Complete') and (data['taskPaymentsStatus'] == 'Complete') %}
-              <div class="govuk-task-list__status" id="finalise-3-status">
-                <strong class="govuk-tag govuk-tag--blue">
-                  Not yet started
-                </strong>
-              </div>
-            {% elif (data['taskFinaliseStatus'] == 'Inprogress') %}
-              <div class="govuk-task-list__status" id="finalise-4-status">
-                <strong class="govuk-tag govuk-tag--light-blue">
-                  Inprogress
-                </strong>
-              </div>
-            {% else %}
-              <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="finalise-5-status">
-                Cannot start yet
-              </div>
-            {% endif %}
-          </li>
+            </li>
+          {% endif %}
         </ul>
-
-        <h2 class="govuk-heading-s">Additional tasks</h2>
-        <ul class="govuk-task-list">
-          <li class="govuk-task-list__item govuk-task-list__item--with-link">
-            <div class="govuk-task-list__name-and-hint">
-              {% if (data['taskPaymentsStatus'] == 'Complete') or (data['taskPaymentsStatus'] == 'inprogress') or (data['taskDecisionStatus'] == 'Complete') %}
-                <a class="govuk-link govuk-task-list__link" href="award" aria-describedby="claim-tasks-1-status">
+        {% if (data['claimFinalised'] == 'Yes') %}
+          <h2 class="govuk-heading-s">Additional tasks</h2>
+          <ul class="govuk-task-list">
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                {% if (data['taskPaymentsStatus'] == 'Complete') or (data['taskPaymentsStatus'] == 'inprogress') or (data['taskDecisionStatus'] == 'Complete') %}
+                  <a class="govuk-link govuk-task-list__link" href="award" aria-describedby="claim-tasks-1-status">
+                    Add a relationship
+                  </a>
+                {% else %}
                   Add a relationship
-                </a>
-              {% else %}
-                Add a relationship
-              {% endif %}
-            </div>
-            {% if not (data['taskPaymentsStatus'] == 'Complete') %}
-              <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="payment-4-status">
-                Cannot start yet
+                {% endif %}
               </div>
-            {% endif %}
-          </li>
-          {% if (data['claimFinalised'] == 'Yes') %}
+              {% if not (data['taskPaymentsStatus'] == 'Complete') %}
+                <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="payment-4-status">
+                  Cannot start yet
+                </div>
+              {% endif %}
+            </li>
+      
             <li class="govuk-task-list__item govuk-task-list__item--with-link">
               <div class="govuk-task-list__name-and-hint">
                 <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="claim-tasks-2-status">

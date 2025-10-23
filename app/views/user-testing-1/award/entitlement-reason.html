@@ -1,24 +1,20 @@
 {% extends "user-testing-1/layouts/internal-layout.html" %}
 
-{% set pageName = "Payee details" %}
+{% set pageName = "What is the entitlement reason?" %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-      <form class="form" method="post" action="payee-type">
-
+      <form class="form" method="post" action="entitlement-check">
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper">
-            
-            <label class="govuk-label govuk-label--l" for="payeeName">
-              What is the payee name?
+            <label class="govuk-label govuk-label--l" for="entitlementReason">
+              {{ pageName }}
             </label>
           </h1>
-          <input class="govuk-input govuk-input--width-20" id="payeeName" name="payeeName" type="text" value="{{data['payeeName']}}">
+          <input class="govuk-input govuk-input--width-20" id="entitlementReason" name="entitlementReason" type="text" value="{{data['entitlementReason']}}">
         </div>
-
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Continue
         </button>

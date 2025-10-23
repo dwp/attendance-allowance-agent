@@ -4,9 +4,47 @@
 
 {% block content %}
   
-  <span class="govuk-caption-l">Decision</span>
+  {% if not data['exclusion-start-day'] %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" action="exclusion-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">        
+              <h1 class="govuk-fieldset__heading">
+                Do you want to add an exclusion period?
+              </h1>
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="exclusion-1" name="exclusionAction" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="exclusion-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="exclusion-2" name="exclusionAction" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="exclusion-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  {% else %}
+  
   <h1 class="govuk-heading-xl">
-    {{ pageName }}
+    Exclusion periods
   </h1>
 
   <div class="govuk-grid-row">
@@ -102,6 +140,6 @@
       </form>
     </div>
   </div>
-</div>
+{% endif %}
 
 {% endblock %}

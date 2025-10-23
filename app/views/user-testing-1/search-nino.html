@@ -1,28 +1,28 @@
 {% extends "user-testing-1/layouts/internal-layout.html" %}
 {% set hideRef = "true" %}
-{% set pageName = "Search a claimant" %}
+{% set showNav = "false" %}
+{% set pageName = "What is their National Insurance number?" %}
 
 {% block content %}
-  
-  
-  <!--<span class="govuk-caption-xl">Pedro Pascal</span> -->
-  <h1 class="govuk-heading-xl">
-    {{ pageName }}
-  </h1>
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <p class="govuk-body">
-        Search for claims using NINO or 
+      {# removed for testing #}
+      {# <p class="govuk-body">
+        Search for a claimant using a National Insurance number or 
         <a href="advanced-search" class="govuk-link">use advanced search</a>.
-      </p>
+      </p> #}
 
 
-      <form class="form" method="post" action="search-nino-answer">
+      <form class="form" method="post" action="claimant-result">
         <div class="govuk-form-group">
-          <label class="govuk-label" for="search-nino">
-            National Insurance number
-          </label>
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="payeeName">
+              {{ pageName }}
+            </label>
+          </h1>
+          <div id="search-nino-hint" class="govuk-hint">
+            For example, ‘QQ 12 34 56 C’
+          </div>
           <input class="govuk-input govuk-input--width-10" id="search-nino" name="searchNino" type="text">
         </div>
         <button type="submit" class="govuk-button" data-module="govuk-button">

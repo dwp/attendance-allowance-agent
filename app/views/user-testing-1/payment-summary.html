@@ -4,6 +4,7 @@
 
 {% block content %}
   
+  
   <h1 class="govuk-heading-xl">
     {{ pageName }}
   </h1>
@@ -56,7 +57,7 @@
               {% if data['paymentFirstDate'] %}
                 {{ data['paymentFirstDate'] }}
               {% else %}
-                28 August 2025
+                10 November 2025
               {% endif %}
             </dd>
           </div>
@@ -74,7 +75,7 @@
           </div>
       </dl>
 
-      <form method="post" action="search-bank">
+      <form method="post" action="payment-check">
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Continue
         </button>
