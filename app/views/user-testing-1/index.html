@@ -11,33 +11,26 @@
       {{ pageName }}
     </h1>
 
-    <p class="govuk-body">Both journeys are for the dashboard and search section of the service. These are work in progress designs to be later user tested.</p>
+    <h2 class="govuk-heading-s">Process a claim</h2>
+    <p class="govuk-body">Use this button for the full end to end journey of a decision maker processing a new digital open claim</p>
 
-    <div class="AA-results-buttons">
-      <a href="user-testing-1/dashboard" class="govuk-button" style="margin-right: 10px;">
-        Start
-      </a>
-    </div>
+    <a href="user-testing-1/dashboard" class="govuk-button" style="margin-right: 10px;">
+      Start
+    </a>
+
+    <h2 class="govuk-heading-s">Processed claim</h2>
+    <p class="govuk-body">Use this button to view a claim that has already been processed</p>
+
+    <form method="post" action="user-testing-1/claim">
+      <input class="govuk-input govuk-visually-hidden" id="claimFinalised" name="claimFinalised" type="text" value="Yes">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        View
+      </button>
+    </form>
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
     <dl class="govuk-summary-list govuk-summary-list--no-border">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Version
-        </dt>
-        <dd class="govuk-summary-list__value">
-          1 - current iteration
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Description
-        </dt>
-        <dd class="govuk-summary-list__value">
-          This version contains the happy path journey for the search and verify sections.
-        </dd>
-      </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Pages
@@ -47,32 +40,129 @@
             <li>
               <a class="govuk-link" href="user-testing-1/dashboard">Dashboard</a>
             </li>
+            
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-            <h2 class="govuk-heading-s">Search</h2>
+
+            <h3 class="govuk-heading-s">Search</h3>
             <li>
               <a class="govuk-link" href="user-testing-1/search-nino">Search NINO</a>
             </li>
-            <li>
+            {# <li>
               <a class="govuk-link" href="user-testing-1/advanced-search">Advanced search</a>
-            </li>
+            </li> #}
             <li>
               <a class="govuk-link" href="user-testing-1/search-results">Search results</a>
             </li>
             <li>
               <a class="govuk-link" href="user-testing-1/claimant-result">Claimant details</a>
             </li>
+
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-            <h2 class="govuk-heading-s">Claim</h2>
+
+            <h3 class="govuk-heading-s">Claim</h3>
             <li>
-              <a class="govuk-link" href="user-testing-1/claimant-details">Claim details</a>
+              <a class="govuk-link" href="user-testing-1/claim">Tasks</a>
             </li>
             <li>
-              <a class="govuk-link" href="user-testing-1/claim#form-details">Form details</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="user-testing-1/claim#personal-details">Personal details</a>
+              <a class="govuk-link" href="user-testing-1/history">History</a>
             </li>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+            <h3 class="govuk-heading-s">Registration</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-1/register-check">Check claimant details</a>
+            </li>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+            <h3 class="govuk-heading-s">Decision</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-1/decision-summary">Make a decision</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/exclusion-reason">Exclusion reason</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/health-condition-disablity">Health condition or disablity</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award-summary">Award summary</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/reason-for-decision">Reason for decision</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/entitlement-periods">Entitlement periods</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/exclusion-periods">Exclusion periods</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/decision-check">Check your answers</a>
+            </li>
+            <h3 class="govuk-heading-s">Entitlement</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/entitlement-check">Entitlement check you answers</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/entitlement-start-date">Entitlement start date</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/entitlement-end-date">Entitlement end date</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/entitlement-rate">Entitlement rate</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/entitlement-reason">Entitlement reason</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/delete-entitlement">Delete entitlement</a>
+            </li>
+            <h3 class="govuk-heading-s">Exclusion</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/exclusion-check">Exclusion check you answers</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/exclusion-start-date">Exclusion start date</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/exclusion-end-date">Exclusion end date</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/exclusion-reason">Exclusion reason</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/award/delete-exclusion">Delete exclusion</a>
+            </li>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+            <h3 class="govuk-heading-s">Payment</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-1/payee-name">Payee name</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/payee-type">Payee type</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/search-bank">Search bank or building society</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/bank-results">Bank or building society results</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/payment-summary">Payment summary</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-1/payment-check">Payment check your answers</a>
+            </li>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+            <h3 class="govuk-heading-s">Finalise</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-1/finalise-check">Finalise this claim</a>
+            </li>
           </ul>
         </dd>
       </div>
