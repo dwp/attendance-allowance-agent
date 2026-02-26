@@ -1,0 +1,51 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "What is the claimant's full name?" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="have-additional-name" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="claimFirstName">
+                First name
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="claimFirstName" name="claimFirstName" type="text" value="{{data['claimFirstName']}}"/>
+            </div>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-form-group">
+              <label class="govuk-label" for="claimMiddleName">
+                Middle name (optional)
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="claimMiddleName" name="claimMiddleName" type="text" value="{{data['claimMiddleName']}}"/>
+            </div>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-form-group">
+              <label class="govuk-label" for="claimLastName">
+                Last name
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="claimLastName" name="claimLastName" type="text" value="{{data['claimLastName']}}"/>
+            </div>
+          </fieldset>
+        </div>
+        <div class="govuk-form-group">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

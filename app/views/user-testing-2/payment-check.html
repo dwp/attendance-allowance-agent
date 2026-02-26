@@ -1,0 +1,245 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% if not data['claimFinalised'] %}
+  {% set pageName = "Check your answers" %}
+{% else %}
+  {% set pageName = "Check payment details" %}
+{% endif %}
+
+{% block content %}
+  
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">Payee details</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payee name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['payeeName'] %}
+              {{ data['payeeName'] }}
+            {% else %}
+              Jon Smith
+            {% endif %}
+          </dd>
+          {% if not data['claimFinalised'] %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="payee-name">Change<span class="govuk-visually-hidden"> payee details</span></a>
+            </dd>
+          {% endif %}
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payee type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['payeeType'] %}
+              {{ data['payeeType'] }}
+            {% else %}
+              Claimant
+            {% endif %}
+          </dd>
+          {% if not data['claimFinalised'] %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="payee-type">Change<span class="govuk-visually-hidden"> payee type</span></a>
+            </dd>
+          {% endif %}
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">Bank or building society</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are the bank or building society details correct?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['bankAction'] %}
+              {{ data['bankAction'] }}
+            {% else %}
+              Yes
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="search-bank">Change<span class="govuk-visually-hidden"> bank or building society details</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name on the account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['payeeAccountHolder'] %}
+              {{ data['payeeAccountHolder'] }}
+            {% else %}
+              Jon Smith
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Sort code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['bank-sort-code'] %}
+              {{ data['bank-sort-code'] }}
+            {% else %}
+              00-11-00
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Account number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['bank-account-number'] %}
+              {{ data['bank-account-number'] }}
+            {% else %}
+              1122334455
+            {% endif %}
+          </dd>
+        </div>
+        {% if data['bank-roll-number'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Roll number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['bank-roll-number'] }}
+            </dd>
+          </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Bank or building society details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            HSBC<br/>
+            Local<br/>
+            110 Grey St<br/>
+            Newcastle upon Tyne<br/>
+            NE1 6JG
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">Payment summary</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            First payment amount
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['paymentAmount'] %}
+              £{{ data['paymentAmount'] }}
+            {% else %}
+              £220.80
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payment day
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['paymentDay'] %}
+              {{ data['paymentDay'] }}
+            {% else %}
+              Monday
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['paymentFrequency'] %}
+              {{ data['paymentFrequency'] }}
+            {% else %}
+              Weekly
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            First payment date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['paymentFirstDate'] %}
+              {{ data['paymentFirstDate'] }}
+            {% else %}
+              10 November 2025
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Weekly payment amount
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['paymentWeeklyAmount'] %}
+              £{{ data['paymentWeeklyAmount'] }}
+            {% else %}
+              £110.40
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      {% if data['claimFinalised'] %}
+        <table class="govuk-table govuk-table--small-text-until-tablet">
+          <caption class="govuk-table__caption govuk-table__caption--m">Payment history</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Issue date</th>
+              <th scope="col" class="govuk-table__header">Status</th>
+              <th scope="col" class="govuk-table__header">Period</th>
+              <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">17 November 2025</td>
+              <td class="govuk-table__cell">
+                <strong class="govuk-tag govuk-tag--green">
+                  Issued
+                </strong>
+              </td>
+              <td class="govuk-table__cell">17 November 2025 to 24 November 2025</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">£295.50</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">10 November 2025</td>
+              <td class="govuk-table__cell">
+                <strong class="govuk-tag govuk-tag--green">
+                  Issued
+                </strong>
+              </td>
+              <td class="govuk-table__cell">28 October 2025 to 10 November 2025</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">£220.40</td>
+            </tr>
+          </tbody>
+        </table>
+      {% endif %}
+
+      <form method="post" action="claim">
+        <input class="govuk-input govuk-visually-hidden" id="taskPaymentsStatus" name="taskPaymentsStatus" type="text" value="Complete">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Confirm
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

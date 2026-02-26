@@ -1,0 +1,93 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <nav class="dwp-horizontal-navigation govuk-!-margin-bottom-5" aria-label="Horizontal">
+        <ul class="dwp-horizontal-navigation__list">
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-1" href="claim" class="dwp-horizontal-navigation__link">Tasks</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-2" href="personal" class="dwp-horizontal-navigation__link">Personal</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-3" href="contact" class="dwp-horizontal-navigation__link">Contact</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
+            <a id="s-item-4" href="relationship" class="dwp-horizontal-navigation__link" aria-current="true">Relationship</a>
+          </li>
+          {% if (data['claimFinalised'] == 'Yes') %}
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-5" href="decision" class="dwp-horizontal-navigation__link">Decision</a>
+            </li>
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-6" href="payment" class="dwp-horizontal-navigation__link">Payment</a>
+            </li>
+          {% endif %}
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-7" href="history" class="dwp-horizontal-navigation__link">History</a>
+          </li>
+        </ul>
+      </nav>
+
+      <h1 class="govuk-heading-m">Relationship</h1>
+
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">National Insurance number</th>
+            <th scope="col" class="govuk-table__header">Type</th>
+            <th scope="col" class="govuk-table__header">Start date</th>
+            <th scope="col" class="govuk-table__header">
+              <span class="govuk-visually-hidden">Action</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">AB123456A</td>
+            <td class="govuk-table__cell">Death arrears payee</td>
+            <td class="govuk-table__cell">30 August 2025</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payee/details">View <span class="govuk-visually-hidden">payee details</span></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <nav class="govuk-pagination" aria-label="Pagination">
+        <ul class="govuk-pagination__list">
+          <li class="govuk-pagination__item govuk-pagination__item--current">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1" aria-current="page">
+              1
+            </a>
+          </li>
+          {# <li class="govuk-pagination__item">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2">
+              2
+            </a>
+          </li>
+          <li class="govuk-pagination__item">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+              3
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-pagination__next">
+          <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+            <span class="govuk-pagination__link-title">
+              Next<span class="govuk-visually-hidden"> page</span>
+            </span>
+            <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+          </a>
+        </div> #}
+      </nav>
+    </div>
+  </div>
+
+{% endblock %}

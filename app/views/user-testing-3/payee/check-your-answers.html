@@ -1,0 +1,110 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "Check your answers" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payee type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['payeeType'] %}
+              {{ data['payeeType'] }}
+            {% else %}
+              Claimant
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="type">Change<span class="govuk-visually-hidden"> payee type</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payee National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['payeeNI'] %}
+              {{ data['payeeNI'] }}
+            {% else %}
+              JK123456C
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="national-insurance">Change<span class="govuk-visually-hidden"> National Insurance</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payee name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['payeeName'] %}
+              {{ data['payeeName'] }}
+            {% else %}
+              Jon Smith
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="name">Change<span class="govuk-visually-hidden"> payee details</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payee address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['payeeAddress'] and data['payeePostcode'] %}
+              {{ data['payeeAddress'] }},
+              {{ data['payeePostcode'] }}
+            {% else %}
+              11 street, Heaton, Newcastle upon Tyne, England
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="address-postcode">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payee phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['payeePhone'] %}
+              {{ data['payeePhone'] }}
+            {% else %}
+              0191234546
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="phone-number">Change<span class="govuk-visually-hidden"> phone number</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Start date
+          </dt>
+          <dd class="govuk-summary-list__value">
+              {{ "today" | govukDate }}
+          </dd>
+        </div>
+      </dl>
+
+      <form method="post" action="../payees">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Confirm
+        </button>
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

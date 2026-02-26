@@ -7,6 +7,7 @@ import accessibleAutocomplete from 'accessible-autocomplete'
 
 window.GOVUKPrototypeKit.documentReady(() => {
   // Add JavaScript here
+  
 
 const countries = [
   'France',
@@ -15,8 +16,18 @@ const countries = [
 ]
 
 accessibleAutocomplete({
-  element: document.querySelector('#my-autocomplete-container'),
-  id: 'my-autocomplete', // To match it to the existing <label>.
+  element: document.querySelector('#healthConditions'),
+  id: 'healthConditions', // To match it to the existing <label>.
   source: countries
 })
+})
+
+
+let selectElement = document.querySelector('#healthConditions')
+
+accessibleAutocomplete.enhanceSelectElement({
+
+  defaultValue: '',
+  selectElement: selectElement
+
 })

@@ -1,0 +1,64 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "What is the claimant's title?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="name" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimTitle" name="claimTitle" type="radio" value="Mr">
+                <label class="govuk-label govuk-radios__label" for="claimTitle">
+                  Mr
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimTitle-2" name="claimTitle" type="radio" value="Miss">
+                <label class="govuk-label govuk-radios__label" for="claimTitle-2">
+                  Miss
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimTitle-3" name="claimTitle" type="radio" value="Mrs">
+                <label class="govuk-label govuk-radios__label" for="claimTitle-3">
+                  Mrs
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimTitle-4" name="claimTitle" type="radio" value="Ms">
+                <label class="govuk-label govuk-radios__label" for="claimTitle-4">
+                  Ms
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimTitle-5" name="claimTitle" type="radio" value="Dr">
+                <label class="govuk-label govuk-radios__label" for="claimTitle-5">
+                  Dr
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimTitle-6" name="claimTitle" type="radio" value="Rev">
+                <label class="govuk-label govuk-radios__label" for="claimTitle-6">
+                  Rev
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

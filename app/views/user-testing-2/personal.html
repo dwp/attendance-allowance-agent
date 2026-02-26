@@ -1,0 +1,173 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <nav class="dwp-horizontal-navigation govuk-!-margin-bottom-5" aria-label="Horizontal">
+        <ul class="dwp-horizontal-navigation__list">
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-1" href="claim" class="dwp-horizontal-navigation__link">Tasks</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
+            <a id="s-item-2" href="personal" class="dwp-horizontal-navigation__link" aria-current="true">Personal</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-3" href="contact" class="dwp-horizontal-navigation__link">Contact</a>
+          </li>
+          {# <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-4" href="relationship" class="dwp-horizontal-navigation__link">Relationship</a>
+          </li> #}
+          {% if (data['claimFinalised'] == 'Yes') %}
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-5" href="decision" class="dwp-horizontal-navigation__link">Decision</a>
+            </li>
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-6" href="payment" class="dwp-horizontal-navigation__link">Payment</a>
+            </li>
+          {% endif %}
+          <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-7" href="history" class="dwp-horizontal-navigation__link">History</a>
+          </li>
+        </ul>
+      </nav>
+
+      <h1 class="govuk-heading-m">Personal details</h1>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            First name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['ClaimfirstName'] %}
+              {{data['ClaimfirstName']}}
+            {% else %}
+              James
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Middle name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['ClaimMiddleName'] %}
+              {{data['ClaimMiddleName']}}
+            {% else %}
+              Jo
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Last name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimLastName'] %}
+              {{data['claimLastName']}}
+            {% else %}
+              Smith
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['searchNino'] %}
+              {{data['searchNino']}}
+            {% else %}
+              AB123456C
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+            if (
+            data['dateOfBirthDD'] and
+            data['dateOfBirthMM'] and
+            data['dateOfBirthYYYY'] 
+            ) 
+          %}
+            {{ data['claimDateOfBirthDD'] }}
+            {{ data['claimDateOfBirthMM'] | monthName }}
+            {{ data['claimDateOfBirthYYYY'] }}
+          {% else %}
+            13 April 1958
+          {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Age
+          </dt>
+          <dd class="govuk-summary-list__value">
+            80 years and 1 month
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Nationality
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimNationality'] %}
+              {{data['claimNationality']}}
+            {% else %}
+              British
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">Flags</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Identify at risk
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Special customer record
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Identity Fraud Unit
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Special rules
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Alternative formats
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Large print
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+{% endblock %}

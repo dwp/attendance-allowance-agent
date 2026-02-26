@@ -1,0 +1,55 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <nav class="dwp-horizontal-navigation govuk-!-margin-bottom-5" aria-label="Horizontal">
+          <ul class="dwp-horizontal-navigation__list">
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-1" href="claim" class="dwp-horizontal-navigation__link" aria-current="true">Tasks</a>
+            </li>
+            {# <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-2" href="personal" class="dwp-horizontal-navigation__link">Personal</a>
+            </li>
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-3" href="contact" class="dwp-horizontal-navigation__link">Contact</a>
+            </li>
+            <li class="dwp-horizontal-navigation__item">
+              <a id="s-item-4" href="relationship" class="dwp-horizontal-navigation__link">Relationship</a>
+            </li>
+            {% if (data['claimFinalised'] == 'Yes') %}
+              <li class="dwp-horizontal-navigation__item">
+                <a id="s-item-5" href="decision" class="dwp-horizontal-navigation__link">Decision</a>
+              </li>
+              <li class="dwp-horizontal-navigation__item">
+                <a id="s-item-6" href="payment" class="dwp-horizontal-navigation__link">Payment</a>
+              </li>
+            {% endif %} #}
+            <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
+              <a id="s-item-7" href="history" class="dwp-horizontal-navigation__link" aria-current="true">History</a>
+            </li>
+          </ul>
+        </nav>
+
+      <h1 class="govuk-heading-l">History</h1>
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items">
+          {% if (data['claimFinalised'] == 'Yes') %}
+            <li class="dwp-timeline__item">
+              <p class="dwp-timeline__datetime">28 October 2025 at 4:00pm</p>
+              <h2 class="dwp-timeline__heading">Claim allowed</h2>
+              <p class="dwp-timeline__by-line">by Test user</p>
+            </li>
+          {% endif %}
+          <li class="dwp-timeline__item">
+            <p class="dwp-timeline__datetime">28 October 2025 at 7:00am</p>
+            <h2 class="dwp-timeline__heading">Digital AA form received</h2>
+            <p class="dwp-timeline__by-line">by System</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

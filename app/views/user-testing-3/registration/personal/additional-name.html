@@ -1,0 +1,27 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "What is the claimant's requested name?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="reason-for-decision" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <input class="govuk-input govuk-input--width-20" id="claimAdditionalName" name="claimAdditionalName" type="text" value="{{data['claimAdditionalName']}}"/>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

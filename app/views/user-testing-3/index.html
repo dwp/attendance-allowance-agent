@@ -1,0 +1,191 @@
+{% extends "layouts/main.html" %}
+{% set hideRef = "true" %}
+{% set pageName="User testing - Decision & register" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+    <h2 class="govuk-heading-s">End to end start</h2>
+    <p class="govuk-body">
+      Use this button to search for claim, 
+      use the list below to find NINOs for processing and processed claims. 
+      Any NINOs that are entered that are not on the list will go into registration
+    </p>
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Register a claim (data held on CIS)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          BB123456A
+          BB123456B
+          BB123456C
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Processing a claim / decision
+        </dt>
+        <dd class="govuk-summary-list__value">
+          QQ123456A
+          QQ123456B
+          QQ123456C
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Processed claim
+        </dt>
+        <dd class="govuk-summary-list__value">
+          AA123456A
+          AA123456B
+          AA123456C
+        </dd>
+      </div>
+    </dl>
+
+    <a href="user-testing-3/search-nino" class="govuk-button">
+      Start
+    </a>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Pages
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <h3 class="govuk-heading-s">Search</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-3/search-nino">Search NINO</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/search-nino-results"> Search NINO results</a>
+            </li>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+            <h3 class="govuk-heading-s">Claim</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-3/claim">Tasks</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/history">History</a>
+            </li>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+            
+            <h3 class="govuk-heading-s">Registration</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-3/register-check">Check claimant details</a>
+            </li>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+            <h3 class="govuk-heading-s">Decision</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-3/decision-summary">Make a decision</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/exclusion-reason">Exclusion reason</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/health-condition-disablity">Health condition or disablity</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award-summary">Award summary</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/reason-for-decision">Reason for decision</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/entitlement-periods">Entitlement periods</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/exclusion-periods">Exclusion periods</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/decision-check">Check your answers</a>
+            </li>
+            <h3 class="govuk-heading-s">Entitlement</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/entitlement-check">Entitlement check you answers</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/entitlement-start-date">Entitlement start date</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/entitlement-end-date">Entitlement end date</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/entitlement-rate">Entitlement rate</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/entitlement-reason">Entitlement reason</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/delete-entitlement">Delete entitlement</a>
+            </li>
+            <h3 class="govuk-heading-s">Exclusion</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/exclusion-check">Exclusion check you answers</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/exclusion-start-date">Exclusion start date</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/exclusion-end-date">Exclusion end date</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/exclusion-reason">Exclusion reason</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/award/delete-exclusion">Delete exclusion</a>
+            </li>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+            <h3 class="govuk-heading-s">Payment</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-3/payee-name">Payee name</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/payee-type">Payee type</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/search-bank">Search bank or building society</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/bank-results">Bank or building society results</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/payment-summary">Payment summary</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="user-testing-3/payment-check">Payment check your answers</a>
+            </li>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+            <h3 class="govuk-heading-s">Finalise</h3>
+            <li>
+              <a class="govuk-link" href="user-testing-3/finalise-check">Finalise this claim</a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+  </div>
+</div>
+
+{% endblock %}

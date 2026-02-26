@@ -1,0 +1,107 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+{% set pageName = "Check your answers" %}
+
+{% block content %}
+  
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Entitlement start date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['entitlement-start-day'] %}
+              {{ data['entitlement-start-day'] }}
+            {% else %}
+              28 
+            {% endif %}
+            {% if data['entitlement-start-month'] %}
+              {{ data['entitlement-start-month'] | monthName }} 
+            {% else %}
+              October 
+            {% endif %}
+            {% if data['entitlement-start-year'] %}
+              {{ data['entitlement-start-year'] }}
+            {% else %}
+              2025 
+            {% endif %}
+          </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="entitlement-start-date">Change<span class="govuk-visually-hidden"> start date</span></a>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Entitlement end date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['entitlement-end-day'] %}
+              {{ data['entitlement-end-day'] }}
+            {% else %}
+              28 
+            {% endif %}
+            {% if data['entitlement-end-month'] %}
+              {{ data['entitlement-end-month'] | monthName }} 
+            {% else %}
+              October 
+            {% endif %}
+            {% if data['entitlement-end-year'] %}
+              {{ data['entitlement-end-year'] }}
+            {% else %}
+              2028
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="entitlement-end-date">Change<span class="govuk-visually-hidden"> end date</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Rate
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['entitledRate'] %}
+              {{ data['entitledRate'] }}
+            {% else %}
+              Higher
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="entitlement-rate">Change<span class="govuk-visually-hidden"> rate</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reason
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['entitlementReason'] %}
+              {{ data['entitlementReason'] }}
+            {% else %}
+              Awarded under SREL
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="entitlement-reason">Change<span class="govuk-visually-hidden"> reason</span></a>
+          </dd>
+        </div>
+      </dl>
+
+
+      <form method="post" action="../entitlement-periods">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

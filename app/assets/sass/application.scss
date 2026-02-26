@@ -5,6 +5,12 @@
 
 // Add extra styles here
 
+.autocomplete__wrapper * {
+
+  @include govuk-typography-common();
+
+}
+
 body,p,h1,h2,h3,h4,h5,h6,span,div,a,td,th,dl,dd,li,ulol {
     font-family: Helvetica, Arial, sans-serif !important;
 }

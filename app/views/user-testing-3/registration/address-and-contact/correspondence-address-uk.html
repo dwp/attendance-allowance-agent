@@ -1,0 +1,58 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+{% set pageName = "Enter a correspondence address" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" action="phone-number">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimCorrespondenceAddress1">
+              Address line 1
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimant-address-1" name="claimCorrespondenceAddress1" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimCorrespondenceAddress2">
+              Address line 2 (optional)
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimant-address-2" name="claimCorrespondenceAddress2" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimCorrespondenceAddress3">
+              Town or city
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="claimant-address-3" name="claimCorrespondenceAddress3" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimCorrespondenceAddress4">
+              County (optional)
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="claimant-address-4" name="claimCorrespondenceAddress4" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimCorrespondencePostcode">
+              Postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="claimant-postcode" name="claimCorrespondencePostcode" type="text">
+          </div>
+        </fieldset>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

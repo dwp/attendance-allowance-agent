@@ -1,0 +1,127 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% block content %} 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h1 class="govuk-heading-m">Tasks</h1>
+        <h2 class="govuk-heading-s">
+          Register a claim
+        </h2>
+        <ul class="govuk-task-list">
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              {% if (data['claimHasCIS'] == 'false') %}
+                <a class="govuk-link govuk-task-list__link" href="personal/title" aria-describedby="claim-tasks-1-hint claim-tasks-1-status">
+                  Personal details
+                </a>
+              {% else %}
+                <a class="govuk-link govuk-task-list__link" href="personal/check-your-answers" aria-describedby="claim-tasks-1-hint claim-tasks-1-status">
+                  Personal details
+                </a>
+              {% endif %}
+            </div>
+            <div class="govuk-task-list__status" id="personal-1-status">
+              {% if (data['taskPersonalStatus'] == 'Complete') %}
+                Completed
+              {% elif (data['taskPersonalStatus'] == 'Inprogress') %}
+                <strong class="govuk-tag govuk-tag--green">
+                  Inprogress
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--blue">
+                  Not yet started
+                </strong>
+              {% endif %}
+            </div>
+          </li>
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              {% if (data['claimHasCIS'] == 'false') %}
+                <a class="govuk-link govuk-task-list__link" href="address-and-contact/have-address" aria-describedby="claim-tasks-2-hint claim-tasks-2-status">
+                  Address and contact details
+                </a>
+              {% else %}
+                <a class="govuk-link govuk-task-list__link" href="address-and-contact/check-your-answers" aria-describedby="claim-tasks-2-hint claim-tasks-2-status">
+                  Address and contact details
+                </a>
+              {% endif %}
+            </div>
+            <div class="govuk-task-list__status" id="address-1-status">
+              {% if (data['taskAddressContactStatus'] == 'Complete') %}
+                  Completed
+              {% elif (data['taskAddressContactStatus'] == 'Inprogress') %}
+                <strong class="govuk-tag govuk-tag--light-blue">
+                  Inprogress
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--blue">
+                  Not yet started
+                </strong>
+              {% endif %}
+            </div>
+          </li>
+
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              {% if (data['claimHasCIS'] == 'false') %}
+                <a class="govuk-link govuk-task-list__link" href="claim/receipt-date" aria-describedby="claim-tasks-3-status">
+                  Claim details
+                </a>
+              {% else %}
+                <a class="govuk-link govuk-task-list__link" href="claim/check-your-answers" aria-describedby="claim-tasks-3-status">
+                  Claim details
+                </a>
+              {% endif %}
+            </div>
+            <div class="govuk-task-list__status" id="claim-1-status">
+              {% if (data['taskClaimStatus'] == 'Complete') %}
+                Completed
+              {% elif (data['taskClaimStatus'] == 'Inprogress') %}
+                <strong class="govuk-tag govuk-tag--light-blue">
+                  Inprogress
+                </strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--blue">
+                  Not yet started
+                </strong>
+              {% endif %}
+            </div>
+          </li>
+
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                {% if (data['taskPersonalStatus'] == 'Complete') and (data['taskAddressContactStatus'] == 'Complete') and (data['taskClaimStatus'] == 'Complete') %}
+                  <a class="govuk-link govuk-task-list__link" href="register/check-your-answers" aria-describedby="claim-tasks-4-status">
+                    Register this claim
+                  </a>
+                {% else %}
+                  Register this claim
+                {% endif %}
+              </div>
+              <div class="govuk-task-list__status" id="register-1-status">
+                {% if (data['taskPersonalStatus'] == 'Complete') and (data['taskAddressContactStatus'] == 'Complete') and (data['taskClaimStatus'] == 'Complete') %}
+                  {% if (data['claimRegistered'] == 'Yes') %}
+                    Completed
+                  {% elif (data['claimRegistered'] == 'No') %}
+                    <strong class="govuk-tag govuk-tag--light-blue">
+                      Inprogress
+                    </strong>
+                  {% else %}
+                    <strong class="govuk-tag govuk-tag--blue">
+                      Not yet started
+                    </strong>
+                  {% endif %}
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--grey">
+                    Cannot start yet
+                  </strong>
+                {% endif %}
+              </div>
+            </li>
+        </ul>
+    </div>
+  </div>
+
+{% endblock %}

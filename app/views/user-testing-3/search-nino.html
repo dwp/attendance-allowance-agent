@@ -1,0 +1,31 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set showNav = "false" %}
+{% set pageName = "What is the claimant's National Insurance number?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" method="post" action="search-nino-results">
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="payeeName">
+              {{ pageName }}
+            </label>
+          </h1>
+          <div id="search-nino-hint" class="govuk-hint">
+            For example, ‘QQ 12 34 56 C’
+          </div>
+          <input class="govuk-input govuk-input--width-10" id="search-nino" name="searchNino" type="text">
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Search
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

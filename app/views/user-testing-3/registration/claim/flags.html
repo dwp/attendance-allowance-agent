@@ -1,0 +1,49 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "Which flag applies to this claim?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="have-alternative-formats" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div id="claimFlags-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags" name="claimFlags" type="checkbox" value="Special Rules">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags">
+                  Special Rules
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-2" name="claimFlags" type="checkbox" value="SDA passport benefit">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-2">
+                  SDA passport benefit
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-3" name="claimFlags" type="checkbox" value="Boarder case">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-3">
+                  Boarder case
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

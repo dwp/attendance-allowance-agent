@@ -1,0 +1,29 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% set pageName = "What is the payee's National Insurance number?" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post" action="name">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            
+            <label class="govuk-label govuk-label--l" for="payeeName">
+              What is the payee's National Insurance number?
+            </label>
+          </h1>
+          <input class="govuk-input govuk-input--width-10" id="payeeNI" name="payeeNI" type="text" value="{{data['payeeNI']}}">
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

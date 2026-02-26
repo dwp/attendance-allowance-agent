@@ -1,0 +1,246 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+{% set pageName = "Check your answers" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">Address details</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the claimant have a permament address?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimHaveAddress'] %}
+              {{ data['claimHaveAddress'] }}
+            {% else %}
+              Yes
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="have-address">Change<span class="govuk-visually-hidden"> have address</span></a>
+          </dd>
+        </div>
+        {% if data['claimHaveAddress'] == "No" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the claimant's address status?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimAddressStatus'] %}
+                {{ data['claimAddressStatus'] }}
+              {% else %}
+                No Fixed Abode (NFA)
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address-status">Change<span class="govuk-visually-hidden"> address status</span></a>
+            </dd>
+          </div>
+        {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimAddress1'] %}
+                {{data['claimAddress1']}}<br/>
+              {% else %}
+                11 street<br/>
+              {% endif %}
+
+              {% if data['claimAddress2'] %}
+                {{data['claimAddress2']}}<br/>
+              {% else %}
+                Heaton<br/>
+              {% endif %}
+
+              {% if data['claimAddress3'] %}
+                {{data['claimAddress3']}}<br/>
+              {% else %}
+                Newcastle upon tyne<br/>
+              {% endif %}
+
+              {% if data['claimAddress4'] %}
+                {{data['claimAddress4']}}<br/>
+              {% else %}
+                England<br/>
+              {% endif %}
+
+              {% if data['claimPostcode'] %}
+                {{ data['claimPostcode'] }}
+              {% else %}
+                DL11C3
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address">Change<span class="govuk-visually-hidden"> address</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              When did the claimant start living at this address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% 
+                if (
+                data['claimAddressStartDD'] and
+                data['claimAddressStartMM'] and
+                data['claimAddressStartYYYY'] 
+                ) 
+              %}
+                {{ data['claimAddressStartDD'] }}
+                {{ data['claimAddressStartMM'] | monthName }}
+                {{ data['claimAddressStartYYYY'] }}
+              {% else %}
+                13 April 2022
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address-start-date">Change<span class="govuk-visually-hidden"> address start date</span></a>
+            </dd>
+          </div>
+        {% endif %}
+        {% if data['claimHaveAdditionalName'] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the claimant prefer to be contacted in Welsh?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimWelshContact'] %}
+                {{ data['claimWelshContact'] }}
+              {% else %}
+                Spoken
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="welsh-contact">Change<span class="govuk-visually-hidden"> contacted in Welsh preference</span></a>
+            </dd>
+          </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the claimant have a correspondence address?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (data['claimHaveCorrespondence']) %}
+              {{ data['claimHaveCorrespondence'] }}
+            {% else %}
+              No
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="have-correspondence-address">Change<span class="govuk-visually-hidden"> has correspondence address</span></a>
+          </dd>
+        </div>
+        {% if data['claimHaveCorrespondence'] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Correspondence address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimCorrespondenceAddress1'] %}
+                {{data['claimCorrespondenceAddress1']}}<br/>
+              {% else %}
+                11 street<br/>
+              {% endif %}
+
+              {% if data['claimCorrespondenceAddress2'] %}
+                {{data['claimCorrespondenceAddress2']}}<br/>
+              {% else %}
+                Heaton<br/>
+              {% endif %}
+
+              {% if data['claimCorrespondenceAddress3'] %}
+                {{data['claimCorrespondenceAddress3']}}<br/>
+              {% else %}
+                Newcastle upon tyne<br/>
+              {% endif %}
+
+              {% if data['claimCorrespondenceAddress4'] %}
+                {{data['claimCorrespondenceAddress4']}}<br/>
+              {% else %}
+                England<br/>
+              {% endif %}
+
+              {% if data['claimCorrespondencePostcode'] %}
+                {{ data['claimCorrespondencePostcode'] }}
+              {% else %}
+                DL11C3
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="correspondence">Change<span class="govuk-visually-hidden"> correspondence address</span></a>
+            </dd>
+          </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the claimant's main phone number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (data['claimMainPhoneNumber']) %}
+              {{ data['claimMainPhoneNumber'] }}
+            {% else %}
+              07123456789
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="phone-number">Change<span class="govuk-visually-hidden"> main phone number</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the claimant have an alternative phone number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (data['claimHaveAlternativeNumber']) %}
+              {{ data['claimHaveAlternativeNumber'] }}
+            {% else %}
+              No
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="have-alternative-number">Change<span class="govuk-visually-hidden"> has alternative number</span></a>
+          </dd>
+        </div>
+        {% if data['claimHaveAlternativeNumber'] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the claimant's alternative phone number?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% 
+                if (data['claimAlternativeNumber']) %}
+                {{ data['claimAlternativeNumber'] }}
+              {% else %}
+                07987654321
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="alternative-number">Change<span class="govuk-visually-hidden"> alternative number</span></a>
+            </dd>
+          </div>
+        {% endif %}
+      </dl>
+
+      <form method="post" action="../claim">
+        <input class="govuk-input govuk-visually-hidden" id="taskAddressContactStatus" name="taskAddressContactStatus" type="text" value="Complete">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Confirm
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

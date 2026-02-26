@@ -1,0 +1,70 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% set pageName = "Award summary" %}
+
+{% block content %}
+  
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Award status
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['awardStatus'] == 'Disallowed' %}
+              <strong class="govuk-tag govuk-tag--red">
+                Disallowed
+              </strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--green">
+                Allowed
+              </strong>
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Primary health condition or disability
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['primaryHealth'] %}
+              {{ primaryHealth }}
+            {% else %}
+              Special rules
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Secondary health condition or disability
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['secondaryDisability'] %}
+              {{ data['secondaryDisability'] }}
+            {% else %}
+              Lung cancer
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="health-condition-disablity">Change<span class="govuk-visually-hidden"> health condition or disability</span></a>
+          </dd>
+        </div>
+      </dl>
+
+      <form method="post" action="./entitlement-periods">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

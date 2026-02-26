@@ -1,0 +1,56 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "What is the claimant's date of death?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="nationality" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="claimDateOfDeath-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div id="claimDateOfDeath-hint" class="govuk-hint">
+              For example, 31 3 1980
+            </div>
+            <div class="govuk-date-input" id="date-of-birth">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claimDateOfDeathDD">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claimDateOfDeathDD" name="claimDateOfDeathDD" type="text" autocomplete="receipt-day" inputmode="numeric" value="{{data['receipt-day']}}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claimDateOfDeathMM">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claimDateOfDeathMM" name="claimDateOfDeathMM" type="text" autocomplete="receipt-month" inputmode="numeric" value="{{data['receipt-month']}}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claimDateOfDeathYYYY">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="claimDateOfDeathYYYY" name="claimDateOfDeathYYYY" type="text" autocomplete="receipt-year" inputmode="numeric" value="{{data['receipt-year']}}">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

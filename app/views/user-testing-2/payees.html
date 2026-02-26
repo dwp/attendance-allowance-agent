@@ -1,0 +1,126 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% set pageName = "Payees" %}
+
+{% block content %}
+  
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+    <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            {% if data['payeeName'] %}
+              {{ data['payeeName'] }}
+            {% else %}
+              Jack Bill
+            {% endif %}
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="payee/check-your-answers">Change<span class="govuk-visually-hidden"> payee {{ data['payeeName'] }}</span></a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="payee/delete">Delete<span class="govuk-visually-hidden"> payee {{ data['payeeName'] }}</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Relationship type
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['payeeType'] %}
+                  {{ data['payeeType'] }}
+                {% else %}
+                  Claimant
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                National Insurance number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['payeeNI'] %}
+                  {{ data['payeeNI'] }}
+                {% else %}
+                  Jk123456C
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['payeeAddress'] %}
+                  {{ data['payeeAddress'] }}
+                {% else %}
+                  11 street, Heaton, Newcastle upon Tyne, England
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Phone number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['payeePhone'] %}
+                  {{ data['payeePhones'] }}
+                {% else %}
+                  0191221345
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Start date
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{ "today" | govukDate }}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <form method="post" action="payee-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Do you want to add another payee?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="exclusion-1" name="taskPayeeStatus" type="radio" value="Inprogress">
+                <label class="govuk-label govuk-radios__label" for="exclusion-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="exclusion-2" name="taskPayeeStatus" type="radio" value="Complete">
+                <label class="govuk-label govuk-radios__label" for="exclusion-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}

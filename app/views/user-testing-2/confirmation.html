@@ -1,0 +1,92 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+{% set hideBack = "true" %}
+{% set pageName = "Check your answers" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            {% if data['decisionAction'] == 'Disallowed' %}
+              This claim has been <br/>disallowed
+            {% else %}
+              This claim has been <br/>finalised
+            {% endif %}
+          </h1>
+          <!-- <div class="govuk-panel__body">
+            Your reference number<br><strong>HDJ2123F</strong>
+          </div> -->
+        </div>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                First payment amount
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['paymentAmount'] %}
+                  £{{ data['paymentAmount'] }}
+                {% else %}
+                  £220.80
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Payment day
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['paymentDay'] %}
+                  {{ data['paymentDay'] }}
+                {% else %}
+                  Monday
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Frequency
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['paymentFrequency'] %}
+                  {{ data['paymentFrequency'] }}
+                {% else %}
+                  Weekly
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                First payment date
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['paymentFirstDate'] %}
+                  {{ data['paymentFirstDate'] }}
+                {% else %}
+                  10 November 2025
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Weekly payment amount
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['paymentWeeklyAmount'] %}
+                  £{{ data['paymentWeeklyAmount'] }}
+                {% else %}
+                  £110.40
+                {% endif %}
+              </dd>
+            </div>
+        </dl>
+        <h2 class="govuk-heading-m">What happens next</h2>
+        <p class="govuk-body">
+          You should complete form DBD18 for this claim. You can go back and <a href="claim" class="govuk-link">view the claim</a> to help you do this.
+        </p>
+        <p class="govuk-body">To process another claim <a href="search-nino" class="govuk-link">search for a claim</a>.</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "How does the claimant prefer to be contacted in welsh?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="have-correspondence-address" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimWelshContact" name="claimWelshContact" type="radio" value="Spoken">
+                <label class="govuk-label govuk-radios__label" for="claimWelshContact">
+                  Spoken
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimWelshContact-2" name="claimWelshContact" type="radio" value="Written">
+                <label class="govuk-label govuk-radios__label" for="claimWelshContact-2">
+                  Written
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimWelshContact-3" name="claimWelshContact" type="radio" value="Spoken and written">
+                <label class="govuk-label govuk-radios__label" for="claimWelshContact-3">
+                  Spoken and written
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimWelshContact-4" name="claimWelshContact" type="radio" value="Neither">
+                <label class="govuk-label govuk-radios__label" for="claimWelshContact-4">
+                  Neither
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

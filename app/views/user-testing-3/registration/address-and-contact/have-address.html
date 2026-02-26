@@ -1,0 +1,42 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "Does the claimant have a permament address?" %}
+
+{% block content %}
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form method="post" action="have-address-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimHaveAddress-1" name="claimHaveAddress" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="claimHaveAddress-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimHaveAddress-2" name="claimHaveAddress" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="claimHaveAddress-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

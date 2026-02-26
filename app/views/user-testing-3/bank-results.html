@@ -1,0 +1,110 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "Bank or building society account details" %}
+
+{% block content %}
+  
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Sort code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['bank-sort-code'] %}
+              {{ data['bank-sort-code'] }}
+            {% else %}
+              00-00-10
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Account number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['bank-account-number'] %}
+              {{ data['bank-account-number'] }}
+            {% else %}
+              12345678
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Roll number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['bank-roll-number'] %}
+              {{ data['bank-roll-number'] }}
+            {% else %}
+              12345678987654321
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Bank or building society
+          </dt>
+          <dd class="govuk-summary-list__value">
+            HSBC
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Branch or title
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Local
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Bank or building society address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            110 Grey St<br/>
+            Newcastle upon Tyne<br/>
+            NE1 6JG
+          </dd>
+        </div>
+      </dl>
+
+      <form method="post" action="bank-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Is this the correct bank or building society?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="bank-1" name="taskBankStatus" type="radio" value="Complete">
+                <label class="govuk-label govuk-radios__label" for="bank-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="bank-2" name="taskBankStatus" type="radio" value="Inprogress">
+                <label class="govuk-label govuk-radios__label" for="bank-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+{% set pageName = "What is the claim effective date?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="flags" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="claimEffectiveDate-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div id="claimEffectiveDate-hint" class="govuk-hint">
+              For example, 31 3 1980
+            </div>
+            <div class="govuk-date-input" id="claimEffectiveDate">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claimEffectiveDateDD">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claimEffectiveDateDD" name="claimEffectiveDateDD" type="text" autocomplete="receipt-day" inputmode="numeric" value="{{data['receipt-day']}}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claimEffectiveDateMM">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claimEffectiveDateMM" name="claimEffectiveDateMM" type="text" autocomplete="receipt-month" inputmode="numeric" value="{{data['receipt-month']}}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claimEffectiveDateYYYY">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="claimEffectiveDateYYYY" name="claimEffectiveDateYYYY" type="text" autocomplete="receipt-year" inputmode="numeric" value="{{data['receipt-year']}}">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

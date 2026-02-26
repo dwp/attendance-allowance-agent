@@ -1,0 +1,32 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% set pageName = "Search for the payee's address" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Search for the payee's address
+      </h1>
+
+      <form class="form" method="post" action="address-confirm">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="payeePostcode">
+            Postcode
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="payeePostcode" name="payeePostcode" type="text" value="{{data['payeePostcode']}}">
+        </div>
+
+        <p class="govuk-body">
+          <a href="address-int" class="govuk-link">Enter an address outside the UK</a>
+        </p>
+        <button type="submit" class="govuk-button" data-module="govuk-button" style="margin-right: 1rem">
+          Find address
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

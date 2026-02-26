@@ -1,0 +1,87 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+
+{% set pageName = "Payment summary" %}
+
+{% block content %}
+  
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              First payment amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentAmount'] %}
+                £{{ data['paymentAmount'] }}
+              {% else %}
+                £220.80
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment day
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentDay'] %}
+                {{ data['paymentDay'] }}
+              {% else %}
+                Monday
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Frequency
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentFrequency'] %}
+                {{ data['paymentFrequency'] }}
+              {% else %}
+                Weekly
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              First payment date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentFirstDate'] %}
+                {{ data['paymentFirstDate'] }}
+              {% else %}
+                10 November 2025
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Weekly payment amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['paymentWeeklyAmount'] %}
+                £{{ data['paymentWeeklyAmount'] }}
+              {% else %}
+                £110.40
+              {% endif %}
+            </dd>
+          </div>
+      </dl>
+
+      <form method="post" action="payment-check">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "user-testing-2/layouts/internal-layout.html" %}
+{% set pageName = "Check your answers" %}
+
+{% block content %}
+  
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Exclusion start date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['exclusion-start-day'] %}
+              {{ data['exclusion-start-day'] }}
+            {% else %}
+              28 
+            {% endif %}
+            {% if data['exclusion-start-month'] %}
+              {{ data['exclusion-start-month'] | monthName }} 
+            {% else %}
+              October 
+            {% endif %}
+            {% if data['exclusion-start-year'] %}
+              {{ data['exclusion-start-year'] }}
+            {% else %}
+              2025 
+            {% endif %}
+          </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="Exclusion-start-date">Change<span class="govuk-visually-hidden"> start date</span></a>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Exclusion end date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['exclusion-end-day'] %}
+              {{ data['exclusion-end-day'] }}
+            {% else %}
+              28 
+            {% endif %}
+            {% if data['exclusion-end-month'] %}
+              {{ data['exclusion-end-month'] | monthName }} 
+            {% else %}
+              October 
+            {% endif %}
+            {% if data['exclusion-end-year'] %}
+              {{ data['exclusion-end-year'] }}
+            {% else %}
+              2028
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="exclusion-end-date">Change<span class="govuk-visually-hidden"> end date</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reason
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['exclusionReason'] %}
+              {{ data['exclusionReason'] }}
+            {% else %}
+              Awarded under SREL
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="exclusion-reason">Change<span class="govuk-visually-hidden"> reason</span></a>
+          </dd>
+        </div>
+      </dl>
+
+
+      <form method="post" action="../exclusion-periods">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

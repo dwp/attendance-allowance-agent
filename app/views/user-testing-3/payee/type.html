@@ -1,0 +1,70 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post" action="national-insurance">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              
+              <h1 class="govuk-fieldset__heading">
+                What kind of payee would you like to add?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType" name="payeeType" type="radio" value="Claimant" {{ checked('payeeType','Claimant') }}>
+                <label class="govuk-label govuk-radios__label" for="payeeType">
+                  Claimant
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType-2" name="payeeType" type="radio" value="Enduring power of attorney" {{ checked('payeeType','Enduring power of attorney') }}>
+                <label class="govuk-label govuk-radios__label" for="payeeType-2">
+                  Enduring power of attorney
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType-3" name="payeeType" type="radio" value="Power of attorney" {{ checked('payeeType','Power of attorney') }}>
+                <label class="govuk-label govuk-radios__label" for="payeeType-3">
+                  Power of attorney
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType-4" name="payeeType" type="radio" value="Appointee" {{ checked('payeeType','Appointee') }}>
+                <label class="govuk-label govuk-radios__label" for="payeeType-4">
+                  Appointee
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType-5" name="payeeType" type="radio" value="Death arrears payee" {{ checked('payeeType','Death arrears payee') }}>
+                <label class="govuk-label govuk-radios__label" for="payeeType-5">
+                  Death arrears payee
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType-6" name="payeeType" type="radio" value="Corporate Acting Body" {{ checked('payeeType','Corporate Acting Body') }}>
+                <label class="govuk-label govuk-radios__label" for="payeeType-6">
+                  Corporate acting body
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="payeeType-7" name="payeeType" type="radio" value="Corporate Death Arrears Payee" {{ checked('payeeType','Corporate Death Arrears Payee') }}>
+                <label class="govuk-label govuk-radios__label" for="payeeType-7">
+                  Corporate death arrears payee
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

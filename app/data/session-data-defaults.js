@@ -23,6 +23,7 @@ module.exports = {
   "claimOtherBenefits" : [ 
     "None"
   ],
+  "claimHasCIS": "true",
   "claimSpecialRules" : "Yes",
   "claimAlternativeFormats" : "None",
   "claimFirstName" : "Jon",

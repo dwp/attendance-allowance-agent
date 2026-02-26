@@ -1,0 +1,30 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+{% set pageName = "Search for the claimant's correspondence address" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form method="post" action="search-a-correspondence-address">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <label class="govuk-label" for="claimCorrespondencePostcode">
+              Postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="claimCorrespondencePostcode" name="claimCorrespondencePostcode" type="text">
+          </fieldset>
+        </div>
+        <p class="govuk-body"><a href="correspondence-address-int" class="govuk-link">Enter an address outside of the UK</a></p>
+        <button type="submit" class="govuk-button govuk-!-margin-right-5" data-module="govuk-button">
+          Find address
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "What is the payee's name?" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post" action="address-postcode">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-heading-l">
+              What is the payee's name?
+          </h1>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="payeeFirstName">
+              First name
+            </label>
+            <input class="govuk-input" id="payeeFirstName" name="payeeFirstName" type="text" spellcheck="false" autocomplete="name" value="{{data['payeeFirstName']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="payeeMiddleName">
+              Middle name - optional
+            </label>
+            <input class="govuk-input" id="payeeMiddleName" name="payeeMiddleName" type="text" spellcheck="false" autocomplete="name" value="{{data['payeeMiddleName']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="payeeLastName">
+              Last name
+            </label>
+            <input class="govuk-input" id="payeeLastName" name="payeeLastName" type="text" spellcheck="false" autocomplete="name" value="{{data['payeeLastName']}}">
+          </div>
+
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

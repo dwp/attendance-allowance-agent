@@ -1,0 +1,145 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "Exclusion periods" %}
+
+{% block content %}
+  
+  {% if not data['exclusion-start-day'] %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" action="exclusion-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">        
+              <h1 class="govuk-fieldset__heading">
+                Do you want to add an exclusion period?
+              </h1>
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="exclusion-1" name="exclusionAction" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="exclusion-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="exclusion-2" name="exclusionAction" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="exclusion-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  {% else %}
+  
+  <h1 class="govuk-heading-xl">
+    Exclusion periods
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            {% if data['exclusion-start-day'] %}
+              {{ data['exclusion-start-day'] }}
+            {% else %}
+              20 
+            {% endif %}
+            {% if data['exclusion-start-month'] %}
+              {{ data['exclusion-start-month'] | monthName }} 
+            {% else %}
+              July 
+            {% endif %}
+            {% if data['exclusion-start-year'] %}
+              {{ data['exclusion-start-year'] }}
+            {% else %}
+              2025
+            {% endif %}
+            to 
+            {% if data['exclusion-end-day'] %}
+              {{ data['exclusion-end-day'] }}
+            {% else %}
+              19 
+            {% endif %}
+            {% if data['exclusion-end-month'] %}
+              {{ data['exclusion-end-month'] | monthName }} 
+            {% else %}
+              August 
+            {% endif %}
+            {% if data['exclusion-end-year'] %}
+              {{ data['exclusion-end-year'] }}
+            {% else %}
+              2025
+            {% endif %}
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="award/add-exclusion">Change<span class="govuk-visually-hidden"> exclusion 1</span></a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="award/delete-exclusion">Delete<span class="govuk-visually-hidden"> exclusion 1</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Reason
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['exclusion-reason'] %}
+                  {{ data['exclusion-reason'] }}
+                {% else %}
+                  Reason
+                {% endif %}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <form method="post" action="exclusion-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Do you want to add another exclusion period?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="exclusion-1" name="exclusionAction" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="exclusion-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="exclusion-2" name="exclusionAction" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="exclusion-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+{% endif %}
+
+{% endblock %}

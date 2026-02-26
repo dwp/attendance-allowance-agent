@@ -1,0 +1,49 @@
+{% extends "user-testing-3/layouts/internal-layout.html" %}
+
+{% set pageName = "Select which alternative formats apply to this claim?" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="have-exportability" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div id="claimAltFormat-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimAltFormat" name="claimAltFormat" type="checkbox" value="Braille">
+                <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat">
+                  Braille
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-2" name="claimAltFormat" type="checkbox" value="Foreign language">
+                <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-2">
+                  Foreign language
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-3" name="claimAltFormat" type="checkbox" value="Audio tape">
+                <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-3">
+                  Audio tape
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
