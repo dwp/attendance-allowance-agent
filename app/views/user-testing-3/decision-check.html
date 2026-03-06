@@ -26,17 +26,17 @@
             {% if data['receipt-day'] %}
               {{ data['receipt-day'] }}
             {% else %}
-              25 
+              10 
             {% endif %}
             {% if data['receipt-month'] %}
               {{ data['receipt-month'] | monthName }} 
             {% else %}
-              October 
+              March 
             {% endif %}
             {% if data['receipt-year'] %}
               {{ data['receipt-year'] }}
             {% else %}
-              2025
+              2026
             {% endif %}
           </dd>
           {% if not (data['claimFinalised'] == 'Yes') %}
@@ -53,17 +53,17 @@
             {% if data['effective-day'] %}
               {{ data['effective-day'] }}
             {% else %}
-              25 
+              10 
             {% endif %}
             {% if data['effective-month'] %}
               {{ data['effective-month'] | monthName }} 
             {% else %}
-              October 
+              March 
             {% endif %}
             {% if data['effective-year'] %}
               {{ data['effective-year'] }}
             {% else %}
-              2025
+              2026
             {% endif %}
           </dd>
           {% if not (data['claimFinalised'] == 'Yes') %}
@@ -201,28 +201,28 @@
               {% if data['entitlement-start-day'] %}
                 {{ data['entitlement-start-day'] }}
               {% else %}
-                25 
+                10 
               {% endif %}
               {% if data['entitlement-start-month'] %}
                 {{ data['entitlement-start-month'] | monthName }} 
               {% else %}
-                October 
+                March 
               {% endif %}
               {% if data['entitlement-start-year'] %}
                 {{ data['entitlement-start-year'] }}
               {% else %}
-                2025 
+                2026 
               {% endif %}
               to 
               {% if data['entitlement-end-day'] %}
                 {{ data['entitlement-end-day'] }}
               {% else %}
-                24 
+                10 
               {% endif %}
               {% if data['entitlement-end-month'] %}
                 {{ data['entitlement-end-month'] | monthName }} 
               {% else %}
-                October 
+                March 
               {% endif %}
               {% if data['entitlement-end-year'] %}
                 {{ data['entitlement-end-year'] }}

@@ -37,18 +37,16 @@
             {% endif %}
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Roll number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['bank-roll-number'] %}
-              {{ data['bank-roll-number'] }}
-            {% else %}
-              12345678987654321
-            {% endif %}
-          </dd>
-        </div>
+        {% if data['bank-roll-number'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Roll number
+            </dt>
+            <dd class="govuk-summary-list__value">
+                {{ data['bank-roll-number'] }}
+            </dd>
+          </div>
+        {% endif %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Bank or building society
@@ -70,9 +68,10 @@
             Bank or building society address
           </dt>
           <dd class="govuk-summary-list__value">
-            110 Grey St<br/>
-            Newcastle upon Tyne<br/>
-            NE1 6JG
+            Metro Building<br/>
+            6-9 Donegall Square South<br/>
+            Belfast<br/>
+            BT1 5JR
           </dd>
         </div>
       </dl>

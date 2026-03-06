@@ -72,7 +72,7 @@
             {% if data['searchNino'] %}
               {{data['searchNino']}}
             {% else %}
-              AB123456C
+              QQ123456A
             {% endif %}
           </dd>
         </div>
@@ -92,7 +92,7 @@
             {{ data['claimDateOfBirthMM'] | monthName }}
             {{ data['claimDateOfBirthYYYY'] }}
           {% else %}
-            13 April 1958
+            10 October 1930
           {% endif %}
           </dd>
         </div>
@@ -101,7 +101,7 @@
             Age
           </dt>
           <dd class="govuk-summary-list__value">
-            67 years and 6 months
+            95 years
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -157,7 +157,7 @@
             Alternative formats
           </dt>
           <dd class="govuk-summary-list__value">
-            Large print
+            No
           </dd>
         </div>
       </dl>
@@ -172,7 +172,7 @@
             {% if data['claimMainContactNumber'] %}
               {{data['claimMainContactNumber']}}
             {% else %}
-              0800001066
+              087 987 6543
             {% endif %}
           </dd>
           {% if data['claimFinalised'] %}
@@ -189,31 +189,31 @@
             {% if data['claimAddress1'] %}
               {{data['claimAddress1']}}<br/>
             {% else %}
-              11 street<br/>
+              1 High Street<br/>
             {% endif %}
 
             {% if data['claimAddress2'] %}
               {{data['claimAddress2']}}<br/>
             {% else %}
-              Heaton<br/>
+              {# <br/> #}
             {% endif %}
 
             {% if data['claimAddress3'] %}
               {{data['claimAddress3']}}<br/>
             {% else %}
-              Newcastle upon tyne<br/>
+              Belfast<br/>
             {% endif %}
 
             {% if data['claimAddress4'] %}
               {{data['claimAddress4']}}<br/>
             {% else %}
-              England<br/>
+              Northern Ireland<br/>
             {% endif %}
 
             {% if data['claimPostcode'] %}
               {{ data['claimPostcode'] }}
             {% else %}
-              DL11C3
+              BT1 1AA
             {% endif %}
           </dd>
           {% if data['claimFinalised'] %}
@@ -222,7 +222,7 @@
             </dd>
           {% endif %}
         </div>
-        <div class="govuk-summary-list__row">
+        {# <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Welsh language spoken
           </dt>
@@ -245,7 +245,7 @@
               No
             {% endif %}
           </dd>
-        </div>
+        </div> #}
       </dl>
 
       <h3 class="govuk-heading-m">Alternative contact</h3>
@@ -263,7 +263,7 @@
             Contact phone number
           </dt>
           <dd class="govuk-summary-list__value">
-            0798762889
+            087 989 1234
           </dd>
         </div>
         <div class="govuk-summary-list__row">

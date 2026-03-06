@@ -57,7 +57,7 @@
             {% if data['searchNino'] %}
               {{data['searchNino']}}
             {% else %}
-              AB123456C
+              QQ123456A
             {% endif %}
           </dd>
         </div>
@@ -77,7 +77,7 @@
             {{ data['claimDateOfBirthMM'] | monthName }}
             {{ data['claimDateOfBirthYYYY'] }}
           {% else %}
-            13 April 1958
+            10 October 1930
           {% endif %}
           </dd>
         </div>
@@ -86,7 +86,7 @@
             Age
           </dt>
           <dd class="govuk-summary-list__value">
-            67 years and 6 month
+            90 years
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -142,7 +142,7 @@
             Alternative formats
           </dt>
           <dd class="govuk-summary-list__value">
-            Large print
+            No
           </dd>
         </div>
       </dl>
@@ -157,7 +157,7 @@
             {% if data['claimMainContactNumber'] %}
               {{data['claimMainContactNumber']}}
             {% else %}
-              0800001066
+              087 987 6543
             {% endif %}
           </dd>
         </div>
@@ -169,35 +169,35 @@
             {% if data['claimAddress1'] %}
               {{data['claimAddress1']}}<br/>
             {% else %}
-              11 street<br/>
+              1 High Street<br/>
             {% endif %}
 
             {% if data['claimAddress2'] %}
               {{data['claimAddress2']}}<br/>
             {% else %}
-              Heaton<br/>
+              {# Heaton<br/> #}
             {% endif %}
 
             {% if data['claimAddress3'] %}
               {{data['claimAddress3']}}<br/>
             {% else %}
-              Newcastle upon tyne<br/>
+              Belfast<br/>
             {% endif %}
 
             {% if data['claimAddress4'] %}
               {{data['claimAddress4']}}<br/>
             {% else %}
-              England<br/>
+              Northern Ireland<br/>
             {% endif %}
 
             {% if data['claimPostcode'] %}
               {{ data['claimPostcode'] }}
             {% else %}
-              DL11C3
+              BT1 1AA
             {% endif %}
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
+        {# <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Welsh language spoken
           </dt>
@@ -220,7 +220,7 @@
               No
             {% endif %}
           </dd>
-        </div>
+        </div> #}
       </dl>
 
       <h2 class="govuk-heading-m">Alternative contact</h2>
@@ -238,7 +238,7 @@
             Contact phone number
           </dt>
           <dd class="govuk-summary-list__value">
-            0798762889
+            087 989 1234
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -261,17 +261,17 @@
             {% if data['receipt-day'] %}
               {{ data['receipt-day'] }}
             {% else %}
-              25 
+              10 
             {% endif %}
             {% if data['receipt-month'] %}
               {{ data['receipt-month'] | monthName }} 
             {% else %}
-              October 
+              March 
             {% endif %}
             {% if data['receipt-year'] %}
               {{ data['receipt-year'] }}
             {% else %}
-              2025
+              2026
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -286,17 +286,17 @@
             {% if data['effective-day'] %}
               {{ data['effective-day'] }}
             {% else %}
-              25 
+              10 
             {% endif %}
             {% if data['effective-month'] %}
               {{ data['effective-month'] | monthName }} 
             {% else %}
-              October 
+              March 
             {% endif %}
             {% if data['effective-year'] %}
               {{ data['effective-year'] }}
             {% else %}
-              2025
+              2026
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -373,33 +373,33 @@
               {% if data['entitlement-start-day'] %}
                 {{ data['entitlement-start-day'] }}
               {% else %}
-                25 
+                10 
               {% endif %}
               {% if data['entitlement-start-month'] %}
                 {{ data['entitlement-start-month'] | monthName }} 
               {% else %}
-                October 
+                March 
               {% endif %}
               {% if data['entitlement-start-year'] %}
                 {{ data['entitlement-start-year'] }}
               {% else %}
-                2025 
+                2026 
               {% endif %}
               to 
               {% if data['entitlement-end-day'] %}
                 {{ data['entitlement-end-day'] }}
               {% else %}
-                24 
+                9 
               {% endif %}
               {% if data['entitlement-end-month'] %}
                 {{ data['entitlement-end-month'] | monthName }} 
               {% else %}
-                October 
+                Match 
               {% endif %}
               {% if data['entitlement-end-year'] %}
                 {{ data['entitlement-end-year'] }}
               {% else %}
-                2028
+                2029
               {% endif %}
             </h2>
             <ul class="govuk-summary-card__actions">
@@ -455,67 +455,6 @@
             </dd>
           </div>
         </dl>
-        {# <div class="govuk-summary-card">
-          <div class="govuk-summary-card__title-wrapper">
-            <h2 class="govuk-summary-card__title">
-              {% if data['exclusion-start-day'] %}
-                {{ data['exclusion-start-day'] }}
-              {% else %}
-                20 
-              {% endif %}
-              {% if data['exclusion-start-month'] %}
-                {{ data['exclusion-start-month'] | monthName }} 
-              {% else %}
-                July 
-              {% endif %}
-              {% if data['exclusion-start-year'] %}
-                {{ data['exclusion-start-year'] }}
-              {% else %}
-                2025
-              {% endif %}
-              to 
-              {% if data['exclusion-end-day'] %}
-                {{ data['exclusion-end-day'] }}
-              {% else %}
-                19 
-              {% endif %}
-              {% if data['exclusion-end-month'] %}
-                {{ data['exclusion-end-month'] | monthName }} 
-              {% else %}
-                August 
-              {% endif %}
-              {% if data['exclusion-end-year'] %}
-                {{ data['exclusion-end-year'] }}
-              {% else %}
-                2025
-              {% endif %}
-            </h2>
-            <ul class="govuk-summary-card__actions">
-              <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="award/exclusion-check">Change<span class="govuk-visually-hidden"> exclusion 1</span></a>
-              </li>
-              <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="award/exclusion-check">Delete<span class="govuk-visually-hidden"> exclusion 1</span></a>
-              </li>
-            </ul>
-          </div>
-          <div class="govuk-summary-card__content">
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Reason
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {% if data['exclusion-reason'] %}
-                    {{ data['exclusion-reason'] }}
-                  {% else %}
-                    Reason
-                  {% endif %}
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div> #}
 
       <h2 class="govuk-heading-m">Reason for decision</h2>
       <dl class="govuk-summary-list">
@@ -543,7 +482,7 @@
             {% if data['payeeName'] %}
               {{ data['payeeName'] }}
             {% else %}
-              Jack Bill
+              Bill Smith
             {% endif %}
           </h2>
           <ul class="govuk-summary-card__actions">
@@ -565,7 +504,7 @@
                 {% if data['payeeType'] %}
                   {{ data['payeeType'] }}
                 {% else %}
-                  Claimant
+                  Deputy
                 {% endif %}
               </dd>
             </div>
@@ -577,7 +516,7 @@
                 {% if data['payeeNI'] %}
                   {{ data['payeeNI'] }}
                 {% else %}
-                  Jk123456C
+                  AA123456A
                 {% endif %}
               </dd>
             </div>
@@ -589,7 +528,7 @@
                 {% if data['payeeAddress'] %}
                   {{ data['payeeAddress'] }}
                 {% else %}
-                  11 street, Heaton, Newcastle upon Tyne, England
+                  2 N Queen St, Belfast BT15 1ES
                 {% endif %}
               </dd>
             </div>
@@ -642,7 +581,7 @@
             {% if data['payeeAccountHolder'] %}
               {{ data['payeeAccountHolder'] }}
             {% else %}
-              Jon Smith
+              Bill Smith
             {% endif %}
           </dd>
         </div>
@@ -654,7 +593,7 @@
             {% if data['bank-sort-code'] %}
               {{ data['bank-sort-code'] }}
             {% else %}
-              00-11-00
+              00-00-10
             {% endif %}
           </dd>
         </div>
@@ -666,7 +605,7 @@
             {% if data['bank-account-number'] %}
               {{ data['bank-account-number'] }}
             {% else %}
-              1122334455
+              12345678
             {% endif %}
           </dd>
         </div>
@@ -688,9 +627,9 @@
           <dd class="govuk-summary-list__value">
             HSBC<br/>
             Local<br/>
-            110 Grey St<br/>
-            Newcastle upon Tyne<br/>
-            NE1 6JG
+            Metro Building, 6-9 Donegall Square South<br/>
+            Belfast<br/>
+            BT1 5JR
           </dd>
         </div>
       </dl>
