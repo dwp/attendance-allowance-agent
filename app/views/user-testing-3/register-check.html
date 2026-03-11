@@ -186,23 +186,23 @@
             Address
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['claimAddress1'] %}
+            {# {% if data['claimAddress1'] %}
               {{data['claimAddress1']}}<br/>
             {% else %}
+            {% endif %} #}
               1 High Street<br/>
-            {% endif %}
 
-            {% if data['claimAddress2'] %}
+            {# {% if data['claimAddress2'] %}
               {{data['claimAddress2']}}<br/>
             {% else %}
-              {# <br/> #}
-            {% endif %}
+              <br/>
+            {% endif %} #}
 
-            {% if data['claimAddress3'] %}
+            {# {% if data['claimAddress3'] %}
               {{data['claimAddress3']}}<br/>
             {% else %}
+            {% endif %} #}
               Belfast<br/>
-            {% endif %}
 
             {% if data['claimAddress4'] %}
               {{data['claimAddress4']}}<br/>
@@ -210,11 +210,11 @@
               Northern Ireland<br/>
             {% endif %}
 
-            {% if data['claimPostcode'] %}
+            {# {% if data['claimPostcode'] %}
               {{ data['claimPostcode'] }}
             {% else %}
+            {% endif %} #}
               BT1 1AA
-            {% endif %}
           </dd>
           {% if data['claimFinalised'] %}
             <dd class="govuk-summary-list__actions">
