@@ -1,0 +1,108 @@
+{%- set assetPath = assetPath | default('/plugin-assets/govuk-frontend' + govukFrontend.assetPath) -%}
+
+{% extends "govuk/template.njk" %}
+
+{% block head %}
+  {% block meta %}{% endblock %}
+  {% block stylesheets %}
+    {% include "govuk-prototype-kit/includes/stylesheets.njk" %}
+    <link rel="stylesheet" type="text/css" href="/govuk-frontend-4.0.1.min.css" />
+  <script src="/govuk-frontend-4.0.1.min.js"></script>
+  <link rel="stylesheet" href="/assets/location-autocomplete.min.css" />
+
+  {% endblock %}
+{% endblock %}
+
+{% block pageTitle %}
+  {% if pageName %}{{ pageName }} - {% endif %}{{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+
+{% block header %}
+  <header data-module="govuk-header" class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/" class="dwp-header__link">{{ serviceName }}</a>
+      </div>
+    </div>
+  </header>
+  {% if not (hideRef) %}
+    <section class="dwp-quick-reference dwp-quick-reference--alternative govuk-!-margin-top-0" aria-label="Case information">
+      <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <dl class="dwp-quick-reference__block">
+              <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+              <dd class="dwp-quick-reference__primary">
+                {% if (data['claimHasCIS'] == "true") %}
+                  {% if data['claimFirstName'] or data['claimLastName'] %}
+                    {{data['claimFirstName']}} {{data['claimLastName']}}
+                  {% else %}
+                    James Smith
+                  {% endif %}
+                {% endif %}
+                <strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-4">
+                  Pre-registered
+                </strong>
+              </dd>
+              <dd class="dwp-quick-reference__secondary">
+              <hr class="govuk-section-break govuk-section-break--visible">
+              </dd>
+              <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+              <dd class="dwp-quick-reference__secondary">
+                {% if data['searchNino'] %}
+                  {{ data['searchNino']}}
+                {% else %}
+                  AB 12 34 56 C
+                {% endif %}
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+  <script>console.log({{ data | dump | safe }})</script>
+  {% if not hideBack %}
+    <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% if (GOVUKPrototypeKit.isDevelopment) %}
+  {% set footerItems = [
+    {
+      href: "/manage-prototype",
+      text: "Manage your prototype"
+    }, {
+      href: "/manage-prototype/clear-data",
+      text: "Clear data"
+    }
+  ] %}
+{% else %}
+  {% set footerItems = [
+    {
+      href: "/manage-prototype/clear-data",
+      text: "Clear data"
+    }
+  ] %}
+{% endif %}
+
+{% block footer %}
+  {{ govukFooter({
+    meta: {
+      items: footerItems,
+      visuallyHiddenTitle: "Footer links"
+    }
+  }) }}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "govuk-prototype-kit/includes/scripts.njk" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

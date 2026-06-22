@@ -1,0 +1,205 @@
+{% extends "version-1/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set pageName = "Claimant details" %}
+
+{% block content %}
+  
+  
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['searchNino'] %}
+              {{ data['searchNino']}}
+            {% else %}
+              AB123456C
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimFirstName'] or data['claimLastName'] %}
+              {{data['claimFirstName']}} {{data['claimLastName']}}
+            {% else %}
+              No record
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="claimant-details/name">Change<span class="govuk-visually-hidden"> name</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (
+              data['claimDateOfBirthDD'] and
+              data['claimDateOfBirthMM'] and
+              data['claimDateOfBirthYYYY'] 
+              ) 
+            %}
+              {{ data['claimDateOfBirthDD'] }}
+              {{ data['claimDateOfBirthMM'] | monthName }}
+              {{ data['claimDateOfBirthYYYY'] }}
+
+              <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                Verified
+              </strong>
+            {% else %}
+              No record
+            {% endif %}
+          </dd>
+          {% if (data['claimDOBUnverified']) %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="claimant-details/address">Change<span class="govuk-visually-hidden"> address</span></a>
+            </dd>
+          {% endif %}
+        </div>
+        {% 
+          if (
+          data['claimDateOfDeathDD'] and
+          data['claimDateOfDeathMM'] and
+          data['claimDateOfDeathYYYY'] 
+          ) 
+        %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of death
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+                {{ data['claimDateOfDeathDD'] }}
+                {{ data['claimDateOfDeathMM'] | monthName }}
+                {{ data['claimDateOfDeathYYYY'] }}
+
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                Verified
+              </strong>
+            </dd>
+            {% if (data['claimDODUnverified']) %}
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="claimant-details/address">Change<span class="govuk-visually-hidden"> address</span></a>
+              </dd>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimAddress1'] %}
+              {{data['claimAddress1']}}<br/>
+            {% else %}
+              1 High Street<br/>
+            {% endif %}
+
+            {% if data['claimAddress2'] %}
+              {{data['claimAddress2']}}<br/>
+            {% else %}
+              {# <br/> #}
+            {% endif %}
+
+            {% if data['claimAddress3'] %}
+              {{data['claimAddress3']}}<br/>
+            {% else %}
+              Belfast<br/>
+            {% endif %}
+
+            {% if data['claimAddress4'] %}
+              {{data['claimAddress4']}}<br/>
+            {% else %}
+              Northern Ireland<br/>
+            {% endif %}
+
+            {% if data['claimPostcode'] %}
+              {{ data['claimPostcode'] }}
+            {% else %}
+              BT1 1AA
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="claimant-details/address">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Mobile number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (data['claimMobileNumber']) 
+            %}
+              {{ data['claimMobileNumber'] }}
+            {% else %}
+              07911223344
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="claimant-details/phone-number">Change<span class="govuk-visually-hidden"> mobile number</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Nationality
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (data['claimNationality']) 
+            %}
+              {{ data['claimNationality'] }}
+            {% else %}
+              British
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="claimant-details/nationality">Change<span class="govuk-visually-hidden"> nationality</span></a>
+          </dd>
+        </div>
+      </dl>
+
+      <form class="form" method="post" action="registration/claim-continue-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Do you want to work on this claim?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="continue-claim-1" name="continue-claim" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="continue-claim-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="continue-claim-2" name="continue-claim" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="continue-claim-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

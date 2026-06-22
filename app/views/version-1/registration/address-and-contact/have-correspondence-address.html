@@ -1,0 +1,42 @@
+{% extends "version-1/layouts/internal-layout.html" %}
+
+{% set pageName = "Where should DWP send written correspondence?" %}
+
+{% block content %}
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form method="post" action="have-correspondence-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimHaveCorrespondence-1" name="claimHaveCorrespondence" type="radio" value="To the residential address">
+                <label class="govuk-label govuk-radios__label" for="claimHaveCorrespondence-1">
+                  To the residential address
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimHaveCorrespondence-2" name="claimHaveCorrespondence" type="radio" value="To a different address">
+                <label class="govuk-label govuk-radios__label" for="claimHaveCorrespondence-2">
+                  To a different address
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

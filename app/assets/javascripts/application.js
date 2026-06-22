@@ -16,6 +16,12 @@ const countries = [
 ]
 
 accessibleAutocomplete({
+  element: document.querySelector('#my-autocomplete-container'),
+  id: 'my-autocomplete', // To match it to the existing <label>.
+  source: countries
+})
+
+accessibleAutocomplete({
   element: document.querySelector('#healthConditions'),
   id: 'healthConditions', // To match it to the existing <label>.
   source: countries

@@ -1,0 +1,85 @@
+{% extends "version-1/layouts/internal-layout.html" %}
+
+{% set pageName = "Select any flags which apply to this claim" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="have-alternative-formats" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <div id="claimFlags-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags" name="claimFlags" type="checkbox" value="Digital claim">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags">
+                  Digital claim
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-2" name="claimFlags" type="checkbox" value="Special rules">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-2">
+                  Special rules
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-3" name="claimFlags" type="checkbox" value="Boarder case">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-3">
+                  Boarder case
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-4" name="claimFlags" type="checkbox" value="Closed fraud">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-4">
+                  Closed fraud
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-4" name="claimFlags" type="checkbox" value="Renal dialysis">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-4">
+                  Renal dialysis
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-5" name="claimFlags" type="checkbox" value="Customer Charter Issue">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-5">
+                  Customer Charter Issue
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-5" name="claimFlags" type="checkbox" value="Proven fraud (Fraud team use)">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-5">
+                  Proven fraud (Fraud team use)
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-6" name="claimFlags" type="checkbox" value="Good cause">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-6">
+                  Good cause
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-7" name="claimFlags" type="checkbox" value="Fraud (under investigation)">
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-7">
+                  Fraud (under investigation)
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

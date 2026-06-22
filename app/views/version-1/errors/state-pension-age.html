@@ -1,0 +1,47 @@
+{% extends "version-1/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set pageName = "The claimant is under State Pension age" %}
+
+{% block content %}
+  
+  
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <p class="govuk-body">You should check for any other conflicting benefits before you register this claim.</p>
+
+      <form class="form" method="post" action="registration/claim-continue-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Do you want to continue?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="continue-claim-1" name="continue-claim" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="continue-claim-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="continue-claim-2" name="continue-claim" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="continue-claim-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
