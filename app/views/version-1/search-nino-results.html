@@ -33,7 +33,7 @@
             {% if data['claimFirstName'] or data['claimLastName'] %}
               {{data['claimFirstName']}} {{data['claimLastName']}}
             {% else %}
-              No record
+              None
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -56,14 +56,20 @@
               {{ data['claimDateOfBirthMM'] | monthName }}
               {{ data['claimDateOfBirthYYYY'] }}
 
-              <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
-                Verified
-              </strong>
+              {% if (data['claimDOBverified'] == "true") %}
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              {% elif (data['claimDOBverified'] == "false") %}
+                <strong class="govuk-tag govuk-tag--red govuk-!-margin-left-4">
+                  Unverified
+                </strong>
+              {% endif %}
             {% else %}
-              No record
+              None
             {% endif %}
           </dd>
-          {% if (data['claimDOBUnverified']) %}
+          {% if (data['claimDOBUnverified'] == "false") %}
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="claimant-details/address">Change<span class="govuk-visually-hidden"> address</span></a>
             </dd>
@@ -86,9 +92,15 @@
                 {{ data['claimDateOfDeathMM'] | monthName }}
                 {{ data['claimDateOfDeathYYYY'] }}
 
-                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
-                Verified
-              </strong>
+                {% if (data['claimDODverified'] == "true") %}
+                  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                    Verified
+                  </strong>
+                {% elif (data['claimDODverified'] == "false") %}
+                  <strong class="govuk-tag govuk-tag--red govuk-!-margin-left-4">
+                    Unverified
+                  </strong>
+                {% endif %}
             </dd>
             {% if (data['claimDODUnverified']) %}
               <dd class="govuk-summary-list__actions">
@@ -99,37 +111,37 @@
         {% endif %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Address
+            Residential address
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['claimAddress1'] %}
-              {{data['claimAddress1']}}<br/>
-            {% else %}
-              1 High Street<br/>
-            {% endif %}
-
-            {% if data['claimAddress2'] %}
-              {{data['claimAddress2']}}<br/>
-            {% else %}
-              {# <br/> #}
-            {% endif %}
-
-            {% if data['claimAddress3'] %}
-              {{data['claimAddress3']}}<br/>
-            {% else %}
-              Belfast<br/>
-            {% endif %}
-
-            {% if data['claimAddress4'] %}
-              {{data['claimAddress4']}}<br/>
-            {% else %}
-              Northern Ireland<br/>
-            {% endif %}
-
-            {% if data['claimPostcode'] %}
-              {{ data['claimPostcode'] }}
-            {% else %}
-              BT1 1AA
+            {% if (data['claimAddress1'] or 
+              data['claimAddress2'] or 
+              data['claimAddress3'] or 
+              data['claimAddress4'] or 
+              data['claimPostcode']) 
+            %}
+              {% if data['claimAddress1'] %}
+                {{data['claimAddress1']}}<br/>
+              {% endif %}
+              {% if data['claimAddress2'] %}
+                {{data['claimAddress2']}}<br/>
+              {% endif %}
+              {% if data['claimAddress3'] %}
+                {{data['claimAddress3']}}<br/>
+              {% endif %}
+              {% if data['claimAddress4'] %}
+                {{data['claimAddress4']}}<br/>
+              {% endif %}
+              {% if data['claimPostcode'] %}
+                {{ data['claimPostcode'] }}
+              {% endif %}
+            {% elif not (data['claimAddress1'] and 
+              data['claimAddress2'] and 
+              data['claimAddress3'] and 
+              data['claimAddress4'] and 
+              data['claimPostcode']) 
+            %}
+              None
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -138,19 +150,29 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Mobile number
+            Contact
           </dt>
           <dd class="govuk-summary-list__value">
             {% 
-              if (data['claimMobileNumber']) 
+              if (data['claimMobile']) 
             %}
-              {{ data['claimMobileNumber'] }}
-            {% else %}
-              07911223344
+              {{ data['claimMobile'] }}
+            {% endif %}
+            {% 
+              if (data['claimMobile']) and (data['claimLandline'])
+            %}
+              <br/>
+            {% elif not (data['claimMobile'] and data['claimLandline']) %}
+              None
+            {% endif %}
+            {% 
+              if (data['claimLandline']) 
+            %}
+              {{ data['claimLandline'] }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="claimant-details/phone-number">Change<span class="govuk-visually-hidden"> mobile number</span></a>
+            <a class="govuk-link" href="claimant-details/contact-number">Change<span class="govuk-visually-hidden"> contact number</span></a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -163,7 +185,7 @@
             %}
               {{ data['claimNationality'] }}
             {% else %}
-              British
+              None
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">

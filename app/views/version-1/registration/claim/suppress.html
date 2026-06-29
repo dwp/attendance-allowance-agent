@@ -17,13 +17,13 @@
             </legend>
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimSurpress-1" name="claimSurpress" type="radio" value="Yes">
+                <input class="govuk-radios__input" id="claimSurpress-1" name="claimSurpress" type="radio" value="Yes"  {{ checked('claimSurpress','Yes') }}>
                 <label class="govuk-label govuk-radios__label" for="claimSurpress-1">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimSurpress-2" name="claimSurpress" type="radio" value="No">
+                <input class="govuk-radios__input" id="claimSurpress-2" name="claimSurpress" type="radio" value="No"  {{ checked('claimSurpress','No') }}>
                 <label class="govuk-label govuk-radios__label" for="claimSurpress-2">
                   No
                 </label>

@@ -16,13 +16,13 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimWelshContact" name="claimWelshContact" type="radio" value="Yes, always use Welsh">
+                <input class="govuk-radios__input" id="claimWelshContact" name="claimWelshContact" type="radio" value="Yes, always use Welsh" {{ checked('claimWelshContact','Yes, always use Welsh') }}>
                 <label class="govuk-label govuk-radios__label" for="claimWelshContact">
                   Yes, always use Welsh
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimWelshContact-2" name="claimWelshContact" type="radio" value="Use Welsh when speaking">
+                <input class="govuk-radios__input" id="claimWelshContact-2" name="claimWelshContact" type="radio" value="Use Welsh when speaking" {{ checked('claimWelshContact','Use Welsh when speaking') }}>
                 <label class="govuk-label govuk-radios__label" for="claimWelshContact-2">
                   Use Welsh when speaking
                 </label>
@@ -31,7 +31,7 @@
                 </div>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimWelshContact-3" name="claimWelshContact" type="radio" value="Use Welsh in writing">
+                <input class="govuk-radios__input" id="claimWelshContact-3" name="claimWelshContact" type="radio" value="Use Welsh in writing" {{ checked('claimWelshContact','Use Welsh in writing') }}>
                 <label class="govuk-label govuk-radios__label" for="claimWelshContact-3">
                   Use Welsh in writing
                 </label>
@@ -40,7 +40,7 @@
                 </div>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimWelshContact-4" name="claimWelshContact" type="radio" value="No preference ">
+                <input class="govuk-radios__input" id="claimWelshContact-4" name="claimWelshContact" type="radio" value="No preference" {{ checked('claimWelshContact','No preference') }}>
                 <label class="govuk-label govuk-radios__label" for="claimWelshContact-4">
                   No preference 
                 </label>

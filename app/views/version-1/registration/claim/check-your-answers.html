@@ -26,8 +26,6 @@
               {{ data['claimreceiptDD'] }}
               {{ data['claimreceiptMM'] | monthName }}
               {{ data['claimreceiptYYYY'] }}
-            {% else %}
-              13 February 2026
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -48,8 +46,6 @@
               {{ data['claimEffectiveDD'] }}
               {{ data['claimEffectiveMM'] | monthName }}
               {{ data['claimEffectiveYYYY'] }}
-            {% else %}
-              13 February 2026
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -63,8 +59,6 @@
             <dd class="govuk-summary-list__value">
               {% if data['claimFlags'] %}
                 {{data['claimFlags']}}<br/>
-              {% else %}
-                Special rules
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -78,8 +72,6 @@
             <dd class="govuk-summary-list__value">
               {% if data['claimHaveAlternativeFlags'] %}
                 {{data['claimHaveAlternativeFlags']}}
-              {% else %}
-                No
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -94,8 +86,6 @@
               <dd class="govuk-summary-list__value">
                 {% if data['claimAlternativeFlags'] %}
                   {{data['claimAlternativeFlags']}}
-                {% else %}
-                  Large print
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
@@ -110,8 +100,6 @@
             <dd class="govuk-summary-list__value">
               {% if data['claimSuppress'] %}
                 {{ data['claimSuppress'] }}
-              {% else %}
-                No
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">

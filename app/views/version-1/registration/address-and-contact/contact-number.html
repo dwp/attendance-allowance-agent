@@ -1,0 +1,37 @@
+{% extends "version-1/layouts/internal-layout.html" %}
+{% set pageName = "Enter the claimant's contact numbers" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form method="post" action="check-your-answers">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="claimMobile">
+                Mobile
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="claimMobile" name="claimMobile" type="text" value="{{data[claimMobile]}}">
+            </div>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="claimLandline">
+                Landline
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="claimLandline" name="claimLandline" type="text" value="{{data[claimLandline]}}">
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

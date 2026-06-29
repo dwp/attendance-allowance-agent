@@ -25,18 +25,6 @@ router.post('/version-1/registration/personal/still-alive-answer', function (req
 })
 
 
-router.post('/version-1/registration/claim/have-formats-answer', function (req, res) {
-
-    var haveAlternativeFormats = req.session.data['claimHaveAlternativeFlags']
-
-    if (haveAlternativeFormats == "Yes"){
-        res.redirect('/registration/registration/claim/alternative-formats')
-    } else {
-        res.redirect('/registration/registration/claim/have-exportability')
-    }
-
-})
-
 router.post('/version-1/registration/claim/have-exportability-answer', function (req, res) {
 
     var haveExportability = req.session.data['claimHaveExportability']
@@ -135,6 +123,18 @@ router.post('/version-1/accountholder-answer', function (req, res) {
 
 // -----------------------------
 
+router.post('/version-1/registration/claim/have-formats-answer', function (req, res) {
+
+    var haveAlternativeFormats = req.session.data['claimHaveAlternativeFlags']
+
+    if (haveAlternativeFormats == "Yes"){
+        res.redirect('/version-1/registration/claim/alternative-formats')
+    } else {
+        res.redirect('/version-1/registration/claim/suppress')
+    }
+
+})
+
 router.post('/version-1/registration/register/register-answer', function (req, res) {
 
     var registered = req.session.data['claimRegistered']
@@ -147,14 +147,14 @@ router.post('/version-1/registration/register/register-answer', function (req, r
 
 }) 
 
-router.post('/version-1/registration/address-and-contact/have-landline-answer', function (req, res) {
+router.post('/version-1/registration/address-and-contact/welsh-answer', function (req, res) {
 
-    var haveLandline = req.session.data['claimHaveLandlineNumber']
+    var welshPostcode = req.session.data['claimPostcode']
 
-    if (haveLandline == "Yes"){
-        res.redirect('/version-1/registration/address-and-contact/landline-number')
+    if (welshPostcode == "CF10 1NS"){
+        res.redirect('/version-1/registration/address-and-contact/welsh-contact')
     } else {
-        res.redirect('/version-1/registration/address-and-contact/check-your-answers')
+        res.redirect('/version-1/registration/address-and-contact/have-correspondence-address')
     }
 
 })
@@ -166,7 +166,7 @@ router.post('/version-1/registration/address-and-contact/have-correspondence-ans
     if (haveCorrespondence == "To a different address"){
         res.redirect('/version-1/registration/address-and-contact/correspondence')
     } else {
-        res.redirect('/version-1/registration/address-and-contact/mobile-number')
+        res.redirect('/version-1/registration/address-and-contact/contact-number')
     }
 
 })

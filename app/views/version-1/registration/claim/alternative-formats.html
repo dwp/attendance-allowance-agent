@@ -6,7 +6,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <form action="have-exportability" method="post" novalidate>
+      <form action="suppress" method="post" novalidate>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -19,21 +19,51 @@
             </div>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="claimAltFormat" name="claimAltFormat" type="checkbox" value="Braille">
+                <input class="govuk-checkboxes__input" id="claimAltFormat" name="claimAltFormat" type="checkbox" value="Braille" {{ checked('claimAltFormat','Braille') }}>
                 <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat">
                   Braille
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="claimAltFormat-2" name="claimAltFormat" type="checkbox" value="Foreign language">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-2" name="claimAltFormat" type="checkbox" value="Foreign language" {{ checked('claimAltFormat','Foreign language') }}>
                 <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-2">
                   Foreign language
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="claimAltFormat-3" name="claimAltFormat" type="checkbox" value="Audio tape">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-3" name="claimAltFormat" type="checkbox" value="Audio tape" {{ checked('claimAltFormat','Audio tape') }}>
                 <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-3">
                   Audio tape
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-4" name="claimAltFormat" type="checkbox" value="Large font" {{ checked('claimAltFormat','Large font') }}>
+                <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-4">
+                  Large font
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-5" name="claimAltFormat" type="checkbox" value="British sign language" {{ checked('claimAltFormat','British sign language') }}>
+                <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-5">
+                  British sign language
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-6" name="claimAltFormat" type="checkbox" value="Telephone" {{ checked('claimAltFormat','Telephone') }}>
+                <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-6">
+                  Telephone
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-7" name="claimAltFormat" type="checkbox" value="Email" {{ checked('claimAltFormat','Email') }}>
+                <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-7">
+                  Email
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimAltFormat-8" name="claimAltFormat" type="checkbox" value="Textphone/Typetalk or Relay UK" {{ checked('claimAltFormat','Textphone/Typetalk or Relay UK') }}>
+                <label class="govuk-label govuk-checkboxes__label" for="claimAltFormat-8">
+                  Textphone/Typetalk or Relay UK
                 </label>
               </div>
             </div>

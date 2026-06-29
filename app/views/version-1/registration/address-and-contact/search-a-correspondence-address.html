@@ -18,8 +18,6 @@
           <dd class="govuk-summary-list__value">
             {% if data['claimCorrespondencePostcode'] %}
               {{data['claimCorrespondencePostcode']}}
-            {% else %}
-              NE1 5DQ
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -28,14 +26,14 @@
         </div>
       </dl>
 
-      <form method="post" action="mobile-number">
+      <form method="post" action="contact-number">
         <div class="govuk-form-group">
           <label class="govuk-label" for="sort">
             Select an address
           </label>
           <select class="govuk-select" id="claimant-address" name="claimCorrespondenceAddress">
-            <option value="11 street, Heaton, Newcastle upon Tyne, England" selected>11 street, Heaton, Newcastle upon Tyne, England</option>
-            <option value="12 street, Heaton, Newcastle upon Tyne, England" >12 street, Heaton, Newcastle upon Tyne, England</option>
+            <option value="11 Weldon Street, Heaton, Newcastle upon Tyne, England" >11 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+            <option value="12 Weldon street, Heaton, Newcastle upon Tyne, England" >12 Welson Street, Heaton, Newcastle upon Tyne, England</option>
           </select>
         </div>
 

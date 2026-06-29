@@ -16,19 +16,19 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimAddressStatus" name="claimAddressStatus" type="radio" value="Dead Letter Office (DLO)">
+                <input class="govuk-radios__input" id="claimAddressStatus" name="claimAddressStatus" type="radio" value="Dead Letter Office (DLO)" {{ checked('claimAddressStatus','Dead Letter Office (DLO)') }}>
                 <label class="govuk-label govuk-radios__label" for="claimAddressStatus">
                   Dead Letter Office (DLO)
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimAddressStatus-2" name="claimAddressStatus" type="radio" value="No Fixed Abode (NFA)">
+                <input class="govuk-radios__input" id="claimAddressStatus-2" name="claimAddressStatus" type="radio" value="No Fixed Abode (NFA)" {{ checked('claimAddressStatus','No Fixed Abode (NFA)') }}>
                 <label class="govuk-label govuk-radios__label" for="claimAddressStatus-2">
                   No Fixed Abode (NFA)
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimAddressStatus-3" name="claimAddressStatus" type="radio" value="Person Without Address (PWA)">
+                <input class="govuk-radios__input" id="claimAddressStatus-3" name="claimAddressStatus" type="radio" value="Person Without Address (PWA)" {{ checked('claimAddressStatus','Person Without Address (PWA)') }}>
                 <label class="govuk-label govuk-radios__label" for="claimAddressStatus-3">
                   Person Without Address (PWA)
                 </label>

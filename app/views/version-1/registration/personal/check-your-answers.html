@@ -19,8 +19,6 @@
           <dd class="govuk-summary-list__value">
             {% if data['claimTitle'] %}
               {{ data['claimTitle'] }}
-            {% else %}
-              Mr
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -34,8 +32,6 @@
           <dd class="govuk-summary-list__value">
             {% if data['claimFirstName'] or data['claimLastName'] %}
               {{ data['claimFirstName'] }} {{ data['claimLastName'] }}
-            {% else %}
-              Jon Smith
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -57,8 +53,6 @@
               {{ data['claimNameStartDateDD'] }}
               {{ data['claimNameStartDateMM'] | monthName }}
               {{ data['claimNameStartDateYYYY'] }}
-            {% else %}
-              {{ "today" | govukDate }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -72,8 +66,6 @@
           <dd class="govuk-summary-list__value">
             {% if data['claimHasRequestedName'] %}
               {{ data['claimHasRequestedName'] }}
-            {% else %}
-              No
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -88,8 +80,6 @@
             <dd class="govuk-summary-list__value">
               {% if data['claimRequestedName'] %}
                 {{ data['claimRequestedName'] }}
-              {% else %}
-                Jon Jones
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -111,8 +101,6 @@
                 {{ data['claimRequestedNameStartDateDD'] }}
                 {{ data['claimRequestedNameStartDateMM'] | monthName }}
                 {{ data['claimRequestedNameStartDateYYYY'] }}
-              {% else %}
-                {{ "today" | govukDate }}
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -136,20 +124,22 @@
               {{ data['claimDateOfBirthMM'] | monthName }}
               {{ data['claimDateOfBirthYYYY'] }}
 
-              <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
-                Verified
-              </strong>
-            {% else %}
-              13 April 1958
-
-              <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
-                Verified
-              </strong>
+              {% if (data['claimDOBverified'] == "true") %}
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              {% elif (data['claimDOBverified'] == "false") %}
+                <strong class="govuk-tag govuk-tag--red govuk-!-margin-left-4">
+                  Unverified
+                </strong>
+              {% endif %}
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="date-of-birth">Change<span class="govuk-visually-hidden"> date of birth</span></a>
-          </dd>
+          {% if (data['claimDOBUnverified'] == "false") %}
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="date-of-birth">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+            </dd>
+          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -158,8 +148,6 @@
           <dd class="govuk-summary-list__value">
             {% if data['claimIsDoD'] %}
               {{ data['claimIsDoD'] }}
-            {% else %}
-              No
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -183,20 +171,22 @@
               {{ data['claimDateOfDeathMM'] | monthName }}
               {{ data['claimDateOfDeathYYYY'] }}
 
-              <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
-                Verified
-              </strong>
-            {% else %}
-              11 February 2026
-
-              <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
-                Verified
-              </strong>
+              {% if (data['claimDODverified'] == "true") %}
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              {% elif (data['claimDODverified'] == "false") %}
+                <strong class="govuk-tag govuk-tag--red govuk-!-margin-left-4">
+                  Unverified
+                </strong>
+              {% endif %}
             {% endif %}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="date-of-death">Change<span class="govuk-visually-hidden"> date of death</span></a>
-            </dd>
+            {% if (data['claimDODUnverified']) %}
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="date-of-death">Change<span class="govuk-visually-hidden"> date of death</span></a>
+              </dd>
+            {% endif %}
           </div>
         {% endif %}
         <div class="govuk-summary-list__row">
@@ -206,8 +196,6 @@
           <dd class="govuk-summary-list__value">
             {% if data['claimNationality'] %}
               {{ data['claimNationality'] }}
-            {% else %}
-              British
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -221,8 +209,6 @@
           <dd class="govuk-summary-list__value">
             {% if data['claimSex'] %}
               {{ data['claimSex'] }}
-            {% else %}
-              Male
             {% endif %}
           </dd>
         </div>
@@ -231,22 +217,8 @@
             Other benefits and interests
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['claimPIPInterest'] %}
-              Personal Independence Payment (PIP)
-            {% elif data['claimADPInterest'] %}
-              Adult Disability Payment
-            {% elif data['claimUnderStatePensionAge'] %}
-              Under State Pension age
-            {% elif data['claimSADLA'] %}
-              Scottish Adult Disability Living Allowance (SADLA)
-            {% elif data['claimDLAAInterest'] %}
-              Disability Living Allowance (DLA) Adult
-            {% elif data['claimDLA65Interest'] %}
-              Disability Living Allowance (DLA) 65+
-            {% elif data['claimSBInterest'] %}
-              Registered for Scottish benefits 
-            {% else %}
-              None
+            {% if data['claimOtherBenefits'] %}
+              {{ data['claimOtherBenefits'] }}
             {% endif %}
           </dd>
         </div>

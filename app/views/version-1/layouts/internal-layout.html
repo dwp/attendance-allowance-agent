@@ -35,16 +35,18 @@
             <dl class="dwp-quick-reference__block">
               <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
               <dd class="dwp-quick-reference__primary">
-                {% if (data['claimHasCIS'] == "true") %}
-                  {% if data['claimFirstName'] or data['claimLastName'] %}
-                    {{data['claimFirstName']}} {{data['claimLastName']}}
-                  {% else %}
-                    James Smith
-                  {% endif %}
+                {% if data['claimFirstName'] or data['claimLastName'] %}
+                  {{data['claimFirstName']}} {{data['claimLastName']}}
                 {% endif %}
-                <strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-4">
-                  Pre-registered
-                </strong>
+                {% if (data['claimStatus'] == 'Registered') %}
+                  <strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-4">
+                    Registered
+                  </strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-4">
+                    Pre-registered
+                  </strong>
+                {% endif %}
               </dd>
               <dd class="dwp-quick-reference__secondary">
               <hr class="govuk-section-break govuk-section-break--visible">
@@ -53,8 +55,22 @@
               <dd class="dwp-quick-reference__secondary">
                 {% if data['searchNino'] %}
                   {{ data['searchNino']}}
-                {% else %}
-                  AB 12 34 56 C
+                {% endif %}
+                <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">&#x2022;</span>
+                {% 
+                  if (
+                  data['claimDateOfBirthDD'] and
+                  data['claimDateOfBirthMM'] and
+                  data['claimDateOfBirthYYYY'] 
+                  ) 
+                %}
+                  {{ data['claimDateOfBirthDD'] }}
+                  {{ data['claimDateOfBirthMM'] | monthName }}
+                  {{ data['claimDateOfBirthYYYY'] }}
+                {% endif %}
+                <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">&#x2022;</span>
+                {% if data['claimAge'] %}
+                  {{ data['claimAge']}}
                 {% endif %}
               </dd>
             </dl>

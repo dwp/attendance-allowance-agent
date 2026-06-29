@@ -19,8 +19,6 @@
           <dd class="govuk-summary-list__value">
             {% if data['claimHaveAddress'] %}
               {{ data['claimHaveAddress'] }}
-            {% else %}
-              Yes
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -35,8 +33,6 @@
             <dd class="govuk-summary-list__value">
               {% if data['claimAddressStatus'] %}
                 {{ data['claimAddressStatus'] }}
-              {% else %}
-                No Fixed Abode (NFA)
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -51,32 +47,18 @@
             <dd class="govuk-summary-list__value">
               {% if data['claimAddress1'] %}
                 {{data['claimAddress1']}}<br/>
-              {% else %}
-                11 street<br/>
               {% endif %}
-
               {% if data['claimAddress2'] %}
                 {{data['claimAddress2']}}<br/>
-              {% else %}
-                Heaton<br/>
               {% endif %}
-
               {% if data['claimAddress3'] %}
                 {{data['claimAddress3']}}<br/>
-              {% else %}
-                Newcastle upon tyne<br/>
               {% endif %}
-
               {% if data['claimAddress4'] %}
                 {{data['claimAddress4']}}<br/>
-              {% else %}
-                England<br/>
               {% endif %}
-
               {% if data['claimPostcode'] %}
                 {{ data['claimPostcode'] }}
-              {% else %}
-                DL11C3
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -98,8 +80,6 @@
                 {{ data['claimAddressStartDD'] }}
                 {{ data['claimAddressStartMM'] | monthName }}
                 {{ data['claimAddressStartYYYY'] }}
-              {% else %}
-                13 April 2022
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -109,13 +89,11 @@
         {% endif %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Where should DWP send written correspondence?
+            Where should DWP send correspondence?
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['claimHaveCorrespondence'] %}
               {{ data['claimHaveCorrespondence'] }}
-            {% else %}
-              Residential
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -130,32 +108,18 @@
             <dd class="govuk-summary-list__value">
               {% if data['claimCorrespondenceAddress1'] %}
                 {{data['claimCorrespondenceAddress1']}}<br/>
-              {% else %}
-                11 street<br/>
               {% endif %}
-
               {% if data['claimCorrespondenceAddress2'] %}
                 {{data['claimCorrespondenceAddress2']}}<br/>
-              {% else %}
-                Heaton<br/>
               {% endif %}
-
               {% if data['claimCorrespondenceAddress3'] %}
                 {{data['claimCorrespondenceAddress3']}}<br/>
-              {% else %}
-                Newcastle upon tyne<br/>
               {% endif %}
-
               {% if data['claimCorrespondenceAddress4'] %}
                 {{data['claimCorrespondenceAddress4']}}<br/>
-              {% else %}
-                England<br/>
               {% endif %}
-
               {% if data['claimCorrespondencePostcode'] %}
                 {{ data['claimCorrespondencePostcode'] }}
-              {% else %}
-                DL11C3
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -164,7 +128,7 @@
           </div>
         {% endif %}
       </dl>
-      {% if data['claimPostcode'] == "CF1 11L" %}
+      {% if data['claimWelshContact'] %}
         <h2 class="govuk-heading-m">Language</h2>
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -174,8 +138,6 @@
             <dd class="govuk-summary-list__value">
               {% if data['claimWelshContact'] %}
                 {{ data['claimWelshContact'] }}
-              {% else %}
-                No preference 
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -188,54 +150,31 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Mobile phone number
+            Contact
           </dt>
           <dd class="govuk-summary-list__value">
             {% 
-              if (data['claimMainPhoneNumber']) %}
-              {{ data['claimMainPhoneNumber'] }}
-            {% else %}
-              07123456789
+              if (data['claimMobile']) 
+            %}
+              {{ data['claimMobile'] }}
             {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="phone-number">Change<span class="govuk-visually-hidden"> main phone number</span></a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Does the claimant have an landline number?
-          </dt>
-          <dd class="govuk-summary-list__value">
             {% 
-              if (data['claimHaveLandlineNumber']) %}
-              {{ data['claimHaveLandlineNumber'] }}
-            {% else %}
-              No
+              if (data['claimMobile']) and (data['claimLandline'])
+            %}
+              <br/>
+            {% elif not (data['claimMobile'] and data['claimLandline']) %}
+              None
+            {% endif %}
+            {% 
+              if (data['claimLandline']) 
+            %}
+              {{ data['claimLandline'] }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="have-landline-number">Change<span class="govuk-visually-hidden"> has landline number</span></a>
+            <a class="govuk-link" href="contact-number">Change<span class="govuk-visually-hidden"> contact number</span></a>
           </dd>
         </div>
-        {% if data['claimHaveLandlineNumber'] == "Yes" %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Landline number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% 
-                if (data['claimLandlineNumber']) %}
-                {{ data['claimLandlineNumber'] }}
-              {% else %}
-                07987654321
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="landline-number">Change<span class="govuk-visually-hidden"> alternative number</span></a>
-            </dd>
-          </div>
-        {% endif %}
       </dl>
 
       <form method="post" action="../task-list">
