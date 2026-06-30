@@ -3,15 +3,37 @@
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
 //
 
-document.addEventListener("DOMContentLoaded", function(event) { 
-  var selectEl = document.querySelector('#claimNationality')
- 
-  if (selectEl) {
-    accessibleAutocomplete.enhanceSelectElement({
-      autoselect: true,
-      defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
-      minLength: 2,
-      selectElement: selectEl
-    });
-  }
-});
+import accessibleAutocomplete from 'accessible-autocomplete'
+
+window.GOVUKPrototypeKit.documentReady(() => {
+  // Add JavaScript here
+  
+
+const countries = [
+  'France',
+  'Germany',
+  'United Kingdom'
+]
+
+accessibleAutocomplete({
+  element: document.querySelector('#my-autocomplete-container'),
+  id: 'my-autocomplete', // To match it to the existing <label>.
+  source: countries
+})
+
+accessibleAutocomplete({
+  element: document.querySelector('#healthConditions'),
+  id: 'healthConditions', // To match it to the existing <label>.
+  source: countries
+})
+})
+
+
+let selectElement = document.querySelector('#healthConditions')
+
+accessibleAutocomplete.enhanceSelectElement({
+
+  defaultValue: '',
+  selectElement: selectElement
+
+})

@@ -21,9 +21,6 @@
               {{ data['claimHaveAddress'] }}
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="have-address">Change<span class="govuk-visually-hidden"> have address</span></a>
-          </dd>
         </div>
         {% if data['claimHaveAddress'] == "No" %}
           <div class="govuk-summary-list__row">
@@ -34,9 +31,6 @@
               {% if data['claimAddressStatus'] %}
                 {{ data['claimAddressStatus'] }}
               {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="address-status">Change<span class="govuk-visually-hidden"> address status</span></a>
             </dd>
           </div>
         {% else %}
@@ -61,9 +55,6 @@
                 {{ data['claimPostcode'] }}
               {% endif %}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="address">Change<span class="govuk-visually-hidden"> address</span></a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -82,9 +73,6 @@
                 {{ data['claimAddressStartYYYY'] }}
               {% endif %}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="address-start-date">Change<span class="govuk-visually-hidden"> address start date</span></a>
-            </dd>
           </div>
         {% endif %}
         <div class="govuk-summary-list__row">
@@ -95,9 +83,6 @@
             {% if data['claimHaveCorrespondence'] %}
               {{ data['claimHaveCorrespondence'] }}
             {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="have-correspondence-address">Change<span class="govuk-visually-hidden"> have address</span></a>
           </dd>
         </div>
         {% if data['claimHaveCorrespondence'] == "Yes" %}
@@ -122,9 +107,6 @@
                 {{ data['claimCorrespondencePostcode'] }}
               {% endif %}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="correspondence">Change<span class="govuk-visually-hidden"> correspondence address</span></a>
-            </dd>
           </div>
         {% endif %}
       </dl>
@@ -139,9 +121,6 @@
               {% if data['claimWelshContact'] %}
                 {{ data['claimWelshContact'] }}
               {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="welsh-contact">Change<span class="govuk-visually-hidden"> contacted in Welsh preference</span></a>
             </dd>
           </div>
         </dl>
@@ -171,16 +150,12 @@
               {{ data['claimLandline'] }}
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="contact-number">Change<span class="govuk-visually-hidden"> contact number</span></a>
-          </dd>
         </div>
       </dl>
 
       <form method="post" action="../task-list">
-        <input class="govuk-input govuk-visually-hidden" id="taskAddressContactStatus" name="taskAddressContactStatus" type="text" value="Complete">
         <button type="submit" class="govuk-button" data-module="govuk-button">
-          Confirm
+          Continue
         </button>
       </form>
     </div>

@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 {% set hideRef = "true" %}
-{% set pageName="User testing - Decision & register" %}
+{% set pageName="User testing - Register" %}
 
 {% block content %}
 
@@ -13,177 +13,378 @@
 
     <h2 class="govuk-heading-s">End to end start</h2>
     <p class="govuk-body">
-      Use this button to search for claim, 
-      use the list below to find NINOs for processing and processed claims. 
-      Any NINOs that are entered that are not on the list will go into registration
+      Use this button to begin the user journey from the start
     </p>
-
-    {# <dl class="govuk-summary-list govuk-summary-list--no-border">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Register a claim (data held on CIS)
-        </dt>
-        <dd class="govuk-summary-list__value">
-          BB123456A
-          BB123456B
-          BB123456C
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Processing a claim / decision
-        </dt>
-        <dd class="govuk-summary-list__value">
-          QQ123456A
-          QQ123456B
-          QQ123456C
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Processed claim
-        </dt>
-        <dd class="govuk-summary-list__value">
-          AA123456A
-          AA123456B
-          AA123456C
-        </dd>
-      </div>
-    </dl> #}
 
     <a href="version-1/search-nino" class="govuk-button">
       Start
     </a>
 
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#general">
+            General
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#registration">
+            Registration
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#decision">
+            Decision
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#change">
+            Change of circumstance
+          </a>
+        </li>
+      </ul>
+      <div class="govuk-tabs__panel" id="general">
+        <h2 class="govuk-heading-l">General screens</h2>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Pages
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <h3 class="govuk-heading-s">Search</h3>
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="version-1/search-nino">Search for a claim</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/search-nino-results">Claimant details</a>
+                </li>
+              </ul>
 
-    <dl class="govuk-summary-list govuk-summary-list--no-border">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Pages
-        </dt>
-        <dd class="govuk-summary-list__value">
-          <ul class="govuk-list">
-            <h3 class="govuk-heading-s">Search</h3>
-            <li>
-              <a class="govuk-link" href="version-1/search-nino">Search NINO</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/search-nino-results"> Search NINO results</a>
-            </li>
+              <h3 class="govuk-heading-s">Change claimant details</h3>
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/name">Name</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/date-of-birth">Date of Birth</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/date-of-death">Date of death</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/search-an-address">Search an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/address-int">Address outside the UK</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/address">Select an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/address-int">Manually enter an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/address-start-date">Address start date</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/contact-number">Contact number</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/nationality">Nationality</a>
+                </li>
+              </ul>
 
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-            <h3 class="govuk-heading-s">Claim</h3>
-            <li>
-              <a class="govuk-link" href="version-1/claim">Tasks</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/history">History</a>
-            </li>
-
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-            
-            <h3 class="govuk-heading-s">Registration</h3>
-            <li>
-              <a class="govuk-link" href="version-1/register-check">Check claimant details</a>
-            </li>
-
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-            <h3 class="govuk-heading-s">Decision</h3>
-            <li>
-              <a class="govuk-link" href="version-1/decision-summary">Make a decision</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/exclusion-reason">Exclusion reason</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/health-condition-disablity">Health condition or disablity</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award-summary">Award summary</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/reason-for-decision">Reason for decision</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/entitlement-periods">Entitlement periods</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/exclusion-periods">Exclusion periods</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/decision-check">Check your answers</a>
-            </li>
-            <h3 class="govuk-heading-s">Entitlement</h3>
-            <li>
-              <a class="govuk-link" href="version-1/award/entitlement-check">Entitlement check you answers</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/entitlement-start-date">Entitlement start date</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/entitlement-end-date">Entitlement end date</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/entitlement-rate">Entitlement rate</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/entitlement-reason">Entitlement reason</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/delete-entitlement">Delete entitlement</a>
-            </li>
-            <h3 class="govuk-heading-s">Exclusion</h3>
-            <li>
-              <a class="govuk-link" href="version-1/award/exclusion-check">Exclusion check you answers</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/exclusion-start-date">Exclusion start date</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/exclusion-end-date">Exclusion end date</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/exclusion-reason">Exclusion reason</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/award/delete-exclusion">Delete exclusion</a>
-            </li>
-
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-            <h3 class="govuk-heading-s">Payment</h3>
-            <li>
-              <a class="govuk-link" href="version-1/payee-name">Payee name</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/payee-type">Payee type</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/search-bank">Search bank or building society</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/bank-results">Bank or building society results</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/payment-summary">Payment summary</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="version-1/payment-check">Payment check your answers</a>
-            </li>
-
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-            <h3 class="govuk-heading-s">Finalise</h3>
-            <li>
-              <a class="govuk-link" href="version-1/finalise-check">Finalise this claim</a>
-            </li>
-          </ul>
-        </dd>
+              <h3 class="govuk-heading-s">Benefit interest</h3>
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="version-1/errors/adp">Adult Disability Payment (ADP)</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/pip">Personal Independence Payment (PIP)</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/state-pension-age">State Pension age</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
       </div>
-    </dl>
+
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="registration">
+        <h2 class="govuk-heading-l">Registration</h2>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Pages
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <h3 class="govuk-heading-s">General</h3>
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="version-1/registration/task-list">Register a claim</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/registration/history">History</a>
+                </li>
+              </ul>
+              
+              <h3 class="govuk-heading-s">Check claimant details</h3>
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/name">Name</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/date-of-birth">Date of Birth</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/date-of-death">Date of death</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/search-an-address">Search an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/address-int">Address outside the UK</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/address">Select an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/address-int">Manually enter an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/address-start-date">Address start date</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/contact-number">Contact number</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/claimant-details/nationality">Nationality</a>
+                </li>
+              </ul>
+
+              <h3 class="govuk-heading-s">Check address and contact details</h3>
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/check-your-answers">Check your answers</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/have-address">Has address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/search-an-address">Search an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/address-int">Address outside the UK</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/address">Select an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/address-int">Manually enter an address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/address-start-date">Address start date</a>
+                </li>
+                <li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/have-corresponence-address">Has corresponence address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/search-a-corresponence-address">Search a corresponence address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/corresponence-address-int">Corresponence address outside the UK</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/corresponence">Select corresponence address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/corresponence-address-int">Manually enter corresponence address</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/contact-number">Contact number</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/address-and-contact/welsh-contact">Welsh contact</a>
+                </li>
+              </ul>
+
+              <h3 class="govuk-heading-s">Check claim information</h3>
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="version-1/register/claim/check-your-answers">Check your answers</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/claim/receipt-date">Claim receipt date</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/claim/effective-date">Claim effective date</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/claim/flags">Flags</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/claim/have-alternative-flags">Has alternative flags</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/claim/alternative-formats">Alternative flags</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/claim/suppress">Suppress notification</a>
+                </li>
+              </ul>
+
+              <h3 class="govuk-heading-s">Finalise</h3>
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="version-1/register/register/check-your-answers">Check you answers</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/register/register/confirmation">Confirmation</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="decision">
+        <h2 class="govuk-heading-l">Decision</h2>
+        <p class="govuk-body">
+          These pages are from previous works and are planning to reviewed and redesigned in the next stage of work.
+        </p>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Pages
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+                <h3 class="govuk-heading-s">Claim</h3>
+                <li>
+                  <a class="govuk-link" href="version-1/claim">Tasks</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/history">History</a>
+                </li>
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+                
+                <h3 class="govuk-heading-s">Registration</h3>
+                <li>
+                  <a class="govuk-link" href="version-1/register-check">Check claimant details</a>
+                </li>
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                <h3 class="govuk-heading-s">Decision</h3>
+                <li>
+                  <a class="govuk-link" href="version-1/decision-summary">Make a decision</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/exclusion-reason">Exclusion reason</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/health-condition-disablity">Health condition or disablity</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award-summary">Award summary</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/reason-for-decision">Reason for decision</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/entitlement-periods">Entitlement periods</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/exclusion-periods">Exclusion periods</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/decision-check">Check your answers</a>
+                </li>
+                <h3 class="govuk-heading-s">Entitlement</h3>
+                <li>
+                  <a class="govuk-link" href="version-1/award/entitlement-check">Entitlement check you answers</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/entitlement-start-date">Entitlement start date</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/entitlement-end-date">Entitlement end date</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/entitlement-rate">Entitlement rate</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/entitlement-reason">Entitlement reason</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/delete-entitlement">Delete entitlement</a>
+                </li>
+                <h3 class="govuk-heading-s">Exclusion</h3>
+                <li>
+                  <a class="govuk-link" href="version-1/award/exclusion-check">Exclusion check you answers</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/exclusion-start-date">Exclusion start date</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/exclusion-end-date">Exclusion end date</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/exclusion-reason">Exclusion reason</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/award/delete-exclusion">Delete exclusion</a>
+                </li>
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                <h3 class="govuk-heading-s">Payment</h3>
+                <li>
+                  <a class="govuk-link" href="version-1/payee-name">Payee name</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/payee-type">Payee type</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/search-bank">Search bank or building society</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/bank-results">Bank or building society results</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/payment-summary">Payment summary</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="version-1/payment-check">Payment check your answers</a>
+                </li>
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                <h3 class="govuk-heading-s">Finalise</h3>
+                <li>
+                  <a class="govuk-link" href="version-1/finalise-check">Finalise this claim</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="change">
+        <h2 class="govuk-heading-l">Change of circumstance</h2>
+        <p class="govuk-body">
+          There are no designs for these pages currently, we will be looking at this phase of work at a later date.
+        </p>
+      </div>
+    </div>
+
+
 
   </div>
 </div>

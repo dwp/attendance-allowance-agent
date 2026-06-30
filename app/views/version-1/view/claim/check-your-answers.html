@@ -1,0 +1,102 @@
+{% extends "version-1/layouts/internal-layout.html" %}
+{% set pageName = "Check your answers" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">Claim details</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Claim received
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if (
+              data['claimReceiptDateDD'] and
+              data['claimReceiptDateMM'] and
+              data['claimReceiptDateYYYY'] 
+              ) 
+            %}
+              {{ data['claimReceiptDateDD'] }}
+              {{ data['claimReceiptDateMM'] | monthName }}
+              {{ data['claimReceiptDateYYYY'] }}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Claim effective from
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if (
+              data['claimEffectiveDateDD'] and
+              data['claimEffectiveDateMM'] and
+              data['claimEffectiveDateYYYY'] 
+              ) 
+            %}
+              {{ data['claimEffectiveDateDD'] }}
+              {{ data['claimEffectiveDateMM'] | monthName }}
+              {{ data['claimEffectiveDateYYYY'] }}
+            {% endif %}
+          </dd>
+        </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Flags
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimFlags'] %}
+                {{data['claimFlags']}}<br/>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Has the claimant requested any alternative formats?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimHaveAlternativeFlags'] %}
+                {{data['claimHaveAlternativeFlags']}}
+              {% endif %}
+            </dd>
+          </div>
+          {% if data['claimHaveAlternativeFlags'] == "Yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Alternative format required
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimAltFormat'] %}
+                  {{data['claimAltFormat']}}
+                {% endif %}
+              </dd>
+            </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Suppress acknowledgement
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimSuppress'] %}
+                {{ data['claimSuppress'] }}
+              {% endif %}
+            </dd>
+          </div>
+      </dl>
+
+      <form method="post" action="../task-list">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

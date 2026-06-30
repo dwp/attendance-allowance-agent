@@ -1,0 +1,54 @@
+{% extends "version-1/layouts/internal-layout.html" %}
+
+{% block content %} 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <nav class="dwp-horizontal-navigation govuk-!-margin-bottom-8" aria-label="Horizontal">
+        <ul class="dwp-horizontal-navigation__list">
+          <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
+            <a id="r-item-1" href="task-list" class="dwp-horizontal-navigation__link" aria-current="true">View details</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item">
+            <a id="r-item-2" href="history" class="dwp-horizontal-navigation__link">History</a>
+          </li>
+          {# <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-3" href="#s-item-3" class="dwp-horizontal-navigation__link">Item 3</a>
+          </li> #}
+        </ul>
+      </nav>
+
+      <h1 class="govuk-heading-m">
+        View details
+      </h1>
+
+        <ul class="govuk-task-list">
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="personal/check-your-answers" aria-describedby="claim-tasks-1-hint claim-tasks-1-status">
+                View claimant details
+              </a>
+            </div>
+          </li>
+          
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="address-and-contact/check-your-answers" aria-describedby="claim-tasks-2-hint claim-tasks-2-status">
+                View address and contact details
+              </a>
+            </div>
+          </li>
+
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="claim/check-your-answers" aria-describedby="claim-tasks-3-status">
+                View claim details
+              </a>
+            </div>
+          </li>
+
+        </ul>
+    </div>
+  </div>
+
+{% endblock %}

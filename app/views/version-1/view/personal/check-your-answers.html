@@ -21,9 +21,6 @@
               {{ data['claimTitle'] }}
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="title">Change<span class="govuk-visually-hidden"> title</span></a>
-          </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -33,9 +30,6 @@
             {% if data['claimFirstName'] or data['claimLastName'] %}
               {{ data['claimFirstName'] }} {{ data['claimLastName'] }}
             {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="name">Change<span class="govuk-visually-hidden"> full name</span></a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -55,9 +49,6 @@
               {{ data['claimNameStartDateYYYY'] }}
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="name-start-date">Change<span class="govuk-visually-hidden"> name start date</span></a>
-          </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -67,9 +58,6 @@
             {% if data['claimHasRequestedName'] %}
               {{ data['claimHasRequestedName'] }}
             {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="has-requested-name">Change<span class="govuk-visually-hidden"> has requested name</span></a>
           </dd>
         </div>
         {% if data['claimHasRequestedName'] == "Yes" %}
@@ -81,9 +69,6 @@
               {% if data['claimRequestedName'] %}
                 {{ data['claimRequestedName'] }}
               {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="requested-name">Change<span class="govuk-visually-hidden"> requested name</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -102,9 +87,6 @@
                 {{ data['claimRequestedNameStartDateMM'] | monthName }}
                 {{ data['claimRequestedNameStartDateYYYY'] }}
               {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="requested-name-start-date">Change<span class="govuk-visually-hidden"> requested name start date</span></a>
             </dd>
           </div>
         {% endif %}
@@ -135,11 +117,6 @@
               {% endif %}
             {% endif %}
           </dd>
-          {% if (data['claimDOBUnverified'] == "false") %}
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="date-of-birth">Change<span class="govuk-visually-hidden"> date of birth</span></a>
-            </dd>
-          {% endif %}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -149,9 +126,6 @@
             {% if data['claimIsDoD'] %}
               {{ data['claimIsDoD'] }}
             {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="has-date-of-death">Change<span class="govuk-visually-hidden"> has date of death</span></a>
           </dd>
         </div>
         {% if data['claimIsDoD'] == "Yes" %}
@@ -182,11 +156,6 @@
               {% endif %}
             {% endif %}
             </dd>
-            {% if (data['claimDODUnverified']) %}
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="date-of-death">Change<span class="govuk-visually-hidden"> date of death</span></a>
-              </dd>
-            {% endif %}
           </div>
         {% endif %}
         <div class="govuk-summary-list__row">
@@ -197,9 +166,6 @@
             {% if data['claimNationality'] %}
               {{ data['claimNationality'] }}
             {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="nationality">Change<span class="govuk-visually-hidden"> nationality</span></a>
           </dd>
         </div>
         {% if data['claimSex'] %}
@@ -225,9 +191,8 @@
       </dl>
 
       <form method="post" action="../task-list">
-        <input class="govuk-input govuk-visually-hidden" id="taskPersonalStatus" name="taskPersonalStatus" type="text" value="Complete">
         <button type="submit" class="govuk-button" data-module="govuk-button">
-          Confirm
+          Continue
         </button>
       </form>
     </div>
