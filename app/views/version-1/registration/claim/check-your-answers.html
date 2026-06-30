@@ -18,14 +18,14 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if (
-              data['claimreceiptDD'] and
-              data['claimreceiptMM'] and
-              data['claimreceiptYYYY'] 
+              data['claimReceiptDateDD'] and
+              data['claimReceiptDateMM'] and
+              data['claimReceiptDateYYYY'] 
               ) 
             %}
-              {{ data['claimreceiptDD'] }}
-              {{ data['claimreceiptMM'] | monthName }}
-              {{ data['claimreceiptYYYY'] }}
+              {{ data['claimReceiptDateDD'] }}
+              {{ data['claimReceiptDateMM'] | monthName }}
+              {{ data['claimReceiptDateYYYY'] }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -38,14 +38,14 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if (
-              data['claimEffectiveDD'] and
-              data['claimEffectiveMM'] and
-              data['claimEffectiveYYYY'] 
+              data['claimEffectiveDateDD'] and
+              data['claimEffectiveDateMM'] and
+              data['claimEffectiveDateYYYY'] 
               ) 
             %}
-              {{ data['claimEffectiveDD'] }}
-              {{ data['claimEffectiveMM'] | monthName }}
-              {{ data['claimEffectiveYYYY'] }}
+              {{ data['claimEffectiveDateDD'] }}
+              {{ data['claimEffectiveDateMM'] | monthName }}
+              {{ data['claimEffectiveDateYYYY'] }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -84,8 +84,8 @@
                 Alternative format required
               </dt>
               <dd class="govuk-summary-list__value">
-                {% if data['claimAlternativeFlags'] %}
-                  {{data['claimAlternativeFlags']}}
+                {% if data['claimAltFormat'] %}
+                  {{data['claimAltFormat']}}
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">

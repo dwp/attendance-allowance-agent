@@ -202,26 +202,26 @@
             <a class="govuk-link" href="nationality">Change<span class="govuk-visually-hidden"> nationality</span></a>
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Sex
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['claimSex'] %}
-              {{ data['claimSex'] }}
-            {% endif %}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Other benefits and interests
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['claimOtherBenefits'] %}
+        {% if data['claimSex'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sex
+            </dt>
+            <dd class="govuk-summary-list__value">
+                {{ data['claimSex'] }}
+            </dd>
+          </div>
+        {% endif %}
+        {% if data['claimOtherBenefits'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Other benefits and interests
+            </dt>
+            <dd class="govuk-summary-list__value">
               {{ data['claimOtherBenefits'] }}
-            {% endif %}
-          </dd>
-        </div>
+            </dd>
+          </div>
+        {% endif %}
       </dl>
 
       <form method="post" action="../task-list">

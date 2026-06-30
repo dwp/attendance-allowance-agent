@@ -16,16 +16,17 @@
               <label class="govuk-label" for="claimMobile">
                 Mobile
               </label>
-              <input class="govuk-input govuk-input--width-20" id="claimMobile" name="claimMobile" type="text">
+              <input class="govuk-input govuk-input--width-20" id="claimMobile" name="claimMobile" type="text" value="{{data['claimMobile']}}">
             </div>
             <div class="govuk-form-group">
               <label class="govuk-label" for="claimLandline">
                 Landline
               </label>
-              <input class="govuk-input govuk-input--width-20" id="claimLandline" name="claimLandline" type="text">
+              <input class="govuk-input govuk-input--width-20" id="claimLandline" name="claimLandline" type="text" value="{{data['claimLandline']}}">
             </div>
           </fieldset>
         </div>
+        <input class="govuk-input govuk-visually-hidden" id="taskAddressContactStatus" name="taskAddressContactStatus" type="text" value="Inprogress">
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Save and continue
         </button>

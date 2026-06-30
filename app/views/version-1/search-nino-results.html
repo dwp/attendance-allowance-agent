@@ -162,7 +162,7 @@
               if (data['claimMobile']) and (data['claimLandline'])
             %}
               <br/>
-            {% elif not (data['claimMobile'] and data['claimLandline']) %}
+            {% elif not (data['claimMobile'] and not data['claimLandline']) %}
               None
             {% endif %}
             {% 

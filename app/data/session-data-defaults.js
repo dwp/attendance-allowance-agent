@@ -1,13 +1,13 @@
 module.exports = {
   //---------------- Personal
   "searchNino" : "AB123456A",
-  "claimTitle" : "Mr",
+  "claimTitle" : "",
   "claimFirstName" : "Sam",
   "claimLastName" : "Smith",
-  "claimNameStartDateDD" : "20",
-  "claimNameStartDateMM" : "7",
-  "claimNameStartDateYYYY" : "2026",
-  "claimHasRequestedName" : "No",
+  "claimNameStartDateDD" : "",
+  "claimNameStartDateMM" : "",
+  "claimNameStartDateYYYY" : "",
+  "claimHasRequestedName" : "",
   "claimRequestedName" : "",
   "claimRequestedNameStartDateDD" : "",
   "claimRequestedNameStartDateMM" : "",
@@ -21,13 +21,11 @@ module.exports = {
   "claimDateOfDeathDD" : "",
   "claimDateOfDeathMM" : "",
   "claimDateOfDeathYYYY" : "",
-  "claimDOBverified" : "true",
+  "claimDODverified" : "true",
   "claimNationality" : "",
-  "claimSex" : "Male",
-  "claimOtherBenefits" : [ 
-    "Personal Independence Payment (PIP)"
-  ],
-  "taskPersonalStatus" : "Inprogress",
+  "claimSex" : "None",
+  "claimOtherBenefits" : "None",
+  "taskPersonalStatus" : "",
   // ------------------ Address and contact
   "claimHaveAddress" : "",
   "claimAddressStatus" : "",
@@ -59,5 +57,5 @@ module.exports = {
   "claimHaveAlternativeFlags" : "",
   "claimAltFormat" : [],
   "claimFlags" : [],
-  "claimSurpress" : ""
+  "claimSuppress" : ""
 }
