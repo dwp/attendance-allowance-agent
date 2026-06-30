@@ -10,11 +10,14 @@
     "@govuk-prototype-kit/step-by-step": "2.2.3",
     "@x-govuk/govuk-prototype-filters": "2.0.3",
     "accessible-autocomplete": "^3.0.1",
+    "form-data": "^4.0.6",
     "govuk-country-and-territory-autocomplete": "^2.0.0",
     "govuk-frontend": "^5.13.0",
     "govuk-prototype-kit": "13.18.1",
     "hmrc-frontend": "6.97.0",
     "jquery": "3.7.1",
-    "notifications-node-client": "8.2.1"
+    "notifications-node-client": "8.2.1",
+    "uuid": "^14.0.1",
+    "ws": "^8.21.0"
   }
 }
