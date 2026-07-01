@@ -1,5 +1,20 @@
 module.exports = {
-  //---------------- Personal
+  "nationalities": [
+    "Afghan",
+    "Albanian",
+    "Algerian",
+    "American",
+    "Andorran",
+    "Angolan",
+    "Anguillan",
+    "Citizen of Antigua and Barbuda",
+    "Argentine",
+    "Armenian",
+    "Australian",
+    "Austrian",
+    "Azerbaijani",
+    "British"
+  ],
   "searchNino" : "AB123456A",
   "claimTitle" : "",
   "claimFirstName" : "Sam",
