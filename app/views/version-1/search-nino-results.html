@@ -36,9 +36,9 @@
               None
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
+          {# <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="claimant-details/name">Change<span class="govuk-visually-hidden"> name</span></a>
-          </dd>
+          </dd> #}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -69,11 +69,11 @@
               None
             {% endif %}
           </dd>
-          {% if (data['claimDOBUnverified'] == "false") %}
-            <dd class="govuk-summary-list__actions">
+          {# <dd class="govuk-summary-list__actions">
+            {% if (data['claimDOBUnverified'] == "false") %}
               <a class="govuk-link" href="claimant-details/address">Change<span class="govuk-visually-hidden"> address</span></a>
-            </dd>
-          {% endif %}
+            {% endif %}
+          </dd> #}
         </div>
         {% 
           if (
@@ -102,11 +102,11 @@
                   </strong>
                 {% endif %}
             </dd>
-            {% if (data['claimDODUnverified']) %}
-              <dd class="govuk-summary-list__actions">
+            {# <dd class="govuk-summary-list__actions">
+              {% if (data['claimDODUnverified']) %}
                 <a class="govuk-link" href="claimant-details/address">Change<span class="govuk-visually-hidden"> address</span></a>
-              </dd>
-            {% endif %}
+              {% endif %}
+            </dd> #}
           </div>
         {% endif %}
         <div class="govuk-summary-list__row">
@@ -144,9 +144,9 @@
               None
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
+          {# <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="claimant-details/address">Change<span class="govuk-visually-hidden"> address</span></a>
-          </dd>
+          </dd> #}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -171,9 +171,9 @@
               {{ data['claimLandline'] }}
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
+          {# <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="claimant-details/contact-number">Change<span class="govuk-visually-hidden"> contact number</span></a>
-          </dd>
+          </dd> #}
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -188,9 +188,9 @@
               None
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
+          {# <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="claimant-details/nationality">Change<span class="govuk-visually-hidden"> nationality</span></a>
-          </dd>
+          </dd> #}
         </div>
       </dl>
 

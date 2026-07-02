@@ -5,6 +5,8 @@
 
 // Add extra styles here
 
+$govuk-font-family: Arial, Helvetica, sans-serif;
+
 .autocomplete__wrapper * {
 
   @include govuk-typography-common();

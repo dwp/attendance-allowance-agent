@@ -57,5 +57,13 @@ module.exports = {
   "claimHaveAlternativeFlags" : "",
   "claimAltFormat" : [],
   "claimFlags" : [],
-  "claimSuppress" : ""
+  "claimSuppress" : "",
+
+// ------------- interests
+  "claimPADPInterest" : "Yes",
+  "claimDLA65Interest" : "",
+  "claimPIPInterest" : "",
+  "claimScottishBenefit" : "",
+  "claimStatePensionAge" : "",
+  "claimADPInterest" : "",
 }

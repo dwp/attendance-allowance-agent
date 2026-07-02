@@ -228,13 +228,22 @@ router.post('/version-1/registration/claim-continue-answer', function (req, res)
 
     var Claimcontinue = req.session.data['continue-claim']
     var PIPInterest = req.session.data['claimPIPInterest']
+    var dla65Interest = req.session.data['claimDLA65Interest']
+    var padpInterest = req.session.data['claimPADPInterest']
+    var scottishBenefit = req.session.data['claimScottishBenefit']
     var statePentionAge = req.session.data['claimStatePensionAge']
     var ADPInterest = req.session.data['claimADPInterest']
 
     if (PIPInterest == "Yes") {
-        res.redirect('/version-1/errors/pip-interest')
+        res.redirect('/version-1/errors/pip')
     } else if (ADPInterest == "Yes") {
-        res.redirect('/version-1/errors/adp-interest')
+        res.redirect('/version-1/errors/adp')
+    } else if (dla65Interest == "Yes") {
+        res.redirect('/version-1/errors/dla65')
+    } else if (padpInterest == "Yes") {
+        res.redirect('/version-1/errors/padp')
+    } else if (scottishBenefit == "Yes") {
+        res.redirect('/version-1/errors/scottish-benefit')
     } else if (statePentionAge == "No") {
         res.redirect('/version-1/errors/state-pention-age')
     } else if (Claimcontinue == "Yes") {

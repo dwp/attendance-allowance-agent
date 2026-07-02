@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+{% set pageName="Generate data" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+    <h2 class="govuk-heading-s">End to end journey</h2>
+    <p class="govuk-body">
+      Use this button to begin the user journey from registration, as this is a prototype there is no error validation so 
+      you can use any data to progress or you can use the link below to generate scenarios.
+    </p>
+
+    <p class="govuk-body">
+      <a class="govuk-link" href="generate-data">
+        Pre-populate the prototype with claimant form data
+      </a>
+    </p>
+
+
+  </div>
+</div>
+
+{% endblock %}

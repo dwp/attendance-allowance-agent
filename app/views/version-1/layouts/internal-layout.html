@@ -1,4 +1,5 @@
 {%- set assetPath = assetPath | default('/plugin-assets/govuk-frontend' + govukFrontend.assetPath) -%}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
 
 {% extends "govuk/template.njk" %}
 
@@ -7,8 +8,8 @@
   {% block stylesheets %}
     {% include "govuk-prototype-kit/includes/stylesheets.njk" %}
     <link rel="stylesheet" type="text/css" href="/govuk-frontend-4.0.1.min.css" />
-  <script src="/govuk-frontend-4.0.1.min.js"></script>
-  <link rel="stylesheet" href="/assets/location-autocomplete.min.css" />
+    <script src="/govuk-frontend-4.0.1.min.js"></script>
+    <link rel="stylesheet" href="/assets/location-autocomplete.min.css" />
 
   {% endblock %}
 {% endblock %}
@@ -20,7 +21,7 @@
 
 
 {% block header %}
-  <header data-module="govuk-header" class="dwp-header">
+  <header class="dwp-header">
     <div class="dwp-header__content govuk-width-container">
       <div class="dwp-header__service-name">
         <a href="/" class="dwp-header__link">{{ serviceName }}</a>
@@ -108,12 +109,26 @@
 {% endif %}
 
 {% block footer %}
-  {{ govukFooter({
-    meta: {
-      items: footerItems,
-      visuallyHiddenTitle: "Footer links"
-    }
-  }) }}
+  {{ dwpFooter({ 
+      meta: { 
+        visuallyHiddenTitle: "About this website", 
+        items: [ 
+          { 
+            href: "#", 
+            text: "Accessibility statement" 
+          }, 
+          { 
+            href: "#", 
+            text: "Privacy" 
+          }, 
+          { 
+            href: "/manage-prototype/clear-data", 
+            text: "Clear data" 
+          } 
+        ] 
+      } 
+    }) 
+  }}
 {% endblock %}
 
 {% block bodyEnd %}

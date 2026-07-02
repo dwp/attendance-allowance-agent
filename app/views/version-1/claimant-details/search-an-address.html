@@ -34,8 +34,60 @@
             Select an address
           </label>
           <select class="govuk-select" id="claimant-address" name="claimantAddress">
-            <option value="11 street, Heaton, Newcastle upon Tyne, England" selected>11 street, Heaton, Newcastle upon Tyne, England</option>
-            <option value="12 street, Heaton, Newcastle upon Tyne, England" >12 street, Heaton, Newcastle upon Tyne, England</option>
+            {% if data['claimPostcode'] == "CF10 1NS" %}
+              <option value="1 Westgate St, Cardiff">1 Westgate St, Cardiff</option>
+              <option value="2 Westgate St, Cardiff">2 Westgate St, Cardiff</option>
+              <option value="3 Westgate St, Cardiff">3 Westgate St, Cardiff</option>
+              <option value="4 Westgate St, Cardiff">4 Westgate St, Cardiff</option>
+              <option value="5 Westgate St, Cardiff">5 Westgate St, Cardiff</option>
+              <option value="6 Westgate St, Cardiff">6 Westgate St, Cardiff</option>
+              <option value="7 Westgate St, Cardiff">7 Westgate St, Cardiff</option>
+              <option value="8 Westgate St, Cardiff">8 Westgate St, Cardiff</option>
+              <option value="9 Westgate St, Cardiff">9 Westgate St, Cardiff</option>
+              <option value="10 Westgate St, Cardiff">10 Westgate St, Cardiff</option>
+              <option value="11 Westgate St, Cardiff">11 Westgate St, Cardiff</option>
+              <option value="12 Westgate St, Cardiff">12 Westgate St, Cardiff</option>
+              <option value="13 Westgate St, Cardiff">13 Westgate St, Cardiff</option>
+              <option value="14 Westgate St, Cardiff">14 Westgate St, Cardiff</option>
+              <option value="15 Westgate St, Cardiff">15 Westgate St, Cardiff</option>
+              <option value="16 Westgate St, Cardiff">16 Westgate St, Cardiff</option>
+            {% elif data['claimPostcode'] == "BT15 1ES" %}
+              <option value="1 N Queen St, Belfast">1 N Queen St, Belfast</option>
+              <option value="2 N Queen St, Belfast">2 N Queen St, Belfast</option>
+              <option value="3 N Queen St, Belfast">3 N Queen St, Belfast</option>
+              <option value="4 N Queen St, Belfast">4 N Queen St, Belfast</option>
+              <option value="5 N Queen St, Belfast">5 N Queen St, Belfast</option>
+              <option value="6 N Queen St, Belfast">6 N Queen St, Belfast</option>
+              <option value="7 N Queen St, Belfast">7 N Queen St, Belfast</option>
+              <option value="8 N Queen St, Belfast">8 N Queen St, Belfast</option>
+              <option value="9 N Queen St, Belfast">9 N Queen St, Belfast</option>
+              <option value="10 N Queen St, Belfast">10 N Queen St, Belfast</option>
+              <option value="11 N Queen St, Belfast">11 N Queen St, Belfast</option>
+              <option value="12 N Queen St, Belfast">12 N Queen St, Belfast</option>
+              <option value="13 N Queen St, Belfast">13 N Queen St, Belfast</option>
+              <option value="14 N Queen St, Belfast">14 N Queen St, Belfast</option>
+              <option value="15 N Queen St, Belfast">15 N Queen St, Belfast</option>
+              <option value="16 N Queen St, Belfast">16 N Queen St, Belfast</option>
+              <option value="17 N Queen St, Belfast">17 N Queen St, Belfast</option>
+              <option value="18 N Queen St, Belfast">18 N Queen St, Belfast</option>
+            {% else %}
+              <option value="1 Weldon Street, Heaton, Newcastle upon Tyne, England">1 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="2 Weldon Street, Heaton, Newcastle upon Tyne, England">2 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="3 Weldon Street, Heaton, Newcastle upon Tyne, England">3 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="4 Weldon Street, Heaton, Newcastle upon Tyne, England">4 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="5 Weldon Street, Heaton, Newcastle upon Tyne, England">5 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="6 Weldon Street, Heaton, Newcastle upon Tyne, England">6 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="7 Weldon Street, Heaton, Newcastle upon Tyne, England">7 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="8 Weldon Street, Heaton, Newcastle upon Tyne, England">8 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="9 Weldon Street, Heaton, Newcastle upon Tyne, England">9 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="10 Weldon Street, Heaton, Newcastle upon Tyne, England">10 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="11 Weldon Street, Heaton, Newcastle upon Tyne, England">11 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="12 Weldon Street, Heaton, Newcastle upon Tyne, England">12 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="13 Weldon Street, Heaton, Newcastle upon Tyne, England">13 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="14 Weldon Street, Heaton, Newcastle upon Tyne, England">14 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="15 Weldon Street, Heaton, Newcastle upon Tyne, England">15 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+              <option value="16 Weldon Street, Heaton, Newcastle upon Tyne, England">16 Weldon Street, Heaton, Newcastle upon Tyne, England</option>
+            {% endif %}
           </select>
         </div>
 
