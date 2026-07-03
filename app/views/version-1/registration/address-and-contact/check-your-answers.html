@@ -3,7 +3,7 @@
 
 {% block content %}
   
-  <h1 class="govuk-heading-xl">
+  <h1 class="govuk-heading-l">
     {{ pageName }}
   </h1>
 
@@ -100,7 +100,7 @@
             <a class="govuk-link" href="have-correspondence-address">Change<span class="govuk-visually-hidden"> have address</span></a>
           </dd>
         </div>
-        {% if data['claimHaveCorrespondence'] == "Yes" %}
+        {% if data['claimHaveCorrespondence'] == "To a different address" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Correspondence address

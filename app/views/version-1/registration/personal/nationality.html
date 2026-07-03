@@ -5,12 +5,12 @@
 
 {% set items = [] %}
 {% for n in data.nationalities %}
-  {% set items = (items.push({ text: n.name, value: n.name }), items) %}
+  {% set items = (items.push({ text: n, value: n }), items) %}
 {% endfor %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-two-thirds">
     <form action="check-your-answers" method="post" novalidate>
       {{ govukSelect({
         id: "claimNationality",
@@ -20,7 +20,6 @@
           isPageHeading: true,
 	        classes: "govuk-label--l "
         },
-        classes: "govuk-grid-column-two-thirds",
         value: data.claimNationality,
         items: items
       }) }}
