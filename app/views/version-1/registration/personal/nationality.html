@@ -1,30 +1,31 @@
 {% extends "version-1/layouts/internal-layout.html" %}
 {% from "govuk/components/select/macro.njk" import govukSelect %}
 
-{% set pageName = "Enter the claimant's nationality" %}
+{% set pageName = "What is the claimant's nationality?" %}
 
 {% set items = [] %}
 {% for n in data.nationalities %}
-  {% set items = (items.push({ text: n, value: n }), items) %}
+  {% set items = (items.push({ text: n.name, value: n.name }), items) %}
 {% endfor %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <form action="seeking-asylum" method="post" novalidate>
+    <form action="check-your-answers" method="post" novalidate>
       {{ govukSelect({
         id: "claimNationality",
         name: "claimNationality",
         label: {
           text: pageName,
           isPageHeading: true,
-	  classes: "govuk-label--l"
+	        classes: "govuk-label--l "
         },
+        classes: "govuk-grid-column-two-thirds",
         value: data.claimNationality,
         items: items
       }) }}
       <button type="submit" class="govuk-button" data-module="govuk-button">
-        Continue
+        Save and continue
       </button>
     </form>
   </div>
