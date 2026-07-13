@@ -5,6 +5,39 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
+{% block header %}
+  <header class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/" class="dwp-header__link">{{ serviceName }}</a>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block footer %}
+  {{ dwpFooter({ 
+      meta: { 
+        visuallyHiddenTitle: "About this website", 
+        items: [ 
+          { 
+            href: "#", 
+            text: "Accessibility statement" 
+          }, 
+          { 
+            href: "#", 
+            text: "Privacy" 
+          }, 
+          { 
+            href: "/manage-prototype/clear-data", 
+            text: "Clear data" 
+          } 
+        ] 
+      } 
+    }) 
+  }}
+{% endblock %}
+
 {% block scripts %}
 
   {{ super() }}

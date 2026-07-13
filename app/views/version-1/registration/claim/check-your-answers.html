@@ -1,5 +1,5 @@
 {% extends "version-1/layouts/internal-layout.html" %}
-{% set pageName = "Check your answers" %}
+{% set pageName = "Check claim information" %}
 
 {% block content %}
   
@@ -10,7 +10,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h2 class="govuk-heading-m">Claim details</h2>
+      <h2 class="govuk-heading-m">Claim information</h2>
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -95,7 +95,7 @@
           {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Suppress acknowledgement
+              Do you want to notify the claimant?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['claimSuppress'] %}
