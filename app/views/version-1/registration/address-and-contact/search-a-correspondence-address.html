@@ -31,8 +31,8 @@
           <label class="govuk-label" for="sort">
             Select an address
           </label>
-          <select class="govuk-select" id="claimCorrespondenceAddress1" name="claimCorrespondenceAddress1">
-            {% if data['claimPostcode'] == "CF11 1NS" %}
+          <select class="govuk-select" id="claimCorrespondencePostcode" name="claimCorrespondencePostcode">
+            {% if data['claimCorrespondencePostcode'] == "CF11 1NS" or data['claimCorrespondencePostcode'] == "cf11 1ns" or data['claimCorrespondencePostcode'] == "CF111NS" or data['claimCorrespondencePostcode'] == "cf111ns" %}
               <option value="1 Eastgate St, Cardiff">1 Eastgate St, Cardiff</option>
               <option value="2 Eastgate St, Cardiff">2 Eastgate St, Cardiff</option>
               <option value="3 Eastgate St, Cardiff">3 Eastgate St, Cardiff</option>
@@ -46,7 +46,7 @@
               <option value="11 Eastgate St, Cardiff">11 Eastgate St, Cardiff</option>
               <option value="12 Eastgate St, Cardiff">12 Eastgate St, Cardiff</option>
               <option value="13 Eastgate St, Cardiff">13 Eastgate St, Cardiff</option>
-            {% elif data['claimPostcode'] == "BT16 1ES" %}
+            {% elif data['claimCorrespondencePostcode'] == "BT16 1ES" or data['claimCorrespondencePostcode'] == "bt16 1es" or data['claimCorrespondencePostcode'] == "BT161ES" or data['claimCorrespondencePostcode'] == "bt161es" %}
               <option value="1 S King St, Belfast">1 S King St, Belfast</option>
               <option value="2 S King St, Belfast">2 S King St, Belfast</option>
               <option value="3 S King St, Belfast">3 S King St, Belfast</option>

@@ -32,7 +32,7 @@
             Select an address
           </label>
           <select class="govuk-select" id="claimAddress1" name="claimAddress1">
-            {% if data['claimPostcode'] == "CF10 1NS" %}
+            {% if data['claimPostcode'] == "CF10 1NS" or data['claimPostcode'] == "cf10 1ns" or data['claimPostcode'] == "CF101NS" or data['claimPostcode'] == "cf101ns" %}
               <option value="1 Westgate St, Cardiff">1 Westgate St, Cardiff</option>
               <option value="2 Westgate St, Cardiff">2 Westgate St, Cardiff</option>
               <option value="3 Westgate St, Cardiff">3 Westgate St, Cardiff</option>
@@ -46,7 +46,7 @@
               <option value="11 Westgate St, Cardiff">11 Westgate St, Cardiff</option>
               <option value="12 Westgate St, Cardiff">12 Westgate St, Cardiff</option>
               <option value="13 Westgate St, Cardiff">13 Westgate St, Cardiff</option>
-            {% elif data['claimPostcode'] == "BT15 1ES" %}
+            {% elif data['claimPostcode'] == "BT15 1ES" or data['claimPostcode'] == "bt15 1es" or data['claimPostcode'] == "BT151ES" or data['claimPostcode'] == "bt151es" %}
               <option value="1 N Queen St, Belfast">1 N Queen St, Belfast</option>
               <option value="2 N Queen St, Belfast">2 N Queen St, Belfast</option>
               <option value="3 N Queen St, Belfast">3 N Queen St, Belfast</option>
