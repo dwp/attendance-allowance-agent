@@ -7,7 +7,7 @@
       <nav class="dwp-horizontal-navigation govuk-!-margin-bottom-8" aria-label="Horizontal">
         <ul class="dwp-horizontal-navigation__list">
           <li class="dwp-horizontal-navigation__item">
-            <a id="r-item-1" href="task-list" class="dwp-horizontal-navigation__link">Register a claim</a>
+            <a id="r-item-1" href="task-list" class="dwp-horizontal-navigation__link">Register</a>
           </li>
           <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
             <a id="r-item-2" href="history" class="dwp-horizontal-navigation__link" aria-current="true">History</a>
@@ -26,16 +26,15 @@
         <ol class="dwp-timeline__items">
           {% if (data['claimStatus'] == 'Registered') %}
             <li class="dwp-timeline__item">
-            <p class="dwp-timeline__datetime">{{ "today" | govukDate }}</p>
-            <h2 class="dwp-timeline__heading">Claim registered</h2>
-            <p class="dwp-timeline__by-line">by Alex Green</p>
-          </li>
+              <p class="dwp-timeline__datetime">{{ "today" | govukDate }}</p>
+              <h2 class="dwp-timeline__heading">Claim registered</h2>
+              <p class="dwp-timeline__by-line">by Alex Green</p>
+            </li>
+          {% else %}
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">No history available on record</h2>
+            </li>
           {% endif %}
-          <li class="dwp-timeline__item">
-            <p class="dwp-timeline__datetime">{{ "today" | govukDate }}</p>
-            <h2 class="dwp-timeline__heading">Completed AA1 form received</h2>
-            <p class="dwp-timeline__by-line">by System</p>
-          </li>
         </ol>
       </div>
     </div>

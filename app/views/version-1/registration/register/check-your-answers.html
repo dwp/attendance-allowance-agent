@@ -1,5 +1,5 @@
 {% extends "version-1/layouts/internal-layout.html" %}
-{% set pageName = "Check your answers" %}
+{% set pageName = "Review and register claim" %}
 
 {% block content %}
   
@@ -188,7 +188,7 @@
         </div>
       </dl>
 
-      <h2 class="govuk-heading-m">Address details</h2>
+      <h2 class="govuk-heading-m">Address</h2>
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -253,6 +253,10 @@
             </dd>
           </div>
         {% endif %}
+      </dl>
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+      <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Where should DWP send letters?
@@ -287,27 +291,9 @@
             </dd>
           </div>
         {% endif %}
-      </dl>
-      {% if data['claimWelshContact'] %}
-        <h2 class="govuk-heading-m">Language</h2>
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Language preference
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['claimWelshContact'] %}
-                {{ data['claimWelshContact'] }}
-              {% endif %}
-            </dd>
-          </div>
-        </dl>
-      {% endif %}
-      <h2 class="govuk-heading-m">Contact numbers</h2>
-      <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Contact
+            Phone numbers
           </dt>
           <dd class="govuk-summary-list__value">
             {% 
@@ -331,7 +317,23 @@
         </div>
       </dl>
 
-      <h2 class="govuk-heading-m">Claim details</h2>
+      {% if data['claimWelshContact'] %}
+        <h2 class="govuk-heading-m">Language</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Language preference
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimWelshContact'] %}
+                {{ data['claimWelshContact'] }}
+              {% endif %}
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Claim</h2>
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -379,7 +381,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Has the claimant requested any alternative formats?
+              Does the claimant need an alternative format?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['claimHaveAlternativeFlags'] %}
@@ -390,7 +392,7 @@
           {% if data['claimHaveAlternativeFlags'] == "Yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Alternative format required
+                Alternative format
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['claimAltFormat'] %}

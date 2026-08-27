@@ -67,7 +67,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Has the claimant requested any alternative formats?
+              Does the claimant need an alternative format?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['claimHaveAlternativeFlags'] %}
@@ -81,7 +81,7 @@
           {% if data['claimHaveAlternativeFlags'] == "Yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Alternative format required
+                Alternative format
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['claimAltFormat'] %}
