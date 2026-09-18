@@ -8,8 +8,199 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here
 
+// ----------------------- version 2 ------------------------------
 
-// ----------------------- User testing 3 ------------------------------
+router.post('/version-2/registration/notes-answer', function (req, res) {
+
+    var deleteNote = req.session.data['claimNoteDelete']
+
+    if (deleteNote == "Yes"){
+        req.session.data['claimAddedNote'] = ""
+    }
+    res.redirect('/version-2/registration/notes')
+
+})
+
+router.post('/version-2/errors/interest-answer', function (req, res) {
+
+    var interest = req.session.data['claimHasInterest']
+
+    if (interest == "Yes"){
+        res.redirect('/version-2/registration/task-list')
+    } else {
+        res.redirect('/version-2/search-nino')
+    }
+
+})
+
+router.post('/version-2/registration/personal/are-you-finished', function (req, res) {
+
+    var finished = req.session.data['claimPersonalFinished']
+
+    if (finished == "Yes"){
+        req.session.data['taskPersonalStatus'] = "Complete"
+    } else {
+        req.session.data['taskPersonalStatus'] = "Inprogress"
+    }
+    res.redirect('/version-2/registration/task-list')
+
+})
+
+router.post('/version-2/registration/address-and-contact/are-you-finished', function (req, res) {
+
+    var finished = req.session.data['claimAddressContactFinished']
+
+    if (finished == "Yes"){
+        req.session.data['taskAddressContactStatus'] = "Complete"
+    } else {
+        req.session.data['taskAddressContactStatus'] = "Inprogress"
+    }
+    res.redirect('/version-2/registration/task-list')
+
+})
+
+router.post('/version-2/registration/claim/are-you-finished', function (req, res) {
+
+    var finished = req.session.data['claimClaimFinished']
+
+    if (finished == "Yes"){
+        req.session.data['taskClaimStatus'] = "Complete"
+    } else {
+        req.session.data['taskClaimStatus'] = "Inprogress"
+    }
+    res.redirect('/version-2/registration/task-list')
+
+})
+
+
+router.post('/version-2/registration/personal/still-alive-answer', function (req, res) {
+
+    var additional = req.session.data['claimStillAlive']
+
+    if (additional == "Yes"){
+        res.redirect('/version-2/registration/personal/date-of-death')
+    } else {
+        res.redirect('/version-2/registration/personal/nationality')
+    }
+
+})
+
+router.post('/version-2/registration/claim/have-formats-answer', function (req, res) {
+
+    var haveAlternativeFormats = req.session.data['claimHaveAlternativeFlags']
+
+    if (haveAlternativeFormats == "Yes"){
+        res.redirect('/version-2/registration/claim/alternative-formats')
+    } else {
+        res.redirect('/version-2/registration/claim/suppress')
+    }
+
+})
+
+router.post('/version-2/registration/register/register-answer', function (req, res) {
+
+    var registered = req.session.data['claimRegistered']
+
+    if (registered == "Yes"){
+        res.redirect('/version-2/registration/register/confirmation')
+    } else {
+        res.redirect('/version-2/registration/task-list')
+    }
+
+}) 
+
+router.post('/version-2/registration/address-and-contact/welsh-answer', function (req, res) {
+
+    var welshPostcode = req.session.data['claimPostcode']
+
+    if (welshPostcode == "CF10 1NS"){
+        res.redirect('/version-2/registration/address-and-contact/welsh-contact')
+    } else {
+        res.redirect('/version-2/registration/address-and-contact/check-your-answers')
+    }
+
+})
+
+router.post('/version-2/registration/address-and-contact/have-correspondence-answer', function (req, res) {
+
+    var haveCorrespondence = req.session.data['claimHaveCorrespondence']
+
+    if (haveCorrespondence == "To a different address"){
+        res.redirect('/version-2/registration/address-and-contact/correspondence')
+    } else {
+        res.redirect('/version-2/registration/address-and-contact/check-your-answers')
+    }
+
+})
+
+router.post('/version-2/registration/address-and-contact/have-address-answer', function (req, res) {
+
+    var haveAddress = req.session.data['claimHaveAddress']
+
+    if (haveAddress == "Yes"){
+        res.redirect('/version-2/registration/address-and-contact/address')
+    } else {
+        res.redirect('/version-2/registration/address-and-contact/address-status')
+    }
+
+})
+
+router.post('/version-2/registration/personal/has-death-answer', function (req, res) {
+
+    var hasDoD = req.session.data['claimIsDoD']
+
+    if (hasDoD == "Yes"){
+        res.redirect('/version-2/registration/personal/date-of-death')
+    } else {
+        res.redirect('/version-2/registration/personal/check-your-answers')
+    }
+
+})
+
+router.post('/version-2/registration/personal/requested-answer', function (req, res) {
+
+    var requested = req.session.data['claimHasRequestedName']
+
+    if (requested == "Yes"){
+        res.redirect('/version-2/registration/personal/requested-name')
+    } else {
+        res.redirect('/version-2/registration/personal/check-your-answers')
+    }
+
+})
+
+router.post('/version-2/registration/claim-continue-answer', function (req, res) {
+
+    var Claimcontinue = req.session.data['continue-claim']
+    var PIPInterest = req.session.data['claimPIPInterest']
+    var dla65Interest = req.session.data['claimDLA65Interest']
+    var padpInterest = req.session.data['claimPADPInterest']
+    var scottishBenefit = req.session.data['claimScottishBenefit']
+    var statePentionAge = req.session.data['claimStatePensionAge']
+    var ADPInterest = req.session.data['claimADPInterest']
+
+    if (PIPInterest == "Yes") {
+        res.redirect('/version-2/errors/pip')
+    } else if (ADPInterest == "Yes") {
+        res.redirect('/version-2/errors/adp')
+    } else if (dla65Interest == "Yes") {
+        res.redirect('/version-2/errors/dla65')
+    } else if (padpInterest == "Yes") {
+        res.redirect('/version-2/errors/padp')
+    } else if (scottishBenefit == "Yes") {
+        res.redirect('/version-2/errors/scottish-benefit')
+    } else if (statePentionAge == "No") {
+        res.redirect('/version-2/errors/state-pention-age')
+    } else if (Claimcontinue == "Yes") {
+        res.redirect('/version-2/registration/task-list')
+    } else {
+        res.redirect('/version-2/search-nino')
+    }
+
+})
+
+
+// ----------------------- version 1 ------------------------------
 
 
 router.post('/version-1/registration/personal/still-alive-answer', function (req, res) {

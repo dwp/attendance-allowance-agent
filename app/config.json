@@ -1,5 +1,5 @@
 {
-  "serviceName": "Manage Attendance Allowance",
+  "serviceName": "Manage Attendance Allowance Claims",
   "plugins": {
     "govuk-frontend": {
       "rebrand": false

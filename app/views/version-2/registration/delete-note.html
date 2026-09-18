@@ -1,0 +1,71 @@
+{% extends "version-2/layouts/internal-layout.html" %}
+
+{% set pageName = "Delete note" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Note
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['claimAddedNote'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date created
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ "today" | govukDate }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Added by
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Alex Green
+          </dd>
+        </div>
+      </dl>
+
+      <form method="post" action="notes-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Do you want to delete this note?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimNoteDelete-1" name="claimNoteDelete" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="claimNoteDelete-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimNoteDelete-2" name="claimNoteDelete" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="claimNoteDelete-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

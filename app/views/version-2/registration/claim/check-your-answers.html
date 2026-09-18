@@ -1,0 +1,142 @@
+{% extends "version-2/layouts/internal-layout.html" %}
+{% set pageName = "Check claim information" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-l">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">Claim information</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Claim received
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if (
+              data['claimReceiptDateDD'] and
+              data['claimReceiptDateMM'] and
+              data['claimReceiptDateYYYY'] 
+              ) 
+            %}
+              {{ data['claimReceiptDateDD'] }}
+              {{ data['claimReceiptDateMM'] | monthName }}
+              {{ data['claimReceiptDateYYYY'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="receipt-date">Change<span class="govuk-visually-hidden"> receipt date</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Claim effective from
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if (
+              data['claimEffectiveDateDD'] and
+              data['claimEffectiveDateMM'] and
+              data['claimEffectiveDateYYYY'] 
+              ) 
+            %}
+              {{ data['claimEffectiveDateDD'] }}
+              {{ data['claimEffectiveDateMM'] | monthName }}
+              {{ data['claimEffectiveDateYYYY'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="effective-date">Change<span class="govuk-visually-hidden"> effective date</span></a>
+          </dd>
+        </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Flags
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimFlags'] %}
+                {{data['claimFlags']}}<br/>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="flags">Change<span class="govuk-visually-hidden"> flags</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the claimant need an alternative format?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimHaveAlternativeFlags'] %}
+                {{data['claimHaveAlternativeFlags']}}
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="have-alternative-formats">Change<span class="govuk-visually-hidden"> have alternative formats</span></a>
+            </dd>
+          </div>
+          {% if data['claimHaveAlternativeFlags'] == "Yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Alternative format
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimAltFormat'] %}
+                  {{data['claimAltFormat']}}
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="alternative-formats">Change<span class="govuk-visually-hidden"> alternative formats</span></a>
+              </dd>
+            </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to notify the claimant?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimSuppress'] %}
+                {{ data['claimSuppress'] }}
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="suppress">Change<span class="govuk-visually-hidden"> suppress acknowledgement</span></a>
+            </dd>
+          </div>
+      </dl>
+
+      <form class="form" method="post" action="are-you-finished">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Are you finished with this section?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimClaimFinished-1" name="claimClaimFinished" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="claimClaimFinished-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimClaimFinished-2" name="claimClaimFinished" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="claimClaimFinished-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

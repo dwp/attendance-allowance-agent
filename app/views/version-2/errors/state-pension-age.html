@@ -1,0 +1,75 @@
+{% extends "version-2/layouts/internal-layout.html" %}
+{% set hideRef = "true" %}
+{% set pageName = "The claimant is under State Pension age" %}
+
+{% block content %}
+  
+  
+
+  <h1 class="govuk-heading-xl">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+    
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          You can be fined up to £5,000 if you do not register.
+        </strong>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What is a conflicting benefit?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">A conflicting benefit is any payment the claimant may be receiving which could stop them receiving Attendance Allowance.</p>
+          <p class="govuk-body">Conflicting benefits include:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Adult Disability Payment (ADP)</li>
+            <li>Disability Living Allowance (DLA)</li>
+            <li>Disability Living Allowance (DLA) 65+</li>
+            <li>Scottish Adult Disability Living Allowance (SADLA)</li>
+            <li>Personal Independence Payment (PIP)</li>
+            <li>Personal Adult Disability Payment (PADP)</li>
+          </ul>
+          <p class="govuk-body">If the claimant is under State Pension age, they are not eligible for Attendance Allowance.</p>
+        </div>
+      </details>
+
+      <form class="form" method="post" action="interest-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Have you checked for conflicting benefits?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimHasInterest-1" name="claimHasInterest" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="claimHasInterest-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimHasInterest-2" name="claimHasInterest" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="claimHasInterest-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

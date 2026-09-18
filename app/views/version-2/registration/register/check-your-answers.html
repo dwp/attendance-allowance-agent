@@ -1,0 +1,447 @@
+{% extends "version-2/layouts/internal-layout.html" %}
+{% set pageName = "Review and register claim" %}
+
+{% block content %}
+  
+  <h1 class="govuk-heading-l">
+    {{ pageName }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Title
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimTitle'] %}
+              {{ data['claimTitle'] }}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimFirstName'] or data['claimLastName'] %}
+              {{ data['claimFirstName'] }} {{ data['claimLastName'] }}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Enter the change of name start date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (
+              data['claimNameStartDateDD'] and
+              data['claimNameStartDateMM'] and
+              data['claimNameStartDateYYYY'] 
+              ) 
+            %}
+              {{ data['claimNameStartDateDD'] }}
+              {{ data['claimNameStartDateMM'] | monthName }}
+              {{ data['claimNameStartDateYYYY'] }}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Has claimant requested a name?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimHasRequestedName'] %}
+              {{ data['claimHasRequestedName'] }}
+            {% endif %}
+          </dd>
+        </div>
+        {% if data['claimHasRequestedName'] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Requested name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimRequestedName'] %}
+                {{ data['claimRequestedName'] }}
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Enter the change of requested name start date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% 
+                if (
+                data['claimRequestedNameStartDateDD'] and
+                data['claimRequestedNameStartDateMM'] and
+                data['claimRequestedNameStartDateYYYY'] 
+                ) 
+              %}
+                {{ data['claimRequestedNameStartDateDD'] }}
+                {{ data['claimRequestedNameStartDateMM'] | monthName }}
+                {{ data['claimRequestedNameStartDateYYYY'] }}
+              {% endif %}
+            </dd>
+          </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (
+              data['claimDateOfBirthDD'] and
+              data['claimDateOfBirthMM'] and
+              data['claimDateOfBirthYYYY'] 
+              ) 
+            %}
+              {{ data['claimDateOfBirthDD'] }}
+              {{ data['claimDateOfBirthMM'] | monthName }}
+              {{ data['claimDateOfBirthYYYY'] }}
+
+              {% if (data['claimDOBverified'] == "true") %}
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              {% elif (data['claimDOBverified'] == "false") %}
+                <strong class="govuk-tag govuk-tag--red govuk-!-margin-left-4">
+                  Unverified
+                </strong>
+              {% endif %}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Is there a date of death?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimIsDoD'] %}
+              {{ data['claimIsDoD'] }}
+            {% endif %}
+          </dd>
+        </div>
+        {% if data['claimIsDoD'] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of death
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% 
+              if (
+              data['claimDateOfDeathDD'] and
+              data['claimDateOfDeathMM'] and
+              data['claimDateOfDeathYYYY'] 
+              ) 
+            %}
+              {{ data['claimDateOfDeathDD'] }}
+              {{ data['claimDateOfDeathMM'] | monthName }}
+              {{ data['claimDateOfDeathYYYY'] }}
+
+              {% if (data['claimDODverified'] == "true") %}
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              {% elif (data['claimDODverified'] == "false") %}
+                <strong class="govuk-tag govuk-tag--red govuk-!-margin-left-4">
+                  Unverified
+                </strong>
+              {% endif %}
+            {% endif %}
+            </dd>
+          </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Nationality
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimNationality'] %}
+              {{ data['claimNationality'] }}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Sex
+          </dt>
+          <dd class="govuk-summary-list__value">
+              {# {{ data['claimSex'] }} #}
+              Male
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other benefits and interests
+          </dt>
+          <dd class="govuk-summary-list__value">
+              {# {{ data['claimOtherBenefits'] }} #}
+              Pension Age Disability Payment (PADP) interest
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">Address</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the claimant have a residential address?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimHaveAddress'] %}
+              {{ data['claimHaveAddress'] }}
+            {% endif %}
+          </dd>
+        </div>
+        {% if data['claimHaveAddress'] == "No" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the claimant's address status?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimAddressStatus'] %}
+                {{ data['claimAddressStatus'] }}
+              {% endif %}
+            </dd>
+          </div>
+        {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Residential address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimAddress1'] %}
+                {{data['claimAddress1']}}<br/>
+              {% endif %}
+              {% if data['claimAddress2'] %}
+                {{data['claimAddress2']}}<br/>
+              {% endif %}
+              {% if data['claimAddress3'] %}
+                {{data['claimAddress3']}}<br/>
+              {% endif %}
+              {% if data['claimAddress4'] %}
+                {{data['claimAddress4']}}<br/>
+              {% endif %}
+              {% if data['claimPostcode'] %}
+                {{ data['claimPostcode'] }}
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Change of address start date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% 
+                if (
+                data['claimAddressStartDD'] and
+                data['claimAddressStartMM'] and
+                data['claimAddressStartYYYY'] 
+                ) 
+              %}
+                {{ data['claimAddressStartDD'] }}
+                {{ data['claimAddressStartMM'] | monthName }}
+                {{ data['claimAddressStartYYYY'] }}
+              {% endif %}
+            </dd>
+          </div>
+        {% endif %}
+      </dl>
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Where should DWP send letters?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimHaveCorrespondence'] %}
+              {{ data['claimHaveCorrespondence'] }}
+            {% endif %}
+          </dd>
+        </div>
+        {% if data['claimHaveCorrespondence'] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Correspondence address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimCorrespondenceAddress1'] %}
+                {{data['claimCorrespondenceAddress1']}}<br/>
+              {% endif %}
+              {% if data['claimCorrespondenceAddress2'] %}
+                {{data['claimCorrespondenceAddress2']}}<br/>
+              {% endif %}
+              {% if data['claimCorrespondenceAddress3'] %}
+                {{data['claimCorrespondenceAddress3']}}<br/>
+              {% endif %}
+              {% if data['claimCorrespondenceAddress4'] %}
+                {{data['claimCorrespondenceAddress4']}}<br/>
+              {% endif %}
+              {% if data['claimCorrespondencePostcode'] %}
+                {{ data['claimCorrespondencePostcode'] }}
+              {% endif %}
+            </dd>
+          </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Phone numbers
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% 
+              if (data['claimMobile']) 
+            %}
+              {{ data['claimMobile'] }}
+            {% endif %}
+            {% 
+              if (data['claimMobile']) and (data['claimLandline'])
+            %}
+              <br/>
+            {% elif not (data['claimMobile'] and not data['claimLandline']) %}
+              None
+            {% endif %}
+            {% 
+              if (data['claimLandline']) 
+            %}
+              {{ data['claimLandline'] }}
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      {% if data['claimWelshContact'] %}
+        <h2 class="govuk-heading-m">Language</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Language preference
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimWelshContact'] %}
+                {{ data['claimWelshContact'] }}
+              {% endif %}
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Claim</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Claim received
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if (
+              data['claimReceiptDateDD'] and
+              data['claimReceiptDateMM'] and
+              data['claimReceiptDateYYYY'] 
+              ) 
+            %}
+              {{ data['claimReceiptDateDD'] }}
+              {{ data['claimReceiptDateMM'] | monthName }}
+              {{ data['claimReceiptDateYYYY'] }}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Claim effective from
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if (
+              data['claimEffectiveDateDD'] and
+              data['claimEffectiveDateMM'] and
+              data['claimEffectiveDateYYYY'] 
+              ) 
+            %}
+              {{ data['claimEffectiveDateDD'] }}
+              {{ data['claimEffectiveDateMM'] | monthName }}
+              {{ data['claimEffectiveDateYYYY'] }}
+            {% endif %}
+          </dd>
+        </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Flags
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimFlags'] %}
+                {{data['claimFlags']}}<br/>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the claimant need an alternative format?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimHaveAlternativeFlags'] %}
+                {{data['claimHaveAlternativeFlags']}}
+              {% endif %}
+            </dd>
+          </div>
+          {% if data['claimHaveAlternativeFlags'] == "Yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Alternative format
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['claimAltFormat'] %}
+                  {{data['claimAltFormat']}}
+                {% endif %}
+              </dd>
+            </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to notify the claimant?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['claimSuppress'] %}
+                {{ data['claimSuppress'] }}
+              {% endif %}
+            </dd>
+          </div>
+      </dl>
+
+      <form method="post" action="register-answer">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Do you want to register the claim?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="register-1" name="claimRegistered" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="register-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="register-2" name="claimRegistered" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="register-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <input class="govuk-input govuk-visually-hidden" id="claimStatus" name="claimStatus" type="text" value="Registered">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

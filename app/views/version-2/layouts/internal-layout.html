@@ -1,0 +1,138 @@
+{%- set assetPath = assetPath | default('/plugin-assets/govuk-frontend' + govukFrontend.assetPath) -%}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+
+{% extends "govuk/template.njk" %}
+
+{% block head %}
+  {% block meta %}{% endblock %}
+  {% block stylesheets %}
+    {% include "govuk-prototype-kit/includes/stylesheets.njk" %}
+    <link rel="stylesheet" type="text/css" href="/govuk-frontend-4.0.1.min.css" />
+    <link href="/public/stylesheets/accessible-autocomplete.min.css" rel="stylesheet" />
+    <script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+
+  {% endblock %}
+{% endblock %}
+
+{% block pageTitle %}
+  {% if pageName %}{{ pageName }} - {% endif %}{{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+
+{% block header %}
+  <header class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/" class="dwp-header__link">{{ serviceName }}</a>
+      </div>
+    </div>
+  </header>
+  {% if not (hideRef) %}
+    <section class="dwp-quick-reference dwp-quick-reference--alternative govuk-!-margin-top-0" aria-label="Case information">
+      <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <dl class="dwp-quick-reference__block">
+              <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+              <dd class="dwp-quick-reference__primary">
+                {% if data['claimFirstName'] or data['claimLastName'] %}
+                  {{data['claimFirstName']}} {{data['claimLastName']}}
+                {% endif %}
+                <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">&#x2022;</span>
+                <span class="govuk-body" style="color: white;">
+                  {% if (data['claimStatus'] == 'Registered') %}
+                    Registered claim
+                  {% else %}
+                    Pre-registered claim
+                  {% endif %}
+                </span>
+              </dd>
+              <dd class="dwp-quick-reference__secondary">
+                <hr class="govuk-section-break govuk-section-break--visible">
+              </dd>
+              <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+              <dd class="dwp-quick-reference__secondary">
+                {% if data['searchNino'] %}
+                  {{ data['searchNino']}}
+                {% endif %}
+                <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">&#x2022;</span>
+                {% 
+                  if (
+                  data['claimDateOfBirthDD'] and
+                  data['claimDateOfBirthMM'] and
+                  data['claimDateOfBirthYYYY'] 
+                  ) 
+                %}
+                  {{ data['claimDateOfBirthDD'] }}
+                  {{ data['claimDateOfBirthMM'] | monthName }}
+                  {{ data['claimDateOfBirthYYYY'] }}
+                {% endif %}
+                <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">&#x2022;</span>
+                {% if data['claimAge'] %}
+                  {{ data['claimAge']}}
+                {% endif %}
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+  <script>console.log({{ data | dump | safe }})</script>
+  {% if not hideBack %}
+    <a href="#" onclick="history.back()" class="govuk-back-link">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% if (GOVUKPrototypeKit.isDevelopment) %}
+  {% set footerItems = [
+    {
+      href: "/manage-prototype",
+      text: "Manage your prototype"
+    }, {
+      href: "/manage-prototype/clear-data",
+      text: "Clear data"
+    }
+  ] %}
+{% else %}
+  {% set footerItems = [
+    {
+      href: "/manage-prototype/clear-data",
+      text: "Clear data"
+    }
+  ] %}
+{% endif %}
+
+{% block footer %}
+  {{ dwpFooter({ 
+      meta: { 
+        visuallyHiddenTitle: "About this website", 
+        items: [ 
+          { 
+            href: "#", 
+            text: "Accessibility statement" 
+          }, 
+          { 
+            href: "#", 
+            text: "Privacy" 
+          }, 
+          { 
+            href: "/manage-prototype/clear-data", 
+            text: "Clear data" 
+          } 
+        ] 
+      } 
+    }) 
+  }}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "govuk-prototype-kit/includes/scripts.njk" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
