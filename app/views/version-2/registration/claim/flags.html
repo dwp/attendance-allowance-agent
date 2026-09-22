@@ -1,6 +1,6 @@
 {% extends "version-2/layouts/internal-layout.html" %}
 
-{% set pageName = "Select any flags which apply to this claim" %}
+{% set pageName = "Add flags to this claim" %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -31,6 +31,12 @@
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="claimFlags-5" name="claimFlags" type="checkbox" value="Claim deleted (was decision made)" {{ checked('claimFlags','Claim deleted (was decision made)') }}>
+                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-5">
+                  Claim deleted (was decision made)
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="claimFlags" name="claimFlags" type="checkbox" value="Digital claim" {{ checked('claimFlags','Digital claim') }}>
                 <label class="govuk-label govuk-checkboxes__label" for="claimFlags">
                   Digital claim
@@ -46,12 +52,6 @@
                 <input class="govuk-checkboxes__input" id="claimFlags-6" name="claimFlags" type="checkbox" value="Good cause" {{ checked('claimFlags','Good cause') }}>
                 <label class="govuk-label govuk-checkboxes__label" for="claimFlags-6">
                   Good cause
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="claimFlags-5" name="claimFlags" type="checkbox" value="Proven fraud (Fraud team use)" {{ checked('claimFlags','Proven fraud (Fraud team use)') }}>
-                <label class="govuk-label govuk-checkboxes__label" for="claimFlags-5">
-                  Proven fraud (Fraud team use)
                 </label>
               </div>
               <div class="govuk-checkboxes__item">

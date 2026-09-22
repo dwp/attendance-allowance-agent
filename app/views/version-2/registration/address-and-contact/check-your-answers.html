@@ -10,7 +10,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h2 class="govuk-heading-m">Address details</h2>
+      <h2 class="govuk-heading-m">Address</h2>
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -45,20 +45,24 @@
               Residential address
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['claimAddress1'] %}
-                {{data['claimAddress1']}}<br/>
-              {% endif %}
-              {% if data['claimAddress2'] %}
-                {{data['claimAddress2']}}<br/>
-              {% endif %}
-              {% if data['claimAddress3'] %}
-                {{data['claimAddress3']}}<br/>
-              {% endif %}
-              {% if data['claimAddress4'] %}
-                {{data['claimAddress4']}}<br/>
-              {% endif %}
-              {% if data['claimPostcode'] %}
-                {{ data['claimPostcode'] }}
+              {% if data['claimAddressFull'] %}
+                {{data['claimAddressFull']}}
+              {% else %}
+                {% if data['claimAddress1'] %}
+                  {{data['claimAddress1']}}<br/>
+                {% endif %}
+                {% if data['claimAddress2'] %}
+                  {{data['claimAddress2']}}<br/>
+                {% endif %}
+                {% if data['claimAddress3'] %}
+                  {{data['claimAddress3']}}<br/>
+                {% endif %}
+                {% if data['claimAddress4'] %}
+                  {{data['claimAddress4']}}<br/>
+                {% endif %}
+                {% if data['claimPostcode'] %}
+                  {{ data['claimPostcode'] }}
+                {% endif %}
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -67,7 +71,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Change of address start date
+              When did the claimant tell DWP that their residential address had changed?
             </dt>
             <dd class="govuk-summary-list__value">
               {% 
@@ -82,9 +86,6 @@
                 {{ data['claimAddressStartYYYY'] }}
               {% endif %}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="address-start-date">Change<span class="govuk-visually-hidden"> address start date</span></a>
-            </dd>
           </div>
         {% endif %}
       </dl>
@@ -93,7 +94,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Where should DWP send letters?
+            Does the claimant have a correspondence address?
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['claimHaveCorrespondence'] %}
@@ -104,26 +105,30 @@
             <a class="govuk-link" href="have-correspondence-address">Change<span class="govuk-visually-hidden"> have address</span></a>
           </dd>
         </div>
-        {% if data['claimHaveCorrespondence'] == "To a different address" %}
+        {% if data['claimHaveCorrespondence'] == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Correspondence address
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['claimCorrespondenceAddress1'] %}
-                {{data['claimCorrespondenceAddress1']}}<br/>
-              {% endif %}
-              {% if data['claimCorrespondenceAddress2'] %}
-                {{data['claimCorrespondenceAddress2']}}<br/>
-              {% endif %}
-              {% if data['claimCorrespondenceAddress3'] %}
-                {{data['claimCorrespondenceAddress3']}}<br/>
-              {% endif %}
-              {% if data['claimCorrespondenceAddress4'] %}
-                {{data['claimCorrespondenceAddress4']}}<br/>
-              {% endif %}
-              {% if data['claimCorrespondencePostcode'] %}
-                {{ data['claimCorrespondencePostcode'] }}
+              {% if data['claimCorrespondenceAddressFull'] %}
+                {{data['claimCorrespondenceAddressFull']}}
+              {% else %}
+                {% if data['claimCorrespondenceAddress1'] %}
+                  {{data['claimCorrespondenceAddress1']}}<br/>
+                {% endif %}
+                {% if data['claimCorrespondenceAddress2'] %}
+                  {{data['claimCorrespondenceAddress2']}}<br/>
+                {% endif %}
+                {% if data['claimCorrespondenceAddress3'] %}
+                  {{data['claimCorrespondenceAddress3']}}<br/>
+                {% endif %}
+                {% if data['claimCorrespondenceAddress4'] %}
+                  {{data['claimCorrespondenceAddress4']}}<br/>
+                {% endif %}
+                {% if data['claimCorrespondencePostcode'] %}
+                  {{ data['claimCorrespondencePostcode'] }}
+                {% endif %}
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">

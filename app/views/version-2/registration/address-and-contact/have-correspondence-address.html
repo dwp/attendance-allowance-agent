@@ -1,6 +1,6 @@
 {% extends "version-2/layouts/internal-layout.html" %}
 
-{% set pageName = "Where should DWP send letters?" %}
+{% set pageName = "Does the claimant have a correspondence address?" %}
 
 {% block content %}
   
@@ -17,15 +17,15 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimHaveCorrespondence-1" name="claimHaveCorrespondence" type="radio" value="To the residential address" {{ checked('claimHaveCorrespondence','To the residential address') }}>
+                <input class="govuk-radios__input" id="claimHaveCorrespondence-1" name="claimHaveCorrespondence" type="radio" value="Yes" {{ checked('claimHaveCorrespondence','Yes') }}>
                 <label class="govuk-label govuk-radios__label" for="claimHaveCorrespondence-1">
-                  To the claimant's residential address
+                  Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="claimHaveCorrespondence-2" name="claimHaveCorrespondence" type="radio" value="To a different address" {{ checked('claimHaveCorrespondence','To a different address') }}>
+                <input class="govuk-radios__input" id="claimHaveCorrespondence-2" name="claimHaveCorrespondence" type="radio" value="No" {{ checked('claimHaveCorrespondence','No') }}>
                 <label class="govuk-label govuk-radios__label" for="claimHaveCorrespondence-2">
-                  To a different address
+                  No
                 </label>
               </div>
             </div>

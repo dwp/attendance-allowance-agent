@@ -40,7 +40,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Enter the change of name start date
+            When did the claimant tell DWP about their name change?
           </dt>
           <dd class="govuk-summary-list__value">
             {% 
@@ -55,13 +55,10 @@
               {{ data['claimNameStartDateYYYY'] }}
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="name-start-date">Change<span class="govuk-visually-hidden"> name start date</span></a>
-          </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Has claimant requested a name?
+            Does the claimant want to be called by a different name?
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['claimHasRequestedName'] %}
@@ -75,7 +72,7 @@
         {% if data['claimHasRequestedName'] == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Requested name
+              What should DWP call the claimant?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['claimRequestedName'] %}
@@ -88,7 +85,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Enter the change of requested name start date
+              When did the claimant ask DWP to use a different name?
             </dt>
             <dd class="govuk-summary-list__value">
               {% 
@@ -102,9 +99,6 @@
                 {{ data['claimRequestedNameStartDateMM'] | monthName }}
                 {{ data['claimRequestedNameStartDateYYYY'] }}
               {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="requested-name-start-date">Change<span class="govuk-visually-hidden"> requested name start date</span></a>
             </dd>
           </div>
         {% endif %}
@@ -191,7 +185,7 @@
         {% endif %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Nationality
+            Nationality (optional)
           </dt>
           <dd class="govuk-summary-list__value">
             <a href="nationality" class="govuk-link">Enter nationality</a>
@@ -231,7 +225,7 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Are you finished with this section?
+              Are the claim details correct?
             </legend>
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
               <div class="govuk-radios__item">

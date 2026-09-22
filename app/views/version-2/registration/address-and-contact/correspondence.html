@@ -13,12 +13,28 @@
       <form method="post" action="search-a-correspondence-address">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <label class="govuk-label" for="claimCorrespondencePostcode">
-              Postcode
-            </label>
-            <input class="govuk-input govuk-input--width-10" id="claimCorrespondencePostcode" name="claimCorrespondencePostcode" type="text" value="{{data[claimCorrespondencePostcode]}}">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="claimCorrespondencePostcode">
+                Postcode
+              </label>
+              <div id="claimCorrespondencePostcode-hint" class="govuk-hint">
+                For example, AA3 1AB.
+              </div>
+              <input class="govuk-input govuk-input--width-10" id="claimCorrespondencePostcode" name="claimCorrespondencePostcode" type="text" value="{{data[claimCorrespondencePostcode]}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="claimCorrespondenceAddressNumber">
+                Building number or name (optional)
+              </label>
+              <div id="claimCorrespondenceAddressNumber-hint" class="govuk-hint">
+                For example, 15 or Prospect Cottage.
+              </div>
+              <input class="govuk-input govuk-input--width-10" id="claimCorrespondenceAddressNumber" name="claimCorrespondenceAddressNumber" type="text" value="{{data[claimCorrespondenceAddressNumber]}}">
+            </div>
           </fieldset>
         </div>
+
         <p class="govuk-body"><a href="correspondence-address-int" class="govuk-link">Enter an address outside of the UK</a></p>
         <button type="submit" class="govuk-button govuk-!-margin-right-5" data-module="govuk-button">
           Find address

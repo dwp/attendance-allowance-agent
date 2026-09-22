@@ -1,6 +1,6 @@
 {% extends "version-2/layouts/internal-layout.html" %}
 
-{% set pageName = "Does the claimant have a requested name?" %}
+{% set pageName = "Does the claimant want to be called by a different name?" %}
 
 {% block content %}
   
@@ -15,6 +15,9 @@
                 {{ pageName }}
               </h1>
             </legend>
+            <div id="claimNameStartDate-hint" class="govuk-hint">
+              This is sometimes called the requested name.
+            </div>
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="claimHasRequestedName-1" name="claimHasRequestedName" type="radio" value="Yes" {{ checked('claimHasRequestedName','Yes') }}>

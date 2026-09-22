@@ -46,7 +46,7 @@
           <li class="govuk-task-list__item govuk-task-list__item--with-link">
             <div class="govuk-task-list__name-and-hint">
               <a class="govuk-link govuk-task-list__link" href="address-and-contact/check-your-answers" aria-describedby="claim-tasks-2-hint claim-tasks-2-status">
-                Check address and contact number
+                Check address and contact numbers
               </a>
             </div>
             <div class="govuk-task-list__status" id="address-1-status">
@@ -68,11 +68,11 @@
             <div class="govuk-task-list__name-and-hint">
               {% if (data['taskClaimStatus'] == 'Complete') or (data['taskClaimStatus'] == 'Inprogress') %}
                 <a class="govuk-link govuk-task-list__link" href="claim/check-your-answers" aria-describedby="claim-tasks-3-status">
-                  Check claim information
+                  Enter claim information
                 </a>
               {% else %}
                 <a class="govuk-link govuk-task-list__link" href="claim/receipt-date" aria-describedby="claim-tasks-3-status">
-                  Check claim information
+                  Enter claim information
                 </a>
               {% endif %}
             </div>

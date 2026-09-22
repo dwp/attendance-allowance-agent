@@ -3,85 +3,142 @@
 
 {% block content %}
 
-  <h1 class="govuk-heading-l">
-    {{ pageName }}
-  </h1>
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="check-your-answers">
 
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Postcode
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['claimCorrespondencePostcode'] %}
-              {{data['claimCorrespondencePostcode']}}
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              {{ pageName }}
+            </h1>
+          </legend>
+          <p class="govuk-body">
+            6 addresses found for <span class="govuk-!-font-weight-bold">{{data['claimCorrespondencePostcode']}}</span>  
+            {% if data['claimCorrespondenceAddressNumber'] %}      
+              and <span class="govuk-!-font-weight-bold">{{data['claimCorrespondenceAddressNumber']}}</span>
             {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="address">Change<span class="govuk-visually-hidden"> postcode</span></a>
-          </dd>
-        </div>
-      </dl>
+            . <a class="govuk-link" href="correspondence">Search again</a>
+          </p>
+          <div class="govuk-form-group">
+            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
 
-      <form method="post" action="contact-number">
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="sort">
-            Select an address
-          </label>
-          <select class="govuk-select" id="claimCorrespondencePostcode" name="claimCorrespondencePostcode">
-            {% if data['claimCorrespondencePostcode'] == "CF11 1NS" or data['claimCorrespondencePostcode'] == "cf11 1ns" or data['claimCorrespondencePostcode'] == "CF111NS" or data['claimCorrespondencePostcode'] == "cf111ns" %}
-              <option value="1 Eastgate St, Cardiff">1 Eastgate St, Cardiff</option>
-              <option value="2 Eastgate St, Cardiff">2 Eastgate St, Cardiff</option>
-              <option value="3 Eastgate St, Cardiff">3 Eastgate St, Cardiff</option>
-              <option value="4 Eastgate St, Cardiff">4 Eastgate St, Cardiff</option>
-              <option value="5 Eastgate St, Cardiff">5 Eastgate St, Cardiff</option>
-              <option value="6 Eastgate St, Cardiff">6 Eastgate St, Cardiff</option>
-              <option value="7 Eastgate St, Cardiff">7 Eastgate St, Cardiff</option>
-              <option value="8 Eastgate St, Cardiff">8 Eastgate St, Cardiff</option>
-              <option value="9 Eastgate St, Cardiff">9 Eastgate St, Cardiff</option>
-              <option value="10 Eastgate St, Cardiff">10 Eastgate St, Cardiff</option>
-              <option value="11 Eastgate St, Cardiff">11 Eastgate St, Cardiff</option>
-              <option value="12 Eastgate St, Cardiff">12 Eastgate St, Cardiff</option>
-              <option value="13 Eastgate St, Cardiff">13 Eastgate St, Cardiff</option>
-            {% elif data['claimCorrespondencePostcode'] == "BT16 1ES" or data['claimCorrespondencePostcode'] == "bt16 1es" or data['claimCorrespondencePostcode'] == "BT161ES" or data['claimCorrespondencePostcode'] == "bt161es" %}
-              <option value="1 S King St, Belfast">1 S King St, Belfast</option>
-              <option value="2 S King St, Belfast">2 S King St, Belfast</option>
-              <option value="3 S King St, Belfast">3 S King St, Belfast</option>
-              <option value="4 S King St, Belfast">4 S King St, Belfast</option>
-              <option value="5 S King St, Belfast">5 S King St, Belfast</option>
-              <option value="6 S King St, Belfast">6 S King St, Belfast</option>
-              <option value="7 S King St, Belfast">7 S King St, Belfast</option>
-              <option value="8 S King St, Belfast">8 S King St, Belfast</option>
-              <option value="9 S King St, Belfast">9 S King St, Belfast</option>
-              <option value="10 S King St, Belfast">10 S King St, Belfast</option>
-              <option value="11 S King St, Belfast">11 S King St, Belfast</option>
-              <option value="12 S King St, Belfast">12 S King St, Belfast</option>
-              <option value="13 S King St, Belfast">13 S King St, Belfast</option>
-              <option value="14 S King St, Belfast">14 S King St, Belfast</option>
+            {% if data['claimCorrespondencePostcode'] == "CF10 1NS" or data['claimCorrespondencePostcode'] == "cf10 1ns" or data['claimCorrespondencePostcode'] == "CF101NS" or data['claimCorrespondencePostcode'] == "cf101ns" %}
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull" name="claimCorrespondenceAddressFull" type="radio" value="1 Eastgate St, Cardiff">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull">
+                  1 Eastgate St, Cardiff
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-2" name="claimCorrespondenceAddressFull" type="radio" value="10 Eastgate St, Cardiff">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-2">
+                  10 Eastgate St, Cardiff
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-3" name="claimCorrespondenceAddressFull" type="radio" value="11 Eastgate St, Cardiff">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-3">
+                  11 Eastgate St, Cardiff
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-4" name="claimCorrespondenceAddressFull" type="radio" value="12 Eastgate St, Cardiff">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-4">
+                  12 Eastgate St, Cardiff
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-5" name="claimCorrespondenceAddressFull" type="radio" value="13 Eastgate St, Cardiff">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-5">
+                  13 Eastgate St, Cardiff
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-6" name="claimCorrespondenceAddressFull" type="radio" value="14 Eastgate St, Cardiff">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-6">
+                  14 Eastgate St, Cardiff
+                </label>
+              </div>
+            {% elif data['claimCorrespondencePostcode'] == "BT15 1ES" or data['claimCorrespondencePostcode'] == "bt15 1es" or data['claimCorrespondencePostcode'] == "BT151ES" or data['claimCorrespondencePostcode'] == "bt151es" %}
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull" name="claimCorrespondenceAddressFull" type="radio" value="1 S King St, Belfast">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull">
+                  1 S King St, Belfast
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-2" name="claimCorrespondenceAddressFull" type="radio" value="10 S King St, Belfast">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-2">
+                  10 S King St, Belfast
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-3" name="claimCorrespondenceAddressFull" type="radio" value="11 S King St, Belfast">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-3">
+                  11 S King St, Belfast
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-4" name="claimCorrespondenceAddressFull" type="radio" value="12 S King St, Belfast">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-4">
+                  12 S King St, Belfast
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-5" name="claimCorrespondenceAddressFull" type="radio" value="13 S King St, Belfast">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-5">
+                  13 S King St, Belfast
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-6" name="claimCorrespondenceAddressFull" type="radio" value="14 S King St, Belfast">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-6">
+                  14 S King St, Belfast
+                </label>
+              </div>
             {% else %}
-              <option value="1 Meldon Road, Heaton, Newcastle upon Tyne, England">1 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="2 Meldon Road, Heaton, Newcastle upon Tyne, England">2 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="3 Meldon Road, Heaton, Newcastle upon Tyne, England">3 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="4 Meldon Road, Heaton, Newcastle upon Tyne, England">4 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="5 Meldon Road, Heaton, Newcastle upon Tyne, England">5 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="6 Meldon Road, Heaton, Newcastle upon Tyne, England">6 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="7 Meldon Road, Heaton, Newcastle upon Tyne, England">7 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="8 Meldon Road, Heaton, Newcastle upon Tyne, England">8 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="5 Meldon Road, Heaton, Newcastle upon Tyne, England">5 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="6 Meldon Road, Heaton, Newcastle upon Tyne, England">6 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="7 Meldon Road, Heaton, Newcastle upon Tyne, England">7 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="8 Meldon Road, Heaton, Newcastle upon Tyne, England">8 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="9 Meldon Road, Heaton, Newcastle upon Tyne, England">9 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="10 Meldon Road, Heaton, Newcastle upon Tyne, England">10 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="11 Meldon Road, Heaton, Newcastle upon Tyne, England">11 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="12 Meldon Road, Heaton, Newcastle upon Tyne, England">12 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
-              <option value="13 Meldon Road, Heaton, Newcastle upon Tyne, England">13 Meldon Road, Heaton, Newcastle upon Tyne, England</option>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull" name="claimCorrespondenceAddressFull" type="radio" value="1 Meldon Road, Heaton, Newcastle upon Tyne, England">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull">
+                  1 Meldon Road, Heaton, Newcastle upon Tyne, England
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-2" name="claimCorrespondenceAddressFull" type="radio" value="10 Meldon Road, Heaton, Newcastle upon Tyne, England">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-2">
+                  10 Meldon Road, Heaton, Newcastle upon Tyne, England
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-3" name="claimCorrespondenceAddressFull" type="radio" value="11 Meldon Road, Heaton, Newcastle upon Tyne, England">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-3">
+                  11 Meldon Road, Heaton, Newcastle upon Tyne, England
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-4" name="claimCorrespondenceAddressFull" type="radio" value="12 Meldon Road, Heaton, Newcastle upon Tyne, England">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-4">
+                  12 Meldon Road, Heaton, Newcastle upon Tyne, England
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-5" name="claimCorrespondenceAddressFull" type="radio" value="13 Meldon Road, Heaton, Newcastle upon Tyne, England">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-5">
+                  13 Meldon Road, Heaton, Newcastle upon Tyne, England
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="claimCorrespondenceAddressFull-6" name="claimCorrespondenceAddressFull" type="radio" value="14 Meldon Road, Heaton, Newcastle upon Tyne, England">
+                <label class="govuk-label govuk-radios__label" for="claimCorrespondenceAddressFull-6">
+                  14 Meldon Road, Heaton, Newcastle upon Tyne, England
+                </label>
+              </div>
             {% endif %}
-          </select>
-        </div>
+
+            </div>
+          </div>
+        </fieldset>
 
         <p><a href="correspondence-address-uk" class="govuk-link">I cannot find an address</a></p>
         <button type="submit" class="govuk-button" data-module="govuk-button">

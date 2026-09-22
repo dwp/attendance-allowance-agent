@@ -34,7 +34,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Enter the change of name start date
+            When did the claimant tell DWP about their name change?
           </dt>
           <dd class="govuk-summary-list__value">
             {% 
@@ -52,7 +52,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Has claimant requested a name?
+            Does the claimant want to be called by a different name?
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['claimHasRequestedName'] %}
@@ -63,7 +63,7 @@
         {% if data['claimHasRequestedName'] == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Requested name
+              What should DWP call the claimant?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['claimRequestedName'] %}
@@ -73,7 +73,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Enter the change of requested name start date
+              When did the claimant ask DWP to use a different name?
             </dt>
             <dd class="govuk-summary-list__value">
               {% 
@@ -236,7 +236,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Change of address start date
+              When did the claimant tell DWP that their residential address had changed?
             </dt>
             <dd class="govuk-summary-list__value">
               {% 
@@ -259,7 +259,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Where should DWP send letters?
+            Where should DWP send written correspondence?
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['claimHaveCorrespondence'] %}

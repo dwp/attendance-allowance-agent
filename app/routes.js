@@ -125,7 +125,7 @@ router.post('/version-2/registration/address-and-contact/have-correspondence-ans
 
     var haveCorrespondence = req.session.data['claimHaveCorrespondence']
 
-    if (haveCorrespondence == "To a different address"){
+    if (haveCorrespondence == "Yes"){
         res.redirect('/version-2/registration/address-and-contact/correspondence')
     } else {
         res.redirect('/version-2/registration/address-and-contact/check-your-answers')

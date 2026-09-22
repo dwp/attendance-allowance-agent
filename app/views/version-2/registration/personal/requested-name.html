@@ -1,6 +1,6 @@
 {% extends "version-2/layouts/internal-layout.html" %}
 
-{% set pageName = "Enter the claimant's requested name" %}
+{% set pageName = "Enter the name DWP should use for the claimant" %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -14,6 +14,9 @@
                 {{ pageName }}
               </h1>
             </legend>
+            <div id="claimNameStartDate-hint" class="govuk-hint">
+              This is sometimes called the requested name.
+            </div>
             <input class="govuk-input govuk-input--width-20" id="claimRequestedName" name="claimRequestedName" type="text" value="{{data['claimRequestedName']}}"/>
           </fieldset>
         </div>
