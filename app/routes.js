@@ -10,6 +10,30 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // ----------------------- version 2 ------------------------------
 
+router.post('/version-2/registration/register/reg-bank-check-answer', function (req, res) {
+
+    var checkBank = req.session.data['taskBankCheck']
+
+    if (checkBank == "Yes"){
+        res.redirect('/version-2/registration/register/confirmation-bank')
+    } else {
+        res.redirect('/version-2/registration/register/search-bank')
+    }
+
+})
+
+router.post('/version-2/registration/register/reg-bank-answer', function (req, res) {
+
+    var changeBank = req.session.data['taskBankStatus']
+
+    if (changeBank == "Yes"){
+        res.redirect('/version-2/registration/register/search-bank')
+    } else {
+        res.redirect('/version-2/view/task-list')
+    }
+
+})
+
 router.post('/version-2/registration/notes-answer', function (req, res) {
 
     var deleteNote = req.session.data['claimNoteDelete']

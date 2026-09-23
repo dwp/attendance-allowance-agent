@@ -55,6 +55,7 @@
               {{ data['claimNameStartDateYYYY'] }}
             {% endif %}
           </dd>
+          <dd class="govuk-summary-list__actions"></dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -100,6 +101,7 @@
                 {{ data['claimRequestedNameStartDateYYYY'] }}
               {% endif %}
             </dd>
+            <dd class="govuk-summary-list__actions"></dd>
           </div>
         {% endif %}
         <div class="govuk-summary-list__row">
@@ -188,14 +190,18 @@
             Nationality (optional)
           </dt>
           <dd class="govuk-summary-list__value">
-            <a href="nationality" class="govuk-link">Enter nationality</a>
-            <!-- {% if data['claimNationality'] %}
+            
+            {% if data['claimNationality'] %}
               {{ data['claimNationality'] }}
-            {% endif %} -->
+            {% else %}
+              <a href="nationality" class="govuk-link">Enter nationality</a>
+            {% endif %}
           </dd>
-          <!-- <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="nationality">Change<span class="govuk-visually-hidden"> nationality</span></a>
-          </dd> -->
+          <dd class="govuk-summary-list__actions">
+            {% if data['claimNationality'] %}
+              <a class="govuk-link" href="nationality">Change<span class="govuk-visually-hidden"> nationality</span></a>
+            {% endif %}
+          </dd>
         </div>
         {% if data['claimSex'] %}
           <div class="govuk-summary-list__row">
@@ -206,6 +212,7 @@
                 {# {{ data['claimSex'] }} #}
                 Male
             </dd>
+            <dd class="govuk-summary-list__actions"></dd>
           </div>
         {% endif %}
         {% if data['claimOtherBenefits'] %}
@@ -217,6 +224,7 @@
               {# {{ data['claimOtherBenefits'] }} #}
               Pension Age Disability Payment (PADP) interest
             </dd>
+            <dd class="govuk-summary-list__actions"></dd>
           </div>
         {% endif %}
       </dl>
@@ -225,7 +233,7 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Are the claim details correct?
+              Is this section complete?
             </legend>
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
               <div class="govuk-radios__item">
