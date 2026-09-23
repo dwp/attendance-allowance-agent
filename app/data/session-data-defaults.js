@@ -1,7 +1,7 @@
 module.exports = {
   "searchNino" : "BB000381",
   "claimTitle" : "Mr",
-  "claimFirstName" : "Samual",
+  "claimFirstName" : "Samuel",
   "claimLastName" : "Smith",
   "claimNameStartDateDD" : "16",
   "claimNameStartDateMM" : "08",
