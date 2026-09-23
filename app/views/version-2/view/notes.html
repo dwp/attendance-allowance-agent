@@ -1,0 +1,51 @@
+{% extends "version-2/layouts/internal-layout.html" %}
+
+{% block content %} 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <nav class="dwp-horizontal-navigation govuk-!-margin-bottom-8" aria-label="Horizontal">
+        <ul class="dwp-horizontal-navigation__list">
+          <li class="dwp-horizontal-navigation__item">
+            <a id="r-item-1" href="task-list" class="dwp-horizontal-navigation__link">View claim</a>
+          </li>
+          <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
+            <a id="r-item-2" href="notes" class="dwp-horizontal-navigation__link" aria-current="true">Notes</a>
+          </li>
+          <!-- <li class="dwp-horizontal-navigation__item">
+            <a id="s-item-3" href="#s-item-3" class="dwp-horizontal-navigation__link">Item 3</a>
+          </li> -->
+        </ul>
+      </nav>
+
+      <h1 class="govuk-heading-m">
+        Notes
+      </h1>
+
+      <form class="form" method="post" action="add-note">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Add note
+        </button>
+      </form>
+
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items">
+          {% if (data['claimAddedNote']) %}
+            <li class="dwp-timeline__item">
+              <p class="dwp-timeline__datetime">{{ "today" | govukDate }}</p>
+              <h2 class="dwp-timeline__heading">{{ data['claimAddedNote'] }}</h2>
+              <p class="dwp-timeline__by-line">by Alex Green</p>
+              <a href="edit-note" class="dwp-timeline__link">Edit<span class="govuk-visually-hidden">note</span></a>
+              <a href="delete-note" class="dwp-timeline__link">Delete<span class="govuk-visually-hidden">note</span></a>
+            </li>
+          {% else %}
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">No notes on record</h2>
+            </li>
+          {% endif %}
+        </ol>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
