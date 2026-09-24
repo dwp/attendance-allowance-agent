@@ -15,17 +15,20 @@
                 {{ pageName }}
               </h1>
             </legend>
+            <div id="claimNameStartDate-hint" class="govuk-hint">
+              The correspondence address is where DWP will send letters to.
+            </div>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="claimHaveCorrespondence-1" name="claimHaveCorrespondence" type="radio" value="Yes" {{ checked('claimHaveCorrespondence','Yes') }}>
                 <label class="govuk-label govuk-radios__label" for="claimHaveCorrespondence-1">
-                  Yes
+                  Yes, send letters to a different address
                 </label>
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="claimHaveCorrespondence-2" name="claimHaveCorrespondence" type="radio" value="No" {{ checked('claimHaveCorrespondence','No') }}>
                 <label class="govuk-label govuk-radios__label" for="claimHaveCorrespondence-2">
-                  No
+                  No, send letters to the claimant's residential address
                 </label>
               </div>
             </div>
