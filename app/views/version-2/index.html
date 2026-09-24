@@ -16,15 +16,36 @@
       Use this button to begin the user journey from registration, as this is a prototype there is no error validation so you can use any data to progress.
     </p>
 
-    <p class="govuk-body">
+    <!-- <p class="govuk-body">
       <a class="govuk-link" href="generate-data">
         Pre-populate the prototype with claimant form data
       </a>.
-    </p>
+    </p> -->
 
-    <a href="version-2/search-nino" class="govuk-button">
-      Start
-    </a>
+    <h2 class="govuk-heading-s">Start</h2>
+
+    <form class="form" method="post" action="version-2/search-nino">
+      <input class="govuk-input govuk-visually-hidden" id="claimAddress1" name="claimAddress1" type="text" value="12 N Queen street">
+      <input class="govuk-input govuk-visually-hidden" id="claimAddress2" name="claimAddress2" type="text" value="Belfast">
+      <input class="govuk-input govuk-visually-hidden" id="claimAddress3" name="claimAddress3" type="text" value="{{data[claimAddress3]}}">
+      <input class="govuk-input govuk-visually-hidden" id="claimAddress4" name="claimAddress4" type="text" value="{{data[claimAddress4]}}">
+      <input class="govuk-input govuk-visually-hidden" id="claimPostcode" name="claimPostcode" type="text" value="BT15 1ES">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Northern Ireland
+      </button>
+    </form>
+
+    <form class="form" method="post" action="version-2/search-nino">
+      <input class="govuk-input govuk-visually-hidden" id="claimAddress1" name="claimAddress1" type="text" value="10 Weldon Street">
+      <input class="govuk-input govuk-visually-hidden" id="claimAddress2" name="claimAddress2" type="text" value="Heaton">
+      <input class="govuk-input govuk-visually-hidden" id="claimAddress3" name="claimAddress3" type="text" value="Newcastle upon Tyne">
+      <input class="govuk-input govuk-visually-hidden" id="claimAddress4" name="claimAddress4" type="text" value="England">
+      <input class="govuk-input govuk-visually-hidden" id="claimPostcode" name="claimPostcode" type="text" value="NE6 5XP">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        England & Wales
+      </button>
+    </form>
+
 
     <div class="govuk-tabs" data-module="govuk-tabs">
       <h2 class="govuk-tabs__title">
