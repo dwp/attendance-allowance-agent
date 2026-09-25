@@ -1,0 +1,29 @@
+{% extends "version-2/layouts/internal-layout.html" %}
+{% set pageName = "Edit note" %}
+
+{% block content %} 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form action="notes" method="post" novalidate>
+        <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ pageName }}
+              </h1>
+            </legend>
+            <textarea class="govuk-textarea govuk-js-character-count" id="claimAddedNote" name="claimAddedNote" rows="5" aria-describedby="more-detail-hint" value="{{data['claimAddedNote']}}"></textarea>
+            <div id="claimAddedNote-info" class="govuk-hint govuk-character-count__message">
+              You can enter up to 5000 characters
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
